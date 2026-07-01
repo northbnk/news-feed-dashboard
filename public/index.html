@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ニュース・フィード・ダッシュボード | AI Aggregator</title>
+  <meta name="description" content="PCの1画面に収まる、リアルタイム自動更新型のAIニュース・話題フィードダッシュボード">
+  <!-- Google Fonts: Plus Jakarta Sans & Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <!-- グローバル背景用グラデーション装飾 -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <!-- ダッシュボードコンテナ -->
+  <div class="dashboard-container">
+    
+    <!-- 1. ヘッダー -->
+    <header class="dashboard-header">
+      <div class="header-left">
+        <h1 id="dashboard-title">NEWS TERMINAL</h1>
+        <span class="status-badge" id="live-indicator">
+          <span class="pulse-dot"></span>LIVE
+        </span>
+      </div>
+      
+      <div class="header-center">
+        <div id="live-clock" class="clock-display">----年--月--日 (ー) --:--:--</div>
+        <div id="weather-display" class="weather-display">
+          <div class="weather-city-wrapper" id="weather-city-wrapper">
+            <span id="weather-city" class="weather-hover-trigger">📍天気読み込み中...</span>
+            <div id="city-news-popup" class="weather-hover-popup news-popup" style="display: none;">
+              <h4 class="popup-title">地方の関連ニュース</h4>
+              <div id="city-news-list" class="popup-news-list"></div>
+            </div>
+          </div>
+          <div class="weather-info-wrapper" id="weather-info-wrapper">
+            <span id="weather-info" class="weather-hover-trigger"></span>
+            <div id="weather-forecast-popup" class="weather-hover-popup forecast-popup" style="display: none;">
+              <h4 class="popup-title">直近の時間別予報</h4>
+              <div id="forecast-list" class="popup-forecast-grid"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="header-right">
+        <div class="sync-info">
+          <span id="last-sync-time">最終同期: --:--:--</span>
+        </div>
+        <button id="refresh-btn" class="icon-btn" title="手動更新">
+          <!-- リフレッシュSVGアイコン -->
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.73-.73" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="btn-text">手動更新</span>
+        </button>
+        <button id="unread-only-toggle" class="icon-btn toggle-btn" title="未読のみ表示">
+          <!-- 未読（チェック）アイコン -->
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="btn-text">未読のみ</span>
+        </button>
+        <button id="theme-toggle" class="icon-btn" title="テーマ切り替え">
+          <!-- 太陽SVG（ライトモード時） -->
+          <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+          <!-- 月SVG（ダークモード時） -->
+          <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- 2. ヘッドラインニュース（コンパクトな速報バー・未読既読対応） -->
+    <div id="headline-bar" class="headline-bar unread" role="alert">
+      <div class="headline-bar-content">
+        <span class="bar-badge">速報</span>
+        <span class="bar-unread-indicator">NEW</span>
+        <span class="source-tag" id="headline-source">NHKニュース</span>
+        <p id="headline-title" class="bar-title">ニュースデータを読み込み中...</p>
+      </div>
+      <button id="headline-detail-btn" class="bar-action-btn">詳細</button>
+    </div>
+    
+    <!-- AIニュースダイジェスト（スリムバナー形式・モーダル表示） -->
+    <div id="ai-digest-banner" class="ai-digest-banner" style="display: none;">
+      <div class="ai-digest-banner-content">
+        <span class="ai-digest-banner-badge" id="ai-digest-badge">AIダイジェスト</span>
+        <span class="ai-digest-banner-title">本日のAI主要ニュースダイジェストが届いています。</span>
+      </div>
+      <button id="ai-digest-open-btn" class="ai-digest-banner-btn">ダイジェストを読む</button>
+    </div>
+    
+    <!-- 3. メインコンテンツグリッド（3カラム） -->
+    <main class="dashboard-main">
+      
+      <!-- カラム1: ニュース -->
+      <section class="dashboard-col col-curated" aria-labelledby="col-curated-heading">
+        <div class="col-header">
+          <h2 id="col-curated-heading">ニュース</h2>
+        </div>
+        <div class="col-body scrollable">
+          <div id="curated-news-list" class="card-list">
+            <!-- JSで動的に追加されます -->
+            <div class="loading-placeholder">データを取得中...</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- カラム2: トップニュース -->
+      <section class="dashboard-col col-top-news" aria-labelledby="col-top-news-heading">
+        <div class="col-header">
+          <h2 id="col-top-news-heading">トップニュース</h2>
+          <div class="tab-controls" id="top-news-tabs" role="tablist">
+            <button class="tab-btn active" role="tab" aria-selected="true" data-tab="all">すべて</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-tab="society">社会</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-tab="politics">政治・国際</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-tab="business">経済</button>
+          </div>
+        </div>
+        <div class="col-body scrollable">
+          <div id="top-news-list" class="card-list">
+            <!-- JSで動的に追加されます -->
+            <div class="loading-placeholder">データを取得中...</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- カラム3: 上下分割（話題のニュース ＆ スポーツニュース） -->
+      <div class="dashboard-col-wrapper">
+        
+        <!-- 上部: 話題のニュース -->
+        <section class="dashboard-col col-trending" aria-labelledby="col-trending-heading">
+          <div class="col-header">
+            <h2 id="col-trending-heading">話題のニュース</h2>
+            <div class="tab-controls" id="trending-news-tabs" role="tablist">
+              <button class="tab-btn active" role="tab" aria-selected="true" data-tab="all">すべて</button>
+              <button class="tab-btn" role="tab" aria-selected="false" data-tab="culture">カルチャー</button>
+              <button class="tab-btn" role="tab" aria-selected="false" data-tab="tech">IT・科学</button>
+              <button class="tab-btn" role="tab" aria-selected="false" data-tab="entertainment">エンタメ</button>
+            </div>
+          </div>
+          <div class="col-body scrollable">
+            <div id="trending-news-list" class="card-list">
+              <!-- JSで動的に追加されます -->
+              <div class="loading-placeholder">データを取得中...</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 下部: スポーツニュース -->
+        <section class="dashboard-col col-sports" aria-labelledby="col-sports-heading">
+          <div class="col-header">
+            <h2 id="col-sports-heading">スポーツ</h2>
+            <div class="tab-controls" id="sports-tabs" role="tablist">
+              <button class="tab-btn active" role="tab" aria-selected="true" data-tab="baseball">プロ野球</button>
+              <button class="tab-btn" role="tab" aria-selected="false" data-tab="mlb">MLB</button>
+              <button class="tab-btn" role="tab" aria-selected="false" data-tab="soccer">海外サッカー</button>
+              <button class="tab-btn" role="tab" aria-selected="false" data-tab="seasonal">大会・季節</button>
+            </div>
+          </div>
+          <div class="col-body scrollable">
+            <div id="sports-news-list" class="card-list">
+              <!-- JSで動的に追加されます -->
+              <div class="loading-placeholder">データを取得中...</div>
+            </div>
+          </div>
+        </section>
+        
+      </div>
+
+    </main>
+
+    <!-- 4. フッター（カルーセル式速報スライダー） -->
+    <footer class="dashboard-footer" id="dashboard-footer">
+      <div class="footer-left">
+        <div class="ticker-label">速報 FLASH</div>
+      </div>
+      <div class="ticker-carousel-container" id="ticker-carousel-container">
+        <div class="ticker-carousel-track" id="ticker-carousel-track">
+          <!-- JSで動的にミニカードが生成されて挿入されます -->
+          <div class="loading-placeholder-mini">データを取得中...</div>
+        </div>
+      </div>
+      <div class="footer-actions">
+        <button id="ticker-prev" class="carousel-nav-btn" aria-label="前へ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button id="ticker-next" class="carousel-nav-btn" aria-label="次へ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- 5. 詳細表示サイドドロワー -->
+  <div id="detail-drawer-overlay" class="drawer-overlay"></div>
+  <aside id="detail-drawer" class="detail-drawer" aria-hidden="true" aria-labelledby="drawer-title">
+    <div class="drawer-header">
+      <div class="drawer-meta">
+        <span id="drawer-category" class="category-badge">一般</span>
+        <div id="drawer-emotion-wrap" class="drawer-emotion">
+          <!-- 感情アイコンが動的に入ります -->
+        </div>
+      </div>
+      <button id="drawer-close" class="close-btn" aria-label="閉じる">&times;</button>
+    </div>
+    
+    <div class="drawer-body">
+      <h2 id="drawer-title" class="drawer-title">記事タイトル</h2>
+      
+      <!-- AI要約セクション -->
+      <div class="drawer-section ai-summary-section">
+        <h3>AI要約概要</h3>
+        <p id="drawer-summary" class="ai-summary-text">AIによる要約文がここに表示されます。</p>
+      </div>
+
+      <!-- SNS反応数（話題のみ表示） -->
+      <div class="drawer-section sns-section" id="drawer-sns-section">
+        <h3>SNSでの反応状況</h3>
+        <div class="sns-stats-container">
+          <div class="sns-stat-card x-stat">
+            <svg class="sns-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span class="sns-name">X (Twitter)</span>
+            <span class="sns-count" id="drawer-count-x">0</span>
+          </div>
+          <div class="sns-stat-card threads-stat">
+            <svg class="sns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/>
+              <path d="M12 8a4 4 0 1 0 0 8c1.5 0 2.5 -1 2.5 -2.5c0 -1.5 -1 -2 -2.5 -2c-2 0 -3.5 1.5 -3.5 3.5s1.5 3.5 3.5 3.5c1.5 0 2.5 -.5 3.5 -1.5"/>
+            </svg>
+            <span class="sns-name">Threads</span>
+            <span class="sns-count" id="drawer-count-threads">0</span>
+          </div>
+          <div class="sns-stat-card hatebu-stat">
+            <div class="hatebu-icon">B!</div>
+            <span class="sns-name">はてな</span>
+            <span class="sns-count" id="drawer-count-hatebu">0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- メディア比較リンク -->
+      <div class="drawer-section sources-section">
+        <h3>各メディアの報道を比較する</h3>
+        <p class="section-desc">同一の出来事に関する実際の配信記事です。リンク先で詳細を読めます。</p>
+        <div id="drawer-sources-list" class="sources-link-list">
+          <!-- 動的にリンクボタンが追加されます -->
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 各種カスタム感情SVGアセットテンプレート (非表示にしてHTML内に保持し、JSでクローン) -->
+  <div id="svg-templates" style="display: none;">
+    <!-- 🔥 大注目 (Hot) -->
+    <svg id="svg-emotion-hot" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="emotion-svg hot">
+      <defs>
+        <linearGradient id="grad-hot" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#ff416c" />
+          <stop offset="100%" stop-color="#ff4b2b" />
+        </linearGradient>
+      </defs>
+      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3.5z" fill="url(#grad-hot)" stroke="none"/>
+    </svg>
+
+    <!-- 😲 驚き (Surprised) -->
+    <svg id="svg-emotion-surprised" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="emotion-svg surprised">
+      <defs>
+        <linearGradient id="grad-surprised" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#a860f0" />
+          <stop offset="100%" stop-color="#ff4b91" />
+        </linearGradient>
+      </defs>
+      <circle cx="12" cy="12" r="10" fill="url(#grad-surprised)" stroke="none"/>
+      <circle cx="8.5" cy="10" r="1.5" fill="#ffffff" stroke="none"/>
+      <circle cx="15.5" cy="10" r="1.5" fill="#ffffff" stroke="none"/>
+      <ellipse cx="12" cy="15.5" rx="2.5" ry="3.5" fill="#ffffff" stroke="none"/>
+      <!-- 衝撃の波紋サークル -->
+      <circle cx="12" cy="12" r="10" stroke="url(#grad-surprised)" stroke-width="1.5" class="wave-ring"/>
+    </svg>
+
+    <!-- 😂 面白い (Funny) -->
+    <svg id="svg-emotion-funny" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="emotion-svg funny">
+      <defs>
+        <linearGradient id="grad-funny" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#f8b500" />
+          <stop offset="100%" stop-color="#fce38a" />
+        </linearGradient>
+      </defs>
+      <circle cx="12" cy="12" r="10" fill="url(#grad-funny)" stroke="none"/>
+      <!-- 笑い目 (アーチ型) -->
+      <path d="M6 10c1-1.5 2.5-1.5 3.5 0M14.5 10c1-1.5 2.5-1.5 3.5 0" stroke="#5a3d00" stroke-width="2" stroke-linecap="round"/>
+      <!-- 開いた口 -->
+      <path d="M7.5 13.5c1 3.5 8 3.5 9 0z" fill="#5a3d00" stroke="none"/>
+      <!-- 涙 -->
+      <path d="M4 11.5c.5-.5 1-1 1-1.5s-.5-1-1-1-1 .5-1 1 .5 1 1 1.5zM20 11.5c.5-.5 1-1 1-1.5s-.5-1-1-1-1 .5-1 1 .5 1 1 1.5z" fill="#3ec1d3" stroke="none"/>
+    </svg>
+
+    <!-- 😢 懸念・悲しい (Sad) -->
+    <svg id="svg-emotion-sad" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="emotion-svg sad">
+      <defs>
+        <linearGradient id="grad-sad" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#4e65ff" />
+          <stop offset="100%" stop-color="#92effd" />
+        </linearGradient>
+      </defs>
+      <circle cx="12" cy="12" r="10" fill="url(#grad-sad)" stroke="none"/>
+      <!-- 下がり眉・悲しげな目 -->
+      <path d="M7 9c.5-.5 1.5-.5 2 0M15 9c.5-.5 1.5-.5 2 0" stroke="#1d2d50" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="8.5" cy="11.5" r="1" fill="#1d2d50" stroke="none"/>
+      <circle cx="15.5" cy="11.5" r="1" fill="#1d2d50" stroke="none"/>
+      <!-- 下がり口 -->
+      <path d="M9 16c1-1.5 5-1.5 6 0" stroke="#1d2d50" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <!-- 涙の滴 -->
+      <path d="M7.5 12.5c.3.5.3 1 0 1.5s-.8.3-1 0c-.3-.5.2-1.2 1-1.5z" fill="#ffffff" stroke="none" class="tear-drop"/>
+    </svg>
+
+    <!-- 👍 賛同 (Approved) -->
+    <svg id="svg-emotion-approved" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="emotion-svg approved">
+      <defs>
+        <linearGradient id="grad-approved" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#11998e" />
+          <stop offset="100%" stop-color="#38ef7d" />
+        </linearGradient>
+      </defs>
+      <circle cx="12" cy="12" r="10" fill="url(#grad-approved)" stroke="none"/>
+      <!-- 白いチェックマーク -->
+      <path d="M7.5 12.5l3 3 6.5-6.5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- AIダイジェストモーダル -->
+  <div id="ai-digest-modal" class="ai-digest-modal" style="display: none;">
+    <div class="ai-digest-modal-overlay" id="ai-digest-modal-overlay"></div>
+    <div class="ai-digest-modal-content">
+      <div class="ai-digest-modal-header">
+        <h3>AI ニュースダイジェスト</h3>
+        <button id="ai-digest-modal-close-btn" class="ai-digest-modal-close-btn" aria-label="閉じる">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="ai-digest-modal-body" id="ai-digest-modal-body">
+        <!-- Markdownパース後のHTMLが流し込まれます -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
