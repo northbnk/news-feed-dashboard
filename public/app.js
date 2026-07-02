@@ -62,8 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const sportsTabs = document.getElementById('sports-tabs');
   const topNewsTabs = document.getElementById('top-news-tabs');
   const trendingNewsTabs = document.getElementById('trending-news-tabs');
-  const curatedTabs = document.getElementById('curated-tabs');
-  const bookmarkTab = document.getElementById('bookmark-tab');
+  
+  // ブックマークドロワー
+  const headerBookmarkBtn = document.getElementById('header-bookmark-btn');
+  const bookmarkDrawer = document.getElementById('bookmark-drawer');
+  const bookmarkDrawerOverlay = document.getElementById('bookmark-drawer-overlay');
+  const bookmarkDrawerClose = document.getElementById('bookmark-drawer-close');
+  const bookmarkDrawerList = document.getElementById('bookmark-drawer-list');
 
   // AIニュースダイジェスト（バナー＆モーダル）
   const aiDigestBanner = document.getElementById('ai-digest-banner');
@@ -509,23 +514,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     curatedNewsList.innerHTML = '';
     
-    let displayItems = curatedNewsItems;
-    
-    // ブックマークタブ選択時のフィルタリング
-    if (currentCuratedTab === 'bookmarks') {
-      displayItems = curatedNewsItems.filter(item => userBookmarks.has(item.link));
-      if (displayItems.length === 0) {
-        curatedNewsList.innerHTML = '<div class="loading-placeholder">「あとで読む」に登録された記事はありません。</div>';
-        return;
-      }
-    } else {
-      if (!displayItems || displayItems.length === 0) {
-        curatedNewsList.innerHTML = '<div class="loading-placeholder">現在、ニュースはありません。</div>';
-        return;
-      }
+    if (!curatedNewsItems || curatedNewsItems.length === 0) {
+      curatedNewsList.innerHTML = '<div class="loading-placeholder">現在、ニュースはありません。</div>';
+      return;
     }
 
-    displayItems.forEach(item => {
+    curatedNewsItems.forEach(item => {
       const card = document.createElement('article');
       const defaultUrl = item.link || '#';
       const isRead = readNewsUrls.has(defaultUrl);
@@ -851,6 +845,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 4. 詳細表示ドロワーの開閉 ＆ データ注入 ---
   function openDrawer(item) {
+    closeBookmarkDrawer(); // 左ドロワーが開いていたら閉じる
     drawerCategory.textContent = item.category;
     drawerTitle.textContent = item.aiTitle;
     drawerSummary.textContent = item.aiSummary;
@@ -1625,6 +1620,11 @@ document.addEventListener('DOMContentLoaded', () => {
         renderSportsNews(dashboardData.sports);
         renderCuratedNews(curatedNewsItems);
       }
+      
+      // もしブックマークドロワーが開いていればドロワー内のリストも再描画
+      if (bookmarkDrawer.classList.contains('active')) {
+        renderBookmarkedArticles();
+      }
     } catch (err) {
       console.error('ブックマークの取得に失敗しました:', err.message);
     }
@@ -1681,9 +1681,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
       
-      // もし現在ブックマーク表示中ならリストを即時リフレッシュ
-      if (currentCuratedTab === 'bookmarks') {
-        renderCuratedNews(null);
+      // 左ドロワーが開いている場合は、リストを即時リフレッシュ
+      if (bookmarkDrawer.classList.contains('active')) {
+        renderBookmarkedArticles();
       }
       
     } catch (err) {
@@ -1692,6 +1692,136 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // ブックマークドロワー内のリストを描画
+  function renderBookmarkedArticles() {
+    if (!bookmarkDrawerList) return;
+    bookmarkDrawerList.innerHTML = '';
+    
+    if (userBookmarks.size === 0) {
+      bookmarkDrawerList.innerHTML = '<div class="loading-placeholder">「あとで読む」に登録された記事はありません。</div>';
+      return;
+    }
+    
+    // 全データからブックマークされている記事を検索・抽出
+    const allArticles = [];
+    
+    if (dashboardData) {
+      if (dashboardData.topNews) allArticles.push(...dashboardData.topNews.map(a => ({...a, category: 'トップニュース', emotion: 'approved'})));
+      if (dashboardData.trendingNews) allArticles.push(...dashboardData.trendingNews.map(a => ({...a, category: '話題のニュース'})));
+      if (dashboardData.sports) {
+        Object.keys(dashboardData.sports).forEach(key => {
+          allArticles.push(...dashboardData.sports[key].map(a => ({...a, category: `スポーツ (${getSportLabel(key)})`, emotion: 'hot'})));
+        });
+      }
+    }
+    
+    // キュレーションニュースもマージ
+    if (curatedNewsItems) {
+      allArticles.push(...curatedNewsItems.map(a => ({
+        link: a.link,
+        aiTitle: a.title,
+        aiSummary: a.summary || '詳細記事を参照してください。',
+        sources: a.metadata?.sources || [{ publisher: a.feed_name, title: a.title, url: a.link }],
+        sns: { hatebu: a.hatebu, x: a.x_count, threads: a.threads_count },
+        category: 'ニュース',
+        emotion: a.emotion || 'approved'
+      })));
+    }
+    
+    // 重複を排除しつつ、ブックマーク済みの記事だけをフィルタ
+    const processedUrls = new Set();
+    const bookmarkedList = [];
+    
+    allArticles.forEach(art => {
+      const url = art.link || art.sources?.[0]?.url;
+      if (url && userBookmarks.has(url) && !processedUrls.has(url)) {
+        processedUrls.add(url);
+        bookmarkedList.push({
+          id: url,
+          title: art.aiTitle || art.title,
+          summary: art.aiSummary || art.summary,
+          sources: art.sources || [{ publisher: art.publisher || '情報源', title: art.title || art.aiTitle, url: url }],
+          sns: art.sns,
+          emotion: art.emotion,
+          category: art.category
+        });
+      }
+    });
+
+    // どのソースデータにも詳細が見つからなかった場合のフォールバック
+    if (processedUrls.size < userBookmarks.size) {
+      userBookmarks.forEach(url => {
+        if (!processedUrls.has(url)) {
+          processedUrls.add(url);
+          bookmarkedList.push({
+            id: url,
+            title: '保存されたニュース記事',
+            summary: '記事リンクから詳細をご参照ください。',
+            sources: [{ publisher: 'ニュースソース', title: '詳細記事リンク', url: url }],
+            sns: null,
+            emotion: 'approved',
+            category: '保存済み'
+          });
+        }
+      });
+    }
+
+    bookmarkedList.forEach(item => {
+      const card = document.createElement('article');
+      const isRead = readNewsUrls.has(item.id);
+      
+      card.className = `news-card fade-in${isRead ? ' is-read' : ''}`;
+      
+      const publisherName = item.sources[0]?.publisher || '一次ソース';
+      const otherSourcesCount = item.sources.length - 1;
+      
+      card.innerHTML = `
+        <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.title}</h4>
+        <div class="card-meta">
+          <div class="source-comparison">
+            <span class="source-badge">${publisherName}</span>
+            ${otherSourcesCount > 0 ? `<span class="source-badge">他 ${otherSourcesCount} 社</span>` : ''}
+          </div>
+          ${addCardActionsHtml(item.id, item.title)}
+        </div>
+      `;
+      
+      card.addEventListener('click', () => {
+        markAsRead(item.id, card);
+        openDrawer({
+          category: item.category,
+          aiTitle: item.title,
+          aiSummary: item.summary,
+          sources: item.sources,
+          sns: item.sns,
+          emotion: item.emotion || 'approved'
+        });
+      });
+      
+      bindCardActions(card);
+      bookmarkDrawerList.appendChild(card);
+    });
+  }
+
+  // ブックマークドロワー開閉制御
+  function openBookmarkDrawer() {
+    renderBookmarkedArticles();
+    bookmarkDrawer.classList.add('active');
+    bookmarkDrawerOverlay.classList.add('active');
+    bookmarkDrawer.setAttribute('aria-hidden', 'false');
+    closeDrawer(); // 詳細ドロワーが開いていたら閉じる
+  }
+
+  function closeBookmarkDrawer() {
+    bookmarkDrawer.classList.remove('active');
+    bookmarkDrawerOverlay.classList.remove('active');
+    bookmarkDrawer.setAttribute('aria-hidden', 'true');
+  }
+
+  headerBookmarkBtn.addEventListener('click', openBookmarkDrawer);
+  bookmarkDrawerClose.addEventListener('click', closeBookmarkDrawer);
+  bookmarkDrawerOverlay.addEventListener('click', closeBookmarkDrawer);
+
   // 認証状態のリアルタイム監視
   supabaseClient.auth.onAuthStateChange(async (event, session) => {
     if (session) {
@@ -1699,7 +1829,7 @@ document.addEventListener('DOMContentLoaded', () => {
       authUserEmail.textContent = currentUser.email;
       authUserEmail.style.display = 'inline-block';
       authBtnText.textContent = 'ログアウト';
-      bookmarkTab.style.display = 'block'; // ログイン中に「あとで読む」タブを出す
+      headerBookmarkBtn.style.display = 'flex'; // ログイン中に「あとで読む」ボタンを出す
       
       await loadUserBookmarks();
     } else {
@@ -1707,17 +1837,9 @@ document.addEventListener('DOMContentLoaded', () => {
       authUserEmail.textContent = '';
       authUserEmail.style.display = 'none';
       authBtnText.textContent = 'ログイン';
-      bookmarkTab.style.display = 'none'; // ログアウト時は「あとで読む」タブを非表示に
+      headerBookmarkBtn.style.display = 'none'; // ログアウト時は非表示に
+      closeBookmarkDrawer(); // ドロワーが開いていたら閉じる
       userBookmarks.clear();
-      
-      // 「あとで読む」タブがアクティブの状態でログアウトした場合は「すべて」に切り替える
-      if (currentCuratedTab === 'bookmarks') {
-        currentCuratedTab = 'all';
-        curatedTabs.querySelectorAll('.tab-btn').forEach(btn => {
-          if (btn.dataset.tab === 'all') btn.classList.add('active');
-          else btn.classList.remove('active');
-        });
-      }
       
       // 描画更新（しおりアイコンのクリア）
       if (dashboardData) {
@@ -1728,19 +1850,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
-
-  // キュレーションニュースのタブ切り替え
-  if (curatedTabs) {
-    curatedTabs.addEventListener('click', (e) => {
-      if (!e.target.classList.contains('tab-btn')) return;
-      
-      curatedTabs.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      e.target.classList.add('active');
-      
-      currentCuratedTab = e.target.dataset.tab;
-      renderCuratedNews(null);
-    });
-  }
 
   // --- 9. 初期読み込み ＆ ポーリング (30秒) ---
   loadData();

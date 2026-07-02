@@ -55,6 +55,12 @@
             <span id="auth-btn-text">ログイン</span>
           </button>
         </div>
+        <button id="header-bookmark-btn" class="icon-btn" title="あとで読む" style="display: none;">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="btn-text">あとで読む</span>
+        </button>
         <div class="sync-info">
           <span id="last-sync-time">最終同期: --:--:--</span>
         </div>
@@ -114,10 +120,6 @@
       <section class="dashboard-col col-curated" aria-labelledby="col-curated-heading">
         <div class="col-header">
           <h2 id="col-curated-heading">ニュース</h2>
-          <div class="tab-controls" id="curated-tabs" role="tablist">
-            <button class="tab-btn active" role="tab" aria-selected="true" data-tab="all">すべて</button>
-            <button class="tab-btn" role="tab" aria-selected="false" data-tab="bookmarks" id="bookmark-tab" style="display: none;">🔖 あとで読む</button>
-          </div>
         </div>
         <div class="col-body scrollable">
           <div id="curated-news-list" class="card-list">
@@ -401,6 +403,21 @@
 
   <!-- 7. トースト通知コンテナ -->
   <div id="toast-container" class="toast-container"></div>
+  
+  <!-- 8. 左スライド式「あとで読む」ドロワー -->
+  <div id="bookmark-drawer-overlay" class="drawer-overlay"></div>
+  <aside id="bookmark-drawer" class="bookmark-drawer left-drawer" aria-hidden="true" aria-labelledby="bookmark-drawer-title">
+    <div class="drawer-header">
+      <h3 id="bookmark-drawer-title">🔖 あとで読むリスト</h3>
+      <button id="bookmark-drawer-close" class="close-btn" aria-label="閉じる">&times;</button>
+    </div>
+    <div class="drawer-body scrollable">
+      <div id="bookmark-drawer-list" class="card-list">
+        <!-- 動的にブックマークされた記事が生成されます -->
+        <div class="loading-placeholder">ブックマークを読み込み中...</div>
+      </div>
+    </div>
+  </aside>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
