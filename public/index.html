@@ -149,7 +149,7 @@
       </section>
 
       <!-- カラム3: 上下分割（話題のニュース ＆ スポーツニュース） -->
-      <div class="dashboard-col-wrapper">
+      <div class="dashboard-col-wrapper col-trending-sports">
         
         <!-- 上部: 話題のニュース -->
         <section class="dashboard-col col-trending" aria-labelledby="col-trending-heading">
@@ -418,6 +418,22 @@
       </div>
     </div>
   </aside>
+
+  <!-- 9. モバイル用下部タブナビゲーション -->
+  <nav class="mobile-nav-bar" id="mobile-nav-bar">
+    <button class="mobile-nav-btn active" data-target="curated">
+      <span class="nav-icon">📰</span>
+      <span class="nav-text">ニュース</span>
+    </button>
+    <button class="mobile-nav-btn" data-target="top">
+      <span class="nav-icon">👑</span>
+      <span class="nav-text">トップ</span>
+    </button>
+    <button class="mobile-nav-btn" data-target="trending">
+      <span class="nav-icon">🔥</span>
+      <span class="nav-text">話題・スポーツ</span>
+    </button>
+  </nav>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>

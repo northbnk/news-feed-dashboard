@@ -70,6 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookmarkDrawerClose = document.getElementById('bookmark-drawer-close');
   const bookmarkDrawerList = document.getElementById('bookmark-drawer-list');
 
+  // モバイル用ナビゲーション・カラム
+  const mobileNavBar = document.getElementById('mobile-nav-bar');
+  const mobileNavButtons = document.querySelectorAll('.mobile-nav-btn');
+  const colCurated = document.querySelector('.col-curated');
+  const colTopNews = document.querySelector('.col-top-news');
+  const colTrendingSports = document.querySelector('.col-trending-sports');
+
   // AIニュースダイジェスト（バナー＆モーダル）
   const aiDigestBanner = document.getElementById('ai-digest-banner');
   const aiDigestModal = document.getElementById('ai-digest-modal');
@@ -1850,6 +1857,65 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  // --- 11. スマートフォン対応（モバイルナビゲーション） ---
+  
+  // スマホ表示時のアクティブカラム更新
+  function updateMobileActiveColumn(target) {
+    if (!colCurated || !colTopNews || !colTrendingSports) return;
+    
+    // すべてのカラムからactive-mobileクラスを削除
+    colCurated.classList.remove('active-mobile');
+    colTopNews.classList.remove('active-mobile');
+    colTrendingSports.classList.remove('active-mobile');
+    
+    // ターゲットに対応するカラムを表示
+    if (target === 'curated') {
+      colCurated.classList.add('active-mobile');
+    } else if (target === 'top') {
+      colTopNews.classList.add('active-mobile');
+    } else if (target === 'trending') {
+      colTrendingSports.classList.add('active-mobile');
+    }
+  }
+
+  // ナビゲーションボタンのイベントリスナー
+  mobileNavButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // ボタンのアクティブクラス切り替え
+      mobileNavButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      const target = btn.dataset.target;
+      updateMobileActiveColumn(target);
+    });
+  });
+
+  // リサイズ・初期表示時の表示調整
+  function handleResizeAndOrientation() {
+    if (!colCurated || !colTopNews || !colTrendingSports) return;
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+      // モバイル時は、現在アクティブなタブに対応するカラムを表示
+      const activeBtn = document.querySelector('.mobile-nav-btn.active');
+      if (activeBtn) {
+        updateMobileActiveColumn(activeBtn.dataset.target);
+      } else {
+        // デフォルトは curated
+        updateMobileActiveColumn('curated');
+      }
+    } else {
+      // PCサイズ時は、モバイル用の表示制限クラスをすべて消去
+      colCurated.classList.remove('active-mobile');
+      colTopNews.classList.remove('active-mobile');
+      colTrendingSports.classList.remove('active-mobile');
+    }
+  }
+
+  window.addEventListener('resize', handleResizeAndOrientation);
+  // 初期ロード時にも実行
+  handleResizeAndOrientation();
 
   // --- 9. 初期読み込み ＆ ポーリング (30秒) ---
   loadData();

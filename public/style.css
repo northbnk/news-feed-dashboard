@@ -2272,5 +2272,191 @@ body {
   font-weight: 500;
 }
 
+/* ==========================================================================
+   12. Responsive Styles for Mobile Devices (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* スクロール制限のクリア */
+  body {
+    overflow: hidden;
+    height: 100vh;
+  }
+  
+  /* ヘッダーのコンパクト化 */
+  .dashboard-header {
+    padding: 0 12px;
+    height: 54px;
+    min-height: 54px;
+  }
+  .header-left h1 {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  }
+  .status-badge {
+    display: none; /* 狭いので隠す */
+  }
+  .header-center {
+    display: none; /* 時計・天気をヘッダーから隠して省スペース化 */
+  }
+  .header-right {
+    gap: 6px;
+  }
+  .icon-btn {
+    padding: 6px 8px;
+  }
+  .btn-text {
+    display: none; /* ボタン文字を消してアイコンのみに */
+  }
+  .sync-info {
+    display: none; /* 同期時間もヘッダーから消す */
+  }
+  .user-email {
+    max-width: 80px;
+    padding: 4px 6px;
+  }
+
+  /* メイングリッドを1カラムに崩す */
+  .dashboard-main {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 10px 12px;
+    /* モバイルナビゲーションバー(60px)の高さ分、下部にパディングを設定 */
+    padding-bottom: 70px;
+    height: calc(100vh - 54px - 42px - 40px); /* ヘッダー、速報、フッターの高さを引く */
+    overflow: hidden;
+  }
+
+  /* カラムの表示・非表示制御 */
+  .col-curated,
+  .col-top-news,
+  .col-trending-sports {
+    display: none !important;
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  /* アクティブなカラムのみ表示 */
+  .col-curated.active-mobile,
+  .col-top-news.active-mobile,
+  .col-trending-sports.active-mobile {
+    display: flex !important;
+  }
+
+  /* カラム3のラッパー内の子要素を縦並び均等配置 */
+  .col-trending-sports {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .col-trending, .col-sports {
+    height: calc(50% - 5px) !important;
+  }
+
+  /* モバイルナビゲーションバーのスタイル */
+  .mobile-nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 60px;
+    background: rgba(15, 23, 42, 0.95);
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 9998;
+    padding-bottom: env(safe-area-inset-bottom); /* iOSのセーフエリア対応 */
+  }
+  .light-theme .mobile-nav-bar {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .mobile-nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    height: 100%;
+    width: 30%;
+    cursor: pointer;
+    transition: var(--transition-fast);
+  }
+
+  .mobile-nav-btn .nav-icon {
+    font-size: 18px;
+  }
+  .mobile-nav-btn .nav-text {
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  /* アクティブなタブ */
+  .mobile-nav-btn.active {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-glow);
+  }
+
+  /* フッター (カルーセルスライダー) の調整 */
+  .dashboard-footer {
+    height: 40px;
+    min-height: 40px;
+    padding: 0 12px;
+    /* モバイルナビゲーションの上部に配置 */
+    position: fixed;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+    z-index: 9997;
+  }
+  .ticker-label {
+    font-size: 9px;
+    padding: 2px 4px;
+  }
+  .footer-actions {
+    display: none; /* モバイルでは矢印を消して自動スライドのみに */
+  }
+
+  /* ドロワーのレスポンシブ化 (100%全画面) */
+  .bookmark-drawer,
+  .detail-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+    border: none !important;
+    height: 100vh !important;
+  }
+  
+  .bookmark-drawer.active,
+  .detail-drawer.active {
+    transform: translateX(0) !important;
+  }
+
+  /* 速報バーの調整 */
+  .headline-bar {
+    margin: 8px 12px 0 12px;
+    height: 38px;
+    min-height: 38px;
+    padding: 0 10px;
+  }
+  .bar-title {
+    font-size: 12.5px;
+  }
+  .bar-badge {
+    font-size: 10px;
+  }
+  
+  /* AI要約ダイジェストバナー */
+  .ai-digest-banner {
+    margin: 8px 12px 0 12px;
+  }
+}
+
 
 
