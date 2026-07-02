@@ -2319,10 +2319,10 @@ body {
   .dashboard-main {
     grid-template-columns: 1fr;
     gap: 0;
-    padding: 10px 12px;
+    padding: 8px 6px; /* 左右の余白を詰める */
     /* モバイルナビゲーションバー(60px)の高さ分、下部にパディングを設定 */
-    padding-bottom: 70px;
-    height: calc(100vh - 54px - 42px - 40px); /* ヘッダー、速報、フッターの高さを引く */
+    padding-bottom: 76px;
+    height: calc(100vh - 54px - 42px); /* ヘッダー(54px)と速報バー(42px)の高さを引く */
     overflow: hidden;
   }
 
@@ -2342,6 +2342,22 @@ body {
     display: flex !important;
   }
 
+  .col-body {
+    padding: 10px 4px !important; /* カードリスト左右の余白を極限まで詰める */
+  }
+  .bookmark-drawer .drawer-body {
+    padding: 16px 8px !important;
+  }
+
+  /* 記事カードの余白とサイズ調整 */
+  .news-card {
+    padding: 10px 12px; /* 内側の余白を少し詰める */
+    border-radius: var(--border-radius-sm);
+  }
+  .card-list {
+    gap: 8px; /* カード間の隙間を詰める */
+  }
+
   /* カラム3のラッパー内の子要素を縦並び均等配置 */
   .col-trending-sports {
     flex-direction: column;
@@ -2351,7 +2367,7 @@ body {
     height: calc(50% - 5px) !important;
   }
 
-  /* モバイルナビゲーションバーのスタイル */
+  /* モバイルナビゲーションバーのスタイル（アイコンのみ・中央寄せ） */
   .mobile-nav-bar {
     position: fixed;
     bottom: 0;
@@ -2379,49 +2395,30 @@ body {
     border: none;
     color: var(--text-muted);
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
     height: 100%;
     width: 30%;
     cursor: pointer;
     transition: var(--transition-fast);
   }
 
-  .mobile-nav-btn .nav-icon {
-    font-size: 18px;
-  }
-  .mobile-nav-btn .nav-text {
-    font-size: 10px;
-    font-weight: 600;
+  .nav-icon-svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    transition: var(--transition-fast);
   }
 
   /* アクティブなタブ */
   .mobile-nav-btn.active {
     color: var(--accent-color);
-    text-shadow: 0 0 10px var(--accent-glow);
+    filter: drop-shadow(0 0 4px var(--accent-glow));
   }
 
-  /* フッター (カルーセルスライダー) の調整 */
+  /* フッター (速報FLASH) はスマホでは不要なため非表示 */
   .dashboard-footer {
-    height: 40px;
-    min-height: 40px;
-    padding: 0 12px;
-    /* モバイルナビゲーションの上部に配置 */
-    position: fixed;
-    bottom: 60px;
-    left: 0;
-    width: 100%;
-    border-top: 1px solid var(--border-color);
-    z-index: 9997;
-  }
-  .ticker-label {
-    font-size: 9px;
-    padding: 2px 4px;
-  }
-  .footer-actions {
-    display: none; /* モバイルでは矢印を消して自動スライドのみに */
+    display: none !important;
   }
 
   /* ドロワーのレスポンシブ化 (100%全画面) */
@@ -2440,7 +2437,7 @@ body {
 
   /* 速報バーの調整 */
   .headline-bar {
-    margin: 8px 12px 0 12px;
+    margin: 8px 6px 0 6px; /* 左右マージンを詰める */
     height: 38px;
     min-height: 38px;
     padding: 0 10px;
@@ -2452,9 +2449,24 @@ body {
     font-size: 10px;
   }
   
-  /* AI要約ダイジェストバナー */
+  /* AI要約ダイジェストバナーの文字削減 */
   .ai-digest-banner {
-    margin: 8px 12px 0 12px;
+    margin: 8px 6px 0 6px; /* 左右マージンを詰める */
+    justify-content: center;
+    gap: 8px;
+    height: 38px;
+    min-height: 38px;
+  }
+  .ai-digest-banner-title {
+    display: none !important; /* タイトルを非表示 */
+  }
+  .ai-digest-banner-content {
+    justify-content: center;
+    flex: none;
+  }
+  .ai-digest-banner-btn {
+    padding: 2px 10px;
+    font-size: 11.5px;
   }
 }
 

@@ -454,6 +454,14 @@ document.addEventListener('DOMContentLoaded', () => {
     aiDigestBanner.className = `ai-digest-banner ${type}`;
     aiDigestBanner.style.display = 'flex';
 
+    // スマホ表示用のテキスト設定
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      aiDigestOpenBtn.textContent = `${badgeText}を読む`;
+    } else {
+      aiDigestOpenBtn.textContent = 'ダイジェストを読む';
+    }
+
     // パース処理
     let bodyHtml = '';
     if (digestData.markdownContent) {
@@ -1895,6 +1903,18 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleResizeAndOrientation() {
     if (!colCurated || !colTopNews || !colTrendingSports) return;
     const isMobile = window.innerWidth <= 768;
+    
+    // ダイジェストバナーのボタンテキスト切り替え
+    const activeBadge = document.getElementById('ai-digest-badge');
+    const openBtn = document.getElementById('ai-digest-open-btn');
+    if (activeBadge && openBtn) {
+      const badgeText = activeBadge.textContent;
+      if (isMobile) {
+        openBtn.textContent = `${badgeText}を読む`;
+      } else {
+        openBtn.textContent = 'ダイジェストを読む';
+      }
+    }
     
     if (isMobile) {
       // モバイル時は、現在アクティブなタブに対応するカラムを表示
