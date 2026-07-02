@@ -541,30 +541,23 @@ document.addEventListener('DOMContentLoaded', () => {
       
       card.className = `news-card fade-in${isRead ? ' is-read' : ''}`;
       
-      // 注目度スコアに応じた炎のインジケーターと評価テキストの設定
+      // 注目度スコア（数値のみ・単色）の設定
       const scoreNum = Number(item.score);
       const formattedScore = scoreNum.toFixed(2);
-      let levelText = '通常';
-      let flameIcon = '';
       let badgeClass = 'score-level-d';
       
       if (scoreNum >= 85) {
-        levelText = '爆発的人気';
-        flameIcon = '🔥🔥';
         badgeClass = 'score-level-s';
       } else if (scoreNum >= 70) {
-        levelText = '超注目';
-        flameIcon = '🔥';
         badgeClass = 'score-level-a';
       } else if (scoreNum >= 50) {
-        levelText = '急上昇';
         badgeClass = 'score-level-b';
       } else if (scoreNum >= 25) {
-        levelText = '話題';
         badgeClass = 'score-level-c';
       }
       
-      const scoreBadgeHtml = `<span class="source-badge score-badge ${badgeClass}">${flameIcon ? `<span style="margin-right:2px;">${flameIcon}</span> ` : ''}${levelText}: ${formattedScore}</span>`;
+      const scoreBadgeHtml = `<span class="source-badge score-badge ${badgeClass}">${formattedScore}</span>`;
+      const categoryBadgeHtml = item.category ? `<span class="source-badge category-badge">${item.category}</span>` : '';
       
       const sources = item.metadata?.sources || [{ publisher: item.feed_name, title: item.title, url: item.link }];
       const publisherName = sources[0]?.publisher || item.feed_name || '一次ソース';
@@ -574,9 +567,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.title}</h4>
         <div class="card-meta">
           <div class="source-comparison">
+            ${scoreBadgeHtml}
+            ${categoryBadgeHtml}
             <span class="source-badge">${publisherName}</span>
             ${otherSourcesCount > 0 ? `<span class="source-badge">他 ${otherSourcesCount} 社</span>` : ''}
-            ${scoreBadgeHtml}
           </div>
           ${addCardActionsHtml(defaultUrl, item.title)}
         </div>
@@ -1738,8 +1732,9 @@ document.addEventListener('DOMContentLoaded', () => {
         aiSummary: a.summary || '詳細記事を参照してください。',
         sources: a.metadata?.sources || [{ publisher: a.feed_name, title: a.title, url: a.link }],
         sns: { hatebu: a.hatebu, x: a.x_count, threads: a.threads_count },
-        category: 'ニュース',
-        emotion: a.emotion || 'approved'
+        category: a.category || 'ニュース',
+        emotion: a.emotion || 'approved',
+        score: a.score
       })));
     }
     
@@ -1758,7 +1753,8 @@ document.addEventListener('DOMContentLoaded', () => {
           sources: art.sources || [{ publisher: art.publisher || '情報源', title: art.title || art.aiTitle, url: url }],
           sns: art.sns,
           emotion: art.emotion,
-          category: art.category
+          category: art.category,
+          score: art.score
         });
       }
     });
@@ -1790,10 +1786,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const publisherName = item.sources[0]?.publisher || '一次ソース';
       const otherSourcesCount = item.sources.length - 1;
       
+      // 人気スコアバッジ
+      let scoreBadgeHtml = '';
+      if (item.score) {
+        const scoreNum = Number(item.score);
+        const formattedScore = scoreNum.toFixed(2);
+        let badgeClass = 'score-level-d';
+        if (scoreNum >= 85) badgeClass = 'score-level-s';
+        else if (scoreNum >= 70) badgeClass = 'score-level-a';
+        else if (scoreNum >= 50) badgeClass = 'score-level-b';
+        else if (scoreNum >= 25) badgeClass = 'score-level-c';
+        scoreBadgeHtml = `<span class="source-badge score-badge ${badgeClass}">${formattedScore}</span>`;
+      }
+      
+      const categoryBadgeHtml = (item.category && item.category !== 'ニュース' && item.category !== '保存済み') 
+        ? `<span class="source-badge category-badge">${item.category}</span>` 
+        : '';
+        
       card.innerHTML = `
         <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.title}</h4>
         <div class="card-meta">
           <div class="source-comparison">
+            ${scoreBadgeHtml}
+            ${categoryBadgeHtml}
             <span class="source-badge">${publisherName}</span>
             ${otherSourcesCount > 0 ? `<span class="source-badge">他 ${otherSourcesCount} 社</span>` : ''}
           </div>
