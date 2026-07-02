@@ -1,15 +1,26 @@
+// --- Supabase クライアント初期化 ---
+const SUPABASE_URL = 'https://mdpwsgnaaswuiutqhdzl.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1kcHdzZ25hYXN3dWl1dHFoZHpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIyOTQyMTEsImV4cCI6MjA5Nzg3MDIxMX0.mCqwRh19uPZ0sUNV06ZdpYDVTBhkjgl9-yz3pZYZ5s4';
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 document.addEventListener('DOMContentLoaded', () => {
   // --- 状態管理 ---
   let lastTimestamp = null;
   let currentSportsTab = 'baseball';
   let currentTopNewsTab = 'all';
   let currentTrendingNewsTab = 'all';
+  let currentCuratedTab = 'all';
   let carouselIndex = 0;
   let carouselTimer = null;
   let currentCity = { name: '東京', lat: 35.6895, lon: 139.6917, region: '関東', pref: '東京' };
   let dashboardData = null;
+  let curatedNewsItems = [];
   const readNewsUrls = new Set(JSON.parse(localStorage.getItem('readNewsUrls') || '[]'));
   let unreadOnlyMode = localStorage.getItem('unreadOnlyMode') === 'true';
+  
+  // 認証とブックマーク状態
+  let currentUser = null;
+  const userBookmarks = new Set();
 
   // --- DOM要素の参照 ---
   const clockElement = document.getElementById('live-clock');
@@ -17,6 +28,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const refreshBtn = document.getElementById('refresh-btn');
   const themeToggle = document.getElementById('theme-toggle');
   const unreadOnlyToggle = document.getElementById('unread-only-toggle');
+  
+  // 認証・トースト
+  const authStatus = document.getElementById('auth-status');
+  const authUserEmail = document.getElementById('auth-user-email');
+  const authBtn = document.getElementById('auth-btn');
+  const authBtnText = document.getElementById('auth-btn-text');
+  const authModal = document.getElementById('auth-modal');
+  const authModalOverlay = document.getElementById('auth-modal-overlay');
+  const authModalClose = document.getElementById('auth-modal-close');
+  const authForm = document.getElementById('auth-form');
+  const authEmail = document.getElementById('auth-email');
+  const authPassword = document.getElementById('auth-password');
+  const authErrorMsg = document.getElementById('auth-error-msg');
+  const authSubmitBtn = document.getElementById('auth-submit-btn');
+  const authSwitchBtn = document.getElementById('auth-switch-btn');
+  const authSwitchText = document.getElementById('auth-switch-text');
+  const authModalTitle = document.getElementById('auth-modal-title');
+  const toastContainer = document.getElementById('toast-container');
   
   // ヘッドライン
   const headlineBar = document.getElementById('headline-bar');
@@ -33,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const sportsTabs = document.getElementById('sports-tabs');
   const topNewsTabs = document.getElementById('top-news-tabs');
   const trendingNewsTabs = document.getElementById('trending-news-tabs');
+  const curatedTabs = document.getElementById('curated-tabs');
+  const bookmarkTab = document.getElementById('bookmark-tab');
 
   // AIニュースダイジェスト（バナー＆モーダル）
   const aiDigestBanner = document.getElementById('ai-digest-banner');
@@ -470,13 +501,31 @@ document.addEventListener('DOMContentLoaded', () => {
   // B-3. キュレーション（ニュース）ニュースの描画
   function renderCuratedNews(items) {
     if (!curatedNewsList) return;
+    
+    // データソースの保持
+    if (items) {
+      curatedNewsItems = items;
+    }
+    
     curatedNewsList.innerHTML = '';
-    if (!items || items.length === 0) {
-      curatedNewsList.innerHTML = '<div class="loading-placeholder">現在、ニュースはありません。</div>';
-      return;
+    
+    let displayItems = curatedNewsItems;
+    
+    // ブックマークタブ選択時のフィルタリング
+    if (currentCuratedTab === 'bookmarks') {
+      displayItems = curatedNewsItems.filter(item => userBookmarks.has(item.link));
+      if (displayItems.length === 0) {
+        curatedNewsList.innerHTML = '<div class="loading-placeholder">「あとで読む」に登録された記事はありません。</div>';
+        return;
+      }
+    } else {
+      if (!displayItems || displayItems.length === 0) {
+        curatedNewsList.innerHTML = '<div class="loading-placeholder">現在、ニュースはありません。</div>';
+        return;
+      }
     }
 
-    items.forEach(item => {
+    displayItems.forEach(item => {
       const card = document.createElement('article');
       const defaultUrl = item.link || '#';
       const isRead = readNewsUrls.has(defaultUrl);
@@ -973,11 +1022,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // カード内シェアボタンのHTMLとイベントバインドヘルパー
+  // カード内アクションボタン（シェア ＆ ブックマーク）のHTML
   function addCardActionsHtml(defaultUrl, title) {
     if (!defaultUrl || defaultUrl === '#') return '';
+    const isBookmarked = userBookmarks.has(defaultUrl);
     return `
       <div class="card-actions">
+        <button class="bookmark-btn ${isBookmarked ? 'active' : ''}" title="あとで読む" data-id="${defaultUrl}">
+          <svg viewBox="0 0 24 24" fill="${isBookmarked ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
         <button class="card-action-btn share-btn" title="共有する" data-url="${defaultUrl}" data-title="${title}">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7L15.96 7.3c.51.48 1.2.78 1.96.78 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.53 9.33 6.84 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.84 0 1.53-.33 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
         </button>
@@ -987,6 +1042,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function bindCardActions(cardElement) {
     const shareBtn = cardElement.querySelector('.share-btn');
+    const bookmarkBtn = cardElement.querySelector('.bookmark-btn');
+    
+    if (bookmarkBtn) {
+      bookmarkBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const articleId = bookmarkBtn.dataset.id;
+        toggleBookmark(articleId, bookmarkBtn);
+      });
+    }
     
     if (shareBtn) {
       shareBtn.addEventListener('click', (e) => {
@@ -1416,6 +1480,267 @@ document.addEventListener('DOMContentLoaded', () => {
       removeActiveSharePopup();
     }
   });
+
+  // --- 10. 認証＆ブックマーク連携機能 ---
+
+  // トースト通知の表示
+  function showToast(message, type = 'info') {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    
+    // アイコンの設定
+    let iconHtml = 'ℹ️';
+    if (type === 'success') iconHtml = '✅';
+    if (type === 'warning') iconHtml = '⚠️';
+    if (type === 'error') iconHtml = '❌';
+    
+    toast.innerHTML = `<span>${iconHtml}</span><span>${message}</span>`;
+    toastContainer.appendChild(toast);
+    
+    // 5秒後に自動消去
+    setTimeout(() => {
+      toast.classList.add('hide');
+      setTimeout(() => {
+        toast.remove();
+      }, 300);
+    }, 4000);
+  }
+
+  // 認証モーダルの開閉
+  let isSignUpMode = false;
+  
+  function openAuthModal(signUp = false) {
+    isSignUpMode = signUp;
+    authErrorMsg.style.display = 'none';
+    authForm.reset();
+    
+    if (isSignUpMode) {
+      authModalTitle.textContent = '新規アカウント作成';
+      authSubmitBtn.textContent = '新規登録';
+      authSwitchText.textContent = 'すでにアカウントをお持ちですか？';
+      authSwitchBtn.textContent = 'ログイン';
+    } else {
+      authModalTitle.textContent = 'ログイン';
+      authSubmitBtn.textContent = 'ログイン';
+      authSwitchText.textContent = 'アカウントをお持ちでないですか？';
+      authSwitchBtn.textContent = '新規登録';
+    }
+    
+    authModal.style.display = 'flex';
+  }
+
+  function closeAuthModal() {
+    authModal.style.display = 'none';
+  }
+
+  // ログイン・登録の切り替え
+  authSwitchBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openAuthModal(!isSignUpMode);
+  });
+
+  authModalClose.addEventListener('click', closeAuthModal);
+  authModalOverlay.addEventListener('click', closeAuthModal);
+
+  // ログイン/登録の送信
+  authForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    authErrorMsg.style.display = 'none';
+    authSubmitBtn.disabled = true;
+    
+    const email = authEmail.value;
+    const password = authPassword.value;
+    
+    try {
+      if (isSignUpMode) {
+        // 新規登録
+        const { data, error } = await supabaseClient.auth.signUp({ email, password });
+        if (error) throw error;
+        
+        // Supabaseの自動サインイン設定によってサインイン状態になるか確認
+        if (data.user && data.session) {
+          showToast('新規登録およびログインに成功しました！', 'success');
+          closeAuthModal();
+        } else {
+          showToast('確認メールを送信しました。メールをご確認ください。', 'success');
+          closeAuthModal();
+        }
+      } else {
+        // ログイン
+        const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        showToast('ログインしました！', 'success');
+        closeAuthModal();
+      }
+    } catch (err) {
+      console.error('Auth error:', err.message);
+      authErrorMsg.textContent = err.message || '認証エラーが発生しました。';
+      authErrorMsg.style.display = 'block';
+    } finally {
+      authSubmitBtn.disabled = false;
+    }
+  });
+
+  // ヘッダーログイン・ログアウトボタンの制御
+  authBtn.addEventListener('click', async () => {
+    if (currentUser) {
+      // ログアウト処理
+      const { error } = await supabaseClient.auth.signOut();
+      if (error) {
+        showToast('ログアウトに失敗しました: ' + error.message, 'error');
+      } else {
+        showToast('ログアウトしました。', 'info');
+      }
+    } else {
+      // ログインモーダルを開く
+      openAuthModal(false);
+    }
+  });
+
+  // ブックマークデータのロード
+  async function loadUserBookmarks() {
+    if (!currentUser) {
+      userBookmarks.clear();
+      return;
+    }
+    
+    try {
+      const { data, error } = await supabaseClient
+        .from('user_bookmarks')
+        .select('article_id');
+        
+      if (error) throw error;
+      
+      userBookmarks.clear();
+      if (data) {
+        data.forEach(bookmark => {
+          userBookmarks.add(bookmark.article_id);
+        });
+      }
+      
+      // ブックマーク読み込み後に全リストを再描画して、しおりアイコンを同期
+      if (dashboardData) {
+        renderTopNews(dashboardData.topNews);
+        renderTrendingNews(dashboardData.trendingNews);
+        renderSportsNews(dashboardData.sports);
+        renderCuratedNews(curatedNewsItems);
+      }
+    } catch (err) {
+      console.error('ブックマークの取得に失敗しました:', err.message);
+    }
+  }
+
+  // ブックマークのトグル追加・削除
+  async function toggleBookmark(articleId, btnElement) {
+    if (!currentUser) {
+      showToast('「あとで読む」機能のご利用にはログインが必要です。', 'warning');
+      openAuthModal(false);
+      return;
+    }
+    
+    const isBookmarked = userBookmarks.has(articleId);
+    
+    try {
+      if (isBookmarked) {
+        // ブックマーク削除
+        const { error } = await supabaseClient
+          .from('user_bookmarks')
+          .delete()
+          .eq('user_id', currentUser.id)
+          .eq('article_id', articleId);
+          
+        if (error) throw error;
+        
+        userBookmarks.delete(articleId);
+        showToast('「あとで読む」から削除しました。', 'info');
+      } else {
+        // ブックマーク追加
+        const { error } = await supabaseClient
+          .from('user_bookmarks')
+          .insert({
+            user_id: currentUser.id,
+            article_id: articleId
+          });
+          
+        if (error) throw error;
+        
+        userBookmarks.add(articleId);
+        showToast('「あとで読む」に登録しました！', 'success');
+      }
+      
+      // 画面のしおりの見た目を更新（トグルアニメーション）
+      // 同一IDのしおりボタンが画面に複数あればすべて更新する
+      document.querySelectorAll(`button[data-id="${CSS.escape(articleId)}"]`).forEach(btn => {
+        const svg = btn.querySelector('svg');
+        if (isBookmarked) {
+          btn.classList.remove('active');
+          svg.setAttribute('fill', 'none');
+        } else {
+          btn.classList.add('active');
+          svg.setAttribute('fill', 'currentColor');
+        }
+      });
+      
+      // もし現在ブックマーク表示中ならリストを即時リフレッシュ
+      if (currentCuratedTab === 'bookmarks') {
+        renderCuratedNews(null);
+      }
+      
+    } catch (err) {
+      console.error('Bookmark toggle error:', err.message);
+      showToast('エラーが発生しました: ' + err.message, 'error');
+    }
+  }
+
+  // 認証状態のリアルタイム監視
+  supabaseClient.auth.onAuthStateChange(async (event, session) => {
+    if (session) {
+      currentUser = session.user;
+      authUserEmail.textContent = currentUser.email;
+      authUserEmail.style.display = 'inline-block';
+      authBtnText.textContent = 'ログアウト';
+      bookmarkTab.style.display = 'block'; // ログイン中に「あとで読む」タブを出す
+      
+      await loadUserBookmarks();
+    } else {
+      currentUser = null;
+      authUserEmail.textContent = '';
+      authUserEmail.style.display = 'none';
+      authBtnText.textContent = 'ログイン';
+      bookmarkTab.style.display = 'none'; // ログアウト時は「あとで読む」タブを非表示に
+      userBookmarks.clear();
+      
+      // 「あとで読む」タブがアクティブの状態でログアウトした場合は「すべて」に切り替える
+      if (currentCuratedTab === 'bookmarks') {
+        currentCuratedTab = 'all';
+        curatedTabs.querySelectorAll('.tab-btn').forEach(btn => {
+          if (btn.dataset.tab === 'all') btn.classList.add('active');
+          else btn.classList.remove('active');
+        });
+      }
+      
+      // 描画更新（しおりアイコンのクリア）
+      if (dashboardData) {
+        renderTopNews(dashboardData.topNews);
+        renderTrendingNews(dashboardData.trendingNews);
+        renderSportsNews(dashboardData.sports);
+        renderCuratedNews(curatedNewsItems);
+      }
+    }
+  });
+
+  // キュレーションニュースのタブ切り替え
+  if (curatedTabs) {
+    curatedTabs.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('tab-btn')) return;
+      
+      curatedTabs.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      e.target.classList.add('active');
+      
+      currentCuratedTab = e.target.dataset.tab;
+      renderCuratedNews(null);
+    });
+  }
 
   // --- 9. 初期読み込み ＆ ポーリング (30秒) ---
   loadData();

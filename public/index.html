@@ -49,6 +49,12 @@
       </div>
       
       <div class="header-right">
+        <div id="auth-status" class="auth-status">
+          <span id="auth-user-email" class="user-email"></span>
+          <button id="auth-btn" class="icon-btn auth-btn">
+            <span id="auth-btn-text">ログイン</span>
+          </button>
+        </div>
         <div class="sync-info">
           <span id="last-sync-time">最終同期: --:--:--</span>
         </div>
@@ -108,6 +114,10 @@
       <section class="dashboard-col col-curated" aria-labelledby="col-curated-heading">
         <div class="col-header">
           <h2 id="col-curated-heading">ニュース</h2>
+          <div class="tab-controls" id="curated-tabs" role="tablist">
+            <button class="tab-btn active" role="tab" aria-selected="true" data-tab="all">すべて</button>
+            <button class="tab-btn" role="tab" aria-selected="false" data-tab="bookmarks" id="bookmark-tab" style="display: none;">🔖 あとで読む</button>
+          </div>
         </div>
         <div class="col-body scrollable">
           <div id="curated-news-list" class="card-list">
@@ -362,6 +372,37 @@
     </div>
   </div>
 
+  <!-- 6. 認証モーダル -->
+  <div id="auth-modal" class="auth-modal" style="display: none;">
+    <div class="auth-modal-overlay" id="auth-modal-overlay"></div>
+    <div class="auth-modal-content">
+      <div class="auth-modal-header">
+        <h3 id="auth-modal-title">ログイン</h3>
+        <button id="auth-modal-close" class="close-btn" aria-label="閉じる">&times;</button>
+      </div>
+      <form id="auth-form" class="auth-form">
+        <div class="form-group">
+          <label for="auth-email">メールアドレス</label>
+          <input type="email" id="auth-email" required placeholder="example@email.com">
+        </div>
+        <div class="form-group">
+          <label for="auth-password">パスワード</label>
+          <input type="password" id="auth-password" required placeholder="••••••••">
+        </div>
+        <div id="auth-error-msg" class="auth-error-msg" style="display: none;"></div>
+        <button type="submit" id="auth-submit-btn" class="auth-submit-btn">ログイン</button>
+      </form>
+      <div class="auth-modal-footer">
+        <span id="auth-switch-text">アカウントをお持ちでないですか？</span>
+        <button id="auth-switch-btn" class="auth-switch-btn">新規登録</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. トースト通知コンテナ -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
 </body>
 </html>

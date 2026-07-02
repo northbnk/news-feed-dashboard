@@ -1935,5 +1935,267 @@ body {
   border: 1px solid rgba(107, 114, 128, 0.3) !important;
 }
 
+/* ==========================================================================
+   8. Authentication Modal
+   ========================================================================== */
+.auth-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 8px;
+}
+.user-email {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-family: var(--font-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 20px;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.light-theme .user-email {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.auth-btn {
+  background: var(--accent-color) !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+.auth-btn:hover {
+  background: var(--accent-glow) !important;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.auth-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+.auth-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+.auth-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  z-index: 10001;
+  animation: authModalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.light-theme .auth-modal-content {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+@keyframes authModalFadeIn {
+  0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.auth-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.auth-modal-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.form-group input {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  border-radius: var(--border-radius-sm);
+  font-size: 14px;
+  outline: none;
+  transition: var(--transition-fast);
+}
+.light-theme .form-group input {
+  background: rgba(0, 0, 0, 0.03);
+}
+.form-group input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.auth-error-msg {
+  color: #ef4444;
+  font-size: 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 8px 12px;
+  border-radius: var(--border-radius-sm);
+}
+
+.auth-submit-btn {
+  background: var(--accent-color);
+  color: #ffffff;
+  border: none;
+  padding: 12px;
+  border-radius: var(--border-radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  margin-top: 8px;
+}
+.auth-submit-btn:hover {
+  background: #4338ca;
+  box-shadow: 0 4px 12px var(--accent-glow);
+}
+
+.auth-modal-footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.auth-switch-btn {
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  font-size: 13px;
+}
+.auth-switch-btn:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   9. Bookmark / Read Later Styles
+   ========================================================================== */
+.bookmark-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+.bookmark-btn:hover {
+  color: #f59e0b; /* Amber color for bookmarks */
+  background-color: rgba(255, 255, 255, 0.08);
+}
+.light-theme .bookmark-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.bookmark-btn.active {
+  color: #f59e0b;
+}
+.bookmark-btn svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.bookmark-btn:active svg {
+  transform: scale(1.3);
+}
+
+/* ==========================================================================
+   10. Toast Notification System
+   ========================================================================== */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 11000;
+}
+.toast {
+  background: rgba(20, 26, 46, 0.9);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 12px 18px;
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  min-width: 250px;
+  max-width: 350px;
+  transform: translateX(120%);
+  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.light-theme .toast {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+@keyframes toastSlideIn {
+  0% { transform: translateX(120%); }
+  100% { transform: translateX(0); }
+}
+
+.toast.hide {
+  transform: translateX(120%);
+  opacity: 0;
+}
+
+.toast-info {
+  border-left: 4px solid var(--accent-color);
+}
+.toast-success {
+  border-left: 4px solid #10b981;
+}
+.toast-warning {
+  border-left: 4px solid #f59e0b;
+}
+.toast-error {
+  border-left: 4px solid #ef4444;
+}
+
 
 
