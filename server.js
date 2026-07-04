@@ -1099,47 +1099,48 @@ async function storeCurated(clusteredData) {
       feed_name: feedName,
       hatebu: Number(hatebu) || 0,
       x_count: Number(x) || 0,
-      threads_count:   const prompt = `# あなたの役割
-あなたは優秀なテクノロジー・ビジネスジャーナリストです。
-提供されたRSSフィードの情報（複数記事）を網羅的に分析し、不要な導入文や固定タイトルは一切省き、指定の構成に沿って1つの統合されたニュース記事を作成してください。
+      threads_count: Number(threads) || 0,
+      emotion,
+      score: Number(score) || 0,
+      category: it.genre || null,
+      metadata: { sources: it.sources || [] },
+      inserted_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    });
+  }
 
-# 出力構成と指示
+  if (items.length === 0) return;
 
-### 1. 3行まとめ
-- 提供された全体のニュースから、今重要な動向を【箇条書きで3行】のみで出力してください。（「3行まとめ」などの見出しやタイトルは不要です。いきなり箇条書きから始めてください）
-- 複数の記事で重複して取り上げられている話題は「注目度が高い」と判断し、最優先でこのまとめに組み込んでください。
-- 特に「AI（人工知能）」に関連する動向が含まれる場合は、最優先で加点（評価・抽出）して記載してください。
-
-### 2. 最注目記事の深掘り
-- フィードの中で最も重要、または言及数（類似記事）の多いトップニュースを1つ選び、大見出し（### 記事タイトル）に続けて、マークダウンのテーブル（表）形式などを活用して「背景」と「今後の予測」を深く解説してください。
-- **タイムラインの要否判定**:
-  - システム障害、自然災害、突発的な国際衝突など、「時間経過による状況の変化（動き）が激しく、時系列がないと因果関係が分かりにくいニュース」である場合のみ、表の下に簡単なタイムラインを記載してください。
-  - 記念日、調査報告、中長期的な政策論争など、「動きが静的で、構造的な課題を解説すべきニュース」である場合は、タイムラインは不要です。なお、不要と判断した場合に「タイムラインは不要と判断しました」といったメタな注記は一切書かないでください。
-
-### 3. カテゴリごとの詳細（見出し不要）
-- 残りの記事も含め、話題を適切なカテゴリ（例：【国際情勢・紛争】、【国内社会・災害対策】、【テクノロジー】など）に分類し、中見出し（#### 【カテゴリ名】）として出力してください。
-- 「カテゴリごとの出来事まとめ」といったセクションタイトルは不要です。最注目記事の深掘りセクションの区切り線（---）の後は、すぐに各カテゴリの見出しから始めてください。
-- それぞれのカテゴリの動向を、アイコン（絵文字）は使わずに簡潔にまとめてください。
-
-### 4. 参照ソース（リンク集）
-- 記事の最後に、大見出し（### 参照ソース（リンク集））を置き、情報元となった記事のタイトルとURLリンクを必ず記載してください。
-- 似た記事が複数ある場合も、省略せずにすべての該当リンクを列挙してください。
-
-# 禁止事項
-- 「本日のニュース総合サマリー」といった全体のタイトルは一切出力しないでください。
-- 「※今回のフィードにはAI関連のニュースがなかったため〜」といった、AIの判断理由やメタな注記は一切出力しないでください。
-
-# 出力フォーマットの厳守
-必ず以下のJSONフォーマットのみで出力してください。Markdown表記や余計な解説、コードブロック（例: \`\`\`json などのマークアップ）は一切含めないでください。
-
-JSONフォーマット:
-{
-  "title": "${typeText}のAI主要ニュースダイジェスト",
-  "markdownContent": "生成したMarkdown形式の記事本文（3行まとめから最後の参照ソースまでを含むMarkdownテキスト。挨拶や導入・結びの文言は一切含めないこと）"
+  const { error } = await supabase.from('curated_articles').upsert(items, { onConflict: 'id' });
+  if (error) throw error;
 }
 
-# インプットデータ（RSS情報）
-${listText}`;�レーション）ニュースを計算します...');
+app.get('/api/curated', async (req, res) => {
+  const hours = Math.max(1, parseInt(req.query.hours || '48', 10));
+  const minScore = parseFloat(req.query.minScore || '0');
+  const limit = Math.min(parseInt(req.query.limit || '30', 10), 200);
+  const category = req.query.category || null;
+
+  const since = new Date(Date.now() - hours * 3600 * 1000).toISOString();
+
+  if (supabase) {
+    try {
+      let query = supabase.from('curated_articles').select('*').gte('inserted_at', since).gte('score', minScore).order('score', { ascending: false }).limit(limit);
+      if (category) query = query.eq('category', category);
+
+      const { data, error } = await query;
+      if (!error && data && data.length > 0) {
+        return res.json({ success: true, items: data, source: 'supabase' });
+      }
+      if (error) {
+        console.warn('Supabaseからのキュレーション取得失敗、フォールバックします:', error.message);
+      }
+    } catch (e) {
+      console.warn('Supabase取得時に例外発生、フォールバックします:', e.message);
+    }
+  }
+
+  console.log('ローカルデータベースから注目（キュレーション）ニュースを計算します...');
   try {
     const localArticles = loadArticles();
     const ttlLimit = Date.now() - hours * 3600 * 1000;
