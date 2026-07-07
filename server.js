@@ -1459,61 +1459,7 @@ let cachedDigest = {
 };
 
 app.get('/api/digest', async (req, res) => {
-  try {
-    const now = new Date();
-    const jstHour = (now.getUTCHours() + 9) % 24; 
-    let digestType = 'night';
-    if (jstHour >= 5 && jstHour < 11) {
-      digestType = 'morning';
-    } else if (jstHour >= 11 && jstHour < 17) {
-      digestType = 'noon';
-    }
-
-    const cacheAgeMs = Date.now() - cachedDigest.generatedAt;
-    const isCacheValid = cachedDigest.digestType === digestType && cacheAgeMs < (4 * 3600 * 1000);
-
-    if (isCacheValid && cachedDigest.data) {
-      console.log(`[API] キャッシュされた ${digestType} ダイジェストを返します。(経過: ${Math.round(cacheAgeMs / 60000)}分)`);
-      return res.json({ success: true, digestType, data: cachedDigest.data, source: 'cache' });
-    }
-
-    const localArticles = loadArticles();
-    const twelveHoursAgo = Date.now() - 12 * 3600 * 1000;
-    
-    let recentArticles = localArticles.filter(art => {
-      const pubTime = art.pubDate ? new Date(art.pubDate).getTime() : 0;
-      return !isNaN(pubTime) && pubTime >= twelveHoursAgo;
-    });
-
-    if (recentArticles.length < 5) {
-      const twentyFourHoursAgo = Date.now() - 24 * 3600 * 1000;
-      recentArticles = localArticles.filter(art => {
-        const pubTime = art.pubDate ? new Date(art.pubDate).getTime() : 0;
-        return !isNaN(pubTime) && pubTime >= twentyFourHoursAgo;
-      });
-    }
-
-    recentArticles.sort((a, b) => (b.weight || 5) - (a.weight || 5));
-
-    if (recentArticles.length === 0) {
-      return res.json({ success: false, error: '表示可能な直近ニュースがありません。' });
-    }
-
-    const digestData = await fetchAIDigest(digestType, recentArticles);
-
-    cachedDigest = {
-      digestType,
-      data: digestData,
-      generatedAt: Date.now()
-    };
-
-    console.log(`[API] 新しい ${digestType} ダイジェストを生成し、キャッシュしました。`);
-    res.json({ success: true, digestType, data: digestData, source: 'generator' });
-
-  } catch (err) {
-    console.error('/api/digest error:', err.message);
-    res.status(500).json({ success: false, error: err.message });
-  }
+  return res.json({ success: false, error: 'AI機能は無効化されています。' });
 });
 
 app.listen(PORT, () => {
