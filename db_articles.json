@@ -4,7 +4,7 @@
     "originalTitle": "RSSのURL が変更になりましたので、設定の変更をお願いいたします（旧RSSは2018年6月4日に終了いたしました）",
     "link": "https://mainichi.jp/rss/?20180611",
     "contentSnippet": "",
-    "pubDate": "2026-07-07T13:19:06.000Z",
+    "pubDate": "2026-07-07T13:33:31.000Z",
     "category": "sports",
     "feedName": "毎日新聞スポーツ",
     "weight": 5,
@@ -9604,7 +9604,7 @@
     "originalTitle": "日本関係船13隻、ホルムズ海峡通過　ペルシャ湾内残り18隻に",
     "link": "https://mainichi.jp/articles/20260707/k00/00m/030/372000c",
     "contentSnippet": "",
-    "pubDate": "2026-07-07T12:29:19.000Z",
+    "pubDate": "2026-07-07T13:31:59.000Z",
     "category": "general",
     "feedName": "毎日新聞ニュース",
     "weight": 6,
@@ -15039,6 +15039,542 @@
       "テーマ",
       "7月31日",
       "オンラインセミナー開催"
+    ]
+  },
+  {
+    "title": "『めっちゃカメレオン』のサーバー代0円ってまじ？",
+    "originalTitle": "『めっちゃカメレオン』のサーバー代0円ってまじ？",
+    "link": "https://qiita.com/i-icc/items/fb02ae5fa0848f4c511e?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "めっちゃカメレオン、流行ってますね\n真っ白な体に絵を描いてステージに擬態する、新感覚のかくれんぼゲーム『めっちゃカメレオン』。\n気づいたら世界的ヒットですよ\nこの記事執筆時点で 1500 万本突破ってやばすぎないですか？\n\n780円 × 約1500万本 ≒ 120億円 超...",
+    "pubDate": "2026-07-06T14:42:23.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "カメレオン",
+      "サーバー代0円"
+    ]
+  },
+  {
+    "title": "「保守業務って地味…」と思っていた新人の自分へ",
+    "originalTitle": "「保守業務って地味…」と思っていた新人の自分へ",
+    "link": "https://qiita.com/masa20057/items/d3c540c868c3413704b7?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "こんにちは。\n株式会社PRUMのmasaです。\n新人エンジニアが最初に配属されやすい「保守・運用」の仕事について、現場のリアルな実態と、そこでしか身につかない成長の機会を紹介します。「保守は地味で成長できない仕事」というイメージを持っている方に、少し違う視点が届けば嬉しいで...",
+    "pubDate": "2026-07-06T03:20:19.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "保守業務",
+      "地味",
+      "新人",
+      "自分"
+    ]
+  },
+  {
+    "title": "AI-BPRで業務そのものを再設計する",
+    "originalTitle": "AI-BPRで業務そのものを再設計する",
+    "link": "https://qiita.com/licux/items/25e87077b6ef29162a93?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "本記事は、AWSのML Developer Relationsである久保さん(@icoxfog417)にお声掛けいただき実施した、AI-BPRのトライアルに関する内容です。AIエージェントによる業務改善が求められる世の中で、AIを使いながら、AIとの役割を明確化し、価値を最...",
+    "pubDate": "2026-07-06T10:01:44.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "AI",
+      "BPR",
+      "業務",
+      "再設計"
+    ]
+  },
+  {
+    "title": "New Relic MCPの回答精度を向上させるプロファイルのご紹介",
+    "originalTitle": "New Relic MCPの回答精度を向上させるプロファイルのご紹介",
+    "link": "https://qiita.com/seamoooooo/items/e458d2a7969e8c92d9ba?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "先日、AI駆動型のソフトウェア開発を加速させるNew Relic と AI IDE Kiro との連携を発表させていただきました。今回は、Kiro 向けにリリースされた公式プラグインの New Relic kiro powerの公式リポジトリを確認しながら、Kiro と N...",
+    "pubDate": "2026-07-06T14:37:22.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "New",
+      "Relic",
+      "MCP",
+      "回答精度",
+      "向上",
+      "プロファイル"
+    ]
+  },
+  {
+    "title": "PL/SQLのバッチ処理をTemplate Methodパターンで共通化する",
+    "originalTitle": "PL/SQLのバッチ処理をTemplate Methodパターンで共通化する",
+    "link": "https://qiita.com/take-yoda/items/a8e097a488923360b03b?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "株式会社ブレインパッドプロダクトユニットでRtoaster GenAIの開発をしている依田です。\n今回はPL/SQLの TYPE オブジェクトを使ってGoFの Template Methodパターン を実装し、複数のバッチ処理を共通の骨格に乗せるハンズオンをお届けします。\n...",
+    "pubDate": "2026-07-07T04:07:41.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "PL",
+      "SQL",
+      "バッチ処理",
+      "Template",
+      "Methodパターン",
+      "共通化"
+    ]
+  },
+  {
+    "title": "ChatGPTを活用してWebアプリを効率よく多言語対応する",
+    "originalTitle": "ChatGPTを活用してWebアプリを効率よく多言語対応する",
+    "link": "https://qiita.com/usui0623/items/e7ca1a6954cd7af6751b?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "目次\n\nはじめに\n開発環境\n方針\n全体構成\n\n実装\n\nフロント\nAPI\n\n進め方\n学び・振り返り\n参考文献\n\nはじめに\n4月から新入社員として入社しました。臼井と申します。\n今回の記事では、Webアプリケーションの多言語対応について書きます。\n現在担当している開発では...",
+    "pubDate": "2026-07-07T02:56:56.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "ChatGPT",
+      "活用",
+      "Webアプリ",
+      "効率",
+      "多言語対応"
+    ]
+  },
+  {
+    "title": "売上は DB、ログは S3、契約書は SharePoint、バラバラなデータを AI で使う方法を調べてみてみた",
+    "originalTitle": "売上は DB、ログは S3、契約書は SharePoint、バラバラなデータを AI で使う方法を調べてみてみた",
+    "link": "https://qiita.com/shirok/items/0e42854634b2c5a371fa?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "売上データは Database、ログは Object Storage に、契約書や仕様書は SharePoint に、分析用データは異なるクラウドに——。\n「データがあちこちに散らばっていて、AI に使いたくても使えない」\n\nデータ活用の世界では、長い間、Data Ware...",
+    "pubDate": "2026-07-06T22:27:21.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "売上",
+      "DB",
+      "ログ",
+      "S3",
+      "契約書",
+      "SharePoint",
+      "バラバラ",
+      "データ",
+      "AI"
+    ]
+  },
+  {
+    "title": "【AgentCore】Runtime をパブリックにデプロイしたけど、勝手にアクセスされない？",
+    "originalTitle": "【AgentCore】Runtime をパブリックにデプロイしたけど、勝手にアクセスされない？",
+    "link": "https://qiita.com/ryu-ki/items/2cd37256824b54022bdb?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\nAmazon Bedrock AgentCore Runtime を使うと、自作の AI エージェントをマネージドインフラ上にデプロイできます。\n\n触っていて、ふと気になったことがあります。AgentCore Runtime のエンドポイントの URL がパ...",
+    "pubDate": "2026-07-06T16:08:21.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "AgentCore",
+      "Runtime",
+      "パブリック",
+      "デプロイ",
+      "勝手",
+      "アクセス"
+    ]
+  },
+  {
+    "title": "【AWS】Bedrock AgentCore Web Search を試してみた！",
+    "originalTitle": "【AWS】Bedrock AgentCore Web Search を試してみた！",
+    "link": "https://qiita.com/PDC-Kurashinak/items/9bc404e35625ade6e198?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "どうもこんにちは。\n今回は、Amazon Bedrock AgentCore Web Search を AWS CDK で構築して、Strands Agents から使ってみます。\nAmazon Bedrock AgentCore Web Search は、AgentCor...",
+    "pubDate": "2026-07-07T02:17:07.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "AWS",
+      "Bedrock",
+      "AgentCore",
+      "Web",
+      "Search"
+    ]
+  },
+  {
+    "title": "【Windows標準OCR】窓キー + Shift + T キー押してますか？",
+    "originalTitle": "【Windows標準OCR】窓キー + Shift + T キー押してますか？",
+    "link": "https://qiita.com/kaga-yasumitsu/items/e9ce46596969983cdb4e?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "写経、手でやる先入観にさよならを\n안녕하신게라！パナソニック コネクト株式会社クラウドソリューション部の加賀です。\n突然ですが、こんな経験ありませんか？\n\n画面に表示されたエラーメッセージやダイアログ。コピーしたいのに、選択できない！\nオンライン会議の共有画面に映った、長...",
+    "pubDate": "2026-07-06T01:26:56.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Windows標準OCR",
+      "窓キー",
+      "Shift",
+      "キー押"
+    ]
+  },
+  {
+    "title": "🤖 【Claude】自作Skillが「Claude Codeでは動くのにCoworkに出てこない」を解決する",
+    "originalTitle": "🤖 【Claude】自作Skillが「Claude Codeでは動くのにCoworkに出てこない」を解決する",
+    "link": "https://qiita.com/imamu123/items/2baf3f2f047e912dab48?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "🙋 はじめに\nClaude の Skill を自作して、ターミナルの Claude Code（CLI）では問題なく動いていたのに、デスクトップの Cowork を開いたら一覧にも出てこない。こんな経験はないでしょうか。\n私も、社内リポジトリから取ってきた Skill を ...",
+    "pubDate": "2026-07-06T00:21:42.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Claude",
+      "自作Skill",
+      "Claude",
+      "Code",
+      "Cowork",
+      "解決"
+    ]
+  },
+  {
+    "title": "Dockerfileは分けない〜本番用とローカル用を1つに保つ方法🐳",
+    "originalTitle": "Dockerfileは分けない〜本番用とローカル用を1つに保つ方法🐳",
+    "link": "https://qiita.com/H-Hoshihara/items/82798a46964718f6bdb0?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\n新卒研修にてコンテナアプリケーションを構築する機会がありました。\n以前、Dockerfileを本番用とローカル用で分けている現場を見たことがあったため、今回はその是非も含めて「本番環境とローカル環境でDockerfileを分けるべきか」検討しました。\n本記事は、...",
+    "pubDate": "2026-07-05T17:32:58.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Dockerfile",
+      "本番用",
+      "ローカル用"
+    ]
+  },
+  {
+    "title": "Claude Code の無料セキュリティ監査プラグインで脆弱性を自動検出・修正してみる",
+    "originalTitle": "Claude Code の無料セキュリティ監査プラグインで脆弱性を自動検出・修正してみる",
+    "link": "https://qiita.com/nogataka/items/4d2a551f89f6b4f94b01?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "この記事のポイント\n\nAnthropic が 2026 年 5 月下旬に Claude Code 向けの公式プラグイン security-guidance を公開しました（各メディアで紹介されたのは 5 月 27 日です）。全プランで利用でき、2026 年 6 月時点でベ...",
+    "pubDate": "2026-07-06T11:00:39.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Claude",
+      "Code",
+      "無料セキュリティ監査プラグイン",
+      "脆弱性",
+      "自動検出・修正"
+    ]
+  },
+  {
+    "title": "LLMのコスト暴走と情報漏洩を防ぐ社内Gateway設計: Azure/AWSガバナンスとLiteLLM実装(Phase1→Phase2)",
+    "originalTitle": "LLMのコスト暴走と情報漏洩を防ぐ社内Gateway設計: Azure/AWSガバナンスとLiteLLM実装(Phase1→Phase2)",
+    "link": "https://qiita.com/nogataka/items/6251b5727998ca29734c?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\n各社で開発用途・業務用途に Azure OpenAI、Microsoft Foundry、Amazon Bedrock、OpenAI、Anthropic などの LLM を利用するケースが増えています。利用が広がるほど、次のような課題が同時に持ち上がります。\n\n...",
+    "pubDate": "2026-07-06T11:00:01.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "LLM",
+      "コスト暴走",
+      "情報漏洩",
+      "社内Gateway設計",
+      "Azure",
+      "AWSガバナンス",
+      "LiteLLM実装",
+      "Phase1",
+      "Phase2"
+    ]
+  },
+  {
+    "title": "Kintone Documentation MCPの開発秘話",
+    "originalTitle": "Kintone Documentation MCPの開発秘話",
+    "link": "https://qiita.com/sean-kintone/items/fc0a96e46b743262e7eb?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "この記事は、CYBOZU SUMMER BLOG FES '26の記事です。\nkintone Documentation MCPサーバーの開発秘話をご案内します。\n\nKintone Documentation MCPとは\nkintone Documentation MCPサ...",
+    "pubDate": "2026-07-07T05:18:46.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Kintone",
+      "Documentation",
+      "MCP",
+      "開発秘話"
+    ]
+  },
+  {
+    "title": "雰囲気似ていて、混同しがちなエンジニア用語集 ~ 先輩、ごめんなさい。私、実はテキトーに使ってました ~",
+    "originalTitle": "雰囲気似ていて、混同しがちなエンジニア用語集 ~ 先輩、ごめんなさい。私、実はテキトーに使ってました ~",
+    "link": "https://qiita.com/n-isd/items/7bbf59e985c8e2955ee0?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\n前回のこちらの記事で、エンジニアで読み方を間違えがちな用語をまとめました。\n\n今回は、その続編として、\n「この用語とこの用語、どっちがどっちで、どう違うんだっけ・・・」\nとなりがちな用語をまとめてみました。\n\nこれらは大体、自分が雰囲気で使っていた用語たち...",
+    "pubDate": "2026-07-06T12:54:58.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "雰囲気似",
+      "混同",
+      "エンジニア用語集",
+      "先輩",
+      "テキトー"
+    ]
+  },
+  {
+    "title": "『秩序ある共生』は実現できるのか？ ― 制度設計・財源幻想・社会統合を考える : Pythonで学ぶ マクロ経済学入門 (96)",
+    "originalTitle": "『秩序ある共生』は実現できるのか？ ― 制度設計・財源幻想・社会統合を考える : Pythonで学ぶ マクロ経済学入門 (96)",
+    "link": "https://qiita.com/maskot1977/items/c3fe81175a1206abf1f8?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "user:\n「Pythonで学ぶマクロ経済学入門」、第96回を始めましょう。まず前回の復習として、\n「多文化共生はなぜ難しいのか？ ― 情報・同化・生産性から考える現実解 : Pythonで学ぶ マクロ経済学入門 (95)」 \nhttps://qiita.com/mask...",
+    "pubDate": "2026-07-06T15:07:11.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "秩序",
+      "共生",
+      "実現",
+      "制度設計・財源幻想・社会統合",
+      "Python",
+      "マクロ経済学入門",
+      "96"
+    ]
+  },
+  {
+    "title": "最新Linuxの暗号化（yescrypt）はどれだけ堅牢か？John the Ripperで16コアフル駆動させて検証してみた",
+    "originalTitle": "最新Linuxの暗号化（yescrypt）はどれだけ堅牢か？John the Ripperで16コアフル駆動させて検証してみた",
+    "link": "https://qiita.com/sano-shoya/items/225aa1e953f09dbad05c?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\n現在、LPIC-1の取得に向けて勉強中のインフラエンジニアです。\n教科書で /etc/passwd や /etc/shadow の仕組みを学びましたが、「実際にパスワードって破れるものなのか？」が気になり、WSL2上のKali Linuxを使って自分のアカウント...",
+    "pubDate": "2026-07-06T05:14:53.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "最新Linux",
+      "暗号化",
+      "yescrypt",
+      "堅牢",
+      "John",
+      "the",
+      "Ripper",
+      "16コアフル駆動",
+      "検証"
+    ]
+  },
+  {
+    "title": "【実測比較】日本語RAGのOCR、結局どれを使う？ glm-ocr / dots.ocr / Unlimited-OCR / MinerU を社内ドライブの実データでガチ評価",
+    "originalTitle": "【実測比較】日本語RAGのOCR、結局どれを使う？ glm-ocr / dots.ocr / Unlimited-OCR / MinerU を社内ドライブの実データでガチ評価",
+    "link": "https://qiita.com/engchina/items/6dff7010af1b28e8c30a?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\nRAG（検索拡張生成）を「本当に業務で使う」段になると、いちばん地味で、いちばん効いてくるのがOCRです。\n社内ドライブには、テキスト層のあるきれいなPDFだけでなく、チャット画面のスクリーンショット、matplotlibで吐き出したチャート、テキスト層のない提...",
+    "pubDate": "2026-07-07T02:28:41.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "実測比較",
+      "日本語RAG",
+      "OCR",
+      "結局",
+      "glm",
+      "ocr",
+      "dots",
+      "ocr",
+      "Unlimited",
+      "OCR",
+      "MinerU",
+      "社内ドライブ",
+      "実データ",
+      "ガチ評価"
+    ]
+  },
+  {
+    "title": "PostgreSQL→Cloud Spanner 240テーブル移行：LLMによるテーブル分類とダウンタイム約60%削減の実践",
+    "originalTitle": "PostgreSQL→Cloud Spanner 240テーブル移行：LLMによるテーブル分類とダウンタイム約60%削減の実践",
+    "link": "https://qiita.com/kane_ryu/items/38911988915c6bbd8c8d?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\n「ダウンタイム10.5時間」と見積もりに書いた瞬間、それが現実的な数字ではないとわかっていました。\n既存の移行計画はシンプルでした。PostgreSQL 14（オンプレミス）上の240テーブルを、pg_dump → Datastream → Dataflow →...",
+    "pubDate": "2026-07-07T02:38:22.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "PostgreSQL",
+      "Cloud",
+      "Spanner",
+      "240テーブル移行",
+      "LLM",
+      "テーブル分類",
+      "ダウンタイム約60",
+      "削減",
+      "実践"
+    ]
+  },
+  {
+    "title": "事業開発における AI ネイティブ化にまず必要なことを考えてみる",
+    "originalTitle": "事業開発における AI ネイティブ化にまず必要なことを考えてみる",
+    "link": "https://qiita.com/yatabekei/items/dd5d020565beb5bd930c?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\nあらためて調べてみましたが、 AI の企業活用は着実に広がりを見せているようです。\n帝国データバンクが 2026 年 3 月に実施した調査では、 AI を業務で「活用している」企業は約 35% に達し、活用企業のうち約 87% が何らかの効果を実感していると回答...",
+    "pubDate": "2026-07-07T01:28:15.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "事業開発",
+      "AI",
+      "ネイティブ化",
+      "必要"
+    ]
+  },
+  {
+    "title": "Ollama + Continue を使って Mac 上にローカルLLM環境を構築する",
+    "originalTitle": "Ollama + Continue を使って Mac 上にローカルLLM環境を構築する",
+    "link": "https://qiita.com/hcrane/items/10c2d3c83ee6bae6a64a?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\nCopilot が従量課金になり、企業でもコストを考慮し始めてきたように思います。\nコスト上限があると、トークンを使い切ってタスク途中で使えなくなった...みたいなパターンもあり、不用意に外部のAIに社内の情報を投げるわけにもいかない...（そもそもセキュリティ...",
+    "pubDate": "2026-07-06T09:08:58.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Ollama",
+      "Continue",
+      "Mac",
+      "ローカルLLM環境",
+      "構築"
+    ]
+  },
+  {
+    "title": "【Curl】Curlは一か月の夏休みを満喫するよ",
+    "originalTitle": "【Curl】Curlは一か月の夏休みを満喫するよ",
+    "link": "https://qiita.com/rana_kualu/items/6ac5b511b055d34d88fb?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "先日Curlが夏休みを取ると発表しました。\n・OSSのcurlが異例の「夏休み」を宣言、7月中は脆弱性報告を受け付けず開発者の負担軽減へ\nということで以下はCurl作者Daniel Stenbergによる記事、CURL SUMMER OF BLISSの紹介です。\n\nCURL...",
+    "pubDate": "2026-07-06T11:27:23.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Curl",
+      "Curl",
+      "夏休",
+      "満喫"
+    ]
+  },
+  {
+    "title": "生成 AI 利用率〇パーセント達成した、次は AI エージェント〇個作成が目標？",
+    "originalTitle": "生成 AI 利用率〇パーセント達成した、次は AI エージェント〇個作成が目標？",
+    "link": "https://qiita.com/Takashi_Masumori/items/a1ae3d4cbb03aa5a2387?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\n生成 AI の活用推進に取り組む組織が増えています。例えば、Microsoft 365 Copilot を導入し、利用率を指標の一つとして追いかけている組織も多いと思います。もちろん、利用率は目的ではなく手段でしかないという点は、これまでの記事でも繰り返しお伝え...",
+    "pubDate": "2026-07-05T23:17:17.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "生成",
+      "AI",
+      "利用率",
+      "パーセント達成",
+      "AI",
+      "エージェント",
+      "個作成",
+      "目標"
+    ]
+  },
+  {
+    "title": "PHP 8.3 の JIT に「string を渡したのに string 型じゃない」と怒られて全ページ 500 になった話",
+    "originalTitle": "PHP 8.3 の JIT に「string を渡したのに string 型じゃない」と怒られて全ページ 500 になった話",
+    "link": "https://qiita.com/ishizakahiroshi/items/b8d5bb5e323f03ec8200?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "朝、Nextcloud の管理画面を開いたら、ダッシュボードが真っ黒な「このページは動作していません」に変わっていました。HTTP 500。トップも設定もファイル一覧も、どこを開いても 500。前日まで普通に動いていたものが、一晩で全滅していました。\nきっかけは、はっきりし...",
+    "pubDate": "2026-07-07T01:49:22.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "PHP",
+      "JIT",
+      "string",
+      "string",
+      "全ページ",
+      "500"
+    ]
+  },
+  {
+    "title": "Microsoft EditはWindowsだけでなくmacOSやLinuxでも使えるTUIエディタ",
+    "originalTitle": "Microsoft EditはWindowsだけでなくmacOSやLinuxでも使えるTUIエディタ",
+    "link": "https://qiita.com/skrtk98/items/cffc0aa351d4f4478e4a?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "Microsoft が公開している Edit というターミナル上で動くテキストエディタがあります。\n名前だけ見ると Windows 専用のように見えますが、GitHub リポジトリでは Windows だけでなく macOS や Linux での利用方法も案内されています。...",
+    "pubDate": "2026-07-06T10:03:21.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Microsoft",
+      "Edit",
+      "Windows",
+      "macOS",
+      "Linux",
+      "TUIエディタ"
+    ]
+  },
+  {
+    "title": "Amazon EC2 起動停止の自動化について検討してみた",
+    "originalTitle": "Amazon EC2 起動停止の自動化について検討してみた",
+    "link": "https://qiita.com/kazuki_horiuchi/items/a8e172c425935339e55a?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\nみなさんこんにちは！\nEC2インスタンスは便利ですが、ずっと動かしっぱなしにしていると意外とコストが積み上がります。\nFinOpsの観点からも、開発・検証環境などで利用していないEC2インスタンスの停止はコスト最適化の基本です。\nしかし、「平日の日中だけ動かした...",
+    "pubDate": "2026-07-07T00:05:01.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Amazon",
+      "EC2",
+      "起動停止",
+      "自動化",
+      "検討"
+    ]
+  },
+  {
+    "title": "【Claude Code】Stop Hook で Claude に対するイライラを減らそう",
+    "originalTitle": "【Claude Code】Stop Hook で Claude に対するイライラを減らそう",
+    "link": "https://qiita.com/wataru86/items/6956026c7a8c4cb8945e?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\nClaude Code を使っていて、こんなやり取りにイライラしたことはないでしょうか？\n例1：推測のまま断言してくる\n🤖 (Claude)「おそらくこの関数は○○のための処理をするはずです」\n😠 (僕)「本当に合ってる？△△だと思うんだけど💢」\n例2：調べれば...",
+    "pubDate": "2026-07-06T02:53:50.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Claude",
+      "Code",
+      "Stop",
+      "Hook",
+      "Claude",
+      "イライラ"
+    ]
+  },
+  {
+    "title": "ストレッチポールに寝転がるだけ、気持ちいい！デスクワーク疲れや悪姿勢のリセットに",
+    "originalTitle": "ストレッチポールに寝転がるだけ、気持ちいい！デスクワーク疲れや悪姿勢のリセットに",
+    "link": "https://www.lifehacker.jp/article/2607-lht-lpn-stretchpole/",
+    "contentSnippet": "筋肉の緊張をほぐして正しい姿勢にすることができ、肋骨が広がりことで大きく呼吸ができリラックス効果にも繋がる「ストレッチポール」をご紹介します。",
+    "pubDate": "Tue, 07 Jul 2026 13:30:00 GMT",
+    "category": "trending",
+    "feedName": "ライフハッカー・ジャパン",
+    "weight": 5,
+    "keywords": [
+      "ストレッチポール",
+      "寝転",
+      "気持",
+      "デスクワーク疲",
+      "悪姿勢",
+      "リセット"
+    ]
+  },
+  {
+    "title": "【プロ野球速報】巨人が阪神に逆転勝ち",
+    "originalTitle": "【プロ野球速報】巨人が阪神に逆転勝ち",
+    "link": "http://www3.nhk.or.jp/news/html/20260707/k10015171271000.html",
+    "contentSnippet": "プロ野球は7日、6試合が行われ、セ・リーグの同率首位でならんでいる巨人対阪神の試合は、巨人の代打、坂本勇人選手が満塁から走者一掃のタイムリーツーベースヒットを打って逆転勝ちしました。",
+    "pubDate": "Tue, 07 Jul 2026 22:28:32 +0900",
+    "category": "sports",
+    "feedName": "NHKスポーツ",
+    "weight": 5,
+    "keywords": [
+      "プロ野球速報",
+      "巨人",
+      "阪神",
+      "逆転勝"
     ]
   }
 ]

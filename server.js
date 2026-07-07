@@ -90,9 +90,6 @@ const FEEDS = {
   sports: [
     { name: 'NHKスポーツ', url: 'https://www3.nhk.or.jp/rss/news/cat7.xml', weight: 5 },
     { name: '毎日新聞スポーツ', url: 'https://mainichi.jp/rss/etc/sports.rss', weight: 5 }
-  ],
-  events: [
-    { name: 'PR TIMESリリース', url: 'https://prtimes.jp/index.rdf', weight: 4 }
   ]
 };
 
@@ -1551,16 +1548,56 @@ app.get('/api/digest', async (req, res) => {
   return res.json({ success: false, error: 'AI機能は無効化されています。' });
 });
 
-app.post('/api/generate-summary', async (req, res) => {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
-    return res.status(500).json({ success: false, error: 'Gemini API Key が設定されていません。' });
-  }
+// ローカルデータからまとめ記事を自動合成するフォールバック関数
+function generateFallbackSummary(inputArticles) {
+  let md = `> [!NOTE]\n`;
+  md += `> **システム通知**: 本記事は、AI APIの利用制限（429クォータエラーやキー未設定等）が発生したため、しおり登録された記事情報を元にローカルの静的合成エンジンにより自動作成されたフォールバック要約記事です。\n\n`;
 
+  inputArticles.forEach((art, idx) => {
+    // 1番目の記事：パターンA（詳細）を模倣
+    if (idx === 0) {
+      md += `## 【特集解説】 ${art.title}\n`;
+      md += `* **情報元（ソースURL）**: [${art.title}](${art.url})\n\n`;
+      md += `### ニュース背景と前提\n`;
+      md += `本件は非常に注目度が高く、**${art.title}**に関連する背景や影響が多方面で議論されています。今回は、このニュースの核心部分を中心に整理します。\n\n`;
+      md += `### 何が起きたか（事実関係）\n`;
+      md += `元記事に記載されている主要な概要は以下の通りです。\n`;
+      md += `> ${art.summary}\n\n`;
+      md += `### 世間の反応と今後の影響\n`;
+      md += `ネットやSNS上では、現状の推移に対する懸念や今後の動向に対する期待など**多様な意見が飛び交う状況**になっており、今後の進展が注視されています。\n\n`;
+      md += `---\n\n`;
+    }
+    // 2番目の記事：パターンB（3行まとめ）を模倣
+    else if (idx % 2 === 1) {
+      md += `## ${art.title}\n`;
+      md += `* **情報元（ソースURL）**: [${art.title}](${art.url})\n\n`;
+      md += `* **3行でわかる解説**:\n`;
+      md += `  1. 今回発生した事象の**中心的な事実**を確認しました。\n`;
+      md += `  2. 元記事によると、**${art.summary.substring(0, 70)}...**との報告がなされています。\n`;
+      md += `  3. この件がもたらす**今後の影響や周辺情報**に注目が集まっています。\n\n`;
+      md += `---\n\n`;
+    }
+    // 3番目以降の記事：パターンC（仕組み解説）を模倣
+    else {
+      md += `## 【背景解説】 ${art.title}\n`;
+      md += `* **情報元（ソースURL）**: [${art.title}](${art.url})\n\n`;
+      md += `* **仕組みや用語の解説**:\n`;
+      md += `  本件を正しく理解するためには、背景にある制度や技術的なコンテキストが重要です。**${art.title}**は、学びや前提知識を深めるための重要な出来事となっています。\n\n`;
+      md += `  記述された要点 **「${art.summary}」** を踏まえ、これが今後どのような波及効果を持つのか、専門的・構造的な視点から理解を深める必要があります。\n\n`;
+      md += `---\n\n`;
+    }
+  });
+
+  return md;
+}
+
+app.post('/api/generate-summary', async (req, res) => {
   const { urls } = req.body;
   if (!urls || !Array.isArray(urls) || urls.length === 0) {
     return res.status(400).json({ success: false, error: '対象のURLリストを指定してください。' });
   }
+
+  const apiKey = process.env.GEMINI_API_KEY;
 
   try {
     const localArticles = loadArticles();
@@ -1573,6 +1610,18 @@ app.post('/api/generate-summary', async (req, res) => {
         summary: art.aiSummary || art.description || '（概要なし）'
       };
     });
+
+    // APIキーがない場合は即フォールバック
+    if (!apiKey) {
+      console.warn('[AI Summary] Gemini API Key が設定されていないため、ローカルフォールバックを実行します。');
+      const fallbackContent = generateFallbackSummary(inputArticles);
+      return res.json({
+        success: true,
+        markdownContent: fallbackContent,
+        generatedAt: Date.now(),
+        isFallback: true
+      });
+    }
 
     const inputDataText = inputArticles.map(a => {
       return `[${a.index}] URL： ${a.url}\nタイトル： ${a.title}\n概要： ${a.summary}\n`;
@@ -1650,12 +1699,36 @@ ${inputDataText}
     return res.json({
       success: true,
       markdownContent: markdownContent,
-      generatedAt: Date.now()
+      generatedAt: Date.now(),
+      isFallback: false
     });
 
   } catch (err) {
-    console.error('On-demand summary generation failed:', err.message);
-    return res.status(500).json({ success: false, error: err.message });
+    console.warn('[AI Summary] オンデマンドまとめ記事生成が失敗しました。ローカルフォールバックを実行します:', err.message);
+    try {
+      const localArticles = loadArticles();
+      const inputArticles = urls.map((url, idx) => {
+        const art = localArticles.find(a => a.link === url) || {};
+        return {
+          index: idx + 1,
+          url: url,
+          title: art.title || art.aiTitle || '（タイトル不明）',
+          summary: art.aiSummary || art.description || '（概要なし）'
+        };
+      });
+      
+      const fallbackContent = generateFallbackSummary(inputArticles);
+      
+      return res.json({
+        success: true,
+        markdownContent: fallbackContent,
+        generatedAt: Date.now(),
+        isFallback: true
+      });
+    } catch (fallbackErr) {
+      console.error('Local fallback summary generation failed:', fallbackErr.message);
+      return res.status(500).json({ success: false, error: 'まとめ記事の作成に失敗しました: ' + err.message });
+    }
   }
 });
 
