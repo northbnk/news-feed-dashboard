@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ニュース・フィード・ダッシュボード</title>
+  <title>NEWS TERMINAL</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <meta name="description" content="PCの1画面に収まる、リアルタイム自動更新型の総合ニュース・話題フィードダッシュボード">
   <!-- Google Fonts: Plus Jakarta Sans & Noto Sans JP -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +23,10 @@
     <!-- 1. ヘッダー -->
     <header class="dashboard-header">
       <div class="header-left">
-        <h1 id="dashboard-title">NEWS TERMINAL</h1>
+        <div class="header-logo-container">
+          <img src="logo.png" class="header-logo-img" alt="NEWS TERMINAL Logo">
+          <h1 id="dashboard-title">NEWS TERMINAL</h1>
+        </div>
         <span class="status-badge" id="live-indicator">
           <span class="pulse-dot"></span>LIVE
         </span>

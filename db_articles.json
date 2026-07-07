@@ -4,7 +4,7 @@
     "originalTitle": "RSSのURL が変更になりましたので、設定の変更をお願いいたします（旧RSSは2018年6月4日に終了いたしました）",
     "link": "https://mainichi.jp/rss/?20180611",
     "contentSnippet": "",
-    "pubDate": "2026-07-07T12:49:07.000Z",
+    "pubDate": "2026-07-07T12:54:24.000Z",
     "category": "sports",
     "feedName": "毎日新聞スポーツ",
     "weight": 5,
@@ -843,7 +843,7 @@
     "originalTitle": "日本製鉄鹿島とSUBARUが準決勝へ　都市対抗北関東2次予選",
     "link": "https://mainichi.jp/articles/20260707/k00/00m/050/333000c",
     "contentSnippet": "",
-    "pubDate": "2026-07-07T10:44:25.000Z",
+    "pubDate": "2026-07-07T12:52:08.000Z",
     "category": "general",
     "feedName": "毎日新聞ニュース",
     "weight": 6,
@@ -10016,6 +10016,41 @@
       "教科書",
       "執筆",
       "参加"
+    ]
+  },
+  {
+    "title": "NATO首脳会議まもなく開幕へ 各国が防衛力の強化を表明",
+    "originalTitle": "NATO首脳会議まもなく開幕へ 各国が防衛力の強化を表明",
+    "link": "http://www3.nhk.or.jp/news/html/20260707/k10015171161000.html",
+    "contentSnippet": "NATO＝北大西洋条約機構の首脳会議は、日本時間の8日未明、トルコで始まります。アメリカのトランプ政権が、ヨーロッパの防衛への関与を減らすなか、ヨーロッパの加盟国やカナダは防衛力の強化に向けた取り組みを相次いで明らかにしました。",
+    "pubDate": "Tue, 07 Jul 2026 21:38:35 +0900",
+    "category": "headline",
+    "feedName": "NHK主要ニュース",
+    "weight": 10,
+    "keywords": [
+      "NATO首脳会議",
+      "開幕",
+      "各国",
+      "防衛力",
+      "強化",
+      "表明"
+    ]
+  },
+  {
+    "title": "空転の国会どうなる　定数削減法案見送りで与野党の交渉焦点に",
+    "originalTitle": "空転の国会どうなる　定数削減法案見送りで与野党の交渉焦点に",
+    "link": "https://mainichi.jp/articles/20260707/k00/00m/010/294000c",
+    "contentSnippet": "",
+    "pubDate": "2026-07-07T12:53:13.000Z",
+    "category": "general",
+    "feedName": "毎日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "空転",
+      "国会",
+      "定数削減法案見送",
+      "与野党",
+      "交渉焦点"
     ]
   }
 ]
