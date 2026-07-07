@@ -19,22 +19,22 @@
 
 /* ダークモード用変数 */
 .dark-theme {
-  --bg-base: #0a0f1d;
-  --bg-card: rgba(20, 26, 46, 0.65);
-  --bg-card-hover: rgba(26, 34, 61, 0.85);
-  --bg-header: rgba(10, 15, 29, 0.8);
-  --bg-ticker: #070a14;
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-color-hover: rgba(255, 255, 255, 0.16);
+  --bg-base: #121212;
+  --bg-card: rgba(30, 30, 30, 0.7);
+  --bg-card-hover: rgba(45, 45, 45, 0.9);
+  --bg-header: rgba(20, 20, 20, 0.8);
+  --bg-ticker: #181818;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-color-hover: rgba(255, 255, 255, 0.18);
   --text-primary: #f3f4f6;
-  --text-secondary: #9ca3af;
-  --text-muted: #6b7280;
-  --accent-color: #4f46e5;
-  --accent-glow: rgba(79, 70, 229, 0.4);
-  --headline-gradient: linear-gradient(135deg, rgba(79, 70, 229, 0.9) 0%, rgba(147, 51, 234, 0.75) 100%);
-  --shadow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-  --scroll-thumb: rgba(255, 255, 255, 0.12);
-  --scroll-thumb-hover: rgba(255, 255, 255, 0.24);
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --accent-color: #a1a1aa;
+  --accent-glow: rgba(255, 255, 255, 0.15);
+  --headline-gradient: linear-gradient(135deg, rgba(63, 63, 70, 0.95) 0%, rgba(39, 39, 42, 0.8) 100%);
+  --shadow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  --scroll-thumb: rgba(255, 255, 255, 0.15);
+  --scroll-thumb-hover: rgba(255, 255, 255, 0.3);
 }
 
 /* ライトモード用変数 */
@@ -91,17 +91,17 @@ body {
   left: 20%;
   width: 40vw;
   height: 40vw;
-  background: radial-gradient(circle, #4f46e5 0%, transparent 70%);
+  background: radial-gradient(circle, #3f3f46 0%, transparent 70%);
 }
 .bg-glow-2 {
   bottom: 10%;
   right: 15%;
   width: 35vw;
   height: 35vw;
-  background: radial-gradient(circle, #9333ea 0%, transparent 70%);
+  background: radial-gradient(circle, #27272a 0%, transparent 70%);
 }
 .light-theme .bg-glow {
-  opacity: 0.04;
+  opacity: 0.02;
 }
 
 /* 全体コンテナ */

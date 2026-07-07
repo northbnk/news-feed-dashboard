@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentTopNewsTab = 'all';
   let currentTrendingNewsTab = 'all';
   let currentCuratedTab = 'all';
-  let carouselIndex = 0;
-  let carouselTimer = null;
   let currentCity = { name: '東京', lat: 35.6895, lon: 139.6917, region: '関東', pref: '東京' };
   let dashboardData = null;
   let curatedNewsItems = [];
@@ -86,12 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const aiDigestOpenBtn = document.getElementById('ai-digest-open-btn');
   const aiDigestBadge = document.getElementById('ai-digest-badge');
 
-  // フッターカルーセル
-  const footerContainer = document.getElementById('dashboard-footer');
-  const carouselTrack = document.getElementById('ticker-carousel-track');
-  const tickerPrevBtn = document.getElementById('ticker-prev');
-  const tickerNextBtn = document.getElementById('ticker-next');
-  
   // ドロワー
   const detailDrawer = document.getElementById('detail-drawer');
   const drawerOverlay = document.getElementById('detail-drawer-overlay');
@@ -181,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
       renderTopNews(data.topNews);
       renderTrendingNews(data.trendingNews);
       renderSportsNews(data.sports);
-      renderTicker(data);
       fetchAndRenderCuratedNews();
 
     } catch (err) {
@@ -191,7 +182,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // A. ヘッドライン描画
   function renderHeadline(headline) {
-    if (!headline) return;
+    if (!headline) {
+      headlineBar.style.display = 'none';
+      return;
+    }
+    
+    // 一定時間（2時間）経過した速報は非表示にする
+    const pubTime = headline.pubDate ? new Date(headline.pubDate).getTime() : 0;
+    const hoursElapsed = (Date.now() - pubTime) / (3600 * 1000);
+    
+    if (hoursElapsed > 2) {
+      console.log(`[Headline] 投稿日時より2時間以上経過しているため非表示にします。(${hoursElapsed.toFixed(1)}時間経過)`);
+      headlineBar.style.display = 'none';
+      return;
+    }
+
+    headlineBar.style.display = 'flex';
     headlineTitle.textContent = headline.title;
     headlineSource.textContent = headline.sources[0]?.publisher || '速報ソース';
     
@@ -679,52 +685,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderSportsNews(sportsData) {
     sportsNewsList.innerHTML = '';
     if (!sportsData) return;
-    
-    // 1. 試合状況（スコアボード）の描画
-    if (dashboardData && dashboardData.sportsGamesState) {
-      const activeGames = dashboardData.sportsGamesState.filter(game => {
-        if (currentSportsTab === 'baseball' && game.type === 'baseball') return true;
-        if (currentSportsTab === 'mlb' && game.type === 'mlb') return true;
-        if (currentSportsTab === 'soccer' && game.type === 'soccer') return true;
-        return false;
-      });
-
-      if (activeGames.length > 0) {
-        const slider = document.createElement('div');
-        slider.className = 'sports-games-slider';
-
-        activeGames.forEach(game => {
-          const isLive = game.status === 'live';
-          const isFinished = game.status === 'finished';
-          
-          const card = document.createElement('div');
-          card.className = 'game-score-card';
-          card.innerHTML = `
-            <div class="game-card-header">
-              <span class="game-status-label">${game.detail}</span>
-              ${isLive ? '<span class="game-live-badge"><span class="pulse-dot"></span>LIVE</span>' : ''}
-              ${isFinished ? '<span class="game-status-label" style="color:var(--text-muted);">終了</span>' : ''}
-            </div>
-            <div class="game-card-body">
-              <div class="game-team-row">
-                <span class="game-team-name">${game.away}</span>
-                <span class="game-team-score">${game.awayScore}</span>
-              </div>
-              <div class="game-team-row">
-                <span class="game-team-name">${game.home}</span>
-                <span class="game-team-score">${game.homeScore}</span>
-              </div>
-            </div>
-            <div class="game-card-footer">
-              <div class="game-commentary-text" title="${game.commentary}">${game.commentary}</div>
-            </div>
-          `;
-          slider.appendChild(card);
-        });
-
-        sportsNewsList.appendChild(slider);
-      }
-    }
 
     const activeData = sportsData[currentSportsTab] || [];
     
@@ -772,18 +732,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // (イベントスケジュール描画関数は不要のため廃止されました)
 
-  // F. 下部ニュースカルーセル描画
-  function renderTicker(data) {
-    carouselTrack.innerHTML = '';
-    const tickerItems = [];
-    
-    // 一般ニュース
-    data.topNews.forEach(n => {
-      tickerItems.push({
-        source: n.sources[0]?.publisher || '主要',
-        title: n.aiTitle,
-        item: {
-          category: 'トップニュース',
           aiTitle: n.aiTitle,
           aiSummary: n.aiSummary,
           sources: n.sources,
@@ -1026,7 +974,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // カード内アクションボタン（シェア ＆ ブックマーク）のHTML
+  // カード内アクションボタン（ブックマーク）のHTML
   function addCardActionsHtml(defaultUrl, title) {
     if (!defaultUrl || defaultUrl === '#') return '';
     const isBookmarked = userBookmarks.has(defaultUrl);
@@ -1037,15 +985,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-        <button class="card-action-btn share-btn" title="共有する" data-url="${defaultUrl}" data-title="${title}">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7L15.96 7.3c.51.48 1.2.78 1.96.78 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.53 9.33 6.84 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.84 0 1.53-.33 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
-        </button>
       </div>
     `;
   }
 
   function bindCardActions(cardElement) {
-    const shareBtn = cardElement.querySelector('.share-btn');
     const bookmarkBtn = cardElement.querySelector('.bookmark-btn');
     
     if (bookmarkBtn) {
@@ -1053,96 +997,6 @@ document.addEventListener('DOMContentLoaded', () => {
         e.stopPropagation();
         const articleId = bookmarkBtn.dataset.id;
         toggleBookmark(articleId, bookmarkBtn);
-      });
-    }
-    
-    if (shareBtn) {
-      shareBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        
-        // 既存のシェアポップアップがあれば削除
-        removeActiveSharePopup();
-        
-        const url = shareBtn.dataset.url;
-        const title = shareBtn.dataset.title;
-        
-        // ポップアップを生成
-        const popup = document.createElement('div');
-        popup.className = 'share-popup';
-        popup.id = 'active-share-popup';
-        
-        popup.innerHTML = `
-          <button class="share-popup-item x-share-item">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            <span>Xでシェア</span>
-          </button>
-          <button class="share-popup-item line-share-item">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.564.39.084.922.258 1.057.592.12.303.079.778.038 1.082l-.169 1.022c-.051.306-.245 1.196 1.057.653 1.302-.543 7.022-4.135 9.579-7.079 2.278-2.617 3.402-5.148 3.402-7.834z"/></svg>
-            <span>LINEで送る</span>
-          </button>
-          <button class="share-popup-item copy-link-item">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
-            <span class="copy-text">リンクをコピー</span>
-          </button>
-        `;
-        
-        document.body.appendChild(popup);
-        
-        // 位置の計算
-        const rect = shareBtn.getBoundingClientRect();
-        const popupHeight = 110;
-        const popupWidth = 150;
-        
-        let top = rect.bottom + window.scrollY + 6;
-        let left = rect.right + window.scrollX - popupWidth;
-        
-        // 画面の下端からはみ出る場合は、ボタンの上に表示
-        if (top - window.scrollY + popupHeight > window.innerHeight) {
-          top = rect.top + window.scrollY - popupHeight - 6;
-        }
-        
-        popup.style.top = `${top}px`;
-        popup.style.left = `${left}px`;
-        
-        // フェードイン表示
-        requestAnimationFrame(() => {
-          popup.classList.add('show');
-        });
-        
-        // Xでシェア
-        popup.querySelector('.x-share-item').addEventListener('click', (ev) => {
-          ev.stopPropagation();
-          const xUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`;
-          window.open(xUrl, '_blank', 'noopener,noreferrer');
-          removeActiveSharePopup();
-        });
-        
-        // LINEで送る
-        popup.querySelector('.line-share-item').addEventListener('click', (ev) => {
-          ev.stopPropagation();
-          const lineUrl = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}`;
-          window.open(lineUrl, '_blank', 'noopener,noreferrer');
-          removeActiveSharePopup();
-        });
-        
-        // コピー
-        popup.querySelector('.copy-link-item').addEventListener('click', async (ev) => {
-          ev.stopPropagation();
-          try {
-            await navigator.clipboard.writeText(url);
-            const itemBtn = popup.querySelector('.copy-link-item');
-            const textSpan = itemBtn.querySelector('.copy-text');
-            itemBtn.classList.add('copied');
-            textSpan.textContent = 'コピー完了！';
-            
-            setTimeout(() => {
-              removeActiveSharePopup();
-            }, 800);
-          } catch (err) {
-            console.error('Failed to copy link:', err);
-            alert('コピーに失敗しました。');
-          }
-        });
       });
     }
   }
@@ -1318,80 +1172,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- 8. フッターカルーセルの制御ロジック ---
-  let itemsPerView = 3;
-
-  function updateItemsPerView() {
-    const width = window.innerWidth;
-    if (width <= 768) {
-      itemsPerView = 1;
-    } else if (width <= 1200) {
-      itemsPerView = 2;
-    } else {
-      itemsPerView = 3;
-    }
-  }
-
-  function initCarousel() {
-    if (carouselTimer) clearInterval(carouselTimer);
-    carouselIndex = 0;
-    slideCarousel(0);
-    startCarouselAutoPlay();
-  }
-
-  function slideCarousel(index) {
-    const cards = carouselTrack.querySelectorAll('.ticker-mini-card');
-    if (cards.length === 0) return;
-    
-    updateItemsPerView();
-    const maxIndex = Math.max(0, cards.length - itemsPerView);
-    
-    if (index < 0) {
-      carouselIndex = maxIndex;
-    } else if (index > maxIndex) {
-      carouselIndex = 0;
-    } else {
-      carouselIndex = index;
-    }
-
-    const cardWidth = cards[0].offsetWidth;
-    const offset = carouselIndex * (cardWidth + 16);
-    carouselTrack.style.transform = `translateX(-${offset}px)`;
-  }
-
-  function startCarouselAutoPlay() {
-    if (carouselTimer) clearInterval(carouselTimer);
-    carouselTimer = setInterval(() => {
-      slideCarousel(carouselIndex + 1);
-    }, 5000);
-  }
-
-  function stopCarouselAutoPlay() {
-    if (carouselTimer) {
-      clearInterval(carouselTimer);
-      carouselTimer = null;
-    }
-  }
-
-  tickerPrevBtn.addEventListener('click', () => {
-    stopCarouselAutoPlay();
-    slideCarousel(carouselIndex - 1);
-    startCarouselAutoPlay();
-  });
-
-  tickerNextBtn.addEventListener('click', () => {
-    stopCarouselAutoPlay();
-    slideCarousel(carouselIndex + 1);
-    startCarouselAutoPlay();
-  });
-
-  footerContainer.addEventListener('mouseenter', stopCarouselAutoPlay);
-  footerContainer.addEventListener('mouseleave', startCarouselAutoPlay);
-
-  window.addEventListener('resize', () => {
-    slideCarousel(carouselIndex);
-  });
-
   // --- 8-2. 天気・地名ホバーポップアップ制御 ---
   const weatherCityWrapper = document.getElementById('weather-city-wrapper');
   const weatherInfoWrapper = document.getElementById('weather-info-wrapper');
@@ -1464,26 +1244,6 @@ document.addEventListener('DOMContentLoaded', () => {
       cityNewsList.appendChild(item);
     });
   }
-
-  // シェアポップアップ削除用のグローバルヘルパー
-  function removeActiveSharePopup() {
-    const existing = document.getElementById('active-share-popup');
-    if (existing) {
-      existing.id = 'removing-share-popup'; // 即座にIDを切り替えて競合を回避
-      existing.classList.remove('show');
-      setTimeout(() => {
-        existing.remove();
-      }, 200);
-    }
-  }
-
-  // ドキュメントクリックでシェアポップアップを閉じる
-  document.addEventListener('click', (e) => {
-    const popup = document.getElementById('active-share-popup');
-    if (popup && !popup.contains(e.target)) {
-      removeActiveSharePopup();
-    }
-  });
 
   // --- 10. 認証＆ブックマーク連携機能 ---
 
@@ -1679,7 +1439,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // 画面のしおりの見た目を更新（トグルアニメーション）
       // 同一IDのしおりボタンが画面に複数あればすべて更新する
-      document.querySelectorAll(`button[data-id="${CSS.escape(articleId)}"]`).forEach(btn => {
+      document.querySelectorAll(`button[data-id="${articleId}"]`).forEach(btn => {
         const svg = btn.querySelector('svg');
         if (isBookmarked) {
           btn.classList.remove('active');

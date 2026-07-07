@@ -763,7 +763,8 @@ async function collectAndCluster() {
         title: aiContent.title,
         summary: aiContent.summary,
         sources: [{ publisher: topHeadline.feedName, title: topHeadline.title, url: topHeadline.link }],
-        image: null
+        image: null,
+        pubDate: topHeadline.pubDate || new Date().toISOString()
       };
     }
 
