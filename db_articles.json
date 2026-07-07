@@ -4,7 +4,7 @@
     "originalTitle": "RSSのURL が変更になりましたので、設定の変更をお願いいたします（旧RSSは2018年6月4日に終了いたしました）",
     "link": "https://mainichi.jp/rss/?20180611",
     "contentSnippet": "",
-    "pubDate": "2026-07-07T13:03:45.000Z",
+    "pubDate": "2026-07-07T13:10:53.000Z",
     "category": "sports",
     "feedName": "毎日新聞スポーツ",
     "weight": 5,
@@ -753,11 +753,11 @@
     ]
   },
   {
-    "title": "都内生息のクマ、最大378頭　「檜原都民の村」登山道を通行止め",
-    "originalTitle": "都内生息のクマ、最大378頭　「檜原都民の村」登山道を通行止め",
+    "title": "都内生息のクマ、最大378頭　「檜原都民の森」登山道を通行止め",
+    "originalTitle": "都内生息のクマ、最大378頭　「檜原都民の森」登山道を通行止め",
     "link": "https://mainichi.jp/articles/20260707/k00/00m/040/342000c",
     "contentSnippet": "",
-    "pubDate": "2026-07-07T11:02:32.000Z",
+    "pubDate": "2026-07-07T13:09:28.000Z",
     "category": "general",
     "feedName": "毎日新聞ニュース",
     "weight": 6,
@@ -1390,7 +1390,7 @@
     "originalTitle": "自民・維新が定数削減法案成立見送り確認　皇室典範改正案の審議優先",
     "link": "http://www.asahi.com/articles/ASV773C36V77UTFK00SM.html?ref=rss",
     "contentSnippet": "",
-    "pubDate": "2026-07-07T11:20:39.000Z",
+    "pubDate": "2026-07-07T12:48:38.000Z",
     "category": "general",
     "feedName": "朝日新聞ニュース",
     "weight": 6,
@@ -10132,6 +10132,57 @@
       "大ベテラン",
       "一撃",
       "空気変"
+    ]
+  },
+  {
+    "title": "浮上した違法あっせん疑惑　「保釈中の男」とカンボジアでの臓器移植",
+    "originalTitle": "浮上した違法あっせん疑惑　「保釈中の男」とカンボジアでの臓器移植",
+    "link": "http://www.asahi.com/articles/ASV771PG0V77UTIL00GM.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-07T12:52:47.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "浮上",
+      "違法",
+      "疑惑",
+      "保釈中",
+      "カンボジア",
+      "臓器移植"
+    ]
+  },
+  {
+    "title": "「日本最南端」宮崎・五ケ瀬スキー場の廃止決定　町「公費投入困難」",
+    "originalTitle": "「日本最南端」宮崎・五ケ瀬スキー場の廃止決定　町「公費投入困難」",
+    "link": "http://www.asahi.com/articles/ASV773HCBV77TNAB005M.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-07T12:45:23.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "日本最南端",
+      "宮崎・五ケ瀬スキー場",
+      "廃止決定",
+      "公費投入困難"
+    ]
+  },
+  {
+    "title": "コースターを広げるとドリンクホルダーに。コーヒー持ち歩き問題の解決策",
+    "originalTitle": "コースターを広げるとドリンクホルダーに。コーヒー持ち歩き問題の解決策",
+    "link": "https://www.gizmodo.jp/article/drink_holder_strap_mimpi_color-codes/",
+    "contentSnippet": "夏場、コンビニで買ったアイスコーヒーを持ち運ぶと手がジンジンに冷たくなるという経験ありますよね。そうでなくても、荷物がいっぱいだとコンビニからオフィスまでの持ち歩きがちょっと面倒になります。3Dプリンター製のドリンクホルダー「Color C…",
+    "pubDate": "Tue, 07 Jul 2026 13:00:00 GMT",
+    "category": "trending",
+    "feedName": "ギズモード・ジャパン",
+    "weight": 5,
+    "keywords": [
+      "コースター",
+      "ドリンクホルダー",
+      "コーヒー持",
+      "問題",
+      "解決策"
     ]
   }
 ]

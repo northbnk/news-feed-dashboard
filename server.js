@@ -65,15 +65,28 @@ const FEEDS = {
   general: [
     { name: 'NHK社会ニュース', url: 'https://www3.nhk.or.jp/rss/news/cat2.xml', weight: 8 },
     { name: 'NHK経済ニュース', url: 'https://www3.nhk.or.jp/rss/news/cat5.xml', weight: 7 },
+    { name: '日経ビジネス電子版', url: 'https://business.nikkei.com/RSS/index.rdf', weight: 7 },
+    { name: 'BBCニュース（日本・国際）', url: 'https://feeds.bbci.co.uk/japanese/rss.xml', weight: 7 },
     { name: '毎日新聞ニュース', url: 'https://mainichi.jp/rss/etc/mainichi-flash.rss', weight: 6 },
     { name: '朝日新聞ニュース', url: 'https://www.asahi.com/rss/asahi/newsheadlines.rdf', weight: 6 },
-    { name: '東洋経済オンライン', url: 'https://toyokeizai.net/list/feed/rss', weight: 6 }
+    { name: '東洋経済オンライン', url: 'https://toyokeizai.net/list/feed/rss', weight: 6 },
+    { name: 'ダイヤモンド・オンライン', url: 'https://diamond.jp/list/feed/rss', weight: 6 }
+  ],
+  tech: [
+    { name: 'ITmedia NEWS', url: 'https://rss.itmedia.co.jp/rss/2.0/news.xml', weight: 6 },
+    { name: '＠IT（アットマーク・アイティ）', url: 'https://rss.itmedia.co.jp/rss/2.0/atit.xml', weight: 6 },
+    { name: 'Publickey', url: 'https://www.publickey1.jp/atom.xml', weight: 6 },
+    { name: 'Qiita（トレンド）', url: 'https://qiita.com/popular-items.atom', weight: 6 },
+    { name: 'Zenn（トレンド）', url: 'https://zenn.dev/feed', weight: 6 }
   ],
   trending: [
     { name: 'ねとらぼ', url: 'https://rss.itmedia.co.jp/rss/2.0/netlab.xml', weight: 5 },
     { name: 'ギズモード・ジャパン', url: 'https://www.gizmodo.jp/index.xml', weight: 5 },
     { name: 'GIGAZINE', url: 'https://gigazine.net/news/rss_2.0/', weight: 5 },
-    { name: 'Impress Watch', url: 'https://www.watch.impress.co.jp/data/rss/1.0/ipw/feed.rdf', weight: 5 }
+    { name: 'Impress Watch', url: 'https://www.watch.impress.co.jp/data/rss/1.0/ipw/feed.rdf', weight: 5 },
+    { name: 'ライフハッカー・ジャパン', url: 'https://www.lifehacker.jp/index.xml', weight: 5 },
+    { name: 'PC Watch', url: 'https://pc.watch.impress.co.jp/data/rss/1.0/pcw/feed.rdf', weight: 5 },
+    { name: 'ケータイ Watch', url: 'https://k-tai.watch.impress.co.jp/data/rss/1.0/ktw/feed.rdf', weight: 5 }
   ],
   sports: [
     { name: 'NHKスポーツ', url: 'https://www3.nhk.or.jp/rss/news/cat7.xml', weight: 5 },
@@ -834,7 +847,7 @@ async function collectAndCluster() {
     }
 
     // 3. 話題のニュースのクラスタリング
-    const trendingArticles = filteredArticles.filter(a => a.category === 'trending');
+    const trendingArticles = filteredArticles.filter(a => a.category === 'trending' || a.category === 'tech');
     const trendingClusters = sortClustersByDate(clusterArticles(trendingArticles));
     
     console.log(`話題のニュース: ${trendingClusters.length} 件のトピックに集約 (多様性を考慮して上位8件を格納)`);
@@ -868,7 +881,7 @@ async function collectAndCluster() {
       const summaryLower = aiContent.summary.toLowerCase();
       const textToCheck = titleLower + ' ' + summaryLower;
       
-      const isTech = cluster.articles.some(a => a.feedName.includes('ギズモード')) || textToCheck.match(/(apple|iphone|android|google|ai|チャットgpt|gemini|スマホ|ガジェット|pc|テクノロジー|科学|宇宙|開発|ロボ|最新技術)/);
+      const isTech = cluster.articles.some(a => a.category === 'tech' || a.feedName.includes('ギズモード')) || textToCheck.match(/(apple|iphone|android|google|ai|チャットgpt|gemini|スマホ|ガジェット|pc|テクノロジー|科学|宇宙|開発|ロボ|最新技術)/);
       const isEntertainment = textToCheck.match(/(アニメ|映画|漫画|ゲーム|コミック|声優|アイドル|タレント|ドラマ|公開|発売|主演|キャスト|劇場)/);
       if (isTech) {
         genre = 'tech';
@@ -1151,7 +1164,7 @@ app.get('/api/curated', async (req, res) => {
       if (isNaN(pubTime) || pubTime < ttlLimit) return false;
       if (category) {
         if (category === 'general' && !['general', 'headline'].includes(art.category)) return false;
-        if (category === 'trending' && art.category !== 'trending') return false;
+        if (category === 'trending' && !['trending', 'tech'].includes(art.category)) return false;
         if (category !== 'general' && category !== 'trending' && art.category !== category) return false;
       }
       return true;
