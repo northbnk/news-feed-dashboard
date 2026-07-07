@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-07T13:11:54.058Z",
+  "timestamp": "2026-07-07T13:20:07.299Z",
   "headline": {
     "title": "台風9号 非常に強い勢力を維持し沖縄の先島諸島に接近へ",
     "summary": "大型で非常に強い台風9号は10日・金曜日から11日・土曜日ごろにかけて、非常に強い勢力を維持したまま、沖縄県の先島諸島に近づく見込みです。気象庁は一部の住宅が倒壊するような猛烈な風が吹くおそれがあると...",
@@ -15,37 +15,7 @@
   },
   "topNews": [
     {
-      "id": "cluster_1783429914062_p7faw",
-      "aiTitle": "都内生息のクマ、最大378頭　「檜原都民の森」登山道を通行止め",
-      "aiSummary": "詳細記事を参照してください。",
-      "genre": "society",
-      "sources": [
-        {
-          "publisher": "毎日新聞ニュース",
-          "title": "都内生息のクマ、最大378頭　「檜原都民の森」登山道を通行止め",
-          "url": "https://mainichi.jp/articles/20260707/k00/00m/040/342000c"
-        }
-      ],
-      "hatebu": 0,
-      "weight": 6
-    },
-    {
-      "id": "cluster_1783429914067_z5qq3",
-      "aiTitle": "巨人、代打の坂本が逆転二塁打　大ベテランの一撃が空気変える",
-      "aiSummary": "詳細記事を参照してください。",
-      "genre": "society",
-      "sources": [
-        {
-          "publisher": "毎日新聞ニュース",
-          "title": "巨人、代打の坂本が逆転二塁打　大ベテランの一撃が空気変える",
-          "url": "https://mainichi.jp/articles/20260707/k00/00m/050/382000c"
-        }
-      ],
-      "hatebu": 0,
-      "weight": 6
-    },
-    {
-      "id": "cluster_1783429914067_iauq6",
+      "id": "cluster_1783430407456_d06w8",
       "aiTitle": "裁判長「自然死に見せかけ悪質」　茨城・介護施設2人殺害判決",
       "aiSummary": "詳細記事を参照してください。",
       "genre": "society",
@@ -60,7 +30,37 @@
       "weight": 6
     },
     {
-      "id": "cluster_1783429914067_yqgw2",
+      "id": "cluster_1783430407340_psu1y",
+      "aiTitle": "都内生息のクマ、最大378頭　「檜原都民の森」登山道を通行止め",
+      "aiSummary": "詳細記事を参照してください。",
+      "genre": "society",
+      "sources": [
+        {
+          "publisher": "毎日新聞ニュース",
+          "title": "都内生息のクマ、最大378頭　「檜原都民の森」登山道を通行止め",
+          "url": "https://mainichi.jp/articles/20260707/k00/00m/040/342000c"
+        }
+      ],
+      "hatebu": 0,
+      "weight": 6
+    },
+    {
+      "id": "cluster_1783430407457_g3x5k",
+      "aiTitle": "巨人、代打の坂本が逆転二塁打　大ベテランの一撃が空気変える",
+      "aiSummary": "詳細記事を参照してください。",
+      "genre": "society",
+      "sources": [
+        {
+          "publisher": "毎日新聞ニュース",
+          "title": "巨人、代打の坂本が逆転二塁打　大ベテランの一撃が空気変える",
+          "url": "https://mainichi.jp/articles/20260707/k00/00m/050/382000c"
+        }
+      ],
+      "hatebu": 0,
+      "weight": 6
+    },
+    {
+      "id": "cluster_1783430407455_de6ir",
       "aiTitle": "臓器移植法違反の疑い NPO法人の元理事ら3人を逮捕 警視庁",
       "aiSummary": "都内に住む70代の男性にカンボジアでの臓器移植手術をあっせんし、その対価として1200万円余りを受け取ったとして、NPO法人の元理事や一般社団法人の役員ら3人が臓器移植法違反の疑いで警視庁に逮捕されま...",
       "genre": "society",
@@ -75,7 +75,7 @@
       "weight": 10
     },
     {
-      "id": "cluster_1783429914067_y6vpc",
+      "id": "cluster_1783430407455_efz3b",
       "aiTitle": "空転の国会どうなる　定数削減法案見送りで与野党の交渉焦点に",
       "aiSummary": "詳細記事を参照してください。",
       "genre": "politics",
@@ -90,7 +90,7 @@
       "weight": 6
     },
     {
-      "id": "cluster_1783429914062_qcroc",
+      "id": "cluster_1783430407340_q5gpk",
       "aiTitle": "浮上した違法あっせん疑惑　「保釈中の男」とカンボジアでの臓器移植",
       "aiSummary": "詳細記事を参照してください。",
       "genre": "politics",
@@ -115,7 +115,7 @@
       "weight": 6
     },
     {
-      "id": "cluster_1783429914063_zhg2r",
+      "id": "cluster_1783430407389_3ut4d",
       "aiTitle": "自民・維新が定数削減法案成立見送り確認　皇室典範改正案の審議優先",
       "aiSummary": "詳細記事を参照してください。",
       "genre": "politics",
@@ -135,29 +135,44 @@
       "weight": 6
     },
     {
-      "id": "cluster_1783429914062_qrjis",
-      "aiTitle": "日本最南端のスキー場が廃業へ　宮崎・五ケ瀬町長「苦渋の判断」",
-      "aiSummary": "詳細記事を参照してください。",
-      "genre": "society",
+      "id": "cluster_1783430407457_uq5no",
+      "aiTitle": "米大統領 NATO首脳会議出席へ イラン・ウクライナ情勢など焦点",
+      "aiSummary": "アメリカのトランプ大統領はNATO＝北大西洋条約機構の首脳会議に出席するため日本時間の7日夜、トルコに到着しました。イラン情勢やウクライナ情勢などをめぐりどのような姿勢を示すのか、注目されます。",
+      "genre": "politics",
       "sources": [
         {
-          "publisher": "朝日新聞ニュース",
-          "title": "「日本最南端」宮崎・五ケ瀬スキー場の廃止決定　町「公費投入困難」",
-          "url": "http://www.asahi.com/articles/ASV773HCBV77TNAB005M.html?ref=rss"
-        },
-        {
-          "publisher": "毎日新聞ニュース",
-          "title": "日本最南端のスキー場が廃業へ　宮崎・五ケ瀬町長「苦渋の判断」",
-          "url": "https://mainichi.jp/articles/20260707/k00/00m/020/343000c"
+          "publisher": "NHK主要ニュース",
+          "title": "米大統領 NATO首脳会議出席へ イラン・ウクライナ情勢など焦点",
+          "url": "http://www3.nhk.or.jp/news/html/20260707/k10015170641000.html"
         }
       ],
       "hatebu": 0,
-      "weight": 6
+      "weight": 10
     }
   ],
   "trendingNews": [
     {
-      "id": "cluster_1783429914695_a50cw",
+      "id": "cluster_1783430408394_e0xo8",
+      "aiTitle": "「いつか使うかも」で増えたケーブル整理に。手放す判断がラクになるUSBケーブルテスター",
+      "aiSummary": "TreedixのUSBケーブルテスターは、ケーブルのスペックをわかりやすく表示してくれるアイテム。増えすぎたケーブルの断捨離などに大活躍します。使ってみた感想をお届けします。",
+      "genre": "culture",
+      "sources": [
+        {
+          "publisher": "ライフハッカー・ジャパン",
+          "title": "「いつか使うかも」で増えたケーブル整理に。手放す判断がラクになるUSBケーブルテスター",
+          "url": "https://www.lifehacker.jp/article/2607-lht-treedix-usb-cable-tester/"
+        }
+      ],
+      "sns": {
+        "x": 313,
+        "threads": 49,
+        "hatebu": 19
+      },
+      "emotion": "hot",
+      "weight": 5
+    },
+    {
+      "id": "cluster_1783430408393_3nayf",
       "aiTitle": "AMDのAI開発キット「Ryzen AI Halo」レビューがさっそく登場、約64万円で128GBの超大容量ユニファイドメモリ＆Zen 5CPU＆Radeon 8060S GPUを搭載した強力ミニワークステーション",
       "aiSummary": "2026年1月に開催されたコンピューター見本市・CES 2026におけるAMDの基調講演で、リファレンス用のAI開発者向けミニPC「AMD Ryzen AI Halo」が発表され、同年7月10日(金)...",
       "genre": "tech",
@@ -169,15 +184,15 @@
         }
       ],
       "sns": {
-        "x": 719,
-        "threads": 135,
-        "hatebu": 71
+        "x": 554,
+        "threads": 114,
+        "hatebu": 45
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783429914695_b3ij4",
+      "id": "cluster_1783430408393_vmq81",
       "aiTitle": "コースターを広げるとドリンクホルダーに。コーヒー持ち歩き問題の解決策",
       "aiSummary": "夏場、コンビニで買ったアイスコーヒーを持ち運ぶと手がジンジンに冷たくなるという経験ありますよね。そうでなくても、荷物がいっぱいだとコンビニからオフィスまでの持ち歩きがちょっと面倒になります。3Dプリン...",
       "genre": "tech",
@@ -189,15 +204,75 @@
         }
       ],
       "sns": {
-        "x": 441,
-        "threads": 93,
-        "hatebu": 42
+        "x": 334,
+        "threads": 65,
+        "hatebu": 23
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783429914695_ot6k5",
+      "id": "cluster_1783430408389_jc91l",
+      "aiTitle": "「Oura Ring 4」が最大44％オフの3万6960円から　Amazonプライムデー",
+      "aiSummary": "今回のセールで最も安いプロジェクターかも？ちょっと何が起きているのか、僕もよく分かっていないし、もしかしたらスグに売り切れちゃうかもしれないので、値段から行きます。ソニーのメモリーストレージ事業から独立したストレージ・映像機器ブランド、ネク...",
+      "genre": "tech",
+      "sources": [
+        {
+          "publisher": "ライフハッカー・ジャパン",
+          "title": "Amazonプライムデー 電動シェーバー頂上決戦が開幕。さあ、どれを選ぶ？",
+          "url": "https://www.lifehacker.jp/article/amazon-sale-grooming-tools_1/"
+        },
+        {
+          "publisher": "ギズモード・ジャパン",
+          "title": "Amazonプライムデーで78％OFFはバグじゃないか？ 寝室シアターが7,980円で作れるぞ！",
+          "url": "https://www.gizmodo.jp/article/amazon-primeday-projector-nx1/"
+        },
+        {
+          "publisher": "ライフハッカー・ジャパン",
+          "title": "AirPods Pro 3、4倍ノイキャンにライブ翻訳……日常を変える進化だった【Amazonプライムデー】",
+          "url": "https://www.lifehacker.jp/article/amazon-sale-apple-air-pods-pro3-prime-day/"
+        },
+        {
+          "publisher": "ライフハッカー・ジャパン",
+          "title": "Amazonプライムデーでコレ、狙ってます！編集部員がリアルにいま欲しいモノ（とその理由）",
+          "url": "https://www.lifehacker.jp/article/amazon-sale-primeday-how-to-want/"
+        },
+        {
+          "publisher": "ケータイ Watch",
+          "title": "AmazonプライムデーでNIMASOのスマホアクセサリー最大36％オフ",
+          "url": "https://k-tai.watch.impress.co.jp/docs/news/sale/2122692.html"
+        },
+        {
+          "publisher": "ケータイ Watch",
+          "title": "「Oura Ring 4」が最大44％オフの3万6960円から　Amazonプライムデー",
+          "url": "https://k-tai.watch.impress.co.jp/docs/news/sale/2122711.html"
+        },
+        {
+          "publisher": "ケータイ Watch",
+          "title": "Amazonプライムデーで「Notta」のAIボイスレコーダーが割引価格に、本誌限定クーポンも[Sponsored]",
+          "url": "https://k-tai.watch.impress.co.jp/docs/topic/special/2117558.html"
+        },
+        {
+          "publisher": "ケータイ Watch",
+          "title": "ESRのiPadケースやマウスなどがセール、Amazonプライムデー[Sponsored]",
+          "url": "https://k-tai.watch.impress.co.jp/docs/topic/special/2116883.html"
+        },
+        {
+          "publisher": "ケータイ Watch",
+          "title": "Amazonプライムデーでオウルテック製品が最大66％オフ、準固体電池モバイルバッテリーなど",
+          "url": "https://k-tai.watch.impress.co.jp/docs/news/2122683.html"
+        }
+      ],
+      "sns": {
+        "x": 512,
+        "threads": 103,
+        "hatebu": 43
+      },
+      "emotion": "hot",
+      "weight": 5
+    },
+    {
+      "id": "cluster_1783430408393_affop",
       "aiTitle": "テックなオシボリ見つけました。冷水でも温水でも気持ちいい",
       "aiSummary": "ものすごく水を吸い込んで、絞ればそれを簡単に吐き出すことができる超強力スポンジなのに、顔が拭ける優しい肌触り。STTA（スッタ）の「テックオシボリ」（税込2,200円）を簡単に言えば、そういう製品なの...",
       "genre": "tech",
@@ -209,15 +284,15 @@
         }
       ],
       "sns": {
-        "x": 424,
-        "threads": 86,
-        "hatebu": 35
+        "x": 448,
+        "threads": 73,
+        "hatebu": 33
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783429914695_9a1qm",
+      "id": "cluster_1783430408393_v534t",
       "aiTitle": "合計5ポートのバケモノ充電器が「USB機器増えすぎ問題」を終わらせた",
       "aiSummary": "なんでもかんでもUSBの時代ですから。そう、スマホ周りだけじゃなくて、スマホ関係ない小物家電、ツールもみんなUSB-C。充電器が統一できていいのですけど、そうなるとポートが足りなくなりがち。そんなちょ...",
       "genre": "tech",
@@ -229,98 +304,58 @@
         }
       ],
       "sns": {
-        "x": 612,
-        "threads": 148,
-        "hatebu": 64
+        "x": 329,
+        "threads": 48,
+        "hatebu": 19
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783429914690_kb765",
-      "aiTitle": "PlayStationのゲームディスク廃止問題は「物理ゲームかデジタルゲームかという問題ではなく所有権の問題」というブログが注目を集める",
-      "aiSummary": "PlayStationブランドを手がけるソニー・インタラクティブエンタテインメントは2026年7月1日に、PlayStationコンソール向け新作ゲームのディスク生産が2028年1月で終了し、ゲームタ...",
-      "genre": "entertainment",
-      "sources": [
-        {
-          "publisher": "GIGAZINE",
-          "title": "PlayStationのゲームディスク廃止問題は「物理ゲームかデジタルゲームかという問題ではなく所有権の問題」というブログが注目を集める",
-          "url": "https://gigazine.net/news/20260707-game-ownership/"
-        }
-      ],
-      "sns": {
-        "x": 67,
-        "threads": 42,
-        "hatebu": 2
-      },
-      "emotion": "hot",
-      "weight": 5
-    },
-    {
-      "id": "cluster_1783429914695_4xng8",
-      "aiTitle": "ケーブル忘れがなくなるモバイルバッテリー。コスパのオバケが出てきたぞ…",
-      "aiSummary": "2025年7月12日の記事を編集して再掲載しています。なにこれ、便利すぎないか？日進月歩で進むバッテリー技術。モバイルバッテリーのトレンドも結構変わっていて、最近は「USB-Cケーブル内蔵タイプ」が人...",
-      "genre": "tech",
-      "sources": [
-        {
-          "publisher": "ギズモード・ジャパン",
-          "title": "ケーブル忘れがなくなるモバイルバッテリー。コスパのオバケが出てきたぞ…",
-          "url": "https://www.gizmodo.jp/article/ugreen_mobile_battery_built_in/"
-        }
-      ],
-      "sns": {
-        "x": 843,
-        "threads": 161,
-        "hatebu": 92
-      },
-      "emotion": "hot",
-      "weight": 5
-    },
-    {
-      "id": "cluster_1783429914690_e7zra",
-      "aiTitle": "完全に修理可能・コンパクト・詰め替え可能なインクで印刷コストも削減できる「Openprinter」、オープンソースで独自のパーツも自作可能",
-      "aiSummary": "アメリカなどでは、企業の製品を消費者が自由に修理できるようにする「修理する権利」の確立が望まれています。修理する権利で頻繁にやり玉に挙がるのが、純正のインクしか受け付けないことが多い「プリンター」。こ...",
+      "id": "cluster_1783430408394_htqru",
+      "aiTitle": "疲れない、蒸れない。Ankerのオープンイヤーイヤホン「AeroClip」「C40i」を徹底比較！",
+      "aiSummary": "Amazonプライム感謝祭開催中！編集部が厳選したアイテムを紹介します。Ankerのオープン型イヤカフイヤホン、「AeroClip」と「C40i」どちらを選ぶ？",
       "genre": "culture",
       "sources": [
         {
-          "publisher": "GIGAZINE",
-          "title": "完全に修理可能・コンパクト・詰め替え可能なインクで印刷コストも削減できる「Openprinter」、オープンソースで独自のパーツも自作可能",
-          "url": "https://gigazine.net/news/20260707-openprinter/"
+          "publisher": "ライフハッカー・ジャパン",
+          "title": "疲れない、蒸れない。Ankerのオープンイヤーイヤホン「AeroClip」「C40i」を徹底比較！",
+          "url": "https://www.lifehacker.jp/article/amazon-sale-anker-open-ear/"
         }
       ],
       "sns": {
-        "x": 72,
-        "threads": 26,
-        "hatebu": 2
+        "x": 77,
+        "threads": 35,
+        "hatebu": 1
       },
       "emotion": "approved",
       "weight": 5
     },
     {
-      "id": "cluster_1783429914694_9j5cj",
-      "aiTitle": "京王、京プラ八王子内温浴施設でヤマメ養殖　「生物学的推論AI」で最適化",
-      "aiSummary": "京王電鉄とNōka.AIは、「奥多摩やまめ養殖最適化プロジェクト」を7月8日に開始する。奥多摩やまめの成長促進、飼料効率改善、品質安定化を目的とした共同研究で、日本初という「生物学的推論AI」を活用し...",
-      "genre": "tech",
+      "id": "cluster_1783430408394_0w79h",
+      "aiTitle": "ケーブルが散らからない。着脱ラクなマグネットホルダーが便利だった",
+      "aiSummary": "山崎実業・smartの「マグネットケーブルホルダー」は、散らかりがちな充電ケーブルをマグネットで整理整頓できる便利なアイテムです。L字型のベースプレートは粘着テープでデスク側面や壁にカンタンに設置可能...",
+      "genre": "culture",
       "sources": [
         {
-          "publisher": "Impress Watch",
-          "title": "京王、京プラ八王子内温浴施設でヤマメ養殖　「生物学的推論AI」で最適化",
-          "url": "https://www.watch.impress.co.jp/docs/news/2123206.html"
+          "publisher": "ライフハッカー・ジャパン",
+          "title": "ケーブルが散らからない。着脱ラクなマグネットホルダーが便利だった",
+          "url": "https://www.lifehacker.jp/article/2607-amazon-yamazaki-smartmagnetcableholder/"
         }
       ],
       "sns": {
-        "x": 692,
-        "threads": 135,
-        "hatebu": 71
+        "x": 611,
+        "threads": 119,
+        "hatebu": 67
       },
-      "emotion": "surprised",
+      "emotion": "hot",
       "weight": 5
     }
   ],
   "sports": {
     "baseball": [
       {
-        "id": "cluster_1783429915328_l8j78",
+        "id": "cluster_1783430409495_oqwq6",
         "aiTitle": "プロ野球 オールスターファン投票 阪神 森下 最多79万票で選出",
         "aiSummary": "7月下旬に行われるプロ野球、オールスターゲームのファン投票の結果が発表され、セ・リーグトップの20本のホームランを打っている阪神の森下翔太選手が2年連続で最多となる79万票を集めて選出されました。",
         "sources": [
@@ -332,7 +367,7 @@
         ]
       },
       {
-        "id": "cluster_1783429915328_mxuld",
+        "id": "cluster_1783430409497_xv1cx",
         "aiTitle": "野球日本代表 次期監督の人選 NPB “ことし秋までに決定を”",
         "aiSummary": "野球日本代表の次の監督について、NPB＝日本野球機構の中村勝彦事務局長は、ことし秋までに決めたいという考えを示しました。",
         "sources": [
@@ -344,7 +379,7 @@
         ]
       },
       {
-        "id": "cluster_1783429915329_x5uwr",
+        "id": "cluster_1783430409497_yltwa",
         "aiTitle": "【プロ野球結果】ソフトバンク 近藤が2本のスリーランHRの活躍",
         "aiSummary": "プロ野球は6試合が行われ、パ・リーグ首位のソフトバンクは近藤健介選手が2本のスリーランホームランを打ち6打点の活躍でロッテに勝ちました。",
         "sources": [
@@ -358,7 +393,7 @@
     ],
     "mlb": [
       {
-        "id": "cluster_1783429915328_yutq4",
+        "id": "cluster_1783430409495_9xmj2",
         "aiTitle": "ドジャース大谷翔平19号 大リーグ通算300号まであと1本",
         "aiSummary": "大リーグ、ドジャースの大谷翔平選手がロッキーズ戦に先発出場し、通算300号まであと1本に迫る19号ホームランを含む3安打4打点の活躍でチームの勝利に貢献しました。",
         "sources": [
@@ -370,7 +405,7 @@
         ]
       },
       {
-        "id": "cluster_1783429915328_b0485",
+        "id": "cluster_1783430409497_46zem",
         "aiTitle": "大谷翔平 復帰試合でタイムリーヒット チームは連勝ストップ",
         "aiSummary": "大リーグ、ドジャースの大谷翔平選手が自身32歳の誕生日となる5日のパドレス戦で2試合ぶりに復帰し、タイムリーヒットで打点「1」をマークしました。",
         "sources": [
@@ -382,7 +417,7 @@
         ]
       },
       {
-        "id": "cluster_1783429915329_85g4n",
+        "id": "cluster_1783430409497_e3c47",
         "aiTitle": "カブス 鈴木誠也 4打数ノーヒット チームは逆転勝ち",
         "aiSummary": "大リーグ、カブスの鈴木誠也選手はカーディナルス戦で4打数ノーヒットに終わりましたが、チームは逆転勝ちで連敗を2で止めました。",
         "sources": [
@@ -396,7 +431,7 @@
     ],
     "soccer": [
       {
-        "id": "cluster_1783429915328_bij3p",
+        "id": "cluster_1783430409496_z6atn",
         "aiTitle": "W杯 見どころ【7月7日】ポルトガルとスペイン 8強かけ隣国対決",
         "aiSummary": "サッカーワールドカップ北中米大会で、ポルトガル代表のクリスチアーノ・ロナウド選手が決勝トーナメント2回戦を翌日に控えた公式会見で「最後になるだろう。この大会を楽しみ、次が最後の試合にならないように願う...",
         "sources": [
@@ -433,7 +468,7 @@
         ]
       },
       {
-        "id": "cluster_1783429915328_igdhr",
+        "id": "cluster_1783430409496_sh33y",
         "aiTitle": "サッカーW杯アメリカ代表 処分猶予の選手 ベルギー戦先発出場",
         "aiSummary": "サッカーワールドカップ北中米大会で、レッドカードによる出場停止の処分を猶予されたアメリカ代表のバログン選手が、決勝トーナメント2回戦のベルギー戦で先発メンバーに入りました。",
         "sources": [
@@ -445,7 +480,7 @@
         ]
       },
       {
-        "id": "cluster_1783429915328_r2zpm",
+        "id": "cluster_1783430409497_tqvyh",
         "aiTitle": "Ｗ杯1次リーグ敗退の韓国 サッカー協会の会長が辞任",
         "aiSummary": "サッカーワールドカップ北中米大会で1次リーグ敗退に終わった韓国では、責任をとって韓国サッカー協会の会長が6日、辞任しました。韓国では、代表監督の選考過程が不透明だなどと批判が相次いでいて、論争が続いて...",
         "sources": [
@@ -457,7 +492,7 @@
         ]
       },
       {
-        "id": "cluster_1783429915328_e8nd2",
+        "id": "cluster_1783430409497_1ocn2",
         "aiTitle": "バスケ男子日本代表 韓国に79-81の惜敗 課題残す",
         "aiSummary": "バスケットボール男子の日本代表は、来年開催されるワールドカップのアジア1次予選の最終戦で韓国に79対81で敗れました。",
         "sources": [
@@ -469,7 +504,7 @@
         ]
       },
       {
-        "id": "cluster_1783429915328_mm50n",
+        "id": "cluster_1783430409497_5xov7",
         "aiTitle": "韓国で「サッカー革新委員会」発足 W杯1次リーグ敗退受け",
         "aiSummary": "サッカーワールドカップ北中米大会で1次リーグ敗退に終わった韓国では、政府が、サッカー協会の改革や代表チームの強化を進めるための委員会を発足させました。韓国では、代表監督の選考過程が不透明だなどと批判が...",
         "sources": [
@@ -483,7 +518,7 @@
     ],
     "seasonal": [
       {
-        "id": "cluster_1783429915328_wrvot",
+        "id": "cluster_1783430409493_iupv0",
         "aiTitle": "RSSのURL が変更になりましたので、設定の変更をお願いいたします（旧RSSは2018年6月4日に終了いたしました）",
         "aiSummary": "詳細記事を参照してください。",
         "sources": [
@@ -495,7 +530,7 @@
         ]
       },
       {
-        "id": "cluster_1783429915329_9x164",
+        "id": "cluster_1783430409497_67vcp",
         "aiTitle": "J1 FC東京の佐藤龍之介 スペイン1部バレンシアへ移籍決定",
         "aiSummary": "サッカーJ1、FC東京のミッドフィルダーで去年、18歳の若さで日本代表デビューを果たした佐藤龍之介選手がスペイン1部のバレンシアに移籍することが決まりました。",
         "sources": [
@@ -507,7 +542,7 @@
         ]
       },
       {
-        "id": "cluster_1783429915328_y8amo",
+        "id": "cluster_1783430409495_ecziw",
         "aiTitle": "テニス ウィンブルドン選手権 大坂なおみ 今夜遅く準々決勝へ",
         "aiSummary": "テニスの四大大会、ウィンブルドン選手権は女子シングルスで大坂なおみ選手が7日夜遅くに行われる予定の準々決勝に臨みます。大坂選手は勝てばこの大会で自身初のベスト4となり、日本の女子選手では1996年の伊...",
         "sources": [
@@ -519,7 +554,7 @@
         ]
       },
       {
-        "id": "cluster_1783429915328_mf8xk",
+        "id": "cluster_1783430409495_rm0w4",
         "aiTitle": "W杯 ベルギーがアメリカに勝利 FIFAの異例の判断受けた試合は",
         "aiSummary": "サッカーワールドカップ北中米大会、決勝トーナメントの2回戦、アメリカ 対 ベルギーは、ベルギーがデケートラーレ選手の2得点の活躍などで4対1で勝ち、2大会ぶりのベスト8進出を決めました。一方、アメリカ...",
         "sources": [
@@ -531,7 +566,7 @@
         ]
       },
       {
-        "id": "cluster_1783429915328_c05xd",
+        "id": "cluster_1783430409496_73xa3",
         "aiTitle": "W杯 見どころ【7月8日】連覇狙うアルゼンチン エジプトと対戦",
         "aiSummary": "サッカーワールドカップ北中米大会は大会27日目の7日（日本時間8日）、決勝トーナメント2回戦の2試合が行われます。",
         "sources": [
@@ -543,7 +578,7 @@
         ]
       },
       {
-        "id": "cluster_1783429915328_ei84w",
+        "id": "cluster_1783430409496_h0597",
         "aiTitle": "ブルージェイズ 岡本和真 8試合ぶりの20号ホームラン",
         "aiSummary": "大リーグ、ブルージェイズの岡本和真選手がジャイアンツ戦で8試合ぶりとなる20号ホームランを打ちました。日本選手が大リーグ1年目で20号に到達するのは3人目です。",
         "sources": [

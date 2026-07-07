@@ -65,7 +65,6 @@ const FEEDS = {
   general: [
     { name: 'NHK社会ニュース', url: 'https://www3.nhk.or.jp/rss/news/cat2.xml', weight: 8 },
     { name: 'NHK経済ニュース', url: 'https://www3.nhk.or.jp/rss/news/cat5.xml', weight: 7 },
-    { name: '日経ビジネス電子版', url: 'https://business.nikkei.com/RSS/index.rdf', weight: 7 },
     { name: 'BBCニュース（日本・国際）', url: 'https://feeds.bbci.co.uk/japanese/rss.xml', weight: 7 },
     { name: '毎日新聞ニュース', url: 'https://mainichi.jp/rss/etc/mainichi-flash.rss', weight: 6 },
     { name: '朝日新聞ニュース', url: 'https://www.asahi.com/rss/asahi/newsheadlines.rdf', weight: 6 },
@@ -76,7 +75,7 @@ const FEEDS = {
     { name: 'ITmedia NEWS', url: 'https://rss.itmedia.co.jp/rss/2.0/news.xml', weight: 6 },
     { name: '＠IT（アットマーク・アイティ）', url: 'https://rss.itmedia.co.jp/rss/2.0/atit.xml', weight: 6 },
     { name: 'Publickey', url: 'https://www.publickey1.jp/atom.xml', weight: 6 },
-    { name: 'Qiita（トレンド）', url: 'https://qiita.com/popular-items.atom', weight: 6 },
+    { name: 'Qiita（トレンド）', url: 'https://qiita.com/popular-items/feed.atom', weight: 6 },
     { name: 'Zenn（トレンド）', url: 'https://zenn.dev/feed', weight: 6 }
   ],
   trending: [
@@ -96,6 +95,57 @@ const FEEDS = {
     { name: 'PR TIMESリリース', url: 'https://prtimes.jp/index.rdf', weight: 4 }
   ]
 };
+
+// XML構造破損やAtomフォーマット対策のフォールバック用正規表現RSSパーサー
+function parseRssRegex(xml) {
+  const items = [];
+  const itemRegex = /<(item|entry)[\s>][\s\S]*?<\/\1>/gi;
+  let match;
+  
+  while ((match = itemRegex.exec(xml)) !== null) {
+    const content = match[0];
+    
+    // タイトルの抽出
+    const titleMatch = content.match(/<title>(?:<!\[CDATA\[([\s\S]*?)\]\]>|([\s\S]*?))<\/title>/i);
+    let title = titleMatch ? (titleMatch[1] || titleMatch[2] || '').trim() : '';
+    // HTMLエンティティデコード（簡易）
+    title = title
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'");
+    
+    // リンクの抽出
+    let link = '';
+    const linkMatch = content.match(/<link>(?:<!\[CDATA\[([\s\S]*?)\]\]>|([\s\S]*?))<\/link>/i);
+    if (linkMatch) {
+      link = (linkMatch[1] || linkMatch[2] || '').trim();
+    } else {
+      const hrefMatch = content.match(/<link\s+[^>]*?href=["']([^"']+)["']/i);
+      if (hrefMatch) link = hrefMatch[1].trim();
+    }
+    
+    // 日付の抽出
+    const dateMatch = content.match(/<(pubDate|dc:date|published|updated)>(?:<!\[CDATA\[([\s\S]*?)\]\]>|([\s\S]*?))<\/\1>/i);
+    const pubDate = dateMatch ? (dateMatch[2] || dateMatch[3] || '').trim() : new Date().toISOString();
+    
+    // 概要の抽出
+    const descMatch = content.match(/<(description|summary|content)>(?:<!\[CDATA\[([\s\S]*?)\]\]>|([\s\S]*?))<\/\1>/i);
+    const contentSnippet = descMatch ? (descMatch[2] || descMatch[3] || '').trim().replace(/<[^>]+>/g, '').substring(0, 200) : '';
+
+    if (title && link) {
+      items.push({
+        title,
+        link,
+        pubDate,
+        contentSnippet
+      });
+    }
+  }
+  
+  return { items };
+}
 
 // サイト名などのノイズを除去するクレンジング関数
 function cleanArticleTitle(title) {
@@ -685,21 +735,47 @@ async function collectAndCluster() {
       for (const feed of FEEDS[category]) {
         try {
           console.log(`取得中: ${feed.name}`);
-          const parsed = await parser.parseURL(feed.url);
-          for (const item of parsed.items) {
-            const cleanedTitle = cleanArticleTitle(item.title);
-            const pubDate = item.pubDate || item.isoDate || item.date || new Date().toISOString();
-            allArticles.push({
-              title: cleanedTitle,
-              originalTitle: item.title,
-              link: item.link,
-              contentSnippet: item.contentSnippet || item.content || '',
-              pubDate: pubDate,
-              category: category,
-              feedName: feed.name,
-              weight: feed.weight,
-              keywords: extractKeywords(cleanedTitle)
+          let parsed = null;
+          
+          try {
+            // 1. 通常パースを試みる
+            parsed = await parser.parseURL(feed.url);
+          } catch (firstErr) {
+            console.warn(`通常のパースに失敗しました (${feed.name})、サニタイズと正規表現フォールバックを試みます:`, firstErr.message);
+            // 2. パース失敗時、または不正文字を含む場合のサニタイズ ＆ フォールバックパース
+            const res = await fetch(feed.url, {
+              headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)' }
             });
+            if (!res.ok) throw new Error(`HTTP Status ${res.status}`);
+            let xmlText = await res.text();
+            
+            // XML内の未エスケープの & を &amp; に置換 (ダイヤモンド等のパースエラー対策)
+            xmlText = xmlText.replace(/&(?!amp;|lt;|gt;|quot;|apos;|#\d+;)/g, '&amp;');
+            
+            try {
+              parsed = await parser.parseString(xmlText);
+            } catch (secondErr) {
+              console.warn(`サニタイズ後のXMLパースにも失敗しました。正規表現フォールバックに移行します:`, secondErr.message);
+              parsed = parseRssRegex(xmlText);
+            }
+          }
+
+          if (parsed && parsed.items) {
+            for (const item of parsed.items) {
+              const cleanedTitle = cleanArticleTitle(item.title);
+              const pubDate = item.pubDate || item.isoDate || item.date || new Date().toISOString();
+              allArticles.push({
+                title: cleanedTitle,
+                originalTitle: item.title,
+                link: item.link,
+                contentSnippet: item.contentSnippet || item.content || '',
+                pubDate: pubDate,
+                category: category,
+                feedName: feed.name,
+                weight: feed.weight,
+                keywords: extractKeywords(cleanedTitle)
+              });
+            }
           }
         } catch (err) {
           console.error(`フィード取得失敗 (${feed.name}):`, err.message);
