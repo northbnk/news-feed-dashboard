@@ -4,7 +4,7 @@
     "originalTitle": "RSSのURL が変更になりましたので、設定の変更をお願いいたします（旧RSSは2018年6月4日に終了いたしました）",
     "link": "https://mainichi.jp/rss/?20180611",
     "contentSnippet": "",
-    "pubDate": "2026-07-07T12:02:31.000Z",
+    "pubDate": "2026-07-07T12:04:13.000Z",
     "category": "sports",
     "feedName": "毎日新聞スポーツ",
     "weight": 5,
@@ -7571,6 +7571,60 @@
       "博品館TOY",
       "PARK",
       "OPEN"
+    ]
+  },
+  {
+    "title": "自民・維新、定数削減法案の見送り調整　皇室典範改正案を優先",
+    "originalTitle": "自民・維新、定数削減法案の見送り調整　皇室典範改正案を優先",
+    "link": "https://mainichi.jp/articles/20260707/k00/00m/010/367000c",
+    "contentSnippet": "",
+    "pubDate": "2026-07-07T12:03:36.000Z",
+    "category": "general",
+    "feedName": "毎日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "自民・維新",
+      "定数削減法案",
+      "見送",
+      "調整",
+      "皇室典範改正案",
+      "優先"
+    ]
+  },
+  {
+    "title": "9歳児含む3遺体を歯科医宅で発見　目張りの室内に七輪二つ、親子か",
+    "originalTitle": "9歳児含む3遺体を歯科医宅で発見　目張りの室内に七輪二つ、親子か",
+    "link": "http://www.asahi.com/articles/ASV773S9PV77UTPB01JM.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-07T11:55:02.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "9歳児含",
+      "3遺体",
+      "歯科医宅",
+      "発見",
+      "目張",
+      "室内",
+      "七輪二",
+      "親子"
+    ]
+  },
+  {
+    "title": "ケーブル忘れがなくなるモバイルバッテリー。コスパのオバケが出てきたぞ…",
+    "originalTitle": "ケーブル忘れがなくなるモバイルバッテリー。コスパのオバケが出てきたぞ…",
+    "link": "https://www.gizmodo.jp/article/ugreen_mobile_battery_built_in/",
+    "contentSnippet": "2025年7月12日の記事を編集して再掲載しています。なにこれ、便利すぎないか？日進月歩で進むバッテリー技術。モバイルバッテリーのトレンドも結構変わっていて、最近は「USB-Cケーブル内蔵タイプ」が人気となっています。ケーブル持ち歩かなくて…",
+    "pubDate": "Tue, 07 Jul 2026 12:00:00 GMT",
+    "category": "trending",
+    "feedName": "ギズモード・ジャパン",
+    "weight": 5,
+    "keywords": [
+      "ケーブル忘",
+      "モバイルバッテリー",
+      "コスパ",
+      "オバケ"
     ]
   }
 ]

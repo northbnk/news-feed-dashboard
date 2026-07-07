@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentTopNewsTab = 'all';
   let currentTrendingNewsTab = 'all';
   let currentCuratedTab = 'all';
+  let carouselIndex = 0;
+  let carouselTimer = null;
   let currentCity = { name: '東京', lat: 35.6895, lon: 139.6917, region: '関東', pref: '東京' };
   let dashboardData = null;
   let curatedNewsItems = [];
@@ -173,6 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
       renderTopNews(data.topNews);
       renderTrendingNews(data.trendingNews);
       renderSportsNews(data.sports);
+      renderTicker(data);
       fetchAndRenderCuratedNews();
 
     } catch (err) {
@@ -685,6 +688,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderSportsNews(sportsData) {
     sportsNewsList.innerHTML = '';
     if (!sportsData) return;
+    
+
 
     const activeData = sportsData[currentSportsTab] || [];
     
@@ -732,72 +737,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // (イベントスケジュール描画関数は不要のため廃止されました)
 
-          aiTitle: n.aiTitle,
-          aiSummary: n.aiSummary,
-          sources: n.sources,
-          sns: { hatebu: n.hatebu, x: Math.floor(n.hatebu * 6.5), threads: Math.floor(n.hatebu * 1.2) },
-          emotion: 'approved'
-        }
-      });
-    });
-
-    // 話題のニュース
-    data.trendingNews.forEach(n => {
-      tickerItems.push({
-        source: n.sources[0]?.publisher || '話題',
-        title: n.aiTitle,
-        item: {
-          category: '話題のニュース',
-          aiTitle: n.aiTitle,
-          aiSummary: n.aiSummary,
-          sources: n.sources,
-          sns: n.sns,
-          emotion: n.emotion
-        }
-      });
-    });
-
-    // スポーツ
-    Object.keys(data.sports).forEach(sportKey => {
-      data.sports[sportKey].forEach(n => {
-        const sportLabel = getSportLabel(sportKey);
-        tickerItems.push({
-          source: sportLabel,
-          title: n.aiTitle,
-          item: {
-            category: `スポーツ (${sportLabel})`,
-            aiTitle: n.aiTitle,
-            aiSummary: n.aiSummary,
-            sources: n.sources,
-            sns: null,
-            emotion: 'hot'
-          }
-        });
-      });
-    });
-
-    if (tickerItems.length === 0) {
-      carouselTrack.innerHTML = '<div class="loading-placeholder-mini">現在、速報ニュースはありません。</div>';
-      return;
-    }
-
-    tickerItems.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'ticker-mini-card';
-      card.innerHTML = `
-        <span class="card-source">${item.source}</span>
-        <span class="card-title">${item.title}</span>
-      `;
-      
-      card.addEventListener('click', () => {
-        openDrawer(item.item);
-      });
-      
-      carouselTrack.appendChild(card);
-    });
-
-    // カルーセルの初期化・再起動
-    initCarousel();
+  // F. 下部ニュースカルーセル描画
+  function renderTicker(data) {
+    // ニュースデータのカルーセル構築は廃止されました
   }
 
   // --- 4. 詳細表示ドロワーの開閉 ＆ データ注入 ---
@@ -1171,6 +1113,80 @@ document.addEventListener('DOMContentLoaded', () => {
       infoElement.innerHTML = '';
     }
   }
+
+  // --- 8. フッターカルーセルの制御ロジック ---
+  let itemsPerView = 3;
+
+  function updateItemsPerView() {
+    const width = window.innerWidth;
+    if (width <= 768) {
+      itemsPerView = 1;
+    } else if (width <= 1200) {
+      itemsPerView = 2;
+    } else {
+      itemsPerView = 3;
+    }
+  }
+
+  function initCarousel() {
+    if (carouselTimer) clearInterval(carouselTimer);
+    carouselIndex = 0;
+    slideCarousel(0);
+    startCarouselAutoPlay();
+  }
+
+  function slideCarousel(index) {
+    const cards = carouselTrack.querySelectorAll('.ticker-mini-card');
+    if (cards.length === 0) return;
+    
+    updateItemsPerView();
+    const maxIndex = Math.max(0, cards.length - itemsPerView);
+    
+    if (index < 0) {
+      carouselIndex = maxIndex;
+    } else if (index > maxIndex) {
+      carouselIndex = 0;
+    } else {
+      carouselIndex = index;
+    }
+
+    const cardWidth = cards[0].offsetWidth;
+    const offset = carouselIndex * (cardWidth + 16);
+    carouselTrack.style.transform = `translateX(-${offset}px)`;
+  }
+
+  function startCarouselAutoPlay() {
+    if (carouselTimer) clearInterval(carouselTimer);
+    carouselTimer = setInterval(() => {
+      slideCarousel(carouselIndex + 1);
+    }, 5000);
+  }
+
+  function stopCarouselAutoPlay() {
+    if (carouselTimer) {
+      clearInterval(carouselTimer);
+      carouselTimer = null;
+    }
+  }
+
+  tickerPrevBtn.addEventListener('click', () => {
+    stopCarouselAutoPlay();
+    slideCarousel(carouselIndex - 1);
+    startCarouselAutoPlay();
+  });
+
+  tickerNextBtn.addEventListener('click', () => {
+    stopCarouselAutoPlay();
+    slideCarousel(carouselIndex + 1);
+    startCarouselAutoPlay();
+  });
+
+  footerContainer.addEventListener('mouseenter', stopCarouselAutoPlay);
+  footerContainer.addEventListener('mouseleave', startCarouselAutoPlay);
+
+  window.addEventListener('resize', () => {
+    slideCarousel(carouselIndex);
+  });
 
   // --- 8-2. 天気・地名ホバーポップアップ制御 ---
   const weatherCityWrapper = document.getElementById('weather-city-wrapper');
