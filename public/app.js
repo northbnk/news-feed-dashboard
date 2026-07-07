@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentTopNewsTab = 'all';
   let currentTrendingNewsTab = 'all';
   let currentCuratedTab = 'all';
-  let carouselIndex = 0;
-  let carouselTimer = null;
   let currentCity = { name: '東京', lat: 35.6895, lon: 139.6917, region: '関東', pref: '東京' };
   let dashboardData = null;
   let curatedNewsItems = [];
@@ -1113,80 +1111,6 @@ document.addEventListener('DOMContentLoaded', () => {
       infoElement.innerHTML = '';
     }
   }
-
-  // --- 8. フッターカルーセルの制御ロジック ---
-  let itemsPerView = 3;
-
-  function updateItemsPerView() {
-    const width = window.innerWidth;
-    if (width <= 768) {
-      itemsPerView = 1;
-    } else if (width <= 1200) {
-      itemsPerView = 2;
-    } else {
-      itemsPerView = 3;
-    }
-  }
-
-  function initCarousel() {
-    if (carouselTimer) clearInterval(carouselTimer);
-    carouselIndex = 0;
-    slideCarousel(0);
-    startCarouselAutoPlay();
-  }
-
-  function slideCarousel(index) {
-    const cards = carouselTrack.querySelectorAll('.ticker-mini-card');
-    if (cards.length === 0) return;
-    
-    updateItemsPerView();
-    const maxIndex = Math.max(0, cards.length - itemsPerView);
-    
-    if (index < 0) {
-      carouselIndex = maxIndex;
-    } else if (index > maxIndex) {
-      carouselIndex = 0;
-    } else {
-      carouselIndex = index;
-    }
-
-    const cardWidth = cards[0].offsetWidth;
-    const offset = carouselIndex * (cardWidth + 16);
-    carouselTrack.style.transform = `translateX(-${offset}px)`;
-  }
-
-  function startCarouselAutoPlay() {
-    if (carouselTimer) clearInterval(carouselTimer);
-    carouselTimer = setInterval(() => {
-      slideCarousel(carouselIndex + 1);
-    }, 5000);
-  }
-
-  function stopCarouselAutoPlay() {
-    if (carouselTimer) {
-      clearInterval(carouselTimer);
-      carouselTimer = null;
-    }
-  }
-
-  tickerPrevBtn.addEventListener('click', () => {
-    stopCarouselAutoPlay();
-    slideCarousel(carouselIndex - 1);
-    startCarouselAutoPlay();
-  });
-
-  tickerNextBtn.addEventListener('click', () => {
-    stopCarouselAutoPlay();
-    slideCarousel(carouselIndex + 1);
-    startCarouselAutoPlay();
-  });
-
-  footerContainer.addEventListener('mouseenter', stopCarouselAutoPlay);
-  footerContainer.addEventListener('mouseleave', startCarouselAutoPlay);
-
-  window.addEventListener('resize', () => {
-    slideCarousel(carouselIndex);
-  });
 
   // --- 8-2. 天気・地名ホバーポップアップ制御 ---
   const weatherCityWrapper = document.getElementById('weather-city-wrapper');
