@@ -1462,6 +1462,114 @@ app.get('/api/digest', async (req, res) => {
   return res.json({ success: false, error: 'AI機能は無効化されています。' });
 });
 
+app.post('/api/generate-summary', async (req, res) => {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ success: false, error: 'Gemini API Key が設定されていません。' });
+  }
+
+  const { urls } = req.body;
+  if (!urls || !Array.isArray(urls) || urls.length === 0) {
+    return res.status(400).json({ success: false, error: '対象のURLリストを指定してください。' });
+  }
+
+  try {
+    const localArticles = loadArticles();
+    const inputArticles = urls.map((url, idx) => {
+      const art = localArticles.find(a => a.link === url) || {};
+      return {
+        index: idx + 1,
+        url: url,
+        title: art.title || art.aiTitle || '（タイトル不明）',
+        summary: art.aiSummary || art.description || '（概要なし）'
+      };
+    });
+
+    const inputDataText = inputArticles.map(a => {
+      return `[${a.index}] URL： ${a.url}\nタイトル： ${a.title}\n概要： ${a.summary}\n`;
+    }).join('\n');
+
+    const systemPrompt = `あなたは優秀な編集者・ジャーナリストです。
+提供された複数の記事情報から、以下の構成指示に従って、読者が一目で要点を把握できる高品質な「まとめ記事」を作成してください。`;
+
+    const userPrompt = `
+# 目的
+指定された複数の記事URL（異なるジャンル）の内容を読み込み、それぞれのニュースの性質や話題性に応じた最適な構成の「まとめ記事」を作成してください。
+※全体の記事タイトル（大見出し）は不要です。出力に「パターンA」などのラベルは記載しないでください。
+※読者が一目で要点を把握できるよう、各セクションの【最も読んでほしい重要な一文やキーワード】を適切に太字（**）で強調してください。
+
+# 処理の流れ
+1. 提供されたすべてのURLの内容（またはタイトルや概要）を確認する。
+2. 必要に応じてWeb検索を駆使し、各ニュースのコンテキストを補完する（※ただしパターンBを除く）。
+3. 各URLのニュースを、内容や求められる深さに応じて、以下の3つの出力パターンのいずれかに分類する（指定がある場合はそれに従う）。
+4. 以下の出力構成・執筆ルールに従って、まとめ記事を出力する。
+
+# 出力構成・執筆ルール
+※各ニュースの冒頭または末尾に、情報元として対象の「記事URL」を必ず記載してください。
+
+## パターンA：メインで深く掘り下げるニュース
+※最も話題性が高く、社会的影響が大きいニュースは、ネット検索も交えて以下の要素を網羅して深く解説してください。
+*   **見出し：** トピックがわかる見出し
+*   **ソースURL：** （対象のURLを記載）
+*   **背景：** なぜこの事象が起きたのか、これまでの経緯や前提知識
+*   **何が起きたか：** 今回のニュースの核心（事実関係をわかりやすく）
+*   **深掘り（解説）：** ネット検索で得た専門知識や、この件が今後もたらす影響・論点の深掘り
+*   **世間の反応：** SNSやネット掲示板、ニュースコメント等での主な意見（賛否両論あれば両方記載）
+※各項目の中で、特に重要な部分を太字にしてください。
+
+## パターンB：記事の出来事を3行でまとめるニュース
+※シンプルに起きた事実だけを把握すべきニュース向け。
+*   **構成：** 「見出し」＋「ソースURL」＋「**箇条書きでジャスト3行の解説**」
+*   **内容：** ネット検索による補完は行わず、「取り上げた元の記事に書かれている出来事（何が起きたか）」だけを3行で過不足なくまとめる。各行の重要な部分を太字にすること。
+
+## パターンC：仕組みや背景を解説するニュース
+※技術・制度・言葉の意味などの解説があると知識が深まるニュース向け。
+*   **構成：** 「見出し」＋「ソースURL」＋「**仕組みや用語の解説メインの文章**」
+*   **内容：** 起きたイベントの羅列ではなく、「なぜそうなっているのか」「どういう制度/技術なのか」という解説・学びの要素にフォーカスして執筆する。文章内の重要な部分を太字にすること。
+
+---
+
+# インプットデータ（URLリスト）
+${inputDataText}
+
+# 出力言語
+日本語（丁寧なブログ・ニュースメディア風のトンマナ）
+`;
+
+    console.log('[AI Summary] オンデマンドまとめ記事生成リクエストを送信中...');
+    const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-goog-api-key': apiKey
+      },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: userPrompt }] }],
+        systemInstruction: { parts: [{ text: systemPrompt }] },
+        tools: [{ googleSearch: {} }]
+      })
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Gemini API Error: ${response.status} - ${errorText}`);
+    }
+
+    const resData = await response.json();
+    const markdownContent = resData.candidates[0].content.parts[0].text;
+
+    return res.json({
+      success: true,
+      markdownContent: markdownContent,
+      generatedAt: Date.now()
+    });
+
+  } catch (err) {
+    console.error('On-demand summary generation failed:', err.message);
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

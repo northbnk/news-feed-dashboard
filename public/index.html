@@ -392,10 +392,28 @@
       <h3 id="bookmark-drawer-title">🔖 あとで読むリスト</h3>
       <button id="bookmark-drawer-close" class="close-btn" aria-label="閉じる">&times;</button>
     </div>
+    
+    <div class="bookmark-drawer-actions">
+      <button id="bookmark-open-all-btn" class="drawer-action-btn primary-outline-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>すべて新規タブで開く</span>
+      </button>
+      <button id="bookmark-generate-digest-btn" class="drawer-action-btn primary-glow-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke-linecap="round" stroke-linejoin="round"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <span>まとめ記事を作成 (AI)</span>
+      </button>
+    </div>
+
     <div class="drawer-body scrollable">
+      <div class="drawer-section-title">未読の記事</div>
       <div id="bookmark-drawer-list" class="card-list">
         <!-- 動的にブックマークされた記事が生成されます -->
         <div class="loading-placeholder">ブックマークを読み込み中...</div>
+      </div>
+      
+      <div class="drawer-section-title" style="margin-top: 24px;">作成済みのまとめ記事</div>
+      <div id="generated-digests-list" class="card-list">
+        <div class="loading-placeholder">作成済みのまとめはありません。</div>
       </div>
     </div>
   </aside>

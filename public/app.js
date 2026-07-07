@@ -67,6 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookmarkDrawerOverlay = document.getElementById('bookmark-drawer-overlay');
   const bookmarkDrawerClose = document.getElementById('bookmark-drawer-close');
   const bookmarkDrawerList = document.getElementById('bookmark-drawer-list');
+  const bookmarkOpenAllBtn = document.getElementById('bookmark-open-all-btn');
+  const bookmarkGenerateDigestBtn = document.getElementById('bookmark-generate-digest-btn');
+  const generatedDigestsList = document.getElementById('generated-digests-list');
 
   // モバイル用ナビゲーション・カラム
   const mobileNavBar = document.getElementById('mobile-nav-bar');
@@ -1361,7 +1364,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (error) throw error;
         
         userBookmarks.delete(articleId);
-        showToast('「あとで読む」から削除しました。', 'info');
       } else {
         // ブックマーク追加
         const { error } = await supabaseClient
@@ -1374,7 +1376,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (error) throw error;
         
         userBookmarks.add(articleId);
-        showToast('「あとで読む」に登録しました！', 'success');
       }
       
       // 画面のしおりの見た目を更新（トグルアニメーション）
@@ -1518,14 +1519,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       card.addEventListener('click', () => {
         markAsRead(item.id, card);
-        openDrawer({
-          category: item.category,
-          aiTitle: item.title,
-          aiSummary: item.summary,
-          sources: item.sources,
-          sns: item.sns,
-          emotion: item.emotion || 'approved'
-        });
+        window.open(item.id, '_blank', 'noopener,noreferrer');
       });
       
       bindCardActions(card);
@@ -1533,9 +1527,159 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 作成済みまとめ記事の描画
+  function renderGeneratedSummaries() {
+    if (!generatedDigestsList) return;
+    generatedDigestsList.innerHTML = '';
+
+    const summaries = JSON.parse(localStorage.getItem('generatedSummaries') || '[]');
+    if (summaries.length === 0) {
+      generatedDigestsList.innerHTML = '<div class="loading-placeholder">作成済みのまとめはありません。</div>';
+      return;
+    }
+
+    summaries.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'digest-history-card';
+      const dateStr = new Date(item.generatedAt).toLocaleString('ja-JP', {
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      card.innerHTML = `
+        <h4>AIまとめ記事 (${dateStr})</h4>
+        <div class="meta">
+          <span class="article-count">${item.urls.length} 件の記事から作成</span>
+        </div>
+      `;
+
+      card.addEventListener('click', () => {
+        renderGeneratedDigestInModal(item.text, dateStr);
+      });
+
+      generatedDigestsList.appendChild(card);
+    });
+  }
+
+  // まとめ記事をモーダルにレンダリングして表示
+  function renderGeneratedDigestInModal(markdownText, dateStr) {
+    const modalTitle = aiDigestModal.querySelector('.ai-digest-modal-header h3');
+    if (modalTitle) {
+      modalTitle.textContent = `AIまとめ記事 (${dateStr || '生成完了'})`;
+    }
+
+    const html = parseMarkdownToHtml(markdownText);
+    aiDigestModalBody.innerHTML = html;
+    
+    aiDigestModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  // マークダウンの簡易変換
+  function parseMarkdownToHtml(md) {
+    if (!md) return '';
+    let html = md.trim();
+
+    html = html
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    const lines = html.split('\n');
+    let parsedHtml = '';
+    let inList = false;
+    let inTable = false;
+    let tableHeaders = [];
+
+    lines.forEach(line => {
+      const trimmed = line.trim();
+
+      if (trimmed.startsWith('### ')) {
+        if (inList) { parsedHtml += '</ul>'; inList = false; }
+        if (inTable) { parsedHtml += '</tbody></table>'; inTable = false; }
+        parsedHtml += `<h4>${trimmed.substring(4)}</h4>`;
+        return;
+      }
+      if (trimmed.startsWith('## ')) {
+        if (inList) { parsedHtml += '</ul>'; inList = false; }
+        if (inTable) { parsedHtml += '</tbody></table>'; inTable = false; }
+        parsedHtml += `<h3>${trimmed.substring(3)}</h3>`;
+        return;
+      }
+
+      if (trimmed.startsWith('|')) {
+        if (inList) { parsedHtml += '</ul>'; inList = false; }
+        const cells = trimmed.split('|').map(c => c.trim()).filter((c, i, arr) => i > 0 && i < arr.length - 1);
+        
+        if (trimmed.includes('---')) {
+          return;
+        }
+
+        if (!inTable) {
+          inTable = true;
+          tableHeaders = cells;
+          parsedHtml += '<table class="digest-table"><thead><tr>';
+          cells.forEach(c => {
+            parsedHtml += `<th>${parseInlineMarkdownText(c)}</th>`;
+          });
+          parsedHtml += '</tr></thead><tbody>';
+        } else {
+          parsedHtml += '<tr>';
+          cells.forEach(c => {
+            parsedHtml += `<td>${parseInlineMarkdownText(c)}</td>`;
+          });
+          parsedHtml += '</tr>';
+        }
+        return;
+      } else {
+        if (inTable) {
+          parsedHtml += '</tbody></table>';
+          inTable = false;
+        }
+      }
+
+      if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+        if (!inList) {
+          inList = true;
+          parsedHtml += '<ul class="digest-list">';
+        }
+        parsedHtml += `<li>${parseInlineMarkdownText(trimmed.substring(2))}</li>`;
+        return;
+      } else {
+        if (inList) {
+          parsedHtml += '</ul>';
+          inList = false;
+        }
+      }
+
+      if (trimmed === '') {
+        return;
+      }
+
+      parsedHtml += `<p class="digest-paragraph">${parseInlineMarkdownText(trimmed)}</p>`;
+    });
+
+    if (inList) parsedHtml += '</ul>';
+    if (inTable) parsedHtml += '</tbody></table>';
+
+    return parsedHtml;
+  }
+
+  function parseInlineMarkdownText(text) {
+    let html = text;
+    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    return html;
+  }
+
+
   // ブックマークドロワー開閉制御
   function openBookmarkDrawer() {
     renderBookmarkedArticles();
+    renderGeneratedSummaries();
     bookmarkDrawer.classList.add('active');
     bookmarkDrawerOverlay.classList.add('active');
     bookmarkDrawer.setAttribute('aria-hidden', 'false');
@@ -1651,6 +1795,109 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', handleResizeAndOrientation);
   // 初期ロード時にも実行
   handleResizeAndOrientation();
+
+  // すべて新規タブで開く
+  if (bookmarkOpenAllBtn) {
+    bookmarkOpenAllBtn.addEventListener('click', () => {
+      if (userBookmarks.size === 0) {
+        showToast('「あとで読む」に登録された記事がありません。', 'warning');
+        return;
+      }
+      userBookmarks.forEach(url => {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      });
+    });
+  }
+
+  // AIまとめ記事の作成
+  if (bookmarkGenerateDigestBtn) {
+    bookmarkGenerateDigestBtn.addEventListener('click', async () => {
+      if (userBookmarks.size === 0) {
+        showToast('まとめ記事の作成対象がありません。記事をしおり登録してください。', 'warning');
+        return;
+      }
+
+      const urls = Array.from(userBookmarks);
+      
+      const originalText = bookmarkGenerateDigestBtn.innerHTML;
+      bookmarkGenerateDigestBtn.disabled = true;
+      bookmarkGenerateDigestBtn.innerHTML = '<span>生成中 (約30秒)...</span>';
+
+      try {
+        const response = await fetch('/api/generate-summary', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ urls })
+        });
+
+        if (!response.ok) {
+          const errData = await response.json();
+          throw new Error(errData.error || 'サーバーエラーが発生しました。');
+        }
+
+        const data = await response.json();
+
+        // 履歴に保存
+        const summaries = JSON.parse(localStorage.getItem('generatedSummaries') || '[]');
+        const newDigest = {
+          id: Date.now().toString(),
+          text: data.markdownContent,
+          generatedAt: Date.now(),
+          urls: urls
+        };
+        summaries.unshift(newDigest);
+        localStorage.setItem('generatedSummaries', JSON.stringify(summaries));
+
+        // 「記事化したものは後で読むから削除」
+        if (currentUser) {
+          try {
+            await supabaseClient
+              .from('user_bookmarks')
+              .delete()
+              .eq('user_id', currentUser.id)
+              .in('article_id', urls);
+          } catch (se) {
+            console.error('Supabase bookmark cleanup error:', se.message);
+          }
+        }
+
+        // ローカルしおりリストをクリア
+        urls.forEach(url => userBookmarks.delete(url));
+
+        // 画面全体のしおりボタンの見た目をオフ（同期）
+        urls.forEach(url => {
+          document.querySelectorAll(`button[data-id="${url}"]`).forEach(btn => {
+            btn.classList.remove('active');
+            const svg = btn.querySelector('svg');
+            if (svg) svg.setAttribute('fill', 'none');
+          });
+        });
+
+        // ドロワーの表示を即時更新
+        renderBookmarkedArticles();
+        renderGeneratedSummaries();
+
+        // まとめ記事モーダルで開く
+        const dateStr = new Date(newDigest.generatedAt).toLocaleString('ja-JP', {
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+        renderGeneratedDigestInModal(data.markdownContent, dateStr);
+
+        showToast('まとめ記事を作成しました！対象記事をしおりから削除しました。', 'success');
+
+      } catch (err) {
+        console.error('AI Summary generate error:', err);
+        showToast('作成に失敗しました: ' + err.message, 'error');
+      } finally {
+        bookmarkGenerateDigestBtn.disabled = false;
+        bookmarkGenerateDigestBtn.innerHTML = originalText;
+      }
+    });
+  }
+
 
   // --- 9. 初期読み込み ＆ ポーリング (30秒) ---
   loadData();
