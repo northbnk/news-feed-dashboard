@@ -145,14 +145,11 @@ body {
   height: 32px;
   border-radius: 8px;
   object-fit: cover;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  border: 1px solid var(--border-color);
   transition: var(--transition-fast);
 }
 
 .header-logo-img:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .header-left h1 {

@@ -4,7 +4,7 @@
     "originalTitle": "RSSのURL が変更になりましたので、設定の変更をお願いいたします（旧RSSは2018年6月4日に終了いたしました）",
     "link": "https://mainichi.jp/rss/?20180611",
     "contentSnippet": "",
-    "pubDate": "2026-07-07T12:54:24.000Z",
+    "pubDate": "2026-07-07T13:01:54.000Z",
     "category": "sports",
     "feedName": "毎日新聞スポーツ",
     "weight": 5,
@@ -10051,6 +10051,68 @@
       "定数削減法案見送",
       "与野党",
       "交渉焦点"
+    ]
+  },
+  {
+    "title": "臓器移植法違反の疑い NPO法人の元理事ら3人を逮捕 警視庁",
+    "originalTitle": "臓器移植法違反の疑い NPO法人の元理事ら3人を逮捕 警視庁",
+    "link": "http://www3.nhk.or.jp/news/html/20260707/k10015170971000.html",
+    "contentSnippet": "都内に住む70代の男性にカンボジアでの臓器移植手術をあっせんし、その対価として1200万円余りを受け取ったとして、NPO法人の元理事や一般社団法人の役員ら3人が臓器移植法違反の疑いで警視庁に逮捕されました。臓器移植手術を有償であっせんしたとして容疑者が逮捕されたのは全国で初めてだということです。",
+    "pubDate": "Tue, 07 Jul 2026 21:54:47 +0900",
+    "category": "headline",
+    "feedName": "NHK主要ニュース",
+    "weight": 10,
+    "keywords": [
+      "臓器移植法違反",
+      "NPO法人",
+      "元理事",
+      "3人",
+      "逮捕",
+      "警視庁"
+    ]
+  },
+  {
+    "title": "裁判長「自然死に見せかけ悪質」　茨城・介護施設2人殺害判決",
+    "originalTitle": "裁判長「自然死に見せかけ悪質」　茨城・介護施設2人殺害判決",
+    "link": "https://mainichi.jp/articles/20260707/k00/00m/040/387000c",
+    "contentSnippet": "",
+    "pubDate": "2026-07-07T13:00:11.000Z",
+    "category": "general",
+    "feedName": "毎日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "裁判長",
+      "自然死",
+      "悪質",
+      "茨城・介護施設2人殺害判決"
+    ]
+  },
+  {
+    "title": "AMDのAI開発キット「Ryzen AI Halo」レビューがさっそく登場、約64万円で128GBの超大容量ユニファイドメモリ＆Zen 5CPU＆Radeon 8060S GPUを搭載した強力ミニワークステーション",
+    "originalTitle": "AMDのAI開発キット「Ryzen AI Halo」レビューがさっそく登場、約64万円で128GBの超大容量ユニファイドメモリ＆Zen 5CPU＆Radeon 8060S GPUを搭載した強力ミニワークステーション",
+    "link": "https://gigazine.net/news/20260707-amd-ryzen-ai-halo/",
+    "contentSnippet": "2026年1月に開催されたコンピューター見本市・CES 2026におけるAMDの基調講演で、リファレンス用のAI開発者向けミニPC「AMD Ryzen AI Halo」が発表され、同年7月10日(金)に順次出荷が始まります。Ryzen AI Haloは16コア32スレッドのZen 5CPU・40基のCU(演算ユニット)を持つRadeon 8060S GPU・XDNA 2 NPUを1つのチップに統合した強力なAPUと128GBの超大容量LPDDR5Xユニファイドメモリを搭載し、競合となるNVIDIAのミニワークステーション「DGX Spark」やAppleのMac Studio等に対抗するアプライアンスとして設計されています。そんなRyzen AI Haloのレビューを、海外テック系メディアのLTT Labsが公開しています。\n続きを読む...",
+    "pubDate": "Tue, 07 Jul 2026 22:00:00 +0900",
+    "category": "trending",
+    "feedName": "GIGAZINE",
+    "weight": 5,
+    "keywords": [
+      "AMD",
+      "AI開発キット",
+      "Ryzen",
+      "AI",
+      "Halo",
+      "レビュー",
+      "約64万円",
+      "128GB",
+      "超大容量ユニファイドメモリ",
+      "Zen",
+      "5CPU",
+      "Radeon",
+      "8060S",
+      "GPU",
+      "搭載",
+      "強力ミニワークステーション"
     ]
   }
 ]
