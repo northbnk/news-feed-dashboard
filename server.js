@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import { createGeminiRateLimiter } from './lib/geminiRateLimiter.js';
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ const __dirname = path.dirname(__filename);
 
 const DB_PATH = path.join(__dirname, 'db_articles.json');
 const ARTICLE_TTL_HOURS = 48; // 過去48時間分を保持
+const geminiRateLimiter = createGeminiRateLimiter(4);
 
 // 蓄積記事の読み込み
 function loadArticles() {
@@ -319,6 +321,8 @@ let isQuotaExceeded = false;
 
 // AI機能の使用有無フラグ（APIクォータ制限の回避のためデフォルトでfalseに設定）
 const USE_AI = false;
+// Gemini は「記事生成」だけに限定し、それ以外のタイトル/要約生成は常にフォールバックにする
+const GEMINI_ARTICLE_GENERATION_ONLY = process.env.GEMINI_ARTICLE_GENERATION_ONLY !== 'false';
 
 // アルゴリズムによる代表タイトルと概要の選定 (非AIスコアリング方式)
 function selectRepresentativeTitleAndSummary(cluster) {
@@ -426,15 +430,15 @@ async function generateAITitleAndSummary(cluster) {
   const fallbackSummary = cluster.articles.reduce((longest, current) => (current.contentSnippet || '').length > (longest.contentSnippet || '').length ? current : longest, cluster.articles[0]).contentSnippet || '詳細記事を参照してください。';
 
   // すでにクォータ超過を検知している場合は即座にフォールバック（無駄なAPIコールとディレイをスキップ）
-  if (isQuotaExceeded) {
+  if (isQuotaExceeded || GEMINI_ARTICLE_GENERATION_ONLY) {
     return {
       title: fallbackTitle.split('──')[0].split(' - ')[0].trim(),
       summary: fallbackSummary.slice(0, 100) + (fallbackSummary.length > 100 ? '...' : '')
     };
   }
 
-  // 無料枠のレート制限（5 RPM）を回避するため、リクエスト前に13.5秒のディレイを挿入
-  await new Promise(resolve => setTimeout(resolve, 13500));
+  // 無料枠のレート制限に合わせて、同時に大量に送らないようにする
+  await geminiRateLimiter.waitForSlot();
 
   const apiKey = process.env.GEMINI_API_KEY;
   const headlines = cluster.articles.map(a => `- ${a.title}`).join('\n');
@@ -1466,6 +1470,7 @@ JSONフォーマット:
 ${listText}`;
 
   try {
+    await geminiRateLimiter.waitForSlot();
     console.log(`[AI] ${type} テックブログ風ダイジェスト生成リクエストを Gemini API に送信中...`);
     const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent', {
       method: 'POST',
@@ -1675,6 +1680,7 @@ ${inputDataText}
 日本語（丁寧なブログ・ニュースメディア風のトンマナ）
 `;
 
+    await geminiRateLimiter.waitForSlot();
     console.log('[AI Summary] オンデマンドまとめ記事生成リクエストを送信中...');
     const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent', {
       method: 'POST',
