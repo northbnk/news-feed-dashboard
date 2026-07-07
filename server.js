@@ -784,7 +784,7 @@ async function collectAndCluster() {
     const dbArticles = loadArticles();
     const articleMap = {};
     for (const art of dbArticles) {
-      if (art.link) {
+      if (art.link && art.category !== 'events' && art.feedName !== 'PR TIMESリリース') {
         articleMap[art.link] = art;
       }
     }
@@ -1233,6 +1233,7 @@ app.get('/api/curated', async (req, res) => {
     const ttlLimit = Date.now() - hours * 3600 * 1000;
 
     const filteredLocal = localArticles.filter(art => {
+      if (art.category === 'events' || art.feedName === 'PR TIMESリリース') return false;
       const pubTime = art.pubDate ? new Date(art.pubDate).getTime() : 0;
       if (isNaN(pubTime) || pubTime < ttlLimit) return false;
       if (category) {

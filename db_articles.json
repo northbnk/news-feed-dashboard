@@ -4,7 +4,7 @@
     "originalTitle": "RSSのURL が変更になりましたので、設定の変更をお願いいたします（旧RSSは2018年6月4日に終了いたしました）",
     "link": "https://mainichi.jp/rss/?20180611",
     "contentSnippet": "",
-    "pubDate": "2026-07-07T13:33:31.000Z",
+    "pubDate": "2026-07-07T13:37:18.000Z",
     "category": "sports",
     "feedName": "毎日新聞スポーツ",
     "weight": 5,
@@ -15575,6 +15575,41 @@
       "巨人",
       "阪神",
       "逆転勝"
+    ]
+  },
+  {
+    "title": "ルペン氏、フランス大統領選への出馬は不透明に　控訴審でも有罪判決",
+    "originalTitle": "ルペン氏、フランス大統領選への出馬は不透明に　控訴審でも有罪判決",
+    "link": "http://www.asahi.com/articles/ASV774D88V77UHBI001M.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-07T13:31:24.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "ルペン氏",
+      "フランス大統領選",
+      "出馬",
+      "不透明",
+      "控訴審",
+      "有罪判決"
+    ]
+  },
+  {
+    "title": "ダマスカス中心部で連続爆発　警官ら18人負傷、マクロン氏訪問中",
+    "originalTitle": "ダマスカス中心部で連続爆発　警官ら18人負傷、マクロン氏訪問中",
+    "link": "http://www.asahi.com/articles/ASV774DSFV77UHBI025M.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-07T13:30:00.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "ダマスカス中心部",
+      "連続爆発",
+      "警官",
+      "18人負傷",
+      "マクロン氏訪問中"
     ]
   }
 ]
