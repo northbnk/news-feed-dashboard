@@ -4,7 +4,7 @@
     "originalTitle": "RSSのURL が変更になりましたので、設定の変更をお願いいたします（旧RSSは2018年6月4日に終了いたしました）",
     "link": "https://mainichi.jp/rss/?20180611",
     "contentSnippet": "",
-    "pubDate": "2026-07-08T08:18:04.000Z",
+    "pubDate": "2026-07-08T08:28:07.000Z",
     "category": "sports",
     "feedName": "毎日新聞スポーツ",
     "weight": 5,
@@ -4385,20 +4385,6 @@
     ]
   },
   {
-    "title": "自動テストの肥大化とどう向き合うか",
-    "originalTitle": "自動テストの肥大化とどう向き合うか",
-    "link": "https://zenn.dev/frontendflat/articles/automated-test-size-tradeoff",
-    "contentSnippet": "!\nこの記事は社内の勉強会向けに、自動テストのトレードオフについて個人的な意見をまとめたものです。\n\nQ. 「自動テストを書いてきてしばらく経つが、実行時間の増加に伴う問題 (CI 待ち時間) や偽陽性・偽陰性の問題が出てきた。どう対応していくのがよいか？」\nIMO: コードの変更に対する不安と実行時間をコンパスにして、自動テストの肥大化に立ち向かう。(一ヶ月後には言っていることが変わるかもしれないので、今日のスナップショットとして聞いてもらえればと...)\n\n そもそも「よいテスト」とは\nテストを書くべき理由はいろいろありますが、テストに何を期待するかは明確にしておく必要があります。私...",
-    "pubDate": "Mon, 06 Jul 2026 08:23:53 GMT",
-    "category": "tech",
-    "feedName": "Zenn（トレンド）",
-    "weight": 6,
-    "keywords": [
-      "自動テスト",
-      "肥大化"
-    ]
-  },
-  {
     "title": "「いつか使うかも」で増えたケーブル整理に。手放す判断がラクになるUSBケーブルテスター",
     "originalTitle": "「いつか使うかも」で増えたケーブル整理に。手放す判断がラクになるUSBケーブルテスター",
     "link": "https://www.lifehacker.jp/article/2607-lht-treedix-usb-cable-tester/",
@@ -6401,7 +6387,7 @@
     "originalTitle": "米軍がイラン攻撃 原油販売など認可取り消しも イランは非難",
     "link": "http://www3.nhk.or.jp/news/html/20260708/k10015171371000.html",
     "contentSnippet": "アメリカ軍は、イランがホルムズ海峡を航行していた商船を攻撃したことへの対応だとして、イランに対する攻撃を行ったと7日、明らかにしました。また、アメリカの財務省も、一時的に認めていたイラン産原油の販売などの認可を取り消すと発表し、双方の最終合意に向けて事態のさらなる悪化を避けられるかが焦点です。",
-    "pubDate": "Wed, 08 Jul 2026 12:08:48 +0900",
+    "pubDate": "Wed, 08 Jul 2026 17:18:21 +0900",
     "category": "headline",
     "feedName": "NHK主要ニュース",
     "weight": 10,
@@ -12636,6 +12622,55 @@
       "IOC",
       "参加制限",
       "解除"
+    ]
+  },
+  {
+    "title": "6月街角景気 2か月連続で上昇 「持ち直しの兆し」上方修正",
+    "originalTitle": "6月街角景気 2か月連続で上昇 「持ち直しの兆し」上方修正",
+    "link": "http://www3.nhk.or.jp/news/html/20260708/k10015171981000.html",
+    "contentSnippet": "働く人に景気の実感を聞く6月の景気ウォッチャー調査は、景気の現状を示す指数が2か月連続で前の月を上回りました。内閣府は中東情勢への懸念の声が減ってきていることも踏まえ、景気の現状判断を「持ち直しの兆しがみられる」と上方修正しました。",
+    "pubDate": "Wed, 08 Jul 2026 17:22:09 +0900",
+    "category": "general",
+    "feedName": "NHK経済ニュース",
+    "weight": 7,
+    "keywords": [
+      "6月街角景気",
+      "月連続",
+      "上昇",
+      "上方修正"
+    ]
+  },
+  {
+    "title": "千葉空襲を語り継ぐ　七夕空襲など犠牲者追悼、平和願う短冊も",
+    "originalTitle": "千葉空襲を語り継ぐ　七夕空襲など犠牲者追悼、平和願う短冊も",
+    "link": "https://mainichi.jp/articles/20260708/k00/00m/040/281000c",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T08:26:40.000Z",
+    "category": "general",
+    "feedName": "毎日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "千葉空襲",
+      "七夕空襲",
+      "犠牲者追悼",
+      "平和願",
+      "短冊"
+    ]
+  },
+  {
+    "title": "グーグル、8月13日に新型「Pixel」発表へ",
+    "originalTitle": "グーグル、8月13日に新型「Pixel」発表へ",
+    "link": "https://k-tai.watch.impress.co.jp/docs/news/2123545.html",
+    "contentSnippet": "米グーグルは8月13日7時（日本時間）、米ニューヨークで新製品発表会を開催することがわかった。スマートフォン「Google Pixel」の新モデルが発表される見込み。",
+    "pubDate": "2026-07-08T08:19:38.000Z",
+    "category": "trending",
+    "feedName": "ケータイ Watch",
+    "weight": 5,
+    "keywords": [
+      "グーグル",
+      "8月13日",
+      "新型",
+      "Pixel"
     ]
   }
 ]

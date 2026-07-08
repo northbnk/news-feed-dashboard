@@ -901,11 +901,11 @@ async function collectAndCluster() {
     const generalArticles = filteredArticles.filter(a => a.category === 'general' || a.category === 'headline');
     const generalClusters = sortClustersByScore(clusterArticles(generalArticles));
     
-    console.log(`一般ニュース: ${generalClusters.length} 件のトピックに集約 (多様性を考慮して上位8件を格納)`);
+    console.log(`一般ニュース: ${generalClusters.length} 件のトピックに集約 (多様性を考慮して上位12件を格納)`);
     const targetGeneral = [];
     const generalPublisherCounts = {};
     for (const cluster of generalClusters) {
-      if (targetGeneral.length >= 8) break;
+      if (targetGeneral.length >= 12) break;
       const primaryPublisher = cluster.articles[0].feedName;
       const normPublisher = primaryPublisher.includes('NHK') ? 'NHK' : primaryPublisher;
 
@@ -966,11 +966,11 @@ async function collectAndCluster() {
     const trendingArticles = filteredArticles.filter(a => a.category === 'trending' || a.category === 'tech');
     const trendingClusters = sortClustersByScore(clusterArticles(trendingArticles));
     
-    console.log(`話題のニュース: ${trendingClusters.length} 件のトピックに集約 (多様性を考慮して上位8件を格納)`);
+    console.log(`話題のニュース: ${trendingClusters.length} 件のトピックに集約 (多様性を考慮して上位12件を格納)`);
     const targetTrending = [];
     const trendingPublisherCounts = {};
     for (const cluster of trendingClusters) {
-      if (targetTrending.length >= 8) break;
+      if (targetTrending.length >= 12) break;
       const primaryPublisher = cluster.articles[0].feedName;
       const normPublisher = primaryPublisher.includes('NHK') ? 'NHK' : primaryPublisher;
 
