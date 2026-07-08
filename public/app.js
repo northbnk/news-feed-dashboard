@@ -850,11 +850,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const defaultUrl = item.sources?.[0]?.url || '#';
-    const geminiPrompt = `WEB検索を利用してこの記事の深掘りをして：\n${defaultUrl}`;
-    const geminiUrl = `https://gemini.google.com/app?prompt=${encodeURIComponent(geminiPrompt)}`;
-    const geminiBtnHtml = defaultUrl !== '#' ? `
-      <a href="${geminiUrl}" target="_blank" rel="noopener noreferrer" class="gemini-deep-dive-btn" title="Geminiでこの記事を深掘り・検索">
-        <span>✨ Geminiで深掘り</span>
+    
+    // ChatGPT: WEB検索付き深掘りリンク (qパラメータ & hints=search)
+    const chatgptPrompt = `WEB検索を利用してこの記事の深掘りをして：\n${defaultUrl}`;
+    const chatgptUrl = `https://chatgpt.com/?q=${encodeURIComponent(chatgptPrompt)}&hints=search`;
+    
+    // Perplexity: 深掘り検索リンク (qパラメータ)
+    const perplexityPrompt = `この記事の深掘りをして：\n${defaultUrl}`;
+    const perplexityUrl = `https://www.perplexity.ai/search?q=${encodeURIComponent(perplexityPrompt)}`;
+
+    const deepDiveBtnsHtml = defaultUrl !== '#' ? `
+      <a href="${chatgptUrl}" target="_blank" rel="noopener noreferrer" class="chatgpt-deep-dive-btn" title="ChatGPTでWeb検索してこの記事を深掘り">
+        <span>💬 ChatGPTで深掘り</span>
+      </a>
+      <a href="${perplexityUrl}" target="_blank" rel="noopener noreferrer" class="perplexity-deep-dive-btn" title="Perplexityでこの記事を深掘り・検索">
+        <span>🔍 Perplexityで深掘り</span>
       </a>
     ` : '';
 
@@ -867,7 +877,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="details-right-badges">
             ${snsHtml}
             ${emotionHtml}
-            ${geminiBtnHtml}
+            ${deepDiveBtnsHtml}
           </div>
         </div>
       </div>
