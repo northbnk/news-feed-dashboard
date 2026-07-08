@@ -2090,9 +2090,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 他のカードが展開中の場合は、移動先のカードも自動展開し、古いカードを閉じる
       const currentlyActive = document.querySelector('.news-card.expanded, .card-item.expanded');
       if (currentlyActive && currentlyActive !== targetCard) {
-        if (targetCard.__itemData) {
-          toggleCardDetails(targetCard, targetCard.__itemData);
-        }
+        targetCard.click();
       }
     }
   }

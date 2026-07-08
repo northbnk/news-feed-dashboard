@@ -4,7 +4,7 @@
     "originalTitle": "RSSのURL が変更になりましたので、設定の変更をお願いいたします（旧RSSは2018年6月4日に終了いたしました）",
     "link": "https://mainichi.jp/rss/?20180611",
     "contentSnippet": "",
-    "pubDate": "2026-07-08T08:47:27.000Z",
+    "pubDate": "2026-07-08T08:51:55.000Z",
     "category": "sports",
     "feedName": "毎日新聞スポーツ",
     "weight": 5,
@@ -3522,22 +3522,6 @@
       "得点ランキング",
       "スーパースター",
       "ゴール動画"
-    ]
-  },
-  {
-    "title": "韓国で「サッカー革新委員会」発足 W杯1次リーグ敗退受け",
-    "originalTitle": "韓国で「サッカー革新委員会」発足 W杯1次リーグ敗退受け",
-    "link": "http://www3.nhk.or.jp/news/html/20260706/k10015169981000.html",
-    "contentSnippet": "サッカーワールドカップ北中米大会で1次リーグ敗退に終わった韓国では、政府が、サッカー協会の改革や代表チームの強化を進めるための委員会を発足させました。韓国では、代表監督の選考過程が不透明だなどと批判が相次いでいて、論争が続いています。",
-    "pubDate": "Mon, 06 Jul 2026 17:51:56 +0900",
-    "category": "sports",
-    "feedName": "NHKスポーツ",
-    "weight": 5,
-    "keywords": [
-      "韓国",
-      "サッカー革新委員会",
-      "発足",
-      "W杯1次リーグ敗退受"
     ]
   },
   {
@@ -12771,6 +12755,62 @@
       "RX10V",
       "7月9日",
       "披露目"
+    ]
+  },
+  {
+    "title": "給湯器製造大手ノーリツ、取引先に金型を無償保管　公取委が勧告",
+    "originalTitle": "給湯器製造大手ノーリツ、取引先に金型を無償保管　公取委が勧告",
+    "link": "https://mainichi.jp/articles/20260708/k00/00m/040/286000c",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T08:50:59.000Z",
+    "category": "general",
+    "feedName": "毎日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "給湯器製造大手ノーリツ",
+      "取引先",
+      "金型",
+      "無償保管",
+      "公取委",
+      "勧告"
+    ]
+  },
+  {
+    "title": "【やじうまPC Watch】Seasonicの電源容量計算ツール、未発表の「RTX 50 SUPER」3モデルを掲載",
+    "originalTitle": "【やじうまPC Watch】Seasonicの電源容量計算ツール、未発表の「RTX 50 SUPER」3モデルを掲載",
+    "link": "https://pc.watch.impress.co.jp/docs/news/yajiuma/2123556.html",
+    "contentSnippet": "電源ユニットメーカーのSeasonicが公開する電源容量計測ツール「Wattage Calculator」に、未発表のNVIDIA製GPU「GeForce RTX 5080 SUPER」、「GeForce RTX 5070 SUPER」、「GeForce RTX 5070 Ti SUPER」が表示されることが分かった。",
+    "pubDate": "2026-07-08T08:47:06.000Z",
+    "category": "trending",
+    "feedName": "PC Watch",
+    "weight": 5,
+    "keywords": [
+      "PC",
+      "Watch",
+      "Seasonic",
+      "電源容量計算ツール",
+      "未発表",
+      "RTX",
+      "50",
+      "SUPER",
+      "3モデル",
+      "掲載"
+    ]
+  },
+  {
+    "title": "Audibleで3カ月無料キャンペーン、Kindle本の300円クーポン進呈も",
+    "originalTitle": "Audibleで3カ月無料キャンペーン、Kindle本の300円クーポン進呈も",
+    "link": "https://k-tai.watch.impress.co.jp/docs/news/2122655.html",
+    "contentSnippet": "オーディオブック配信サービス「Audible」（オーディブル）で、「プレミアムプラン」を3カ月無料で体験できるキャンペーンが実施されている。Amazonプライム会員が対象で、期間は7月15日まで。",
+    "pubDate": "2026-07-08T08:43:43.000Z",
+    "category": "trending",
+    "feedName": "ケータイ Watch",
+    "weight": 5,
+    "keywords": [
+      "Audible",
+      "3カ月無料キャンペーン",
+      "Kindle本",
+      "300円クーポン進呈"
     ]
   }
 ]
