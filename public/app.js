@@ -1520,6 +1520,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.addEventListener('click', () => {
         markAsRead(item.id, card);
         window.open(item.id, '_blank', 'noopener,noreferrer');
+        closeBookmarkDrawer();
       });
       
       bindCardActions(card);
@@ -1573,7 +1574,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const html = parseMarkdownToHtml(markdownText);
     aiDigestModalBody.innerHTML = html;
     
-    aiDigestModal.style.display = 'block';
+    aiDigestModal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   }
 
@@ -1897,6 +1898,34 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+
+  // AIダイジェストモーダルのクローズイベント (初期ロード時に無条件で登録)
+  const closeAIDigestModal = () => {
+    aiDigestModal.style.display = 'none';
+    document.body.style.overflow = ''; // スクロール復帰
+  };
+
+  if (aiDigestModalCloseBtn) {
+    aiDigestModalCloseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeAIDigestModal();
+    });
+  }
+
+  if (aiDigestModalOverlay) {
+    aiDigestModalOverlay.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeAIDigestModal();
+    });
+  }
+
+  // Escapeキーでモーダルを閉じる
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && (aiDigestModal.style.display === 'flex' || aiDigestModal.style.display === 'block')) {
+      closeAIDigestModal();
+    }
+  });
 
 
   // --- 9. 初期読み込み ＆ ポーリング (30秒) ---

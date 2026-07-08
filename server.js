@@ -1028,11 +1028,16 @@ async function collectAndCluster() {
       }
     }
 
-    // 各カテゴリの上位最大6件のみAI生成して格納
+    // 各カテゴリの上位最大6件を格納（USE_AIに基づきAI生成、またはモック抽出）
     for (const key of Object.keys(tempSports)) {
       const targetClusters = tempSports[key].slice(0, 6);
       for (const cluster of targetClusters) {
-        const aiContent = await generateAITitleAndSummary(cluster);
+        let aiContent;
+        if (USE_AI && !isQuotaExceeded) {
+          aiContent = await generateAITitleAndSummary(cluster);
+        } else {
+          aiContent = selectRepresentativeTitleAndSummary(cluster);
+        }
         clusteredData.sports[key].push({
           id: cluster.id,
           aiTitle: aiContent.title,
