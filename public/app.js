@@ -271,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.className = `news-card fade-in${isRead ? ' is-read' : ''}`;
       card.innerHTML = `
         <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.aiTitle}</h4>
+        <p class="card-summary-preview">${item.aiSummary || '要約情報はありません。'}</p>
         <div class="card-meta">
           <div class="source-comparison">
             <span class="source-badge">${item.sources[0]?.publisher || '一次ソース'}</span>
@@ -665,6 +666,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       card.innerHTML = `
         <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.aiTitle}</h4>
+        <p class="card-summary-preview">${item.aiSummary || '要約情報はありません。'}</p>
         <div class="card-meta">
           <div class="emotion-badge ${badgeClass}" id="badge-em-${item.id}">
             <!-- ここにSVGがインサートされます -->
@@ -738,6 +740,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.className = `news-card fade-in${isRead ? ' is-read' : ''}`;
       card.innerHTML = `
         <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.aiTitle}</h4>
+        <p class="card-summary-preview">${item.aiSummary || '要約情報はありません。'}</p>
         <div class="card-meta">
           <div class="source-comparison">
             <span class="source-badge">${item.sources[0]?.publisher || 'スポーツ紙'}</span>
@@ -847,7 +850,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     detailsDiv.innerHTML = `
       <div class="details-content-inner">
-        <div class="details-summary">${item.aiSummary || '要約情報はありません。'}</div>
         <div class="details-meta-row">
           <div class="details-sources">
             ${sourcesHtml}

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-08T08:55:49.368Z",
+  "timestamp": "2026-07-08T09:12:44.862Z",
   "headline": {
     "title": "台風9号 非常に強い勢力を維持し沖縄の先島諸島に接近へ",
     "summary": "大型で非常に強い台風9号は10日・金曜日から11日・土曜日ごろにかけて、非常に強い勢力を維持したまま、沖縄県の先島諸島に近づく見込みです。気象庁は一部の住宅が倒壊するような猛烈な風が吹くおそれがあると...",
@@ -15,36 +15,21 @@
   },
   "topNews": [
     {
-      "id": "cluster_1783500949389_0a1gh",
-      "aiTitle": "米軍、イランを再び攻撃と発表　イランによるタンカー攻撃に対応と",
-      "aiSummary": "アメリカ軍は、イランがホルムズ海峡を航行していた商船を攻撃したことへの対応だとして、イランに対する攻撃を行ったと7日、明らかにしました。また、アメリカの財務省も、一時的に認めていたイラン産原油の販売などの認可を取り消すと発表し、双方の最終合...",
-      "genre": "business",
-      "sources": [
-        {
-          "publisher": "NHK主要ニュース",
-          "title": "米軍がイラン攻撃 原油販売など認可取り消しも イランは非難",
-          "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171371000.html"
-        },
-        {
-          "publisher": "BBCニュース（日本・国際）",
-          "title": "米軍、イランを再び攻撃と発表　イランによるタンカー攻撃に対応と",
-          "url": "https://www.bbc.com/japanese/articles/cg53l1917r2o?at_medium=RSS&at_campaign=rss"
-        },
-        {
-          "publisher": "朝日新聞ニュース",
-          "title": "米軍、イランに再び攻撃開始と発表　原油販売などの制裁解除は撤回",
-          "url": "http://www.asahi.com/articles/ASV7777LWV77UHBI006M.html?ref=rss"
-        }
-      ],
-      "hatebu": 0,
-      "weight": 10
-    },
-    {
-      "id": "cluster_1783500949375_ym2ql",
-      "aiTitle": "自民・維新が定数削減法案成立見送り確認　皇室典範改正案の審議優先",
+      "id": "cluster_1783501964868_wt5aw",
+      "aiTitle": "中道 皇室典範改正案 付帯決議案の修正を前提に賛成方針",
       "aiSummary": "衆議院で与野党の対立が続く中、高市総理大臣と日本維新の会の吉村代表が会談しました。複数の関係者によりますと、事態の打開に向け、衆議院議員の定数削減法案は今の国会での審議は再開せずに継続審議とする方向で野党と協議する方針を確認したということで...",
       "genre": "politics",
       "sources": [
+        {
+          "publisher": "NHK主要ニュース",
+          "title": "中道 皇室典範改正案 付帯決議案の修正を前提に賛成方針",
+          "url": "http://www3.nhk.or.jp/news/html/20260708/k10015172021000.html"
+        },
+        {
+          "publisher": "毎日新聞ニュース",
+          "title": "皇室典範改正案　与党、10日の審議入りを提案　衆院議運理事会",
+          "url": "https://mainichi.jp/articles/20260708/k00/00m/010/288000c"
+        },
         {
           "publisher": "毎日新聞ニュース",
           "title": "自民・船田氏、皇室典範改正案に苦言　「国会の総意から逸脱」",
@@ -70,31 +55,36 @@
       "weight": 10
     },
     {
-      "id": "cluster_1783500949411_is1k2",
-      "aiTitle": "参議院憲法審査会 国民投票法改正案 15日採決で大筋合意",
-      "aiSummary": "参議院憲法審査会は幹事懇談会を開き、来週15日の審査会で憲法改正の手続きを定めた国民投票法の改正案の質疑と採決を行うことで、与野党が大筋で合意しました。",
-      "genre": "politics",
+      "id": "cluster_1783501964872_pa5lv",
+      "aiTitle": "福岡県議会 全議員に聞き取り実施で調整 金銭やりとり調査へ",
+      "aiSummary": "福岡県議会の議長ポストをめぐり、金銭の授受があったかどうか、議会内で主張が対立している問題を受け、県議会は実態を明らかにするため、現職の議員すべてを対象に外部の有識者による聞き取り調査を行うことを決めました。",
+      "genre": "society",
       "sources": [
         {
           "publisher": "NHK主要ニュース",
-          "title": "参議院憲法審査会 国民投票法改正案 15日採決で大筋合意",
-          "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171931000.html"
+          "title": "議長ポストめぐり金銭授受あったか聞き取り調査へ 福岡県議会",
+          "url": "http://www3.nhk.or.jp/news/html/20260708/k10015172001000.html"
         },
         {
-          "publisher": "毎日新聞ニュース",
-          "title": "参院憲法審、国民投票法改正案を15日にも採決へ",
-          "url": "https://mainichi.jp/articles/20260708/k00/00m/010/236000c"
+          "publisher": "NHK主要ニュース",
+          "title": "福岡県議会 全議員に聞き取り実施で調整 金銭やりとり調査へ",
+          "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171331000.html"
         }
       ],
       "hatebu": 0,
       "weight": 10
     },
     {
-      "id": "cluster_1783500949372_mha1l",
+      "id": "cluster_1783501964871_3612x",
       "aiTitle": "トランプ氏、トルコへの制裁「解除」　戦闘機F35の調達にも前向き",
-      "aiSummary": "サッカー男子ワールドカップ（W杯）北中米大会で、アメリカ代表FWバログンが受けた1試合の出場停止処分が猶予されたことをめぐり、アメリカのトランプ大統領は6日、国際サッカー連盟（FIFA）に処分の再検討を要請したことを認めた。",
-      "genre": "business",
+      "aiSummary": "米中央軍は7日、イランに対して「一連の強力な攻撃」を開始したと発表した。イランが、ホルムズ海峡を通航していた商船3隻を攻撃したことへの対応だとしている。トランプ米大統領は8日朝、イランとの停戦合意は「おしまいだと思う」と発言した。",
+      "genre": "politics",
       "sources": [
+        {
+          "publisher": "BBCニュース（日本・国際）",
+          "title": "米軍がイラン再攻撃、イランによるタンカー攻撃に対応と　トランプ氏は停戦合意は「おしまいだ」と発言",
+          "url": "https://www.bbc.com/japanese/articles/cg53l1917r2o?at_medium=RSS&at_campaign=rss"
+        },
         {
           "publisher": "毎日新聞ニュース",
           "title": "トルコへのF35売却検討にイスラエル反発　トランプ氏に要請も",
@@ -121,36 +111,16 @@
           "url": "http://www.asahi.com/articles/ASV775J3LV77UHBI02NM.html?ref=rss"
         },
         {
-          "publisher": "毎日新聞ニュース",
-          "title": "レッドカードの意味知らず？トランプ氏、米国FWの処分巡り持論",
-          "url": "https://mainichi.jp/articles/20260707/k00/00m/050/347000c"
-        },
-        {
-          "publisher": "毎日新聞ニュース",
-          "title": "客席に飛び交う「レッドカード」　混乱映したサッカーW杯米国戦",
-          "url": "https://mainichi.jp/articles/20260707/k00/00m/050/340000c"
-        },
-        {
           "publisher": "BBCニュース（日本・国際）",
           "title": "トランプ氏がFIFAの処分に介入、「彼は間違ったことしていない」",
           "url": "https://www.bbc.com/japanese/articles/c5yze3pegz5o?at_medium=RSS&at_campaign=rss"
-        },
-        {
-          "publisher": "BBCニュース（日本・国際）",
-          "title": "【2026年サッカー男子W杯】 トランプ氏、FIFAに米選手の出場停止見直し求めたと認める　試合はベルギーが勝利",
-          "url": "https://www.bbc.com/japanese/articles/c932231p880o?at_medium=RSS&at_campaign=rss"
-        },
-        {
-          "publisher": "東洋経済オンライン",
-          "title": "トランプ氏｢再検討求めただけ｣｢実に見事な判断だ｣…バログン出場停止猶予を巡りFIFAはベルギーの申し立てを却下 | ライフ",
-          "url": "https://toyokeizai.net/articles/-/950599?utm_source=rss&utm_medium=http&utm_campaign=link_back"
         }
       ],
-      "hatebu": 5,
+      "hatebu": 2,
       "weight": 7
     },
     {
-      "id": "cluster_1783500949387_6dv9d",
+      "id": "cluster_1783501964870_870e9",
       "aiTitle": "ウクライナ出身富豪を狙いモナコで爆発事件、容疑者の遺体がウクライナで見つかる",
       "aiSummary": "モナコで先月末、ウクライナ出身の富豪とその家族を狙った爆発事件があり、国際刑事警察機構（インターポール）に国際指名手配された女性容疑者がその後、ウクライナで遺体で見つかった。 ウクライナ保安庁（SBU）が7日に発表した。",
       "genre": "politics",
@@ -180,7 +150,27 @@
       "weight": 7
     },
     {
-      "id": "cluster_1783500949377_fjro9",
+      "id": "cluster_1783501964877_r4j2m",
+      "aiTitle": "「SDGs目標は依然達成可能」 国連報告書で各国に行動呼びかけ",
+      "aiSummary": "国連は、2030年までの持続可能な開発目標、SDGsについての報告書を発表し、紛争や気候変動などの影響が厳しくなる中でも目標達成は依然可能だとして、各国に行動を呼びかけました。",
+      "genre": "politics",
+      "sources": [
+        {
+          "publisher": "毎日新聞ニュース",
+          "title": "SDGs「達成可能」はわずか15％、前年より後退　国連報告書",
+          "url": "https://mainichi.jp/articles/20260708/k00/00m/030/032000c"
+        },
+        {
+          "publisher": "NHK主要ニュース",
+          "title": "「SDGs目標は依然達成可能」 国連報告書で各国に行動呼びかけ",
+          "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171511000.html"
+        }
+      ],
+      "hatebu": 0,
+      "weight": 10
+    },
+    {
+      "id": "cluster_1783501964869_x58yz",
       "aiTitle": "スペースXとテスラの合併､その現実味は？－マスク氏の狙いどこにあるのか | 政治・経済・投資",
       "aiSummary": "AI時代の激変が求められる中､急進的な組織変革ばかりが正解とされがちですが､本当に日本企業に合う変革の歩みとは何でしょうか。ソニーや総合商社の事例から､過去の失敗を糧にした｢漸進的な進化｣の価値を探…",
       "genre": "business",
@@ -240,27 +230,7 @@
       "weight": 6
     },
     {
-      "id": "cluster_1783500949402_2tl6f",
-      "aiTitle": "ロシア、2028年ロサンゼルス五輪に出場の可能性　IOCが参加制限を解除",
-      "aiSummary": "国際オリンピック委員会（IOC）は7日、ロシア選手の大会参加を制限する勧告を暫定的に取り下げた。これにより、ロシア選手は2028年の米ロサンゼルス・オリンピック（五輪）に自国を代表して出場できる可能性が出てきた。",
-      "genre": "politics",
-      "sources": [
-        {
-          "publisher": "BBCニュース（日本・国際）",
-          "title": "ロシア、2028年ロサンゼルス五輪に出場の可能性　IOCが参加制限を解除",
-          "url": "https://www.bbc.com/japanese/articles/cwyem82zm4jo?at_medium=RSS&at_campaign=rss"
-        },
-        {
-          "publisher": "毎日新聞ニュース",
-          "title": "IOC、ロシアの国際大会参加制限を解除　ウクライナ侵攻続く中",
-          "url": "https://mainichi.jp/articles/20260708/k00/00m/050/037000c"
-        }
-      ],
-      "hatebu": 0,
-      "weight": 7
-    },
-    {
-      "id": "cluster_1783500949375_mor0m",
+      "id": "cluster_1783501964868_zt7l8",
       "aiTitle": "皇室典範、10日審議入りへ　自民、高市首相出席の予算委を受け入れ",
       "aiSummary": "自民党の梶山弘志国会対策委員長は8日午後、中道改革連合の重徳和彦国対委員長と国会内で会談し、野党側が求めていた高市早苗首相が出席する衆院予算委員会について、17日に会期を迎える今国会中に開く意向を伝…",
       "genre": "politics",
@@ -280,7 +250,27 @@
       "weight": 6
     },
     {
-      "id": "cluster_1783500949377_t235u",
+      "id": "cluster_1783501964886_jnzxx",
+      "aiTitle": "思春期に「異性への関心」見直し求め1万人超署名　学習指導要領",
+      "aiSummary": "詳細記事を参照してください。",
+      "genre": "society",
+      "sources": [
+        {
+          "publisher": "毎日新聞ニュース",
+          "title": "思春期に「異性への関心」見直し求め1万人超署名　学習指導要領",
+          "url": "https://mainichi.jp/articles/20260708/k00/00m/040/268000c"
+        },
+        {
+          "publisher": "朝日新聞ニュース",
+          "title": "保健体育「異性へ関心」見直し求める　LGBTQの当事者ら",
+          "url": "http://www.asahi.com/articles/ASV782D0FV78UTIL013M.html?ref=rss"
+        }
+      ],
+      "hatebu": 0,
+      "weight": 6
+    },
+    {
+      "id": "cluster_1783501964869_v4vzr",
       "aiTitle": "学校が\"夏休みの子ども無料預かり施設\"に？文科省の｢開放要請｣に全国の先生が失望､\"困ったら学校にお願い\"の危うさ | キャリア・教育",
       "aiSummary": "会社が働く人の引退時期を決める時代は終わり､自らのリタイアのタイミングを自分で選択する｢リタイア･シフト｣の時代が始まっています。高齢者雇用や年金制度の変化､社会全体の構造的転換について､リタイアメ…",
       "genre": "business",
@@ -335,15 +325,15 @@
       "weight": 6
     },
     {
-      "id": "cluster_1783500949421_3mv9i",
-      "aiTitle": "米国、サッカー熱じわり上昇　W杯開催でユニホーム姿増え、若者応援",
-      "aiSummary": "サッカーワールドカップ（W杯）北中米大会で、ベスト8が出そろった。他のプロスポーツに比べてサッカー人気が高くないことで知られてきた米国だが、代表チームの快進撃もあり、現地では一定の盛り上がりを見せた…",
-      "genre": "politics",
+      "id": "cluster_1783501964887_6ermh",
+      "aiTitle": "きときと→「富山高山すし空港」に、その狙いは…　富山空港の新愛称",
+      "aiSummary": "富山県は8日、富山空港の新しい愛称を「富山高山すし空港」とすると発表した。新田八朗知事は「インバウンド（訪日外国人客）の目にとまり、関心を持ってもらうにはインパクトとわかりやすさが重要」と説明した。…",
+      "genre": "society",
       "sources": [
         {
           "publisher": "朝日新聞ニュース",
-          "title": "米国、サッカー熱じわり上昇　W杯開催でユニホーム姿増え、若者応援",
-          "url": "http://www.asahi.com/articles/ASV782C2GV78UHBI008M.html?ref=rss"
+          "title": "きときと→「富山高山すし空港」に、その狙いは…　富山空港の新愛称",
+          "url": "http://www.asahi.com/articles/ASV782TCBV78PUZB006M.html?ref=rss"
         }
       ],
       "hatebu": 0,
@@ -352,7 +342,7 @@
   ],
   "trendingNews": [
     {
-      "id": "cluster_1783500951228_upa7u",
+      "id": "cluster_1783501967011_wh2wy",
       "aiTitle": "Claude Coworkのタブが消えた？Chatに統合され、Webやモバイルでも利用可能に",
       "aiSummary": "Anthropicが、Claude Fable 5を有料プランでも追加費用なしで利用できるプロモーション期間を日本時間の7月13日16時まで延長すると発表しました。",
       "genre": "tech",
@@ -409,15 +399,15 @@
         }
       ],
       "sns": {
-        "x": 3521,
-        "threads": 683,
+        "x": 3528,
+        "threads": 704,
         "hatebu": 412
       },
       "emotion": "hot",
       "weight": 6
     },
     {
-      "id": "cluster_1783500951227_451jv",
+      "id": "cluster_1783501967009_56ee6",
       "aiTitle": "Microsoftは自社AIモデルへの依存度を高めることでAIコストの削減に取り組んでいる",
       "aiSummary": "Microsoft傘下のZeniMax Mediaに2009年に買収されたid Softwareが、Microsoftによる大規模人員削減の影響で従業員の約半数を解雇したことが報じられています。",
       "genre": "tech",
@@ -444,15 +434,15 @@
         }
       ],
       "sns": {
-        "x": 157,
-        "threads": 56,
+        "x": 140,
+        "threads": 53,
         "hatebu": 5
       },
       "emotion": "hot",
       "weight": 6
     },
     {
-      "id": "cluster_1783500951227_w2huy",
+      "id": "cluster_1783501967010_dt4np",
       "aiTitle": "Metaの新AI「Watermelon」はOpenAIのGPT-5.5に匹敵する性能で近日登場",
       "aiSummary": "ClaudeDevsのX(旧Twitter)アカウントにおいて、Claude APIやAWS上のClaude Platformにおいて、高機能モデルと軽量モデルを連携させ、コストとパフォーマンスを最適化する機能「Advisor tool」が...",
       "genre": "tech",
@@ -479,15 +469,15 @@
         }
       ],
       "sns": {
-        "x": 125,
-        "threads": 15,
+        "x": 165,
+        "threads": 28,
         "hatebu": 1
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783500951229_86vs4",
+      "id": "cluster_1783501967012_nqzfz",
       "aiTitle": "Googleが2026年8月12日にイベント「Made by Google」を開催、「Pixel 11」や「Pixel Watch 5」発表か",
       "aiSummary": "米グーグルは8月13日7時（日本時間）、米ニューヨークで新製品発表会を開催することがわかった。スマートフォン「Google Pixel」の新モデルが発表される見込み。",
       "genre": "tech",
@@ -509,15 +499,15 @@
         }
       ],
       "sns": {
-        "x": 138,
-        "threads": 35,
+        "x": 112,
+        "threads": 44,
         "hatebu": 1
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783500951242_boi64",
+      "id": "cluster_1783501967019_z7ccu",
       "aiTitle": "Meta、新たな画像生成モデル「Muse Image」　文脈を理解し自由に編集",
       "aiSummary": "Metaは7日(米国時間)、新たな画像生成モデル「Muse Image」をMeta AIに導入したと発表した。Muse Imageは、Meta AIアプリとウェブ版meta.aiから利用できる。",
       "genre": "tech",
@@ -539,15 +529,15 @@
         }
       ],
       "sns": {
-        "x": 224,
-        "threads": 30,
-        "hatebu": 10
+        "x": 173,
+        "threads": 69,
+        "hatebu": 15
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783500951226_m9vt7",
+      "id": "cluster_1783501967009_ahqac",
       "aiTitle": "「Oura Ring 4」が最大44％オフの3万6960円から　Amazonプライムデー",
       "aiSummary": "暑すぎる今年の夏、汗だく対策で出会ったのが「氷のう」。なかでも注目は、保冷剤と水筒が一体になった「STICOL 2in1 BOTTLE」。必要なときだけ冷やせて、飲み物としても活用できる優れモノです。",
       "genre": "tech",
@@ -604,15 +594,15 @@
         }
       ],
       "sns": {
-        "x": 179,
-        "threads": 20,
+        "x": 108,
+        "threads": 46,
         "hatebu": 2
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783500951229_zmklu",
+      "id": "cluster_1783501967011_m8eox",
       "aiTitle": "ロボット掃除機のネクストブレイク枠。ヨーロッパで人気の「Dreame」のデザインと機能性",
       "aiSummary": "ロボット掃除機に機能性とデザイン性を求めるなら、知っておきたいブランドがDreame（ドリーミー）。ヨーロッパで人気のロボット掃除機ブランドの背景と、おすすめモデル「L10s Ultra Gen 3」を紹介します。",
       "genre": "tech",
@@ -629,15 +619,55 @@
         }
       ],
       "sns": {
-        "x": 321,
-        "threads": 81,
-        "hatebu": 29
+        "x": 552,
+        "threads": 107,
+        "hatebu": 46
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783500951246_p33pd",
+      "id": "cluster_1783501967028_wlvxn",
+      "aiTitle": "見た目重視のハンディファン。音が気にならない環境なら最高の相棒だ",
+      "aiSummary": "街に出ると、ハンディファンの所有率の高さに驚かされます。ここ数年、本当に暑いので納得です。ハンディファンは、どれも同じような機能でありながら、各社いろいろな工夫が見られるので面白いです。でも、基本的に...",
+      "genre": "tech",
+      "sources": [
+        {
+          "publisher": "ギズモード・ジャパン",
+          "title": "見た目重視のハンディファン。音が気にならない環境なら最高の相棒だ",
+          "url": "https://www.gizmodo.jp/article/baramood_handyfan_type-02-silky/"
+        }
+      ],
+      "sns": {
+        "x": 401,
+        "threads": 57,
+        "hatebu": 25
+      },
+      "emotion": "funny",
+      "weight": 5
+    },
+    {
+      "id": "cluster_1783501967028_n9ghi",
+      "aiTitle": "Amazon Music、2026年上半期ランキング　米津玄師「IRIS OUT」が1位",
+      "aiSummary": "Amazon Musicは、2026年上半期に日本で最も再生された楽曲ランキングを発表した。集計期間は1月1日～5月31日で、Amazon.co.jpのユーザーを対象に、Amazon Musicのスト...",
+      "genre": "culture",
+      "sources": [
+        {
+          "publisher": "ケータイ Watch",
+          "title": "Amazon Music、2026年上半期ランキング　米津玄師「IRIS OUT」が1位",
+          "url": "https://k-tai.watch.impress.co.jp/docs/news/2123408.html"
+        }
+      ],
+      "sns": {
+        "x": 763,
+        "threads": 148,
+        "hatebu": 74
+      },
+      "emotion": "hot",
+      "weight": 5
+    },
+    {
+      "id": "cluster_1783501967022_lxa4w",
       "aiTitle": "Meta、AIグラスの撮影ランプは「消せない」　改造品は法的措置",
       "aiSummary": "Metaは、AIグラスに関する「よくある質問」と答えを公開し、カメラ撮影時に点滅して光るLEDランプは消せず、隠して利用することもできないことなどを案内。Meta AIグラスのプライバシー重視の設計について説明している。",
       "genre": "tech",
@@ -654,35 +684,15 @@
         }
       ],
       "sns": {
-        "x": 216,
-        "threads": 16,
+        "x": 91,
+        "threads": 40,
         "hatebu": 3
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783500951254_f94au",
-      "aiTitle": "Audibleで3カ月無料キャンペーン、Kindle本の300円クーポン進呈も",
-      "aiSummary": "オーディオブック配信サービス「Audible」（オーディブル）で、「プレミアムプラン」を3カ月無料で体験できるキャンペーンが実施されている。Amazonプライム会員が対象で、期間は7月15日まで。",
-      "genre": "culture",
-      "sources": [
-        {
-          "publisher": "ケータイ Watch",
-          "title": "Audibleで3カ月無料キャンペーン、Kindle本の300円クーポン進呈も",
-          "url": "https://k-tai.watch.impress.co.jp/docs/news/2122655.html"
-        }
-      ],
-      "sns": {
-        "x": 711,
-        "threads": 155,
-        "hatebu": 67
-      },
-      "emotion": "hot",
-      "weight": 5
-    },
-    {
-      "id": "cluster_1783500951254_htx76",
+      "id": "cluster_1783501967028_kxw6q",
       "aiTitle": "1インチ望遠マスター「RX10V」（仮）が7月9日にお披露目か",
       "aiSummary": "何がアップデートされるんでしょうか。センサーかレンズかそれともAFか。レンズとボディが一体型ゆえにコンデジ…というにはあまりにもビッグボディなソニーRX10シリーズ。その最新作「RX10V」（仮）が7...",
       "genre": "tech",
@@ -694,15 +704,15 @@
         }
       ],
       "sns": {
-        "x": 578,
-        "threads": 110,
-        "hatebu": 55
+        "x": 469,
+        "threads": 91,
+        "hatebu": 41
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783500951253_8j41f",
+      "id": "cluster_1783501967027_dgjw8",
       "aiTitle": "ハウス、皿・ごはん不要のレトルトカレー「チャチャめし」　とうもろこし米",
       "aiSummary": "ハウス食品は、お皿・ごはん不要のレトルトカレー「チャチャめし」を7月13日に発売する。欧風ビーフカレー、バターチキンカレーをラインアップし、価格はオープン、参考価格は298円。主食には米の代わりに「と...",
       "genre": "entertainment",
@@ -714,29 +724,9 @@
         }
       ],
       "sns": {
-        "x": 97,
-        "threads": 12,
+        "x": 152,
+        "threads": 20,
         "hatebu": 1
-      },
-      "emotion": "approved",
-      "weight": 5
-    },
-    {
-      "id": "cluster_1783500951250_qvbls",
-      "aiTitle": "防犯カメラを自宅に設置してみた。「小さな安心」の数々で、暮らしは変わる",
-      "aiSummary": "ROOMIE 2026年7月8日掲載の記事より転載都内の一軒家に暮らす平井さん一家。夫の龍之進さん、妻の好美さん、長男の仁之丞くん、長女の季乃ちゃん、そして愛犬のチューイと、家族4人＋1匹でにぎやかな...",
-      "genre": "tech",
-      "sources": [
-        {
-          "publisher": "ギズモード・ジャパン",
-          "title": "防犯カメラを自宅に設置してみた。「小さな安心」の数々で、暮らしは変わる",
-          "url": "https://www.gizmodo.jp/article/tp-link-tc93d-kit-sale/"
-        }
-      ],
-      "sns": {
-        "x": 716,
-        "threads": 152,
-        "hatebu": 67
       },
       "emotion": "hot",
       "weight": 5
@@ -745,7 +735,7 @@
   "sports": {
     "baseball": [
       {
-        "id": "cluster_1783500952162_74faz",
+        "id": "cluster_1783501968059_tt6rn",
         "aiTitle": "プロ野球 月間MVP 阪神 高橋遥人が3か月連続受賞",
         "aiSummary": "プロ野球の6月の月間MVPが発表され、阪神の高橋遥人投手がセ・リーグの投手部門で初めてとなる3か月連続受賞を果たしました。",
         "sources": [
@@ -757,7 +747,19 @@
         ]
       },
       {
-        "id": "cluster_1783500952162_ai3gy",
+        "id": "cluster_1783501968059_kel7c",
+        "aiTitle": "focus プロ野球:現役引退表明の中村晃　タカの「愛する男」が残したもの",
+        "aiSummary": "詳細記事を参照してください。",
+        "sources": [
+          {
+            "publisher": "毎日新聞スポーツ",
+            "title": "focus プロ野球:現役引退表明の中村晃　タカの「愛する男」が残したもの",
+            "url": "https://mainichi.jp/articles/20260707/k00/00m/050/125000c"
+          }
+        ]
+      },
+      {
+        "id": "cluster_1783501968059_s746i",
         "aiTitle": "【プロ野球速報】巨人が阪神に逆転勝ち",
         "aiSummary": "プロ野球は7日、6試合が行われ、セ・リーグの同率首位でならんでいる巨人対阪神の試合は巨人の代打、坂本勇人選手が満塁から走者一掃のタイムリーツーベースヒットを打って逆転勝ちしました。",
         "sources": [
@@ -769,7 +771,19 @@
         ]
       },
       {
-        "id": "cluster_1783500952162_mtuya",
+        "id": "cluster_1783501968059_2gcyj",
+        "aiTitle": "巨人、代打の坂本が逆転二塁打　大ベテランの一撃が空気変える",
+        "aiSummary": "詳細記事を参照してください。",
+        "sources": [
+          {
+            "publisher": "毎日新聞スポーツ",
+            "title": "巨人、代打の坂本が逆転二塁打　大ベテランの一撃が空気変える",
+            "url": "https://mainichi.jp/articles/20260707/k00/00m/050/382000c"
+          }
+        ]
+      },
+      {
+        "id": "cluster_1783501968059_3inek",
         "aiTitle": "プロ野球 オールスターファン投票 阪神 森下 最多79万票で選出",
         "aiSummary": "7月下旬に行われるプロ野球、オールスターゲームのファン投票の結果が発表され、セ・リーグトップの20本のホームランを打っている阪神の森下翔太選手が2年連続で最多となる79万票を集めて選出されました。",
         "sources": [
@@ -781,7 +795,7 @@
         ]
       },
       {
-        "id": "cluster_1783500952162_99zkq",
+        "id": "cluster_1783501968059_mj27r",
         "aiTitle": "野球日本代表 次期監督の人選 NPB “ことし秋までに決定を”",
         "aiSummary": "野球日本代表の次の監督について、NPB＝日本野球機構の中村勝彦事務局長は、ことし秋までに決めたいという考えを示しました。",
         "sources": [
@@ -795,7 +809,7 @@
     ],
     "mlb": [
       {
-        "id": "cluster_1783500952162_20t8y",
+        "id": "cluster_1783501968059_2mjau",
         "aiTitle": "【詳しく】ドジャース 大谷翔平20号HR 大リーグ通算300号到達",
         "aiSummary": "大リーグ、ドジャースの大谷翔平選手がロッキーズ戦で2試合連続となる今シーズン20号のホームランを打ち、大リーグ9年目で通算300号に到達しました。日本選手の300号到達は初めてです。記事後半では大谷選...",
         "sources": [
@@ -807,7 +821,19 @@
         ]
       },
       {
-        "id": "cluster_1783500952162_y7y6t",
+        "id": "cluster_1783501968059_41099",
+        "aiTitle": "大谷翔平、メジャー通算300本塁打　日本勢初　9年目で到達",
+        "aiSummary": "詳細記事を参照してください。",
+        "sources": [
+          {
+            "publisher": "毎日新聞スポーツ",
+            "title": "大谷翔平、メジャー通算300本塁打　日本勢初　9年目で到達",
+            "url": "https://mainichi.jp/articles/20260708/k00/00m/050/097000c"
+          }
+        ]
+      },
+      {
+        "id": "cluster_1783501968059_45v69",
         "aiTitle": "パドレス 松井裕樹 3分の1イニングを無失点 チーム勝利",
         "aiSummary": "大リーグ、パドレスの松井裕樹投手は、ダイヤモンドバックス戦でリリーフ登板し、3分の1イニングを投げて、ヒット2本を打たれましたが、無失点でした。",
         "sources": [
@@ -819,7 +845,7 @@
         ]
       },
       {
-        "id": "cluster_1783500952162_8qylh",
+        "id": "cluster_1783501968059_r31hg",
         "aiTitle": "カブス 鈴木誠也 4打数ノーヒット チームは2連勝",
         "aiSummary": "大リーグ、カブスの鈴木誠也選手はオリオールズ戦に先発出場し、4打数ノーヒットでしたがチームは勝って2連勝です。",
         "sources": [
@@ -831,7 +857,7 @@
         ]
       },
       {
-        "id": "cluster_1783500952162_x747i",
+        "id": "cluster_1783501968059_uhczk",
         "aiTitle": "ドジャース大谷翔平19号 大リーグ通算300号まであと1本",
         "aiSummary": "大リーグ、ドジャースの大谷翔平選手がロッキーズ戦に先発出場し、通算300号まであと1本に迫る19号ホームランを含む3安打4打点の活躍でチームの勝利に貢献しました。",
         "sources": [
@@ -845,14 +871,24 @@
     ],
     "soccer": [
       {
-        "id": "cluster_1783500952162_kk63e",
-        "aiTitle": "W杯 見どころ【7月7日】ポルトガルとスペイン 8強かけ隣国対決",
+        "id": "cluster_1783501968059_lycfq",
+        "aiTitle": "football life:クリロナvsメディア　一筋縄ではいかない攻防　サッカーW杯",
         "aiSummary": "サッカーワールドカップ北中米大会、決勝トーナメント2回戦の最後の試合、スイス 対 コロンビアは、スイスが、ペナルティーキック戦の末に勝って、1954年以来、72年ぶりに準々決勝進出を決めました。",
         "sources": [
           {
             "publisher": "NHKスポーツ",
             "title": "サッカーW杯 スイスがPK戦でコロンビア破りベスト8進出",
             "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171481000.html"
+          },
+          {
+            "publisher": "毎日新聞スポーツ",
+            "title": "football life:クリロナvsメディア　一筋縄ではいかない攻防　サッカーW杯",
+            "url": "https://mainichi.jp/articles/20260708/k00/00m/050/015000c"
+          },
+          {
+            "publisher": "毎日新聞スポーツ",
+            "title": "「正義は破られない」ベルギー、混乱越え米国破る　サッカーW杯",
+            "url": "https://mainichi.jp/articles/20260707/k00/00m/050/322000c"
           },
           {
             "publisher": "NHKスポーツ",
@@ -866,18 +902,13 @@
           },
           {
             "publisher": "NHKスポーツ",
-            "title": "W杯 見どころ【7月7日】ポルトガルとスペイン 8強かけ隣国対決",
-            "url": "http://www3.nhk.or.jp/news/html/20260706/k10015170151000.html"
-          },
-          {
-            "publisher": "NHKスポーツ",
             "title": "サッカーW杯 クリスチアーノ・ロナウド「最後になるだろう」",
             "url": "http://www3.nhk.or.jp/news/html/20260706/k10015169701000.html"
           }
         ]
       },
       {
-        "id": "cluster_1783500952162_sdldr",
+        "id": "cluster_1783501968059_6ixor",
         "aiTitle": "サッカーW杯アメリカ代表 処分猶予の選手 ベルギー戦先発出場",
         "aiSummary": "サッカーワールドカップ北中米大会で、レッドカードによる出場停止の処分を猶予されたアメリカ代表のバログン選手が、決勝トーナメント2回戦のベルギー戦で先発メンバーに入りました。",
         "sources": [
@@ -889,7 +920,7 @@
         ]
       },
       {
-        "id": "cluster_1783500952162_8hgg2",
+        "id": "cluster_1783501968059_f8cgh",
         "aiTitle": "Ｗ杯1次リーグ敗退の韓国 サッカー協会の会長が辞任",
         "aiSummary": "サッカーワールドカップ北中米大会で1次リーグ敗退に終わった韓国では、責任をとって韓国サッカー協会の会長が6日、辞任しました。韓国では、代表監督の選考過程が不透明だなどと批判が相次いでいて、論争が続いて...",
         "sources": [
@@ -901,7 +932,7 @@
         ]
       },
       {
-        "id": "cluster_1783500952162_vl6g9",
+        "id": "cluster_1783501968059_troc7",
         "aiTitle": "バスケ男子日本代表 韓国に79-81の惜敗 課題残す",
         "aiSummary": "バスケットボール男子の日本代表は、来年開催されるワールドカップのアジア1次予選の最終戦で韓国に79対81で敗れました。",
         "sources": [
@@ -915,7 +946,7 @@
     ],
     "seasonal": [
       {
-        "id": "cluster_1783500952162_m0shs",
+        "id": "cluster_1783501968058_o9yqj",
         "aiTitle": "RSSのURL が変更になりましたので、設定の変更をお願いいたします（旧RSSは2018年6月4日に終了いたしました）",
         "aiSummary": "詳細記事を参照してください。",
         "sources": [
@@ -927,7 +958,7 @@
         ]
       },
       {
-        "id": "cluster_1783500952162_bi5l7",
+        "id": "cluster_1783501968059_xnb72",
         "aiTitle": "W杯 アルゼンチンが大逆転でベスト8へ メッシ 単独トップ8点目",
         "aiSummary": "サッカーワールドカップ北中米大会は大会27日目の7日（日本時間8日）、決勝トーナメント2回戦の2試合が行われます。",
         "sources": [
@@ -944,7 +975,7 @@
         ]
       },
       {
-        "id": "cluster_1783500952162_m4ivu",
+        "id": "cluster_1783501968059_xhy6i",
         "aiTitle": "スキーノルディック複合 2030年冬季五輪の競技から除外",
         "aiSummary": "2030年にフランス・アルプス地域で開催される冬のオリンピックの実施競技からスキーノルディック複合が外れることになりました。ノルディック複合は日本が過去の大会で多くのメダルを獲得した競技で冬のオリンピ...",
         "sources": [
@@ -956,7 +987,7 @@
         ]
       },
       {
-        "id": "cluster_1783500952162_6nyc0",
+        "id": "cluster_1783501968058_n74ns",
         "aiTitle": "【随時更新】Ｗ杯 決勝トーナメント日程・結果 動画 8強決定",
         "aiSummary": "サッカーのワールドカップ北中米大会。前回大会優勝のアルゼンチンや準優勝のフランスなど準々決勝に進む8チームが出そろいました。決勝トーナメントの日程と結果を試合の2分ハイライトもまじえ、随時更新してお伝...",
         "sources": [
@@ -968,7 +999,7 @@
         ]
       },
       {
-        "id": "cluster_1783500952162_qzseo",
+        "id": "cluster_1783501968059_uvfvm",
         "aiTitle": "Ｗ杯 準々決勝へ ベスト8出そろう 各チームのエースの活躍光る",
         "aiSummary": "サッカーのワールドカップ北中米大会は決勝トーナメント2回戦のすべての試合が終わり、前回大会優勝のアルゼンチンや準優勝のフランスなど準々決勝に進む8チームが出そろいました。2回戦でもアルゼンチンのメッシ...",
         "sources": [
@@ -980,14 +1011,14 @@
         ]
       },
       {
-        "id": "cluster_1783500952163_hzgl5",
-        "aiTitle": "村上宗隆 復帰目指しマイナーリーグの試合に出場 3打数1安打",
-        "aiSummary": "大リーグ、ホワイトソックスの村上宗隆選手が、右太もも裏のけがからの復帰を目指して、調整のため傘下のマイナーリーグの試合に出場し、ヒットを打つなど、順調な回復ぶりを見せました。",
+        "id": "cluster_1783501968059_tpuqe",
+        "aiTitle": "ポッドキャスト:メンシプ・どこよりも早い!　新年GPシリーズ展望/後編",
+        "aiSummary": "詳細記事を参照してください。",
         "sources": [
           {
-            "publisher": "NHKスポーツ",
-            "title": "村上宗隆 復帰目指しマイナーリーグの試合に出場 3打数1安打",
-            "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171921000.html"
+            "publisher": "毎日新聞スポーツ",
+            "title": "ポッドキャスト:メンシプ・どこよりも早い!　新年GPシリーズ展望/後編",
+            "url": "https://mainichi.jp/articles/20260707/k00/00m/050/045000c"
           }
         ]
       }
@@ -1057,10 +1088,10 @@
       "away": "オリックス",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "scheduled",
-      "detail": "18:00開始予定",
-      "commentary": "予告先発：有原（ソ）、宮城（オ）",
-      "progress": 0
+      "status": "live",
+      "detail": "1回表",
+      "commentary": "プレイボール！試合開始です。",
+      "progress": 1
     },
     {
       "id": "game_mlb_1",
@@ -1081,10 +1112,10 @@
       "away": "浦和レッズ",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "scheduled",
-      "detail": "19:00開始予定",
-      "commentary": "等々力陸上競技場にて本日19:00キックオフ",
-      "progress": 0
+      "status": "live",
+      "detail": "前半5分",
+      "commentary": "キックオフ！両チーム主導権争いが続きます。",
+      "progress": 1
     }
   ]
 }

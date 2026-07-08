@@ -655,9 +655,9 @@
     "link": "https://mainichi.jp/articles/20260707/k00/00m/050/347000c",
     "contentSnippet": "",
     "pubDate": "2026-07-07T11:11:40.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "レッドカード",
       "意味知",
@@ -743,9 +743,9 @@
     "link": "https://mainichi.jp/articles/20260707/k00/00m/050/340000c",
     "contentSnippet": "",
     "pubDate": "2026-07-07T10:54:18.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "客席",
       "レッドカード",
@@ -759,9 +759,9 @@
     "link": "https://mainichi.jp/articles/20260707/k00/00m/050/333000c",
     "contentSnippet": "",
     "pubDate": "2026-07-07T12:52:08.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "日本製鉄鹿島",
       "SUBARU",
@@ -792,9 +792,9 @@
     "link": "https://mainichi.jp/articles/20260707/k00/00m/050/322000c",
     "contentSnippet": "",
     "pubDate": "2026-07-07T11:57:25.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "正義",
       "ベルギー",
@@ -3509,22 +3509,6 @@
     ]
   },
   {
-    "title": "【随時更新】Ｗ杯 得点ランキング スーパースターのゴール動画",
-    "originalTitle": "【随時更新】Ｗ杯 得点ランキング スーパースターのゴール動画",
-    "link": "http://www3.nhk.or.jp/news/html/20260705/k10015169231000.html",
-    "contentSnippet": "「スーパースターがかつてないハイレベルの争い」サッカーワールドカップ、優勝争いとともに得点王争いが激しさを増しています。↓↓↓最新の得点ランキングとゴールシーンを中心としたハイライト動画はこちらから【NHK ONEで配信中】↓↓↓",
-    "pubDate": "Mon, 06 Jul 2026 17:57:28 +0900",
-    "category": "sports",
-    "feedName": "NHKスポーツ",
-    "weight": 5,
-    "keywords": [
-      "随時更新",
-      "得点ランキング",
-      "スーパースター",
-      "ゴール動画"
-    ]
-  },
-  {
     "title": "自民・維新、定数削減法案の見送り調整　皇室典範改正案を優先",
     "originalTitle": "自民・維新、定数削減法案の見送り調整　皇室典範改正案を優先",
     "link": "https://mainichi.jp/articles/20260707/k00/00m/010/367000c",
@@ -3652,10 +3636,10 @@
     "originalTitle": "鷺宮製作所が東京第5代表　明治安田は本大会逃す　都市対抗",
     "link": "https://mainichi.jp/articles/20260707/k00/00m/050/334000c",
     "contentSnippet": "",
-    "pubDate": "2026-07-07T12:35:55.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "pubDate": "2026-07-07T22:51:39.000Z",
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "鷺宮製作所",
       "東京第5代表",
@@ -3922,9 +3906,9 @@
     "link": "https://mainichi.jp/articles/20260707/k00/00m/050/382000c",
     "contentSnippet": "",
     "pubDate": "2026-07-07T14:02:01.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "巨人",
       "代打",
@@ -5657,23 +5641,6 @@
     ]
   },
   {
-    "title": "Ollama + Continue を使って Mac 上にローカルLLM環境を構築する",
-    "originalTitle": "Ollama + Continue を使って Mac 上にローカルLLM環境を構築する",
-    "link": "https://qiita.com/hcrane/items/10c2d3c83ee6bae6a64a?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
-    "contentSnippet": "はじめに\nCopilot が従量課金になり、企業でもコストを考慮し始めてきたように思います。\nコスト上限があると、トークンを使い切ってタスク途中で使えなくなった...みたいなパターンもあり、不用意に外部のAIに社内の情報を投げるわけにもいかない...（そもそもセキュリティ...",
-    "pubDate": "2026-07-06T09:08:58.000Z",
-    "category": "tech",
-    "feedName": "Qiita（トレンド）",
-    "weight": 6,
-    "keywords": [
-      "Ollama",
-      "Continue",
-      "Mac",
-      "ローカルLLM環境",
-      "構築"
-    ]
-  },
-  {
     "title": "【Curl】Curlは一か月の夏休みを満喫するよ",
     "originalTitle": "【Curl】Curlは一か月の夏休みを満喫するよ",
     "link": "https://qiita.com/rana_kualu/items/6ac5b511b055d34d88fb?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
@@ -5870,9 +5837,9 @@
     "link": "https://mainichi.jp/articles/20260707/k00/00m/050/409000c",
     "contentSnippet": "",
     "pubDate": "2026-07-07T14:31:01.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "想定",
       "敗退",
@@ -5886,9 +5853,9 @@
     "link": "https://mainichi.jp/articles/20260707/k00/00m/050/411000c",
     "contentSnippet": "",
     "pubDate": "2026-07-07T14:55:18.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "鷺宮製作所",
       "代打・大井",
@@ -6105,10 +6072,10 @@
     "originalTitle": "ノルディックスキー複合、30年冬季五輪で除外　IOCが決定",
     "link": "https://mainichi.jp/articles/20260707/k00/00m/050/418000c",
     "contentSnippet": "",
-    "pubDate": "2026-07-07T14:45:33.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "pubDate": "2026-07-08T01:57:07.000Z",
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "ノルディックスキー複合",
       "30年冬季五輪",
@@ -6333,21 +6300,17 @@
     ]
   },
   {
-    "title": "米軍がイラン攻撃 原油販売など認可取り消しも イランは非難",
-    "originalTitle": "米軍がイラン攻撃 原油販売など認可取り消しも イランは非難",
+    "title": "トランプ大統領 停戦について問われ「終わったと思う」",
+    "originalTitle": "トランプ大統領 停戦について問われ「終わったと思う」",
     "link": "http://www3.nhk.or.jp/news/html/20260708/k10015171371000.html",
-    "contentSnippet": "アメリカ軍は、イランがホルムズ海峡を航行していた商船を攻撃したことへの対応だとして、イランに対する攻撃を行ったと7日、明らかにしました。また、アメリカの財務省も、一時的に認めていたイラン産原油の販売などの認可を取り消すと発表し、双方の最終合意に向けて事態のさらなる悪化を避けられるかが焦点です。",
-    "pubDate": "Wed, 08 Jul 2026 17:18:21 +0900",
+    "contentSnippet": "アメリカのトランプ大統領は8日、訪問先のトルコでイラン情勢をめぐり「停戦は終わったのか、停戦に向けた覚書は破棄されたのか」などと記者団から問われたのに対し「非常に興味深い質問だ。私としては終わったと思う。もう彼らとは関わりたくない」と述べ、イランに対する不満をあらわにしました。アメリカ軍は、イランがホルムズ海峡を航行していた商船を攻撃したことへの対応だとして、イランに対する攻撃を行ったと7日、明らかにしていました。",
+    "pubDate": "Wed, 08 Jul 2026 18:06:40 +0900",
     "category": "headline",
     "feedName": "NHK主要ニュース",
     "weight": 10,
     "keywords": [
-      "米軍",
-      "イラン攻撃",
-      "原油販売",
-      "認可取",
-      "イラン",
-      "非難"
+      "トランプ大統領",
+      "停戦"
     ]
   },
   {
@@ -7638,9 +7601,9 @@
     "link": "https://mainichi.jp/articles/20260706/k00/00m/050/359000c",
     "contentSnippet": "",
     "pubDate": "2026-07-07T22:15:20.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "野球",
       "関係",
@@ -8217,20 +8180,22 @@
     ]
   },
   {
-    "title": "米軍、イランを再び攻撃と発表　イランによるタンカー攻撃に対応と",
-    "originalTitle": "米軍、イランを再び攻撃と発表　イランによるタンカー攻撃に対応と",
+    "title": "米軍がイラン再攻撃、イランによるタンカー攻撃に対応と　トランプ氏は停戦合意は「おしまいだ」と発言",
+    "originalTitle": "米軍がイラン再攻撃、イランによるタンカー攻撃に対応と　トランプ氏は停戦合意は「おしまいだ」と発言",
     "link": "https://www.bbc.com/japanese/articles/cg53l1917r2o?at_medium=RSS&at_campaign=rss",
-    "contentSnippet": "米中央軍は7日、イランに対して「一連の強力な攻撃」を開始したと発表した。イランが、ホルムズ海峡を通航していた商船3隻を攻撃したことへの対応だとしている。",
-    "pubDate": "Wed, 08 Jul 2026 00:19:07 GMT",
+    "contentSnippet": "米中央軍は7日、イランに対して「一連の強力な攻撃」を開始したと発表した。イランが、ホルムズ海峡を通航していた商船3隻を攻撃したことへの対応だとしている。トランプ米大統領は8日朝、イランとの停戦合意は「おしまいだと思う」と発言した。",
+    "pubDate": "Wed, 08 Jul 2026 09:09:21 GMT",
     "category": "general",
     "feedName": "BBCニュース（日本・国際）",
     "weight": 7,
     "keywords": [
       "米軍",
+      "イラン再攻撃",
       "イラン",
-      "攻撃",
-      "イラン",
-      "タンカー攻撃"
+      "タンカー攻撃",
+      "トランプ氏",
+      "停戦合意",
+      "発言"
     ]
   },
   {
@@ -8499,7 +8464,7 @@
     "originalTitle": "九州北部 中国地方 近畿で梅雨明け 午前中から厳しい暑さ",
     "link": "http://www3.nhk.or.jp/news/html/20260708/k10015171561000.html",
     "contentSnippet": "8日は広い範囲で高気圧に覆われて晴れ、気象庁は8日午前、「九州北部と中国地方、近畿が梅雨明けしたとみられる」と発表しました。西日本と東日本を中心にすでに30度以上の真夏日となっていて、午後は猛烈な暑さとなるところもある見込みです。急に気温が上がり熱中症の危険性が高くなっているため、適切なエアコンの使用や水分補給などの対策を心がけてください。",
-    "pubDate": "Wed, 08 Jul 2026 17:06:31 +0900",
+    "pubDate": "Wed, 08 Jul 2026 18:08:09 +0900",
     "category": "headline",
     "feedName": "NHK主要ニュース",
     "weight": 10,
@@ -8601,9 +8566,9 @@
     "link": "https://mainichi.jp/articles/20260707/k00/00m/050/395000c",
     "contentSnippet": "",
     "pubDate": "2026-07-08T02:00:14.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "毎日テニス選手権",
       "東レPPO",
@@ -8636,9 +8601,9 @@
     "link": "https://mainichi.jp/articles/20260708/k00/00m/050/037000c",
     "contentSnippet": "",
     "pubDate": "2026-07-08T01:58:14.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "IOC",
       "ロシア",
@@ -9535,9 +9500,9 @@
     "link": "https://mainichi.jp/articles/20260707/k00/00m/050/125000c",
     "contentSnippet": "",
     "pubDate": "2026-07-08T03:00:16.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "focus",
       "プロ野球",
@@ -9569,9 +9534,9 @@
     "link": "https://mainichi.jp/articles/20260708/k00/00m/050/079000c",
     "contentSnippet": "",
     "pubDate": "2026-07-08T03:11:57.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "複合",
       "五輪",
@@ -9885,9 +9850,9 @@
     "link": "https://mainichi.jp/articles/20260708/k00/00m/050/089000c",
     "contentSnippet": "",
     "pubDate": "2026-07-08T03:19:16.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "ノルディックスキー複合",
       "冬季五輪",
@@ -9953,9 +9918,9 @@
     "link": "https://mainichi.jp/articles/20260708/k00/00m/050/014000c",
     "contentSnippet": "",
     "pubDate": "2026-07-08T03:30:10.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "ストライカー",
       "柵越",
@@ -9972,10 +9937,10 @@
     "originalTitle": "大谷翔平、メジャー通算300本塁打　日本勢初　9年目で到達",
     "link": "https://mainichi.jp/articles/20260708/k00/00m/050/097000c",
     "contentSnippet": "",
-    "pubDate": "2026-07-08T06:24:11.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "pubDate": "2026-07-08T07:50:41.000Z",
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "大谷翔平",
       "メジャー通算300本塁打",
@@ -12012,9 +11977,9 @@
     "link": "https://mainichi.jp/articles/20260708/k00/00m/050/267000c",
     "contentSnippet": "",
     "pubDate": "2026-07-08T07:54:26.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "キング",
       "実態",
@@ -12185,9 +12150,9 @@
     "link": "https://mainichi.jp/articles/20260707/k00/00m/050/045000c",
     "contentSnippet": "",
     "pubDate": "2026-07-08T08:00:12.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "ポッドキャスト",
       "メンシプ・",
@@ -12235,9 +12200,9 @@
     "link": "https://mainichi.jp/articles/20260708/k00/00m/050/015000c",
     "contentSnippet": "",
     "pubDate": "2026-07-08T08:00:15.000Z",
-    "category": "general",
-    "feedName": "毎日新聞ニュース",
-    "weight": 6,
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
     "keywords": [
       "football",
       "life",
@@ -12643,7 +12608,7 @@
     "originalTitle": "グリーン車超え「新幹線個室」を初公開　東京－新大阪は4万円超",
     "link": "https://mainichi.jp/articles/20260708/k00/00m/040/099000c",
     "contentSnippet": "",
-    "pubDate": "2026-07-08T08:30:15.000Z",
+    "pubDate": "2026-07-08T09:11:32.000Z",
     "category": "general",
     "feedName": "毎日新聞ニュース",
     "weight": 6,
@@ -12810,6 +12775,179 @@
       "3カ月無料キャンペーン",
       "Kindle本",
       "300円クーポン進呈"
+    ]
+  },
+  {
+    "title": "皇室典範改正案　与党、10日の審議入りを提案　衆院議運理事会",
+    "originalTitle": "皇室典範改正案　与党、10日の審議入りを提案　衆院議運理事会",
+    "link": "https://mainichi.jp/articles/20260708/k00/00m/010/288000c",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T08:55:05.000Z",
+    "category": "general",
+    "feedName": "毎日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "皇室典範改正案",
+      "与党",
+      "10日",
+      "審議入",
+      "提案",
+      "衆院議運理事会"
+    ]
+  },
+  {
+    "title": "松のやのカツカレー「創業ビーフロースかつカレー」＆「創業ビーフロースかつカレー」試食レビュー",
+    "originalTitle": "松のやのカツカレー「創業ビーフロースかつカレー」＆「創業ビーフロースかつカレー」試食レビュー",
+    "link": "https://gigazine.net/news/20260708-matsunoya-sougyou-beef-curry/",
+    "contentSnippet": "松屋フーズ系列のとんかつ専門店である松のやで松屋の人気メニュー「創業ビーフカレー」を使ったカツカレーが2026年7月8日15時から食べられるようになりました。「創業ビーフロースかつカレー」と「創業ビーフ超厚切りリブロースかつカレー」の2種類あるので、どちらも実際に注文してどんな味がするのか確かめてみました。\n続きを読む...",
+    "pubDate": "Wed, 08 Jul 2026 17:55:00 +0900",
+    "category": "trending",
+    "feedName": "GIGAZINE",
+    "weight": 5,
+    "keywords": [
+      "カツカレー",
+      "創業ビーフロース",
+      "カレー",
+      "創業ビーフロース",
+      "カレー",
+      "試食レビュー"
+    ]
+  },
+  {
+    "title": "Amazon Music、2026年上半期ランキング　米津玄師「IRIS OUT」が1位",
+    "originalTitle": "Amazon Music、2026年上半期ランキング　米津玄師「IRIS OUT」が1位",
+    "link": "https://k-tai.watch.impress.co.jp/docs/news/2123408.html",
+    "contentSnippet": "Amazon Musicは、2026年上半期に日本で最も再生された楽曲ランキングを発表した。集計期間は1月1日～5月31日で、Amazon.co.jpのユーザーを対象に、Amazon Musicのストリーミングサービスにおける再生回数が集計された。",
+    "pubDate": "2026-07-08T08:55:43.000Z",
+    "category": "trending",
+    "feedName": "ケータイ Watch",
+    "weight": 5,
+    "keywords": [
+      "Amazon",
+      "Music",
+      "2026年上半期ランキング",
+      "米津玄師",
+      "IRIS",
+      "OUT",
+      "1位"
+    ]
+  },
+  {
+    "title": "戦時中の空襲などの被害救済法案 野党7党が提出",
+    "originalTitle": "戦時中の空襲などの被害救済法案 野党7党が提出",
+    "link": "http://www3.nhk.or.jp/news/html/20260708/k10015171951000.html",
+    "contentSnippet": "太平洋戦争中に空襲などの被害を受けた人たちを救済しようと、野党7党は、1人当たり50万円を支給するとした法案を共同で国会に提出しました。",
+    "pubDate": "Wed, 08 Jul 2026 17:58:41 +0900",
+    "category": "headline",
+    "feedName": "NHK主要ニュース",
+    "weight": 10,
+    "keywords": [
+      "戦時中",
+      "空襲",
+      "被害救済法案",
+      "野党7党",
+      "提出"
+    ]
+  },
+  {
+    "title": "中道 皇室典範改正案 付帯決議案の修正を前提に賛成方針",
+    "originalTitle": "中道 皇室典範改正案 付帯決議案の修正を前提に賛成方針",
+    "link": "http://www3.nhk.or.jp/news/html/20260708/k10015172021000.html",
+    "contentSnippet": "皇族数の確保に向けた皇室典範の改正案について、中道改革連合は党が求める付帯決議案の修正を前提に賛成する方針を決めました。",
+    "pubDate": "Wed, 08 Jul 2026 18:00:13 +0900",
+    "category": "headline",
+    "feedName": "NHK主要ニュース",
+    "weight": 10,
+    "keywords": [
+      "中道",
+      "皇室典範改正案",
+      "付帯決議案",
+      "修正",
+      "前提",
+      "賛成方針"
+    ]
+  },
+  {
+    "title": "議長ポストめぐり金銭授受あったか聞き取り調査へ 福岡県議会",
+    "originalTitle": "議長ポストめぐり金銭授受あったか聞き取り調査へ 福岡県議会",
+    "link": "http://www3.nhk.or.jp/news/html/20260708/k10015172001000.html",
+    "contentSnippet": "福岡県議会の議長ポストをめぐり、金銭の授受があったかどうか、議会内で主張が対立している問題を受け、県議会は実態を明らかにするため、現職の議員すべてを対象に外部の有識者による聞き取り調査を行うことを決めました。",
+    "pubDate": "Wed, 08 Jul 2026 18:03:04 +0900",
+    "category": "headline",
+    "feedName": "NHK主要ニュース",
+    "weight": 10,
+    "keywords": [
+      "議長ポスト",
+      "金銭授受",
+      "調査",
+      "福岡県議会"
+    ]
+  },
+  {
+    "title": "きときと→「富山高山すし空港」に、その狙いは…　富山空港の新愛称",
+    "originalTitle": "きときと→「富山高山すし空港」に、その狙いは…　富山空港の新愛称",
+    "link": "http://www.asahi.com/articles/ASV782TCBV78PUZB006M.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T09:00:00.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "富山高山",
+      "空港",
+      "富山空港",
+      "新愛称"
+    ]
+  },
+  {
+    "title": "街角の景気に「持ち直しの兆し」　6月調査、水準はまだ低く",
+    "originalTitle": "街角の景気に「持ち直しの兆し」　6月調査、水準はまだ低く",
+    "link": "http://www.asahi.com/articles/ASV782SCHV78ULFA01PM.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T08:59:49.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "街角",
+      "景気",
+      "6月調査",
+      "水準"
+    ]
+  },
+  {
+    "title": "維新、小浜・京都ルート桂川案と米原案を整備委に提示へ　北陸新幹線",
+    "originalTitle": "維新、小浜・京都ルート桂川案と米原案を整備委に提示へ　北陸新幹線",
+    "link": "http://www.asahi.com/articles/ASV782TN5V78ULFA00LM.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T08:56:21.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "維新",
+      "小浜・京都ルート桂川案",
+      "米原案",
+      "整備委",
+      "提示",
+      "北陸新幹線"
+    ]
+  },
+  {
+    "title": "見た目重視のハンディファン。音が気にならない環境なら最高の相棒だ",
+    "originalTitle": "見た目重視のハンディファン。音が気にならない環境なら最高の相棒だ",
+    "link": "https://www.gizmodo.jp/article/baramood_handyfan_type-02-silky/",
+    "contentSnippet": "街に出ると、ハンディファンの所有率の高さに驚かされます。ここ数年、本当に暑いので納得です。ハンディファンは、どれも同じような機能でありながら、各社いろいろな工夫が見られるので面白いです。でも、基本的には同じようなデザインかと思っていたら、韓…",
+    "pubDate": "Wed, 08 Jul 2026 09:00:00 GMT",
+    "category": "trending",
+    "feedName": "ギズモード・ジャパン",
+    "weight": 5,
+    "keywords": [
+      "目重視",
+      "ハンディファン",
+      "環境",
+      "最高",
+      "相棒"
     ]
   }
 ]
