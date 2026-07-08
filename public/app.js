@@ -1698,7 +1698,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!inTable) {
           inTable = true;
           tableHeaders = cells;
-          parsedHtml += '<table class="digest-table"><thead><tr>';
+          parsedHtml += '<table class="ai-digest-table"><thead><tr>';
           cells.forEach(c => {
             parsedHtml += `<th>${parseInlineMarkdownText(c)}</th>`;
           });
@@ -1721,7 +1721,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
         if (!inList) {
           inList = true;
-          parsedHtml += '<ul class="digest-list">';
+          parsedHtml += '<ul class="ai-digest-list">';
         }
         parsedHtml += `<li>${parseInlineMarkdownText(trimmed.substring(2))}</li>`;
         return;
