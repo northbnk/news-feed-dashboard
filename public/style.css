@@ -1859,8 +1859,8 @@ body {
   font-size: 14.5px;
   line-height: 1.7;
   margin: 0 0 14px 0;
-  opacity: 0.95;
-  color: var(--text-secondary);
+  opacity: 1;
+  color: var(--text-primary);
 }
 
 #ai-digest-modal-body a {
@@ -1883,7 +1883,8 @@ body {
   font-size: 14px;
   line-height: 1.75;
   margin-bottom: 8px;
-  color: var(--text-secondary);
+  opacity: 1;
+  color: var(--text-primary);
 }
 
 /* テーブル */

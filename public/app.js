@@ -1721,6 +1721,22 @@ document.addEventListener('DOMContentLoaded', () => {
     html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
     html = html.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    
+    // 生の URL (https?://) を安全に自動リンク化
+    const linkPlaceholderMap = [];
+    html = html.replace(/<a\s+[^>]*>.*?<\/a>/gi, (match) => {
+      const id = `__LINK_PLACEHOLDER_${linkPlaceholderMap.length}__`;
+      linkPlaceholderMap.push({ id, original: match });
+      return id;
+    });
+
+    const urlPattern = /(https?:\/\/[^\s\)<>"\u3000-\u30FF\u4E00-\u9FFF]+)/gi;
+    html = html.replace(urlPattern, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+
+    linkPlaceholderMap.forEach(item => {
+      html = html.replace(item.id, item.original);
+    });
+
     return html;
   }
 
@@ -2027,16 +2043,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     switch (e.key) {
       case 'j':
-      case 'ArrowDown':
-        e.preventDefault();
-        if (cards.length > 0 && activeCardIdx < cards.length - 1) {
-          activeCardIdx++;
-          updateFocusVisuals();
-        }
-        break;
-
-      case 'k':
-      case 'ArrowUp':
+      case 'J':
+      case 'ArrowUp': // j: 上
         e.preventDefault();
         if (cards.length > 0 && activeCardIdx > 0) {
           activeCardIdx--;
@@ -2044,8 +2052,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         break;
 
-      case 'h':
-      case 'ArrowLeft':
+      case 'l':
+      case 'L':
+      case 'ArrowDown': // l: 下
+        e.preventDefault();
+        if (cards.length > 0 && activeCardIdx < cards.length - 1) {
+          activeCardIdx++;
+          updateFocusVisuals();
+        }
+        break;
+
+      case 'i':
+      case 'I':
+      case 'ArrowLeft': // i: 左
         e.preventDefault();
         if (activeCol > 0) {
           activeCol--;
@@ -2055,8 +2074,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         break;
 
-      case 'l':
-      case 'ArrowRight':
+      case 'k':
+      case 'K':
+      case 'ArrowRight': // k: 右
         e.preventDefault();
         if (activeCol < 2) {
           activeCol++;

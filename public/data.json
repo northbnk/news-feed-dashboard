@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-08T05:21:40.332Z",
+  "timestamp": "2026-07-08T08:16:58.216Z",
   "headline": {
     "title": "台風9号 非常に強い勢力を維持し沖縄の先島諸島に接近へ",
     "summary": "大型で非常に強い台風9号は10日・金曜日から11日・土曜日ごろにかけて、非常に強い勢力を維持したまま、沖縄県の先島諸島に近づく見込みです。気象庁は一部の住宅が倒壊するような猛烈な風が吹くおそれがあると...",
@@ -15,145 +15,130 @@
   },
   "topNews": [
     {
-      "id": "cluster_1783488100351_4eme4",
-      "aiTitle": "兵庫知事「責任果たしたい」　給与減額案、4度目の継続審議で",
+      "id": "cluster_1783498618435_ewzft",
+      "aiTitle": "中国・甘粛省で土砂崩れ、21人死亡　各地で災害相次ぐ",
       "aiSummary": "詳細記事を参照してください。",
-      "genre": "society",
+      "genre": "politics",
       "sources": [
         {
           "publisher": "毎日新聞ニュース",
-          "title": "兵庫知事「責任果たしたい」　給与減額案、4度目の継続審議で",
-          "url": "https://mainichi.jp/articles/20260708/k00/00m/040/154000c"
+          "title": "中国・甘粛省で土砂崩れ、21人死亡　各地で災害相次ぐ",
+          "url": "https://mainichi.jp/articles/20260708/k00/00m/030/279000c"
         }
       ],
       "hatebu": 0,
       "weight": 6
     },
     {
-      "id": "cluster_1783488100346_6thl1",
-      "aiTitle": "「はじめてのおつかい」 絵本作家の林明子さん死去 81歳",
-      "aiSummary": "「はじめてのおつかい」や「おつきさまこんばんは」など長年にわたって読み継がれる数々の絵本を手がけた絵本作家の林明子さんが今月1日、肺炎のため亡くなりました。81歳でした。",
+      "id": "cluster_1783498618435_r2tjo",
+      "aiTitle": "思春期に「異性への関心」見直し求め1万人超署名　学習指導要領",
+      "aiSummary": "詳細記事を参照してください。",
       "genre": "society",
       "sources": [
         {
-          "publisher": "NHK主要ニュース",
-          "title": "「はじめてのおつかい」 絵本作家の林明子さん死去 81歳",
-          "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171741000.html"
-        },
-        {
           "publisher": "毎日新聞ニュース",
-          "title": "絵本作家の林明子さん死去　81歳　「はじめてのおつかい」",
-          "url": "https://mainichi.jp/articles/20260708/k00/00m/200/048000c"
+          "title": "思春期に「異性への関心」見直し求め1万人超署名　学習指導要領",
+          "url": "https://mainichi.jp/articles/20260708/k00/00m/040/268000c"
         },
         {
           "publisher": "朝日新聞ニュース",
-          "title": "絵本作家の林明子さん死去　「はじめてのおつかい」「こんとあき」",
-          "url": "http://www.asahi.com/articles/ASV780HXQV78UCVL00YM.html?ref=rss"
+          "title": "保健体育「異性へ関心」見直し求める　LGBTQの当事者ら",
+          "url": "http://www.asahi.com/articles/ASV782D0FV78UTIL013M.html?ref=rss"
         }
       ],
-      "hatebu": 1,
+      "hatebu": 0,
+      "weight": 6
+    },
+    {
+      "id": "cluster_1783498618333_zlveu",
+      "aiTitle": "九州北部 中国地方 近畿で梅雨明け 午前中から厳しい暑さ",
+      "aiSummary": "8日は広い範囲で高気圧に覆われて晴れ、気象庁は8日午前、「九州北部と中国地方、近畿が梅雨明けしたとみられる」と発表しました。西日本と東日本を中心にすでに30度以上の真夏日となっていて、午後は猛烈な暑さ...",
+      "genre": "politics",
+      "sources": [
+        {
+          "publisher": "NHK主要ニュース",
+          "title": "九州北部 中国地方 近畿で梅雨明け 午前中から厳しい暑さ",
+          "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171561000.html"
+        }
+      ],
+      "hatebu": 0,
       "weight": 10
     },
     {
-      "id": "cluster_1783488100351_xu1ip",
-      "aiTitle": "水銀巡る規制は「極めて野心的」　水俣条約で国際協調できた理由",
+      "id": "cluster_1783498618420_epfqm",
+      "aiTitle": "立花琴未さんら出演　北九州TGC、10月10日開催へ",
       "aiSummary": "詳細記事を参照してください。",
-      "genre": "politics",
+      "genre": "society",
       "sources": [
         {
           "publisher": "毎日新聞ニュース",
-          "title": "水銀巡る規制は「極めて野心的」　水俣条約で国際協調できた理由",
-          "url": "https://mainichi.jp/articles/20260707/k00/00m/040/099000c"
+          "title": "立花琴未さんら出演　北九州TGC、10月10日開催へ",
+          "url": "https://mainichi.jp/articles/20260708/k00/00m/200/250000c"
         }
       ],
       "hatebu": 0,
       "weight": 6
     },
     {
-      "id": "cluster_1783488100352_0q71w",
-      "aiTitle": "｢ダメ人間のまま｣でいることが結果的に強みになることも…のび太に学ぶ《自分探しの深み》から抜け出す方法 | ライフ",
-      "aiSummary": "小さい頃に祖父母からもらった励ましや約束､覚えていますか？ドラえもんやのび太のエピソードを通して､他人と比べず､自分らしさや家族との絆の大切さを再認識できる本記事。慌ただしい現代にこそ､素直な自分を…",
+      "id": "cluster_1783498618434_x2tok",
+      "aiTitle": "サケ捕獲巡る「先住権」訴訟、高裁判決確定へ　アイヌ側上告せず",
+      "aiSummary": "詳細記事を参照してください。",
+      "genre": "society",
+      "sources": [
+        {
+          "publisher": "毎日新聞ニュース",
+          "title": "サケ捕獲巡る「先住権」訴訟、高裁判決確定へ　アイヌ側上告せず",
+          "url": "https://mainichi.jp/articles/20260708/k00/00m/040/269000c"
+        }
+      ],
+      "hatebu": 0,
+      "weight": 6
+    },
+    {
+      "id": "cluster_1783498618436_dcmnx",
+      "aiTitle": "金型5千個を下請けに無償保管させる　給湯器大手「ノーリツ」に勧告",
+      "aiSummary": "詳細記事を参照してください。",
+      "genre": "society",
+      "sources": [
+        {
+          "publisher": "朝日新聞ニュース",
+          "title": "金型5千個を下請けに無償保管させる　給湯器大手「ノーリツ」に勧告",
+          "url": "http://www.asahi.com/articles/ASV782H0ZV78PTIL00TM.html?ref=rss"
+        }
+      ],
+      "hatebu": 0,
+      "weight": 6
+    },
+    {
+      "id": "cluster_1783498618402_p5n8o",
+      "aiTitle": "参議院憲法審査会 国民投票法改正案 15日採決で大筋合意",
+      "aiSummary": "参議院憲法審査会は幹事懇談会を開き、来週15日の審査会で憲法改正の手続きを定めた国民投票法の改正案の質疑と採決を行うことで、与野党が大筋で合意しました。",
+      "genre": "politics",
+      "sources": [
+        {
+          "publisher": "NHK主要ニュース",
+          "title": "参議院憲法審査会 国民投票法改正案 15日採決で大筋合意",
+          "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171931000.html"
+        },
+        {
+          "publisher": "毎日新聞ニュース",
+          "title": "参院憲法審、国民投票法改正案を15日にも採決へ",
+          "url": "https://mainichi.jp/articles/20260708/k00/00m/010/236000c"
+        }
+      ],
+      "hatebu": 0,
+      "weight": 10
+    },
+    {
+      "id": "cluster_1783498618434_zzj5f",
+      "aiTitle": "参院本会議 2024年度決算承認 浜岡原発などめぐる警告決議可決",
+      "aiSummary": "2024年度＝令和6年度の国の決算が参議院本会議で承認されました。これにあわせて、中部電力が浜岡原子力発電所の審査で不正なデータ処理を行っていた問題を受け、政府に再発防止を求める警告決議も可決されまし...",
       "genre": "business",
       "sources": [
         {
-          "publisher": "東洋経済オンライン",
-          "title": "｢ダメ人間のまま｣でいることが結果的に強みになることも…のび太に学ぶ《自分探しの深み》から抜け出す方法 | ライフ",
-          "url": "https://toyokeizai.net/articles/-/948687?utm_source=rss&utm_medium=http&utm_campaign=link_back"
-        }
-      ],
-      "hatebu": 0,
-      "weight": 6
-    },
-    {
-      "id": "cluster_1783488100334_9j0b3",
-      "aiTitle": "皇室典範改正で宮城知事が注文　国民、皇室の声「聞くべきだと思う」",
-      "aiSummary": "詳細記事を参照してください。",
-      "genre": "society",
-      "sources": [
-        {
-          "publisher": "朝日新聞ニュース",
-          "title": "皇室典範改正で宮城知事が注文　国民、皇室の声「聞くべきだと思う」",
-          "url": "http://www.asahi.com/articles/ASV781J53V78UNHB004M.html?ref=rss"
-        },
-        {
-          "publisher": "毎日新聞ニュース",
-          "title": "中道、付帯決議で「速やかな見直し」記載要求へ　皇室典範改正",
-          "url": "https://mainichi.jp/articles/20260707/k00/00m/010/357000c"
-        }
-      ],
-      "hatebu": 1,
-      "weight": 6
-    },
-    {
-      "id": "cluster_1783488100351_0k0jf",
-      "aiTitle": "個人情報保護法の改正案　参院の特別委員会で可決　近く成立へ",
-      "aiSummary": "詳細記事を参照してください。",
-      "genre": "society",
-      "sources": [
-        {
-          "publisher": "朝日新聞ニュース",
-          "title": "個人情報保護法の改正案　参院の特別委員会で可決　近く成立へ",
-          "url": "http://www.asahi.com/articles/ASV781H7KV78ULFA01LM.html?ref=rss"
-        }
-      ],
-      "hatebu": 0,
-      "weight": 6
-    },
-    {
-      "id": "cluster_1783488100336_q6dp1",
-      "aiTitle": "長期金利、一時2.865%で30年ぶりの高水準　国債増発を懸念",
-      "aiSummary": "詳細記事を参照してください。",
-      "genre": "society",
-      "sources": [
-        {
-          "publisher": "朝日新聞ニュース",
-          "title": "長期金利、一時2.865%で30年ぶりの高水準　国債増発を懸念",
-          "url": "http://www.asahi.com/articles/ASV780HQ6V78ULFA004M.html?ref=rss"
-        },
-        {
-          "publisher": "朝日新聞ニュース",
-          "title": "「骨太ショック」長期金利、一時2.850%に　約30年ぶり高水準",
-          "url": "http://www.asahi.com/articles/ASV772RBPV77ULFA00RM.html?ref=rss"
-        }
-      ],
-      "hatebu": 0,
-      "weight": 6
-    },
-    {
-      "id": "cluster_1783488100345_11c56",
-      "aiTitle": "「安倍氏が生きていたら…」献花台に続々と　銃撃事件から4年で黙禱",
-      "aiSummary": "安倍元総理大臣が奈良市内で演説中に銃撃された事件から、8日で4年です。現場近くにはことしも献花台が設けられ、多くの人が花を手向けました。",
-      "genre": "politics",
-      "sources": [
-        {
-          "publisher": "朝日新聞ニュース",
-          "title": "「安倍氏が生きていたら…」献花台に続々と　銃撃事件から4年で黙禱",
-          "url": "http://www.asahi.com/articles/ASV7721PBV77POMB003M.html?ref=rss"
-        },
-        {
           "publisher": "NHK主要ニュース",
-          "title": "安倍元首相銃撃事件から4年 現場の献花台に多くの人 奈良",
-          "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171581000.html"
+          "title": "参院本会議 2024年度決算承認 浜岡原発などめぐる警告決議可決",
+          "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171911000.html"
         }
       ],
       "hatebu": 0,
@@ -162,186 +147,191 @@
   ],
   "trendingNews": [
     {
-      "id": "cluster_1783488100936_5nqdf",
-      "aiTitle": "セブン、アンカー最新モバイルバッテリーを先行販売",
-      "aiSummary": "セブン‐イレブン・ジャパンは、Anker(アンカー)グループ製品取り扱いの第3弾として、最新のモバイルバッテリーを含む計14製品を、全国のセブン‐イレブン店舗で7月11日から順次発売する。",
-      "genre": "entertainment",
+      "id": "cluster_1783498619242_tfgol",
+      "aiTitle": "LUUP、サブスクのライド予約時間を「20分前から」に延長",
+      "aiSummary": "Luupは、マイクロモビリティシェア「LUUP」のサブスクプラン加入者向け特典をアップデートした。ライド前の予約可能時間を従来の10分から20分へ延長する。対象はLUUPのサブスクプラン加入者で、全国...",
+      "genre": "culture",
       "sources": [
         {
           "publisher": "Impress Watch",
-          "title": "セブン、アンカー最新モバイルバッテリーを先行販売",
-          "url": "https://www.watch.impress.co.jp/docs/news/2123450.html"
+          "title": "LUUP、サブスクのライド予約時間を「20分前から」に延長",
+          "url": "https://www.watch.impress.co.jp/docs/news/2123523.html"
         }
       ],
       "sns": {
-        "x": 711,
-        "threads": 122,
-        "hatebu": 68
+        "x": 871,
+        "threads": 174,
+        "hatebu": 83
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783488100935_q35h6",
-      "aiTitle": "Notta、ローカル環境で文字起こしできる「Nottaデスクトップ」",
-      "aiSummary": "Nottaは、AI文字起こし・議事録サービス「Notta」のPC向けアプリ「Nottaデスクトップ」を提供開始した。WindowsとmacOS(Intel/Apple Silicon)に対応し、Not...",
+      "id": "cluster_1783498619161_9d7sm",
+      "aiTitle": "ロボット掃除機のネクストブレイク枠。ヨーロッパで人気の「Dreame」のデザインと機能性",
+      "aiSummary": "ロボット掃除機に機能性とデザイン性を求めるなら、知っておきたいブランドがDreame（ドリーミー）。ヨーロッパで人気のロボット掃除機ブランドの背景と、おすすめモデル「L10s Ultra Gen 3」を紹介します。",
       "genre": "tech",
       "sources": [
         {
-          "publisher": "Impress Watch",
-          "title": "Notta、ローカル環境で文字起こしできる「Nottaデスクトップ」",
-          "url": "https://www.watch.impress.co.jp/docs/news/2123439.html"
+          "publisher": "ライフハッカー・ジャパン",
+          "title": "ロボット掃除機の本質はタイパ家電。「Dreame L40s Pro Ultra」に床掃除のすべてを任せる",
+          "url": "https://www.lifehacker.jp/article/2607-dreame-l40s-pro-ultra-self-cleaning-robot/"
+        },
+        {
+          "publisher": "ライフハッカー・ジャパン",
+          "title": "ロボット掃除機のネクストブレイク枠。ヨーロッパで人気の「Dreame」のデザインと機能性",
+          "url": "https://www.lifehacker.jp/article/the-popular-robot-vacuum-dreame-in-europe/"
         }
       ],
       "sns": {
-        "x": 756,
-        "threads": 136,
-        "hatebu": 73
+        "x": 817,
+        "threads": 166,
+        "hatebu": 86
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783488100927_4l6ji",
-      "aiTitle": "Wi-Fiが遅くなる問題、Windowsの「ある標準機能」をオフにしたら一発解決した",
-      "aiSummary": "Microsoftは7月6日(米国時間)、Windows 11 InsiderのExperimentalチャネル向けにプレビュービルド26300.8772を配信開始した。このビルドでは、PCをクリーンで正常な状態に復元する新しいリカバリオプ...",
-      "genre": "tech",
-      "sources": [
-        {
-          "publisher": "PC Watch",
-          "title": "OS起動不能でも大丈夫、Windows 11新機能「クラウドリビルド」がInsiderで提供",
-          "url": "https://pc.watch.impress.co.jp/docs/news/2123440.html"
-        },
-        {
-          "publisher": "ライフハッカー・ジャパン",
-          "title": "AndroidをWindows 11化！デスクトップPC感覚で使えるようになるカスタマイズ方法",
-          "url": "https://www.lifehacker.jp/article/2607-how-turn-android-smartphone-into-windows-11/"
-        },
-        {
-          "publisher": "ライフハッカー・ジャパン",
-          "title": "Wi-Fiが遅くなる問題、Windowsの「ある標準機能」をオフにしたら一発解決した",
-          "url": "https://www.lifehacker.jp/article/2607changed-one-windows-update-setting-stopped-random-bandwidth-slowdowns/"
-        }
-      ],
-      "sns": {
-        "x": 559,
-        "threads": 82,
-        "hatebu": 45
-      },
-      "emotion": "hot",
-      "weight": 5
-    },
-    {
-      "id": "cluster_1783488100935_x4swu",
-      "aiTitle": "こだわりのPC周辺機器やゲ昇降デスクの天面がガラス張りのショーケースに。お気に入りグッズを愛でながら仕事ができます",
-      "aiSummary": "お気に入りデバイスは常に見える場所に。毎日使うデスクの上には、文房部やら卓上スピーカーやらがアレコレ置かれていると思います。だけどお気に入りの周辺機器まで全てを置くのは、作業スペース的にムリ。それらは...",
+      "id": "cluster_1783498619239_q6l6k",
+      "aiTitle": "防犯カメラ「設置がめんどう…」は過去の話。フルワイヤレスで簡単に安心ゲット",
+      "aiSummary": "ROOMIE 2026年7月8日掲載の記事より転載都内の一軒家に暮らす平井さん一家。夫の龍之進さん、妻の好美さん、長男の仁之丞くん、長女の季乃ちゃん、そして愛犬のチューイと、家族4人＋1匹でにぎやかな...",
       "genre": "tech",
       "sources": [
         {
           "publisher": "ギズモード・ジャパン",
-          "title": "こだわりのPC周辺機器やゲ昇降デスクの天面がガラス張りのショーケースに。お気に入りグッズを愛でながら仕事ができます",
-          "url": "https://www.gizmodo.jp/article/bauhutte-bhd-tb-1500sc/"
+          "title": "防犯カメラ「設置がめんどう…」は過去の話。フルワイヤレスで簡単に安心ゲット",
+          "url": "https://www.gizmodo.jp/article/tp-link-tc93d-kit-sale/"
         }
       ],
       "sns": {
-        "x": 759,
-        "threads": 144,
-        "hatebu": 79
+        "x": 772,
+        "threads": 181,
+        "hatebu": 83
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783488100936_nii5y",
-      "aiTitle": "風量100段階＋冷却プレート。手持ちも卓上もこれ1台で済む3WAY扇風機が便利そう",
-      "aiSummary": "準固体電池を搭載したハンディファン「BrightStarハンディファン」は最長10時間の連続使用と難燃性設計で安全性と持久力を両立しています。自社従来比156％以上の風量で10m先まで届く広範囲送風に...",
-      "genre": "culture",
-      "sources": [
-        {
-          "publisher": "ライフハッカー・ジャパン",
-          "title": "風量100段階＋冷却プレート。手持ちも卓上もこれ1台で済む3WAY扇風機が便利そう",
-          "url": "https://www.lifehacker.jp/article/machi-ya-brightstar-start-955615/"
-        }
-      ],
-      "sns": {
-        "x": 653,
-        "threads": 145,
-        "hatebu": 72
-      },
-      "emotion": "hot",
-      "weight": 5
-    },
-    {
-      "id": "cluster_1783488100935_aqomo",
-      "aiTitle": "全ポート10Gbpsでファンレスのスイッチングハブ、エレコムから2機種",
-      "aiSummary": "エレコムは、全ポートが10Gbps対応のスイッチングハブ2モデルを7月上旬に発売する。実売予想価格は、5ポートの「EHC-X05MA-HB」が4万800円前後、8ポートの「EHC-X08MA-HB」が...",
+      "id": "cluster_1783498619239_ts6co",
+      "aiTitle": "EMEET、高演色リングライトと1/2型センサー搭載の4K Webカメラ「S600L」",
+      "aiSummary": "EMEETは、リングライトと一体化した4K Webカメラ「EMEET SmartCam S600L」を発売した。価格は1万3,980円。",
       "genre": "entertainment",
       "sources": [
         {
           "publisher": "PC Watch",
-          "title": "全ポート10Gbpsでファンレスのスイッチングハブ、エレコムから2機種",
-          "url": "https://pc.watch.impress.co.jp/docs/news/2123403.html"
+          "title": "EMEET、高演色リングライトと1/2型センサー搭載の4K Webカメラ「S600L」",
+          "url": "https://pc.watch.impress.co.jp/docs/news/2123532.html"
         }
       ],
       "sns": {
-        "x": 207,
-        "threads": 24,
-        "hatebu": 1
+        "x": 618,
+        "threads": 123,
+        "hatebu": 59
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1783488100934_9bbja",
-      "aiTitle": "上野駅にJR東日本最大級のデジタルサイネージ「UENO CANVAS」",
-      "aiSummary": "ジェイアール東日本企画はJR上野駅で、JR東日本最大級のデジタルサイネージ「UENO CANVAS(ウエノキャンバス)」の広告運用を7月6日に開始した。",
-      "genre": "culture",
-      "sources": [
-        {
-          "publisher": "Impress Watch",
-          "title": "上野駅にJR東日本最大級のデジタルサイネージ「UENO CANVAS」",
-          "url": "https://www.watch.impress.co.jp/docs/news/2123422.html"
-        }
-      ],
-      "sns": {
-        "x": 486,
-        "threads": 102,
-        "hatebu": 49
-      },
-      "emotion": "hot",
-      "weight": 5
-    },
-    {
-      "id": "cluster_1783488100924_4x8ap",
-      "aiTitle": "【本日みつけたお買い得品】Galaxyの薄型ミドルスマホが1万円オトクにセール中！",
-      "aiSummary": "日本時間の2026年7月22日22時から、Samsungはイギリスのロンドンで新製品発表イベントの「Galaxy Unpacked」を開催すると発表しました。Galaxy Unpackedでは最新の折りたたみスマートフォンが発表される予定で...",
+      "id": "cluster_1783498619142_kf0wd",
+      "aiTitle": "Metaの新AI「Watermelon」はOpenAIのGPT-5.5に匹敵する性能で近日登場",
+      "aiSummary": "ClaudeDevsのX(旧Twitter)アカウントにおいて、Claude APIやAWS上のClaude Platformにおいて、高機能モデルと軽量モデルを連携させ、コストとパフォーマンスを最適化する機能「Advisor tool」が...",
       "genre": "tech",
       "sources": [
         {
+          "publisher": "PC Watch",
+          "title": "Fable 5を顧問、Sonnet 5を実行役とすることでコストを抑える方法",
+          "url": "https://pc.watch.impress.co.jp/docs/news/2123524.html"
+        },
+        {
+          "publisher": "PC Watch",
+          "title": "Fable 5とMythos 5超えうたう「GPT-5.6」が木曜日に公開",
+          "url": "https://pc.watch.impress.co.jp/docs/news/2123445.html"
+        },
+        {
+          "publisher": "Impress Watch",
+          "title": "OpenAI、GPT-5.6は木曜日に一般公開へ",
+          "url": "https://www.watch.impress.co.jp/docs/news/2123444.html"
+        },
+        {
           "publisher": "GIGAZINE",
-          "title": "Samsungが7月22日22時から新製品発表イベント「Galaxy Unpacked」を開催すると発表、3つの折りたたみスマホやSamsung独自のスマートグラスが登場するとの予想",
-          "url": "https://gigazine.net/news/20260708-samsung-galaxy-unpacked/"
-        },
-        {
-          "publisher": "ケータイ Watch",
-          "title": "ドコモの「Galaxy Z Fold7 1TB」が3.3万円引き、オンラインショップ",
-          "url": "https://k-tai.watch.impress.co.jp/docs/news/2123355.html"
-        },
-        {
-          "publisher": "PC Watch",
-          "title": "【本日みつけたお買い得品】Galaxyの薄型ミドルスマホが1万円オトクにセール中！",
-          "url": "https://pc.watch.impress.co.jp/docs/news/todays_sales/2123298.html"
-        },
-        {
-          "publisher": "PC Watch",
-          "title": "【本日みつけたお買い得品】クロレッツのボトルガム6個セットが1,000円引きセール中",
-          "url": "https://pc.watch.impress.co.jp/docs/news/todays_sales/2123013.html"
+          "title": "Metaの新AI「Watermelon」はOpenAIのGPT-5.5に匹敵する性能で近日登場",
+          "url": "https://gigazine.net/news/20260706-meta-watermelon/"
         }
       ],
       "sns": {
-        "x": 197,
-        "threads": 33,
+        "x": 91,
+        "threads": 37,
         "hatebu": 1
+      },
+      "emotion": "hot",
+      "weight": 5
+    },
+    {
+      "id": "cluster_1783498619201_esd92",
+      "aiTitle": "Meta、新たな画像生成モデル「Muse Image」　文脈を理解し自由に編集",
+      "aiSummary": "Metaは7日(米国時間)、新たな画像生成モデル「Muse Image」をMeta AIに導入したと発表した。Muse Imageは、Meta AIアプリとウェブ版meta.aiから利用できる。",
+      "genre": "tech",
+      "sources": [
+        {
+          "publisher": "PC Watch",
+          "title": "Meta、高品質画像を生成・直接編集できる新AI「Muse Image」",
+          "url": "https://pc.watch.impress.co.jp/docs/news/2123528.html"
+        },
+        {
+          "publisher": "Impress Watch",
+          "title": "Meta、新たな画像生成モデル「Muse Image」　文脈を理解し自由に編集",
+          "url": "https://www.watch.impress.co.jp/docs/news/2123341.html"
+        },
+        {
+          "publisher": "GIGAZINE",
+          "title": "MetaがGIFアニメも作れる画像生成AI「Muse Image」をリリース＆音声付き動画を生成できる「Muse Video」も発表される",
+          "url": "https://gigazine.net/news/20260708-muse-image-video-generation-ai/"
+        }
+      ],
+      "sns": {
+        "x": 186,
+        "threads": 37,
+        "hatebu": 10
+      },
+      "emotion": "hot",
+      "weight": 5
+    },
+    {
+      "id": "cluster_1783498619238_51raj",
+      "aiTitle": "XPS 13を触って試せるポップアップイベント。表参道で9日から",
+      "aiSummary": "デル・テクノロジーズは、新型モバイルノート「XPS 13」などを体験できるポップアップイベントを開催する。日程は7月9日から12日、開場時間は10時から20時、場所はZeroBase表参道(東京都港区...",
+      "genre": "tech",
+      "sources": [
+        {
+          "publisher": "PC Watch",
+          "title": "XPS 13を触って試せるポップアップイベント。表参道で9日から",
+          "url": "https://pc.watch.impress.co.jp/docs/news/2123507.html"
+        }
+      ],
+      "sns": {
+        "x": 421,
+        "threads": 99,
+        "hatebu": 44
+      },
+      "emotion": "hot",
+      "weight": 5
+    },
+    {
+      "id": "cluster_1783498619238_cm1vl",
+      "aiTitle": "プライムデーでMeta Quest 3Sが安い！  世界で一番安いのでは!?",
+      "aiSummary": "バッテリーがお疲れになってきたMeta Quest 2からの買い替えにも最適かつ最高！Amazonプライムデー先行セールを見ていたら、Meta Quest 3Sがありますね。お値段を見ると、お。安い。...",
+      "genre": "tech",
+      "sources": [
+        {
+          "publisher": "ギズモード・ジャパン",
+          "title": "プライムデーでMeta Quest 3Sが安い！  世界で一番安いのでは!?",
+          "url": "https://www.gizmodo.jp/article/fe69c2a7-b857-427b-b2f3-67fd6ba50332/"
+        }
+      ],
+      "sns": {
+        "x": 455,
+        "threads": 67,
+        "hatebu": 34
       },
       "emotion": "hot",
       "weight": 5
@@ -350,7 +340,19 @@
   "sports": {
     "baseball": [
       {
-        "id": "cluster_1783488101379_0frmc",
+        "id": "cluster_1783498619683_5de8j",
+        "aiTitle": "プロ野球 月間MVP 阪神 高橋遥人が3か月連続受賞",
+        "aiSummary": "プロ野球の6月の月間MVPが発表され、阪神の高橋遥人投手がセ・リーグの投手部門で初めてとなる3か月連続受賞を果たしました。",
+        "sources": [
+          {
+            "publisher": "NHKスポーツ",
+            "title": "プロ野球 月間MVP 阪神 高橋遥人が3か月連続受賞",
+            "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171851000.html"
+          }
+        ]
+      },
+      {
+        "id": "cluster_1783498619683_6s5ma",
         "aiTitle": "【プロ野球速報】巨人が阪神に逆転勝ち",
         "aiSummary": "プロ野球は7日、6試合が行われ、セ・リーグの同率首位でならんでいる巨人対阪神の試合は巨人の代打、坂本勇人選手が満塁から走者一掃のタイムリーツーベースヒットを打って逆転勝ちしました。",
         "sources": [
@@ -362,7 +364,7 @@
         ]
       },
       {
-        "id": "cluster_1783488101379_g9gn1",
+        "id": "cluster_1783498619683_2ip8a",
         "aiTitle": "プロ野球 オールスターファン投票 阪神 森下 最多79万票で選出",
         "aiSummary": "7月下旬に行われるプロ野球、オールスターゲームのファン投票の結果が発表され、セ・リーグトップの20本のホームランを打っている阪神の森下翔太選手が2年連続で最多となる79万票を集めて選出されました。",
         "sources": [
@@ -374,7 +376,7 @@
         ]
       },
       {
-        "id": "cluster_1783488101379_j2u18",
+        "id": "cluster_1783498619683_4bimq",
         "aiTitle": "野球日本代表 次期監督の人選 NPB “ことし秋までに決定を”",
         "aiSummary": "野球日本代表の次の監督について、NPB＝日本野球機構の中村勝彦事務局長は、ことし秋までに決めたいという考えを示しました。",
         "sources": [
@@ -388,7 +390,31 @@
     ],
     "mlb": [
       {
-        "id": "cluster_1783488101380_67mvt",
+        "id": "cluster_1783498619683_tmh7u",
+        "aiTitle": "【詳しく】ドジャース 大谷翔平20号HR 大リーグ通算300号到達",
+        "aiSummary": "大リーグ、ドジャースの大谷翔平選手がロッキーズ戦で2試合連続となる今シーズン20号のホームランを打ち、大リーグ9年目で通算300号に到達しました。日本選手の300号到達は初めてです。",
+        "sources": [
+          {
+            "publisher": "NHKスポーツ",
+            "title": "【詳しく】ドジャース 大谷翔平20号HR 大リーグ通算300号到達",
+            "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171641000.html"
+          }
+        ]
+      },
+      {
+        "id": "cluster_1783498619683_ih7wr",
+        "aiTitle": "パドレス 松井裕樹 3分の1イニングを無失点 チーム勝利",
+        "aiSummary": "大リーグ、パドレスの松井裕樹投手は、ダイヤモンドバックス戦でリリーフ登板し、3分の1イニングを投げて、ヒット2本を打たれましたが、無失点でした。",
+        "sources": [
+          {
+            "publisher": "NHKスポーツ",
+            "title": "パドレス 松井裕樹 3分の1イニングを無失点 チーム勝利",
+            "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171831000.html"
+          }
+        ]
+      },
+      {
+        "id": "cluster_1783498619683_9hfnk",
         "aiTitle": "カブス 鈴木誠也 4打数ノーヒット チームは2連勝",
         "aiSummary": "大リーグ、カブスの鈴木誠也選手はオリオールズ戦に先発出場し、4打数ノーヒットでしたがチームは勝って2連勝です。",
         "sources": [
@@ -400,19 +426,7 @@
         ]
       },
       {
-        "id": "cluster_1783488101380_ew3df",
-        "aiTitle": "ドジャース 大谷翔平20号HR 大リーグ9年目で通算300号に到達",
-        "aiSummary": "大リーグ、ドジャースの大谷翔平選手が7日、ロッキーズ戦に1番・指名打者で先発出場し、1回の第1打席に2試合連続となる今シーズン20号の先頭打者ホームランを打ち、大リーグ9年目で通算300号に到達しまし...",
-        "sources": [
-          {
-            "publisher": "NHKスポーツ",
-            "title": "ドジャース 大谷翔平20号HR 大リーグ9年目で通算300号に到達",
-            "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171641000.html"
-          }
-        ]
-      },
-      {
-        "id": "cluster_1783488101379_57e58",
+        "id": "cluster_1783498619683_sxcq9",
         "aiTitle": "ドジャース大谷翔平19号 大リーグ通算300号まであと1本",
         "aiSummary": "大リーグ、ドジャースの大谷翔平選手がロッキーズ戦に先発出場し、通算300号まであと1本に迫る19号ホームランを含む3安打4打点の活躍でチームの勝利に貢献しました。",
         "sources": [
@@ -422,23 +436,11 @@
             "url": "http://www3.nhk.or.jp/news/html/20260707/k10015170761000.html"
           }
         ]
-      },
-      {
-        "id": "cluster_1783488101379_slv1s",
-        "aiTitle": "大谷翔平 復帰試合でタイムリーヒット チームは連勝ストップ",
-        "aiSummary": "大リーグ、ドジャースの大谷翔平選手が自身32歳の誕生日となる5日のパドレス戦で2試合ぶりに復帰し、タイムリーヒットで打点「1」をマークしました。",
-        "sources": [
-          {
-            "publisher": "NHKスポーツ",
-            "title": "大谷翔平 復帰試合でタイムリーヒット チームは連勝ストップ",
-            "url": "http://www3.nhk.or.jp/news/html/20260706/k10015169881000.html"
-          }
-        ]
       }
     ],
     "soccer": [
       {
-        "id": "cluster_1783488101379_js7yr",
+        "id": "cluster_1783498619683_lc7pi",
         "aiTitle": "W杯 見どころ【7月8日】連覇狙うアルゼンチン エジプトと対戦",
         "aiSummary": "サッカーワールドカップ北中米大会、決勝トーナメント2回戦の最後の試合、スイス 対 コロンビアは、スイスが、ペナルティーキック戦の末に勝って、1954年以来、72年ぶりに準々決勝進出を決めました。",
         "sources": [
@@ -460,7 +462,7 @@
         ]
       },
       {
-        "id": "cluster_1783488101379_dmzyn",
+        "id": "cluster_1783498619683_ko0na",
         "aiTitle": "W杯 見どころ【7月7日】ポルトガルとスペイン 8強かけ隣国対決",
         "aiSummary": "サッカーワールドカップ北中米大会の決勝トーナメント2回戦、ポルトガル対スペインは、スペインが後半アディショナルタイムのゴールで1対0で勝ち、準々決勝進出を決めました。",
         "sources": [
@@ -483,16 +485,11 @@
             "publisher": "NHKスポーツ",
             "title": "サッカーW杯 クリスチアーノ・ロナウド「最後になるだろう」",
             "url": "http://www3.nhk.or.jp/news/html/20260706/k10015169701000.html"
-          },
-          {
-            "publisher": "NHKスポーツ",
-            "title": "サッカーW杯 イングランドが開催国メキシコ破り準々決勝へ",
-            "url": "http://www3.nhk.or.jp/news/html/20260706/k10015169851000.html"
           }
         ]
       },
       {
-        "id": "cluster_1783488101379_pbqs6",
+        "id": "cluster_1783498619683_j0crf",
         "aiTitle": "サッカーW杯アメリカ代表 処分猶予の選手 ベルギー戦先発出場",
         "aiSummary": "サッカーワールドカップ北中米大会で、レッドカードによる出場停止の処分を猶予されたアメリカ代表のバログン選手が、決勝トーナメント2回戦のベルギー戦で先発メンバーに入りました。",
         "sources": [
@@ -504,7 +501,7 @@
         ]
       },
       {
-        "id": "cluster_1783488101379_n5u4r",
+        "id": "cluster_1783498619683_hz7iy",
         "aiTitle": "Ｗ杯1次リーグ敗退の韓国 サッカー協会の会長が辞任",
         "aiSummary": "サッカーワールドカップ北中米大会で1次リーグ敗退に終わった韓国では、責任をとって韓国サッカー協会の会長が6日、辞任しました。韓国では、代表監督の選考過程が不透明だなどと批判が相次いでいて、論争が続いて...",
         "sources": [
@@ -516,7 +513,7 @@
         ]
       },
       {
-        "id": "cluster_1783488101379_fb7j5",
+        "id": "cluster_1783498619683_zo2wh",
         "aiTitle": "バスケ男子日本代表 韓国に79-81の惜敗 課題残す",
         "aiSummary": "バスケットボール男子の日本代表は、来年開催されるワールドカップのアジア1次予選の最終戦で韓国に79対81で敗れました。",
         "sources": [
@@ -528,7 +525,7 @@
         ]
       },
       {
-        "id": "cluster_1783488101379_cigdy",
+        "id": "cluster_1783498619683_15p8n",
         "aiTitle": "韓国で「サッカー革新委員会」発足 W杯1次リーグ敗退受け",
         "aiSummary": "サッカーワールドカップ北中米大会で1次リーグ敗退に終わった韓国では、政府が、サッカー協会の改革や代表チームの強化を進めるための委員会を発足させました。韓国では、代表監督の選考過程が不透明だなどと批判が...",
         "sources": [
@@ -542,7 +539,7 @@
     ],
     "seasonal": [
       {
-        "id": "cluster_1783488101379_xiytk",
+        "id": "cluster_1783498619683_j7cct",
         "aiTitle": "RSSのURL が変更になりましたので、設定の変更をお願いいたします（旧RSSは2018年6月4日に終了いたしました）",
         "aiSummary": "詳細記事を参照してください。",
         "sources": [
@@ -554,31 +551,7 @@
         ]
       },
       {
-        "id": "cluster_1783488101380_qnj1j",
-        "aiTitle": "アストロズ 今井達也 4回途中2失点 勝ち負けつかず",
-        "aiSummary": "大リーグ、アストロズの今井達也投手はナショナルズ戦に先発し、4回途中2失点で勝ち負けはつきませんでした。",
-        "sources": [
-          {
-            "publisher": "NHKスポーツ",
-            "title": "アストロズ 今井達也 4回途中2失点 勝ち負けつかず",
-            "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171761000.html"
-          }
-        ]
-      },
-      {
-        "id": "cluster_1783488101379_vsfjs",
-        "aiTitle": "スキーノルディック複合 2030年冬季五輪の競技から除外",
-        "aiSummary": "2030年にフランス・アルプス地域で開催される冬のオリンピックの実施競技からスキーノルディック複合が外れることになりました。ノルディック複合は日本が過去の大会で多くのメダルを獲得した競技で冬のオリンピ...",
-        "sources": [
-          {
-            "publisher": "NHKスポーツ",
-            "title": "スキーノルディック複合 2030年冬季五輪の競技から除外",
-            "url": "http://www3.nhk.or.jp/news/html/20260707/k10015171341000.html"
-          }
-        ]
-      },
-      {
-        "id": "cluster_1783488101380_1dznn",
+        "id": "cluster_1783498619683_e5f4t",
         "aiTitle": "Ｗ杯 準々決勝へ ベスト8出そろう 各チームのエースの活躍光る",
         "aiSummary": "サッカーのワールドカップ北中米大会は決勝トーナメント2回戦のすべての試合が終わり、前回大会優勝のアルゼンチンや準優勝のフランスなど準々決勝に進む8チームが出そろいました。2回戦でもアルゼンチンのメッシ...",
         "sources": [
@@ -590,26 +563,50 @@
         ]
       },
       {
-        "id": "cluster_1783488101380_k3n3l",
-        "aiTitle": "IOC ロシア五輪委の資格停止処分を暫定的に解除",
-        "aiSummary": "IOC＝国際オリンピック委員会は、ロシアオリンピック委員会の資格停止処分を暫定的に解除しました。",
+        "id": "cluster_1783498619683_8usz4",
+        "aiTitle": "村上宗隆 復帰目指しマイナーリーグの試合に出場 3打数1安打",
+        "aiSummary": "大リーグ、ホワイトソックスの村上宗隆選手が、右太もも裏のけがからの復帰を目指して、調整のため傘下のマイナーリーグの試合に出場し、ヒットを打つなど、順調な回復ぶりを見せました。",
         "sources": [
           {
             "publisher": "NHKスポーツ",
-            "title": "IOC ロシア五輪委の資格停止処分を暫定的に解除",
-            "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171361000.html"
+            "title": "村上宗隆 復帰目指しマイナーリーグの試合に出場 3打数1安打",
+            "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171921000.html"
           }
         ]
       },
       {
-        "id": "cluster_1783488101379_pz03h",
-        "aiTitle": "【随時更新】Ｗ杯 決勝トーナメント日程・結果 動画 8強かけて",
-        "aiSummary": "サッカーワールドカップ北中米大会は、日本時間の7月5日からベスト8進出をかけた決勝トーナメント2回戦です。日程と結果を試合の2分ハイライトもまじえ、随時更新してお伝えします。",
+        "id": "cluster_1783498619683_88cgj",
+        "aiTitle": "スキーノルディック複合 2030年冬季五輪の競技から除外",
+        "aiSummary": "2030年にフランス・アルプス地域で開催される冬のオリンピックの実施競技からスキーノルディック複合が外れることになりました。ノルディック複合は日本が過去の大会で多くのメダルを獲得した競技で冬のオリンピ...",
         "sources": [
           {
             "publisher": "NHKスポーツ",
-            "title": "【随時更新】Ｗ杯 決勝トーナメント日程・結果 動画 8強かけて",
-            "url": "http://www3.nhk.or.jp/news/html/20260628/k10015163051000.html"
+            "title": "スキーノルディック複合 2030年冬季五輪の競技から除外",
+            "url": "http://www3.nhk.or.jp/news/html/20260707/k10015171341000.html"
+          }
+        ]
+      },
+      {
+        "id": "cluster_1783498619683_m5rk1",
+        "aiTitle": "ブルージェイズ 岡本和真 2試合連続ヒット チームは連敗止める",
+        "aiSummary": "大リーグ、ブルージェイズの岡本和真選手が、ジャイアンツ戦で2試合連続のヒットをマークし、チームは連敗を「3」で止めました。",
+        "sources": [
+          {
+            "publisher": "NHKスポーツ",
+            "title": "ブルージェイズ 岡本和真 2試合連続ヒット チームは連敗止める",
+            "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171801000.html"
+          }
+        ]
+      },
+      {
+        "id": "cluster_1783498619683_vtj2p",
+        "aiTitle": "メッツ 千賀滉大 リリーフ登板で3回5安打4失点 勝ち負けつかず",
+        "aiSummary": "大リーグ、メッツの千賀滉大投手はロイヤルズ戦にリリーフ登板し、3回を投げ5安打4失点で、勝ち負けはつきませんでした。",
+        "sources": [
+          {
+            "publisher": "NHKスポーツ",
+            "title": "メッツ 千賀滉大 リリーフ登板で3回5安打4失点 勝ち負けつかず",
+            "url": "http://www3.nhk.or.jp/news/html/20260708/k10015171791000.html"
           }
         ]
       }
@@ -665,36 +662,36 @@
       "type": "baseball",
       "home": "巨人",
       "away": "阪神",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 1,
+      "awayScore": 1,
       "status": "live",
-      "detail": "1回裏",
-      "commentary": "ダブルプレーでピンチを脱出",
-      "progress": 2
+      "detail": "8回裏",
+      "commentary": "満塁の大チャンスを迎えるも三振に倒れる",
+      "progress": 16
     },
     {
       "id": "game_npb_2",
       "type": "baseball",
       "home": "ソフトバンク",
       "away": "オリックス",
-      "homeScore": 0,
-      "awayScore": 0,
+      "homeScore": 3,
+      "awayScore": 1,
       "status": "live",
-      "detail": "2回表",
+      "detail": "8回表",
       "commentary": "タイムリーツーベースで勝ち越しに成功！",
-      "progress": 3
+      "progress": 15
     },
     {
       "id": "game_mlb_1",
       "type": "mlb",
       "home": "ドジャース",
       "away": "パドレス",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "scheduled",
-      "detail": "10:10開始予定",
-      "commentary": "ドジャース大谷は「2番・DH」で先発予定",
-      "progress": 0
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "live",
+      "detail": "8回裏",
+      "commentary": "ピッチャー交代。緊迫した場面での救援登板",
+      "progress": 16
     },
     {
       "id": "game_soccer_1",
@@ -702,11 +699,11 @@
       "home": "川崎フロンターレ",
       "away": "浦和レッズ",
       "homeScore": 1,
-      "awayScore": 0,
-      "status": "live",
-      "detail": "前半40分",
-      "commentary": "コーナーキックから頭で合わせるもゴール枠外へ",
-      "progress": 4
+      "awayScore": 1,
+      "status": "finished",
+      "detail": "試合終了",
+      "commentary": "試合終了！【浦和レッズ 1 - 1 川崎フロンターレ】の激闘が幕を閉じました。",
+      "progress": 9
     }
   ]
 }
