@@ -35,6 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const authModal = document.getElementById('auth-modal');
   const authModalOverlay = document.getElementById('auth-modal-overlay');
   const authModalClose = document.getElementById('auth-modal-close');
+  
+  // フィードステータスモーダルの各要素
+  const feedStatusModal = document.getElementById('feed-status-modal');
+  const feedStatusModalOverlay = document.getElementById('feed-status-modal-overlay');
+  const feedStatusModalCloseBtn = document.getElementById('feed-status-modal-close-btn');
+  const feedStatusRefreshBtn = document.getElementById('feed-status-refresh-btn');
+  const feedStatusTableBody = document.getElementById('feed-status-table-body');
+  const headerLogoContainer = document.querySelector('.header-logo-container');
   const authForm = document.getElementById('auth-form');
   const authEmail = document.getElementById('auth-email');
   const authPassword = document.getElementById('auth-password');
@@ -2125,6 +2133,171 @@ document.addEventListener('DOMContentLoaded', () => {
     await originalLoadData();
     setTimeout(updateFocusVisuals, 1500); // 描画遅延を考慮
   };
+
+
+  // --- 13. フィードステータスモーダルの制御 ＆ レンダリング ---
+  const categoryNames = { general: '一般/ビジネス', tech: 'テック/IT', trending: '話題/ガジェット', sports: 'スポーツ' };
+  let statusPollInterval = null;
+
+  async function loadFeedStatus() {
+    try {
+      const res = await fetch('/api/feed-status');
+      const data = await res.json();
+      if (data.success) {
+        renderFeedStatus(data.statuses);
+        
+        // 収集中の場合は収集ボタンを「収集中...」にして無効化
+        if (data.isCollecting) {
+          feedStatusRefreshBtn.disabled = true;
+          feedStatusRefreshBtn.textContent = 'データ収集中...';
+          
+          // ポーリングがまだなら開始
+          if (!statusPollInterval) {
+            statusPollInterval = setInterval(loadFeedStatus, 3000);
+          }
+        } else {
+          feedStatusRefreshBtn.disabled = false;
+          feedStatusRefreshBtn.textContent = '今すぐ収集';
+          if (statusPollInterval) {
+            clearInterval(statusPollInterval);
+            statusPollInterval = null;
+          }
+        }
+      }
+    } catch (err) {
+      console.error('Failed to fetch feed status:', err.message);
+    }
+  }
+
+  function renderFeedStatus(statuses) {
+    if (!feedStatusTableBody) return;
+    feedStatusTableBody.innerHTML = '';
+
+    const feedNames = Object.keys(statuses);
+    if (feedNames.length === 0) {
+      feedStatusTableBody.innerHTML = '<tr><td colspan="7" style="padding: 20px; text-align: center; opacity: 0.5;">まだ収集データがありません。ニュースデータの初回取得をお待ちください。</td></tr>';
+      return;
+    }
+
+    const sortedNames = feedNames.sort((a, b) => {
+      const catA = statuses[a].category;
+      const catB = statuses[b].category;
+      if (catA !== catB) return catA.localeCompare(catB);
+      return a.localeCompare(b);
+    });
+
+    sortedNames.forEach(name => {
+      const feed = statuses[name];
+      const row = document.createElement('tr');
+      row.style.borderBottom = '1px solid var(--border-color)';
+      
+      // 状態バッジ
+      let statusBadge = '';
+      if (feed.status === 'success') {
+        statusBadge = '<span class="status-indicator success">正常</span>';
+      } else if (feed.status === 'error') {
+        statusBadge = '<span class="status-indicator error" title="クリックで詳細表示" style="cursor:pointer;">エラー</span>';
+      } else if (feed.status === 'fetching') {
+        statusBadge = '<span class="status-indicator fetching">取得中</span>';
+      } else {
+        statusBadge = '<span class="status-indicator fetching">待機中</span>';
+      }
+
+      // 時間フォーマット
+      const timeStr = feed.lastFetched ? new Date(feed.lastFetched).toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) : '未取得';
+      
+      // エラー内容
+      const errorMsg = feed.error ? `<span style="color:var(--text-muted); font-size:11px; word-break:break-all;">${feed.error}</span>` : '<span style="color:#10b981; font-size:11px;">エラーなし</span>';
+
+      row.innerHTML = `
+        <td style="padding: 12px 8px; font-weight: 600; color: var(--text-primary);">${name}</td>
+        <td style="padding: 12px 8px; color: var(--text-secondary); font-size: 11.5px;">${categoryNames[feed.category] || feed.category}</td>
+        <td style="padding: 12px 8px; text-align: center; color: var(--text-primary); font-weight: 700;">${feed.weight}</td>
+        <td style="padding: 12px 8px; text-align: center;">${statusBadge}</td>
+        <td style="padding: 12px 8px; text-align: center; font-weight: 600; color: var(--text-primary); font-size: 13px;">${feed.articleCount}</td>
+        <td style="padding: 12px 8px; color: var(--text-secondary); font-size: 11.5px;">${timeStr}</td>
+        <td style="padding: 12px 8px;">${errorMsg}</td>
+      `;
+
+      if (feed.status === 'error') {
+        const badge = row.querySelector('.status-indicator.error');
+        if (badge) {
+          badge.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showToast(`${name} エラー: ${feed.error}`, 'error');
+          });
+        }
+      }
+
+      feedStatusTableBody.appendChild(row);
+    });
+  }
+
+  const openFeedStatusModal = () => {
+    feedStatusModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    loadFeedStatus();
+  };
+
+  const closeFeedStatusModal = () => {
+    feedStatusModal.style.display = 'none';
+    document.body.style.overflow = '';
+    if (statusPollInterval) {
+      clearInterval(statusPollInterval);
+      statusPollInterval = null;
+    }
+  };
+
+  // イベントバインディング
+  if (headerLogoContainer) {
+    headerLogoContainer.addEventListener('click', (e) => {
+      e.preventDefault();
+      openFeedStatusModal();
+    });
+  }
+
+  if (feedStatusModalCloseBtn) {
+    feedStatusModalCloseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeFeedStatusModal();
+    });
+  }
+
+  if (feedStatusModalOverlay) {
+    feedStatusModalOverlay.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeFeedStatusModal();
+    });
+  }
+
+  // 手動リフレッシュボタン
+  if (feedStatusRefreshBtn) {
+    feedStatusRefreshBtn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      feedStatusRefreshBtn.disabled = true;
+      feedStatusRefreshBtn.textContent = '更新をリクエスト中...';
+      
+      try {
+        const res = await fetch('/api/refresh');
+        const data = await res.json();
+        showToast(data.message, 'success');
+        
+        // 収集開始に伴うポーリングのキック
+        loadFeedStatus();
+      } catch (err) {
+        showToast('更新リクエストに失敗しました: ' + err.message, 'error');
+        feedStatusRefreshBtn.disabled = false;
+        feedStatusRefreshBtn.textContent = '今すぐ収集';
+      }
+    });
+  }
+
+  // ESCキーで閉じる
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && feedStatusModal.style.display === 'flex') {
+      closeFeedStatusModal();
+    }
+  });
 
 
   // --- 9. 初期読み込み ＆ ポーリング (30秒) ---

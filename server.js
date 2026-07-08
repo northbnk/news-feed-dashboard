@@ -276,6 +276,27 @@ function sortClustersByDate(clusters) {
   });
 }
 
+// クラスターを重要度スコア（最大ウェイト × 時間減衰）でソートするヘルパー
+function sortClustersByScore(clusters) {
+  const now = Date.now();
+  return clusters.sort((a, b) => {
+    const getClusterScore = (cluster) => {
+      const maxWeight = Math.max(...cluster.articles.map(art => art.weight || 5));
+      const latestTime = Math.max(...cluster.articles.map(art => art.pubDate ? new Date(art.pubDate).getTime() : 0));
+      
+      // 時間減衰: 12時間（半減期）の指数減衰
+      const ageHours = (now - latestTime) / (3600 * 1000);
+      const timeDecay = Math.pow(0.5, Math.max(0, ageHours) / 12);
+      
+      // 同一話題を複数メディアが報じている場合は信頼性の向上として加点 (最大 1.5倍)
+      const sourceBoost = Math.min(1.5, 1 + (cluster.articles.length - 1) * 0.15);
+      
+      return maxWeight * timeDecay * sourceBoost;
+    };
+    return getClusterScore(b) - getClusterScore(a);
+  });
+}
+
 // はてなブックマーク数の取得（実API）
 async function fetchHatenaCount(url) {
   try {
@@ -715,6 +736,7 @@ function progressSportsGames() {
 
 // 実行管理フラグ（多重実行の防止）
 let isCollecting = false;
+let feedStatuses = {}; // 各ニュースソースの最終収集ステータス
 
 // メインの自動収集・集約関数
 async function collectAndCluster() {
@@ -734,6 +756,17 @@ async function collectAndCluster() {
     // 各フィードの取得
     for (const category of Object.keys(FEEDS)) {
       for (const feed of FEEDS[category]) {
+        // ステータスの初期化
+        feedStatuses[feed.name] = {
+          url: feed.url,
+          weight: feed.weight,
+          category: category,
+          lastFetched: new Date().toISOString(),
+          status: 'fetching',
+          error: null,
+          articleCount: 0
+        };
+
         try {
           console.log(`取得中: ${feed.name}`);
           let parsed = null;
@@ -745,7 +778,8 @@ async function collectAndCluster() {
             console.warn(`通常のパースに失敗しました (${feed.name})、サニタイズと正規表現フォールバックを試みます:`, firstErr.message);
             // 2. パース失敗時、または不正文字を含む場合のサニタイズ ＆ フォールバックパース
             const res = await fetch(feed.url, {
-              headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)' }
+              headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)' },
+              timeout: 10000 // タイムアウト10秒
             });
             if (!res.ok) throw new Error(`HTTP Status ${res.status}`);
             let xmlText = await res.text();
@@ -762,6 +796,9 @@ async function collectAndCluster() {
           }
 
           if (parsed && parsed.items) {
+            feedStatuses[feed.name].status = 'success';
+            feedStatuses[feed.name].articleCount = parsed.items.length;
+
             for (const item of parsed.items) {
               const cleanedTitle = cleanArticleTitle(item.title);
               const pubDate = item.pubDate || item.isoDate || item.date || new Date().toISOString();
@@ -780,6 +817,8 @@ async function collectAndCluster() {
           }
         } catch (err) {
           console.error(`フィード取得失敗 (${feed.name}):`, err.message);
+          feedStatuses[feed.name].status = 'error';
+          feedStatuses[feed.name].error = err.message;
         }
       }
     }
@@ -860,7 +899,7 @@ async function collectAndCluster() {
 
     // 2. 一般ニュース (トップニュース) のクラスタリング
     const generalArticles = filteredArticles.filter(a => a.category === 'general' || a.category === 'headline');
-    const generalClusters = sortClustersByDate(clusterArticles(generalArticles));
+    const generalClusters = sortClustersByScore(clusterArticles(generalArticles));
     
     console.log(`一般ニュース: ${generalClusters.length} 件のトピックに集約 (多様性を考慮して上位8件を格納)`);
     const targetGeneral = [];
@@ -870,7 +909,7 @@ async function collectAndCluster() {
       const primaryPublisher = cluster.articles[0].feedName;
       const normPublisher = primaryPublisher.includes('NHK') ? 'NHK' : primaryPublisher;
 
-      if (generalPublisherCounts[normPublisher] >= 4) {
+      if (generalPublisherCounts[normPublisher] >= 2) {
         continue; // 1パブリッシャーあたり最大4件まで
       }
       targetGeneral.push(cluster);
@@ -925,7 +964,7 @@ async function collectAndCluster() {
 
     // 3. 話題のニュースのクラスタリング
     const trendingArticles = filteredArticles.filter(a => a.category === 'trending' || a.category === 'tech');
-    const trendingClusters = sortClustersByDate(clusterArticles(trendingArticles));
+    const trendingClusters = sortClustersByScore(clusterArticles(trendingArticles));
     
     console.log(`話題のニュース: ${trendingClusters.length} 件のトピックに集約 (多様性を考慮して上位8件を格納)`);
     const targetTrending = [];
@@ -935,7 +974,7 @@ async function collectAndCluster() {
       const primaryPublisher = cluster.articles[0].feedName;
       const normPublisher = primaryPublisher.includes('NHK') ? 'NHK' : primaryPublisher;
 
-      if (trendingPublisherCounts[normPublisher] >= 4) {
+      if (trendingPublisherCounts[normPublisher] >= 2) {
         continue; // 1パブリッシャーあたり最大4件まで
       }
       targetTrending.push(cluster);
@@ -1545,6 +1584,15 @@ app.get('/api/refresh', (req, res) => {
     success: true, 
     status: 'started', 
     message: 'ニュースデータの更新をバックグラウンドで開始しました。完了まで約3〜4分かかります。' 
+  });
+});
+
+// APIエンドポイント: ニュースフィードステータス一覧の取得
+app.get('/api/feed-status', (req, res) => {
+  res.json({
+    success: true,
+    statuses: feedStatuses,
+    isCollecting: isCollecting
   });
 });
 

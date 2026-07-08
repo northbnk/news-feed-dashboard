@@ -4,7 +4,7 @@
     "originalTitle": "RSSのURL が変更になりましたので、設定の変更をお願いいたします（旧RSSは2018年6月4日に終了いたしました）",
     "link": "https://mainichi.jp/rss/?20180611",
     "contentSnippet": "",
-    "pubDate": "2026-07-08T08:15:58.000Z",
+    "pubDate": "2026-07-08T08:18:04.000Z",
     "category": "sports",
     "feedName": "毎日新聞スポーツ",
     "weight": 5,
@@ -12372,7 +12372,7 @@
     "originalTitle": "中国・甘粛省で土砂崩れ、21人死亡　各地で災害相次ぐ",
     "link": "https://mainichi.jp/articles/20260708/k00/00m/030/279000c",
     "contentSnippet": "",
-    "pubDate": "2026-07-08T08:12:09.000Z",
+    "pubDate": "2026-07-08T08:17:50.000Z",
     "category": "general",
     "feedName": "毎日新聞ニュース",
     "weight": 6,
@@ -12617,6 +12617,25 @@
       "ライド予約時間",
       "20分前",
       "延長"
+    ]
+  },
+  {
+    "title": "ロシア、2028年ロサンゼルス五輪に出場の可能性　IOCが参加制限を解除",
+    "originalTitle": "ロシア、2028年ロサンゼルス五輪に出場の可能性　IOCが参加制限を解除",
+    "link": "https://www.bbc.com/japanese/articles/cwyem82zm4jo?at_medium=RSS&at_campaign=rss",
+    "contentSnippet": "国際オリンピック委員会（IOC）は7日、ロシア選手の大会参加を制限する勧告を暫定的に取り下げた。これにより、ロシア選手は2028年の米ロサンゼルス・オリンピック（五輪）に自国を代表して出場できる可能性が出てきた。",
+    "pubDate": "Wed, 08 Jul 2026 08:11:56 GMT",
+    "category": "general",
+    "feedName": "BBCニュース（日本・国際）",
+    "weight": 7,
+    "keywords": [
+      "ロシア",
+      "2028年ロサンゼルス五輪",
+      "出場",
+      "可能性",
+      "IOC",
+      "参加制限",
+      "解除"
     ]
   }
 ]

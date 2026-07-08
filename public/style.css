@@ -2779,6 +2779,46 @@ body {
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25), var(--shadow-card);
 }
 
+/* ロゴのポインター化 */
+.header-logo-container {
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.header-logo-container:hover {
+  opacity: 0.8;
+}
+
+/* 収集ステータスバッジ */
+.status-indicator {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.status-indicator.success {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.status-indicator.error {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.status-indicator.fetching {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+
 
 
 
