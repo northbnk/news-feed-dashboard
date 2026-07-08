@@ -2822,7 +2822,7 @@ body {
 .card-summary-preview {
   font-size: 12.5px;
   line-height: 1.55;
-  color: var(--text-muted);
+  color: var(--text-primary);
   margin: 8px 0 12px 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -2837,7 +2837,7 @@ body {
   display: block;
   overflow: visible;
   -webkit-line-clamp: unset;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 
