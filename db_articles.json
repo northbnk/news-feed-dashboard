@@ -4,7 +4,7 @@
     "originalTitle": "RSSのURL が変更になりましたので、設定の変更をお願いいたします（旧RSSは2018年6月4日に終了いたしました）",
     "link": "https://mainichi.jp/rss/?20180611",
     "contentSnippet": "",
-    "pubDate": "2026-07-08T03:54:03.000Z",
+    "pubDate": "2026-07-08T05:20:40.000Z",
     "category": "sports",
     "feedName": "毎日新聞スポーツ",
     "weight": 5,
@@ -2101,8 +2101,8 @@
     ]
   },
   {
-    "title": "ハードな品質試験をクリア。モバイルバッテリー界のエリート見参",
-    "originalTitle": "ハードな品質試験をクリア。モバイルバッテリー界のエリート見参",
+    "title": "独自の哲学で安全性を追求。そこまでやるのがエレコムの半固体バッテリー",
+    "originalTitle": "独自の哲学で安全性を追求。そこまでやるのがエレコムの半固体バッテリー",
     "link": "https://www.gizmodo.jp/article/elecom-mobile-battery-ec-c58mn-act2/",
     "contentSnippet": "モバイルバッテリーの「中身」、気にしたことありますか？従来のリチウムイオン電池を使ったモバイルバッテリーに安全上の懸念が指摘されるなか、メーカー各社からは発火や爆発の心配が比較的少ない「新素材バッテリー」を搭載したモバイルバッテリーが続々と…",
     "pubDate": "Tue, 07 Jul 2026 09:00:00 GMT",
@@ -2110,11 +2110,12 @@
     "feedName": "ギズモード・ジャパン",
     "weight": 5,
     "keywords": [
-      "ハード",
-      "品質試験",
-      "クリア",
-      "モバイルバッテリー界",
-      "エリート見参"
+      "独自",
+      "哲学",
+      "安全性",
+      "追求",
+      "エレコム",
+      "半固体バッテリー"
     ]
   },
   {
@@ -4429,24 +4430,6 @@
     ]
   },
   {
-    "title": "アメリカ建国250年、花火や記念飛行でお祝い　異常気象で行事に影響も",
-    "originalTitle": "アメリカ建国250年、花火や記念飛行でお祝い　異常気象で行事に影響も",
-    "link": "https://www.bbc.com/japanese/articles/c4gyy2v4438o?at_medium=RSS&at_campaign=rss",
-    "contentSnippet": "アメリカは4日、建国250年を迎えた。花火が打ち上げられ、軍の記念飛行が実施されるなど、祝賀ムードに包まれた。こうした中、全米各地で行われた祝賀行事が、異常気象の影響を受ける場面もあった。",
-    "pubDate": "Mon, 06 Jul 2026 04:15:10 GMT",
-    "category": "general",
-    "feedName": "BBCニュース（日本・国際）",
-    "weight": 7,
-    "keywords": [
-      "アメリカ建国250年",
-      "花火",
-      "記念飛行",
-      "異常気象",
-      "行事",
-      "影響"
-    ]
-  },
-  {
     "title": "Apple、次期macOS 27でSwift言語をシステムカーネル開発に採用。メモリ安全な言語として",
     "originalTitle": "Apple、次期macOS 27でSwift言語をシステムカーネル開発に採用。メモリ安全な言語として",
     "link": "https://www.publickey1.jp/blog/26/applemacos_27swift.html",
@@ -5717,24 +5700,6 @@
     ]
   },
   {
-    "title": "dカード、「Appleウォレット」「Google ウォレット」の券面デザイン変更可能に　7日～",
-    "originalTitle": "dカード、「Appleウォレット」「Google ウォレット」の券面デザイン変更可能に　7日～",
-    "link": "https://k-tai.watch.impress.co.jp/docs/news/2122657.html",
-    "contentSnippet": "NTTドコモ・フィナンシャルグループ（NTTドコモFG）は、「Appleウォレット」や「Google ウォレット」に表示される「dカード」について、「カードデザインきせかえ」機能の提供を7日に開始する。無料で券面デザインを変更できる。",
-    "pubDate": "2026-07-06T05:08:29.000Z",
-    "category": "trending",
-    "feedName": "ケータイ Watch",
-    "weight": 5,
-    "keywords": [
-      "dカード",
-      "Appleウォレット",
-      "Google",
-      "ウォレット",
-      "券面デザイン変更可能",
-      "7日"
-    ]
-  },
-  {
     "title": "『めっちゃカメレオン』のサーバー代0円ってまじ？",
     "originalTitle": "『めっちゃカメレオン』のサーバー代0円ってまじ？",
     "link": "https://qiita.com/i-icc/items/fb02ae5fa0848f4c511e?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
@@ -5961,27 +5926,6 @@
       "Python",
       "マクロ経済学入門",
       "96"
-    ]
-  },
-  {
-    "title": "最新Linuxの暗号化（yescrypt）はどれだけ堅牢か？John the Ripperで16コアフル駆動させて検証してみた",
-    "originalTitle": "最新Linuxの暗号化（yescrypt）はどれだけ堅牢か？John the Ripperで16コアフル駆動させて検証してみた",
-    "link": "https://qiita.com/sano-shoya/items/225aa1e953f09dbad05c?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
-    "contentSnippet": "はじめに\n現在、LPIC-1の取得に向けて勉強中のインフラエンジニアです。\n教科書で /etc/passwd や /etc/shadow の仕組みを学びましたが、「実際にパスワードって破れるものなのか？」が気になり、WSL2上のKali Linuxを使って自分のアカウント...",
-    "pubDate": "2026-07-06T05:14:53.000Z",
-    "category": "tech",
-    "feedName": "Qiita（トレンド）",
-    "weight": 6,
-    "keywords": [
-      "最新Linux",
-      "暗号化",
-      "yescrypt",
-      "堅牢",
-      "John",
-      "the",
-      "Ripper",
-      "16コアフル駆動",
-      "検証"
     ]
   },
   {
@@ -8451,7 +8395,7 @@
     "originalTitle": "「安倍氏が生きていたら…」献花台に続々と　銃撃事件から4年で黙禱",
     "link": "http://www.asahi.com/articles/ASV7721PBV77POMB003M.html?ref=rss",
     "contentSnippet": "",
-    "pubDate": "2026-07-08T03:11:07.000Z",
+    "pubDate": "2026-07-08T04:44:06.000Z",
     "category": "general",
     "feedName": "朝日新聞ニュース",
     "weight": 6,
@@ -9090,7 +9034,7 @@
     "originalTitle": "長期金利、一時2.865%で30年ぶりの高水準　国債増発を懸念",
     "link": "http://www.asahi.com/articles/ASV780HQ6V78ULFA004M.html?ref=rss",
     "contentSnippet": "",
-    "pubDate": "2026-07-08T02:03:03.000Z",
+    "pubDate": "2026-07-08T04:51:57.000Z",
     "category": "general",
     "feedName": "朝日新聞ニュース",
     "weight": 6,
@@ -9567,7 +9511,7 @@
     "originalTitle": "大谷翔平がメジャー通算300号本塁打　日本選手初、9年目で到達",
     "link": "http://www.asahi.com/articles/ASV6M3J22V6MUTQP01QM.html?ref=rss",
     "contentSnippet": "",
-    "pubDate": "2026-07-08T02:25:45.000Z",
+    "pubDate": "2026-07-08T04:43:34.000Z",
     "category": "general",
     "feedName": "朝日新聞ニュース",
     "weight": 6,
@@ -10554,6 +10498,614 @@
       "筋トレ",
       "本格ステッパー",
       "無限階段"
+    ]
+  },
+  {
+    "title": "コメめぐり「需要に応じた生産」明記の改正食糧法が成立",
+    "originalTitle": "コメめぐり「需要に応じた生産」明記の改正食糧法が成立",
+    "link": "http://www3.nhk.or.jp/news/html/20260708/k10015171601000.html",
+    "contentSnippet": "コメについて生産者が「需要に応じた生産」に主体的に努力することを明記した改正食糧法が、8日の参議院本会議で可決され成立しました。",
+    "pubDate": "Wed, 08 Jul 2026 13:32:04 +0900",
+    "category": "general",
+    "feedName": "NHK経済ニュース",
+    "weight": 7,
+    "keywords": [
+      "コメ",
+      "需要",
+      "生産",
+      "明記",
+      "改正食糧法",
+      "成立"
+    ]
+  },
+  {
+    "title": "自民 定数削減法案審議見送り伝達 中道“集中審議開催を”",
+    "originalTitle": "自民 定数削減法案審議見送り伝達 中道“集中審議開催を”",
+    "link": "http://www3.nhk.or.jp/news/html/20260708/k10015171691000.html",
+    "contentSnippet": "衆議院で与野党の対立が続く中、自民党と中道改革連合の国会対策委員長が会談し、自民党は衆議院議員の定数削減法案の今の国会での審議を見送るとした上で、皇室典範改正案などの審議を進めたいと伝えました。これに対し中道は予算委員会の集中審議の開催を重ねて求め、引き続き協議することになりました。",
+    "pubDate": "Wed, 08 Jul 2026 12:56:20 +0900",
+    "category": "headline",
+    "feedName": "NHK主要ニュース",
+    "weight": 10,
+    "keywords": [
+      "自民",
+      "定数削減法案審議見送",
+      "伝達",
+      "中道",
+      "集中審議開催"
+    ]
+  },
+  {
+    "title": "【きょうのおはBiz 7月8日(水)】障害者雇用 どう向き合う",
+    "originalTitle": "【きょうのおはBiz 7月8日(水)】障害者雇用 どう向き合う",
+    "link": "http://www3.nhk.or.jp/news/html/20260708/k10015171591000.html",
+    "contentSnippet": "NHKニュース「おはよう日本」で平日朝に放送している経済ニュースコーナー「おはBiz」。最新のビジネストレンドや働き方、お役立ちサービスやスタートアップ企業の情報など、ギュギュっとコンパクトにお届けします。",
+    "pubDate": "Wed, 08 Jul 2026 13:09:54 +0900",
+    "category": "general",
+    "feedName": "NHK経済ニュース",
+    "weight": 7,
+    "keywords": [
+      "Biz",
+      "7月8日",
+      "障害者雇用"
+    ]
+  },
+  {
+    "title": "ゼレンスキー氏、NATOに防空システムの提供求める　ロシアの大規模攻撃受け",
+    "originalTitle": "ゼレンスキー氏、NATOに防空システムの提供求める　ロシアの大規模攻撃受け",
+    "link": "https://www.bbc.com/japanese/articles/c621qr1r9n5o?at_medium=RSS&at_campaign=rss",
+    "contentSnippet": "ウクライナのゼレンスキー大統領は7日午前、北大西洋条約機構（NATO）首脳会議が開かれているトルコ･アンカラで演説し、激化するロシアの攻撃からウクライナを守るため、自分たちが喫緊に必要としている防空システムを提供するよう、友好諸国に強く求めた。",
+    "pubDate": "Wed, 08 Jul 2026 04:24:07 GMT",
+    "category": "general",
+    "feedName": "BBCニュース（日本・国際）",
+    "weight": 7,
+    "keywords": [
+      "ゼレンスキー氏",
+      "NATO",
+      "防空システム",
+      "提供求",
+      "ロシア",
+      "大規模攻撃受"
+    ]
+  },
+  {
+    "title": "仏大統領訪問中のシリア首都で爆発、18人負傷",
+    "originalTitle": "仏大統領訪問中のシリア首都で爆発、18人負傷",
+    "link": "https://www.bbc.com/japanese/articles/cx2wkl1erp7o?at_medium=RSS&at_campaign=rss",
+    "contentSnippet": "シリア政府は7日、フランスのマクロン大統領が訪問中の首都ダマスカス中心部で2度の爆発があり、18人が負傷したと発表した。仏当局によると、マクロン氏は無事で、予定通りシリア大統領と会談した。",
+    "pubDate": "Wed, 08 Jul 2026 04:32:35 GMT",
+    "category": "general",
+    "feedName": "BBCニュース（日本・国際）",
+    "weight": 7,
+    "keywords": [
+      "仏大統領訪問中",
+      "シリア首都",
+      "爆発",
+      "18人負傷"
+    ]
+  },
+  {
+    "title": "仮想通貨が法改正で「金融商品」に　規制のあり方は?",
+    "originalTitle": "仮想通貨が法改正で「金融商品」に　規制のあり方は?",
+    "link": "https://mainichi.jp/articles/20260708/k00/00m/020/098000c",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T04:30:12.000Z",
+    "category": "general",
+    "feedName": "毎日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "仮想通貨",
+      "法改正",
+      "金融商品",
+      "規制"
+    ]
+  },
+  {
+    "title": "他県警の捜査情報を賭博店に漏洩か　警視庁の巡査部長を逮捕",
+    "originalTitle": "他県警の捜査情報を賭博店に漏洩か　警視庁の巡査部長を逮捕",
+    "link": "http://www.asahi.com/articles/ASV780R1RV78UTIL009M.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T04:00:00.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "他県警",
+      "捜査情報",
+      "賭博店",
+      "漏洩",
+      "警視庁",
+      "巡査部長",
+      "逮捕"
+    ]
+  },
+  {
+    "title": "空気不要の次世代タイヤ、国内で実用化　低速電動車にブリヂストン製",
+    "originalTitle": "空気不要の次世代タイヤ、国内で実用化　低速電動車にブリヂストン製",
+    "link": "http://www.asahi.com/articles/ASV772GH2V77ULFA00LM.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T04:00:00.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "空気不要",
+      "次世代タイヤ",
+      "国内",
+      "実用化",
+      "低速電動車",
+      "ブリヂストン製"
+    ]
+  },
+  {
+    "title": "スペースXとテスラの合併､その現実味は？－マスク氏の狙いどこにあるのか | 政治・経済・投資",
+    "originalTitle": "スペースXとテスラの合併､その現実味は？－マスク氏の狙いどこにあるのか | 政治・経済・投資 | 東洋経済オンライン",
+    "link": "https://toyokeizai.net/articles/-/950791?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+    "contentSnippet": "なぜ今､両社統合が現実味を帯びているのか､その背景に迫ります。",
+    "pubDate": "Wed, 08 Jul 2026 13:32:00 +0900",
+    "category": "general",
+    "feedName": "東洋経済オンライン",
+    "weight": 6,
+    "keywords": [
+      "スペースX",
+      "テスラ",
+      "合併",
+      "現実味",
+      "マスク氏",
+      "政治・経済・投資"
+    ]
+  },
+  {
+    "title": "スマートHRが年内に目指していた東証上場を見送りへ､IPOでの時価総額を巡り投資家との目線が一致せず | 政治・経済・投資",
+    "originalTitle": "スマートHRが年内に目指していた東証上場を見送りへ､IPOでの時価総額を巡り投資家との目線が一致せず | 政治・経済・投資 | 東洋経済オンライン",
+    "link": "https://toyokeizai.net/articles/-/950800?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+    "contentSnippet": "人事労務ソフトの先駆者･SmartHRが､年内を目指していた東証上場を延期することが明らかになりました。",
+    "pubDate": "Wed, 08 Jul 2026 13:30:00 +0900",
+    "category": "general",
+    "feedName": "東洋経済オンライン",
+    "weight": 6,
+    "keywords": [
+      "スマートHR",
+      "年内",
+      "目指",
+      "東証上場",
+      "見送",
+      "IPO",
+      "時価総額",
+      "投資家",
+      "目線",
+      "一致",
+      "政治・経済・投資"
+    ]
+  },
+  {
+    "title": "｢ポケモン｣コラボをNEXCO3社が合同で実施！ 道路･鉄道･航空…と交通系企業が続々とポケモンを活用する理由 | ライフ",
+    "originalTitle": "｢ポケモン｣コラボをNEXCO3社が合同で実施！ 道路･鉄道･航空…と交通系企業が続々とポケモンを活用する理由 | ライフ | 東洋経済オンライン",
+    "link": "https://toyokeizai.net/articles/-/950133?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+    "contentSnippet": "7月に入り､いよいよ夏が見えてきた。帰省にレジャーにと高速道路を利用する機会が増える中､高速道路の主要3社（NEXCO東日本･中日本･西日本）は合同で､7月1日から9月30日まで､ポケモンとの大がか…",
+    "pubDate": "Wed, 08 Jul 2026 13:30:00 +0900",
+    "category": "general",
+    "feedName": "東洋経済オンライン",
+    "weight": 6,
+    "keywords": [
+      "ポケモン",
+      "コラボ",
+      "NEXCO3社",
+      "合同",
+      "道路",
+      "鉄道",
+      "航空",
+      "交通系企業",
+      "ポケモン",
+      "活用",
+      "理由",
+      "ライフ"
+    ]
+  },
+  {
+    "title": "イントレプレナー（社内起業家）への挑戦はキャリアにもプラスになる。先人47人に学ぶ成長のジャーニー | ビジネス",
+    "originalTitle": "イントレプレナー（社内起業家）への挑戦はキャリアにもプラスになる。先人47人に学ぶ成長のジャーニー | ビジネス | 東洋経済オンライン",
+    "link": "https://toyokeizai.net/articles/-/946543?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+    "contentSnippet": "今､日本の伝統的企業で求められているのは､企業の内部にいながら起業家のように新規事業に挑戦するイントレプレナー（社内起業家）です。新刊『イントレプレナー（社内起業家）の教科書　新規事業を成功に導く5…",
+    "pubDate": "Wed, 08 Jul 2026 13:00:00 +0900",
+    "category": "general",
+    "feedName": "東洋経済オンライン",
+    "weight": 6,
+    "keywords": [
+      "イントレプレナー",
+      "社内起業家",
+      "挑戦",
+      "キャリア",
+      "プラス",
+      "先人47人",
+      "成長",
+      "ジャーニー",
+      "ビジネス"
+    ]
+  },
+  {
+    "title": "このごろ流行りの耳を塞がないイヤホン、波動のチカラで進化する...?",
+    "originalTitle": "このごろ流行りの耳を塞がないイヤホン、波動のチカラで進化する...?",
+    "link": "https://www.gizmodo.jp/article/kikippa-earphone-02/",
+    "contentSnippet": "2025年11月22日の記事を編集して再掲載しています。まさか、イヤホンにそんな進化ルートがあったとは...。オープンイヤー型のイヤホン、増えてますねー。イヤーカフ型もあれば耳掛けスタイルもある。どちらも耳穴部分はスカッとして空間が広がって…",
+    "pubDate": "Wed, 08 Jul 2026 04:00:00 GMT",
+    "category": "trending",
+    "feedName": "ギズモード・ジャパン",
+    "weight": 5,
+    "keywords": [
+      "流行",
+      "イヤホン",
+      "波動",
+      "チカラ",
+      "進化"
+    ]
+  },
+  {
+    "title": "Samsungが7月22日22時から新製品発表イベント「Galaxy Unpacked」を開催すると発表、3つの折りたたみスマホやSamsung独自のスマートグラスが登場するとの予想",
+    "originalTitle": "Samsungが7月22日22時から新製品発表イベント「Galaxy Unpacked」を開催すると発表、3つの折りたたみスマホやSamsung独自のスマートグラスが登場するとの予想",
+    "link": "https://gigazine.net/news/20260708-samsung-galaxy-unpacked/",
+    "contentSnippet": "日本時間の2026年7月22日22時から、Samsungはイギリスのロンドンで新製品発表イベントの「Galaxy Unpacked」を開催すると発表しました。Galaxy Unpackedでは最新の折りたたみスマートフォンが発表される予定です。\n続きを読む...",
+    "pubDate": "Wed, 08 Jul 2026 13:19:00 +0900",
+    "category": "trending",
+    "feedName": "GIGAZINE",
+    "weight": 5,
+    "keywords": [
+      "Samsung",
+      "7月22日22時",
+      "新製品発表イベント",
+      "Galaxy",
+      "Unpacked",
+      "スマホ",
+      "Samsung独自",
+      "スマートグラス",
+      "予想"
+    ]
+  },
+  {
+    "title": "Metaが「AIグラスを使った盗撮」の対策をアピール、撮影中は白色LEDが点灯しLEDを隠すとカメラ起動不可",
+    "originalTitle": "Metaが「AIグラスを使った盗撮」の対策をアピール、撮影中は白色LEDが点灯しLEDを隠すとカメラ起動不可",
+    "link": "https://gigazine.net/news/20260708-meta-ai-glasses-capture-led/",
+    "contentSnippet": "MetaはカメラやAI機能を搭載したAIグラスを製品化しており日本でも販売しています。AIグラスについては「相手に気付かれないように写真や動画を撮影できるのでは？」という不安もつきまとっているのですが、新たにMetaが自社製AIグラスに施している盗撮対策についてアピールするニュースリリースを発表しました。\n続きを読む...",
+    "pubDate": "Wed, 08 Jul 2026 13:11:00 +0900",
+    "category": "trending",
+    "feedName": "GIGAZINE",
+    "weight": 5,
+    "keywords": [
+      "Meta",
+      "AIグラス",
+      "盗撮",
+      "対策",
+      "アピール",
+      "撮影中",
+      "白色LED",
+      "点灯",
+      "LED",
+      "カメラ起動不可"
+    ]
+  },
+  {
+    "title": "上野駅にJR東日本最大級のデジタルサイネージ「UENO CANVAS」",
+    "originalTitle": "上野駅にJR東日本最大級のデジタルサイネージ「UENO CANVAS」",
+    "link": "https://www.watch.impress.co.jp/docs/news/2123422.html",
+    "contentSnippet": "ジェイアール東日本企画はJR上野駅で、JR東日本最大級のデジタルサイネージ「UENO CANVAS(ウエノキャンバス)」の広告運用を7月6日に開始した。",
+    "pubDate": "2026-07-08T04:19:28.000Z",
+    "category": "trending",
+    "feedName": "Impress Watch",
+    "weight": 5,
+    "keywords": [
+      "上野駅",
+      "JR東日本最大級",
+      "デジタルサイネージ",
+      "UENO",
+      "CANVAS"
+    ]
+  },
+  {
+    "title": "SBI・大和証券ら5社、セキュリティトークン海外取引にイーサリアム活用",
+    "originalTitle": "SBI・大和証券ら5社、セキュリティトークン海外取引にイーサリアム活用",
+    "link": "https://www.watch.impress.co.jp/docs/news/2123393.html",
+    "contentSnippet": "SBI証券、大和証券ら5社は、国内発行のセキュリティトークンについて海外証券会社との取引時にイーサリアムやステーブルコインを活用する実証プロジェクトを実施し、その可能性の確認や、実務上の論点を整理し、市場整備に向けた重要な知見を得たと発表した。",
+    "pubDate": "2026-07-08T04:00:00.000Z",
+    "category": "trending",
+    "feedName": "Impress Watch",
+    "weight": 5,
+    "keywords": [
+      "SBI・大和証券",
+      "5社",
+      "セキュリティトークン海外取引",
+      "イーサリアム活用"
+    ]
+  },
+  {
+    "title": "洗車や家の掃除に。手のひらサイズの小型ブロワーで掃除がここまで時短に",
+    "originalTitle": "洗車や家の掃除に。手のひらサイズの小型ブロワーで掃除がここまで時短に",
+    "link": "https://www.lifehacker.jp/article/2607-amazon-spicerrsju1-gno/",
+    "contentSnippet": "軽量コンパクトな小型ブロワーは洗車後の水滴飛ばしやホコリ掃除など、幅広い用途で使える便利なアイテム。今回は、ポケットに収まるほどのコンパクトサイズながら、パワフル風速で水滴やホコリを吹き飛ばす、SPICERR（スパイサー）の「ポケッタブルジェットファン SJU-1」を紹介します。",
+    "pubDate": "Wed, 08 Jul 2026 04:15:00 GMT",
+    "category": "trending",
+    "feedName": "ライフハッカー・ジャパン",
+    "weight": 5,
+    "keywords": [
+      "洗車",
+      "掃除",
+      "サイズ",
+      "小型ブロワー",
+      "掃除",
+      "時短"
+    ]
+  },
+  {
+    "title": "全ポート10Gbpsでファンレスのスイッチングハブ、エレコムから2機種",
+    "originalTitle": "全ポート10Gbpsでファンレスのスイッチングハブ、エレコムから2機種 ",
+    "link": "https://pc.watch.impress.co.jp/docs/news/2123403.html",
+    "contentSnippet": "エレコムは、全ポートが10Gbps対応のスイッチングハブ2モデルを7月上旬に発売する。実売予想価格は、5ポートの「EHC-X05MA-HB」が4万800円前後、8ポートの「EHC-X08MA-HB」が5万800円前後の見込み。",
+    "pubDate": "2026-07-08T04:22:15.000Z",
+    "category": "trending",
+    "feedName": "PC Watch",
+    "weight": 5,
+    "keywords": [
+      "全ポート10Gbps",
+      "ファンレス",
+      "スイッチングハブ",
+      "エレコム",
+      "2機種"
+    ]
+  },
+  {
+    "title": "水銀巡る規制は「極めて野心的」　水俣条約で国際協調できた理由",
+    "originalTitle": "水銀巡る規制は「極めて野心的」　水俣条約で国際協調できた理由",
+    "link": "https://mainichi.jp/articles/20260707/k00/00m/040/099000c",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T05:00:10.000Z",
+    "category": "general",
+    "feedName": "毎日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "水銀巡",
+      "規制",
+      "野心的",
+      "水俣条約",
+      "国際協調",
+      "理由"
+    ]
+  },
+  {
+    "title": "「はじめてのおつかい」 絵本作家の林明子さん死去 81歳",
+    "originalTitle": "「はじめてのおつかい」 絵本作家の林明子さん死去 81歳",
+    "link": "http://www3.nhk.or.jp/news/html/20260708/k10015171741000.html",
+    "contentSnippet": "「はじめてのおつかい」や「おつきさまこんばんは」など長年にわたって読み継がれる数々の絵本を手がけた絵本作家の林明子さんが今月1日、肺炎のため亡くなりました。81歳でした。",
+    "pubDate": "Wed, 08 Jul 2026 14:00:57 +0900",
+    "category": "headline",
+    "feedName": "NHK主要ニュース",
+    "weight": 10,
+    "keywords": [
+      "絵本作家",
+      "林明子",
+      "死去",
+      "81歳"
+    ]
+  },
+  {
+    "title": "兵庫知事「責任果たしたい」　給与減額案、4度目の継続審議で",
+    "originalTitle": "兵庫知事「責任果たしたい」　給与減額案、4度目の継続審議で",
+    "link": "https://mainichi.jp/articles/20260708/k00/00m/040/154000c",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T05:19:04.000Z",
+    "category": "general",
+    "feedName": "毎日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "兵庫知事",
+      "責任果",
+      "給与減額案",
+      "4度目",
+      "継続審議"
+    ]
+  },
+  {
+    "title": "個人情報保護法の改正案　参院の特別委員会で可決　近く成立へ",
+    "originalTitle": "個人情報保護法の改正案　参院の特別委員会で可決　近く成立へ",
+    "link": "http://www.asahi.com/articles/ASV781H7KV78ULFA01LM.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T04:55:24.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "個人情報保護法",
+      "改正案",
+      "参院",
+      "特別委員会",
+      "可決",
+      "成立"
+    ]
+  },
+  {
+    "title": "皇室典範改正で宮城知事が注文　国民、皇室の声「聞くべきだと思う」",
+    "originalTitle": "皇室典範改正で宮城知事が注文　国民、皇室の声「聞くべきだと思う」",
+    "link": "http://www.asahi.com/articles/ASV781J53V78UNHB004M.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T04:57:10.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "皇室典範改正",
+      "宮城知事",
+      "注文",
+      "国民",
+      "皇室"
+    ]
+  },
+  {
+    "title": "｢ダメ人間のまま｣でいることが結果的に強みになることも…のび太に学ぶ《自分探しの深み》から抜け出す方法 | ライフ",
+    "originalTitle": "｢ダメ人間のまま｣でいることが結果的に強みになることも…のび太に学ぶ《自分探しの深み》から抜け出す方法 | ライフ | 東洋経済オンライン",
+    "link": "https://toyokeizai.net/articles/-/948687?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+    "contentSnippet": "小さい頃に祖父母からもらった励ましや約束､覚えていますか？ドラえもんやのび太のエピソードを通して､他人と比べず､自分らしさや家族との絆の大切さを再認識できる本記事。慌ただしい現代にこそ､素直な自分を…",
+    "pubDate": "Wed, 08 Jul 2026 14:00:00 +0900",
+    "category": "general",
+    "feedName": "東洋経済オンライン",
+    "weight": 6,
+    "keywords": [
+      "ダメ人間",
+      "結果的",
+      "自分探",
+      "ライフ"
+    ]
+  },
+  {
+    "title": "VS Code DevContainer を使わなくなった私の、LLM エージェント向け開発環境",
+    "originalTitle": "VS Code DevContainer を使わなくなった私の、LLM エージェント向け開発環境",
+    "link": "https://zenn.dev/kenfdev/articles/1febc0052b0d71",
+    "contentSnippet": "!\nこの記事は長いです。長い癖に具体的に自分が使っているdocker composeなどの設定までは記載していません。そこまで書くとさらにとんでもなく長い記事になってしまうと思ったためです。あくまで思想としてどのように最近開発環境を考えているのかを伝えられたらと思っています。コンテナ開発における環境に悩んでいる方、ぜひ読んでみて感想を聞けたらと思います。私は日々悩み続けています。\n\n以前、「辿り着いた最高の開発環境は Remote な Dev Containers です」という記事を書きました。\nhttps://zenn.dev/kenfdev/articles/dba4dbd45261...",
+    "pubDate": "Tue, 07 Jul 2026 08:00:09 GMT",
+    "category": "tech",
+    "feedName": "Zenn（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "VS",
+      "Code",
+      "DevContainer",
+      "LLM",
+      "エージェント向",
+      "開発環境"
+    ]
+  },
+  {
+    "title": "Excel VBAの開発体験をモダン言語並みにアゲる VSCode拡張機能を作りました",
+    "originalTitle": "Excel VBAの開発体験をモダン言語並みにアゲる VSCode拡張機能を作りました",
+    "link": "https://zenn.dev/harumikun/articles/05274480f07d5f",
+    "contentSnippet": "TL;DR\n\n以前、AIエージェントがExcel VBAマクロを自律開発するためのOSS xlflow を作った\n今回さらに、xlflowをVSCodeから扱うための拡張機能 xlflow for Visual Studio Code を作った\nただのシンタックスハイライト拡張ではなく、VBA向けLSP、補完、Hover、定義ジャンプ、参照検索、Rename、Semantic Tokens、Diagnostics、Formatter、CodeLens、Test Explorer、Activity Barビューまで実装している\nExcelブック内のVBA資産を pull / push ...",
+    "pubDate": "Mon, 06 Jul 2026 10:00:53 GMT",
+    "category": "tech",
+    "feedName": "Zenn（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Excel",
+      "VBA",
+      "開発体験",
+      "モダン言語並",
+      "アゲ",
+      "VSCode拡張機能"
+    ]
+  },
+  {
+    "title": "こだわりのPC周辺機器やゲ昇降デスクの天面がガラス張りのショーケースに。お気に入りグッズを愛でながら仕事ができます",
+    "originalTitle": "こだわりのPC周辺機器やゲ昇降デスクの天面がガラス張りのショーケースに。お気に入りグッズを愛でながら仕事ができます",
+    "link": "https://www.gizmodo.jp/article/bauhutte-bhd-tb-1500sc/",
+    "contentSnippet": "お気に入りデバイスは常に見える場所に。毎日使うデスクの上には、文房部やら卓上スピーカーやらがアレコレ置かれていると思います。だけどお気に入りの周辺機器まで全てを置くのは、作業スペース的にムリ。それらは結局見えない場所に収納されるんですよね。…",
+    "pubDate": "Wed, 08 Jul 2026 05:00:00 GMT",
+    "category": "trending",
+    "feedName": "ギズモード・ジャパン",
+    "weight": 5,
+    "keywords": [
+      "PC周辺機器",
+      "ゲ昇降デスク",
+      "天面",
+      "ガラス張",
+      "ショーケース",
+      "グッズ",
+      "仕事"
+    ]
+  },
+  {
+    "title": "Notta、ローカル環境で文字起こしできる「Nottaデスクトップ」",
+    "originalTitle": "Notta、ローカル環境で文字起こしできる「Nottaデスクトップ」",
+    "link": "https://www.watch.impress.co.jp/docs/news/2123439.html",
+    "contentSnippet": "Nottaは、AI文字起こし・議事録サービス「Notta」のPC向けアプリ「Nottaデスクトップ」を提供開始した。WindowsとmacOS(Intel/Apple Silicon)に対応し、Nottaプレミアム/ビジネス/エンタプライズプランで利用できる。",
+    "pubDate": "2026-07-08T05:06:21.000Z",
+    "category": "trending",
+    "feedName": "Impress Watch",
+    "weight": 5,
+    "keywords": [
+      "Notta",
+      "ローカル環境",
+      "文字起",
+      "Nottaデスクトップ"
+    ]
+  },
+  {
+    "title": "風量100段階＋冷却プレート。手持ちも卓上もこれ1台で済む3WAY扇風機が便利そう",
+    "originalTitle": "風量100段階＋冷却プレート。手持ちも卓上もこれ1台で済む3WAY扇風機が便利そう",
+    "link": "https://www.lifehacker.jp/article/machi-ya-brightstar-start-955615/",
+    "contentSnippet": "準固体電池を搭載したハンディファン「BrightStarハンディファン」は最長10時間の連続使用と難燃性設計で安全性と持久力を両立しています。自社従来比156％以上の風量で10m先まで届く広範囲送風に加え超伝導アルミプレートによる冷却モードを搭載。100段階の風量調整と手持ち・卓上・首かけの3WAY設計で屋外から室内まであらゆる場面で使えます。飛行機への持ち込みにも対応した次世代ハンディファンです。",
+    "pubDate": "Wed, 08 Jul 2026 05:00:00 GMT",
+    "category": "trending",
+    "feedName": "ライフハッカー・ジャパン",
+    "weight": 5,
+    "keywords": [
+      "風量100段階",
+      "冷却プレート",
+      "手持",
+      "卓上",
+      "1台",
+      "3WAY扇風機",
+      "便利"
+    ]
+  },
+  {
+    "title": "セブン、アンカー最新モバイルバッテリーを先行販売",
+    "originalTitle": "セブン、アンカー最新モバイルバッテリーを先行販売",
+    "link": "https://www.watch.impress.co.jp/docs/news/2123450.html",
+    "contentSnippet": "セブン‐イレブン・ジャパンは、Anker(アンカー)グループ製品取り扱いの第3弾として、最新のモバイルバッテリーを含む計14製品を、全国のセブン‐イレブン店舗で7月11日から順次発売する。",
+    "pubDate": "2026-07-08T05:18:51.000Z",
+    "category": "trending",
+    "feedName": "Impress Watch",
+    "weight": 5,
+    "keywords": [
+      "セブン",
+      "アンカー最新モバイルバッテリー",
+      "先行販売"
+    ]
+  },
+  {
+    "title": "OS起動不能でも大丈夫、Windows 11新機能「クラウドリビルド」がInsiderで提供",
+    "originalTitle": "OS起動不能でも大丈夫、Windows 11新機能「クラウドリビルド」がInsiderで提供 ",
+    "link": "https://pc.watch.impress.co.jp/docs/news/2123440.html",
+    "contentSnippet": "Microsoftは7月6日(米国時間)、Windows 11 InsiderのExperimentalチャネル向けにプレビュービルド26300.8772を配信開始した。このビルドでは、PCをクリーンで正常な状態に復元する新しいリカバリオプション「クラウドリビルド」が導入される。",
+    "pubDate": "2026-07-08T05:06:04.000Z",
+    "category": "trending",
+    "feedName": "PC Watch",
+    "weight": 5,
+    "keywords": [
+      "OS起動不能",
+      "大丈夫",
+      "Windows",
+      "11新機能",
+      "クラウドリビルド",
+      "Insider"
+    ]
+  },
+  {
+    "title": "アストロズ 今井達也 4回途中2失点 勝ち負けつかず",
+    "originalTitle": "アストロズ 今井達也 4回途中2失点 勝ち負けつかず",
+    "link": "http://www3.nhk.or.jp/news/html/20260708/k10015171761000.html",
+    "contentSnippet": "大リーグ、アストロズの今井達也投手はナショナルズ戦に先発し、4回途中2失点で勝ち負けはつきませんでした。",
+    "pubDate": "Wed, 08 Jul 2026 14:15:07 +0900",
+    "category": "sports",
+    "feedName": "NHKスポーツ",
+    "weight": 5,
+    "keywords": [
+      "アストロズ",
+      "今井達也",
+      "4回途中2失点"
+    ]
+  },
+  {
+    "title": "カブス 鈴木誠也 4打数ノーヒット チームは2連勝",
+    "originalTitle": "カブス 鈴木誠也 4打数ノーヒット チームは2連勝",
+    "link": "http://www3.nhk.or.jp/news/html/20260708/k10015171751000.html",
+    "contentSnippet": "大リーグ、カブスの鈴木誠也選手はオリオールズ戦に先発出場し、4打数ノーヒットでしたがチームは勝って2連勝です。",
+    "pubDate": "Wed, 08 Jul 2026 14:11:36 +0900",
+    "category": "sports",
+    "feedName": "NHKスポーツ",
+    "weight": 5,
+    "keywords": [
+      "カブス",
+      "鈴木誠也",
+      "4打数ノーヒット",
+      "チーム",
+      "2連勝"
     ]
   }
 ]

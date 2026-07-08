@@ -272,7 +272,12 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       
-      card.addEventListener('click', () => {
+      card.addEventListener('click', (e) => {
+        if (card.classList.contains('expanded') && (e.target.tagName === 'H4' || e.target.closest('h4'))) {
+          e.stopPropagation();
+          window.open(defaultUrl, '_blank', 'noopener,noreferrer');
+          return;
+        }
         markAsRead(defaultUrl, card);
         toggleCardDetails(card, {
           category: 'トップニュース',
@@ -582,7 +587,12 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       
-      card.addEventListener('click', () => {
+      card.addEventListener('click', (e) => {
+        if (card.classList.contains('expanded') && (e.target.tagName === 'H4' || e.target.closest('h4'))) {
+          e.stopPropagation();
+          window.open(defaultUrl, '_blank', 'noopener,noreferrer');
+          return;
+        }
         markAsRead(defaultUrl, card);
         const emotion = item.emotion || 'approved';
         
@@ -664,7 +674,12 @@ document.addEventListener('DOMContentLoaded', () => {
         badgeContainer.insertBefore(clonedSvg, badgeContainer.firstChild);
       }
 
-      card.addEventListener('click', () => {
+      card.addEventListener('click', (e) => {
+        if (card.classList.contains('expanded') && (e.target.tagName === 'H4' || e.target.closest('h4'))) {
+          e.stopPropagation();
+          window.open(defaultUrl, '_blank', 'noopener,noreferrer');
+          return;
+        }
         markAsRead(defaultUrl, card);
         toggleCardDetails(card, {
           category: '話題のニュース',
@@ -715,7 +730,12 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       
-      card.addEventListener('click', () => {
+      card.addEventListener('click', (e) => {
+        if (card.classList.contains('expanded') && (e.target.tagName === 'H4' || e.target.closest('h4'))) {
+          e.stopPropagation();
+          window.open(defaultUrl, '_blank', 'noopener,noreferrer');
+          return;
+        }
         markAsRead(defaultUrl, card);
         toggleCardDetails(card, {
           category: `スポーツ (${getSportLabel(currentSportsTab)})`,
@@ -1954,6 +1974,137 @@ document.addEventListener('DOMContentLoaded', () => {
       closeAIDigestModal();
     }
   });
+
+
+  // --- 12. キーボードショートカット操作ロジック ---
+  let activeCol = 1;      // 初期カラム: 一般トップニュース (0=キュレーション, 1=一般, 2=話題・スポーツ)
+  let activeCardIdx = 0;  // カラム内のアクティブカード
+
+  function getCardsInColumn(colIdx) {
+    if (colIdx === 0) {
+      return Array.from(document.querySelectorAll('#curated-news-list .news-card'));
+    } else if (colIdx === 1) {
+      return Array.from(document.querySelectorAll('#top-news-list .news-card'));
+    } else if (colIdx === 2) {
+      const trending = Array.from(document.querySelectorAll('#trending-news-list .news-card'));
+      const sports = Array.from(document.querySelectorAll('#sports-news-list .news-card'));
+      return [...trending, ...sports];
+    }
+    return [];
+  }
+
+  function updateFocusVisuals() {
+    // 全カードからフォーカスクラスを除去
+    document.querySelectorAll('.news-card, .card-item').forEach(el => {
+      el.classList.remove('focused-card');
+    });
+
+    const cards = getCardsInColumn(activeCol);
+    if (cards.length === 0) return;
+
+    // インデックス値の境界制御
+    if (activeCardIdx >= cards.length) {
+      activeCardIdx = cards.length - 1;
+    }
+    if (activeCardIdx < 0) {
+      activeCardIdx = 0;
+    }
+
+    const targetCard = cards[activeCardIdx];
+    if (targetCard) {
+      targetCard.classList.add('focused-card');
+      targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  window.addEventListener('keydown', (e) => {
+    // 入力欄や認証モーダルフォーカス時はショートカットを無効化
+    if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
+      return;
+    }
+
+    const cards = getCardsInColumn(activeCol);
+
+    switch (e.key) {
+      case 'j':
+      case 'ArrowDown':
+        e.preventDefault();
+        if (cards.length > 0 && activeCardIdx < cards.length - 1) {
+          activeCardIdx++;
+          updateFocusVisuals();
+        }
+        break;
+
+      case 'k':
+      case 'ArrowUp':
+        e.preventDefault();
+        if (cards.length > 0 && activeCardIdx > 0) {
+          activeCardIdx--;
+          updateFocusVisuals();
+        }
+        break;
+
+      case 'h':
+      case 'ArrowLeft':
+        e.preventDefault();
+        if (activeCol > 0) {
+          activeCol--;
+          const targetCards = getCardsInColumn(activeCol);
+          activeCardIdx = Math.min(activeCardIdx, Math.max(0, targetCards.length - 1));
+          updateFocusVisuals();
+        }
+        break;
+
+      case 'l':
+      case 'ArrowRight':
+        e.preventDefault();
+        if (activeCol < 2) {
+          activeCol++;
+          const targetCards = getCardsInColumn(activeCol);
+          activeCardIdx = Math.min(activeCardIdx, Math.max(0, targetCards.length - 1));
+          updateFocusVisuals();
+        }
+        break;
+
+      case 'Enter':
+      case 'o':
+      case ' ':
+        if (cards.length > 0) {
+          const targetCard = cards[activeCardIdx];
+          if (targetCard) {
+            e.preventDefault();
+            // タイトルではなくカードのトグルとして発火
+            targetCard.click();
+            
+            // トグル後のフォーカスビジュアルの維持
+            setTimeout(updateFocusVisuals, 100);
+          }
+        }
+        break;
+
+      case 'v':
+        if (cards.length > 0) {
+          const targetCard = cards[activeCardIdx];
+          if (targetCard) {
+            e.preventDefault();
+            // カード内にあるしおり等アクションボタンから元記事URLを取得
+            const actionBtn = targetCard.querySelector('.btn-action[data-id]');
+            if (actionBtn) {
+              const url = actionBtn.getAttribute('data-id');
+              window.open(url, '_blank', 'noopener,noreferrer');
+            }
+          }
+        }
+        break;
+    }
+  });
+
+  // データロード完了時のフォーカス同期
+  const originalLoadData = loadData;
+  loadData = async function() {
+    await originalLoadData();
+    setTimeout(updateFocusVisuals, 1500); // 描画遅延を考慮
+  };
 
 
   // --- 9. 初期読み込み ＆ ポーリング (30秒) ---

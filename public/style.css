@@ -1745,25 +1745,30 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(5, 8, 16, 0.75);
-  backdrop-filter: blur(4px);
+  background-color: rgba(5, 5, 5, 0.6);
+  backdrop-filter: blur(8px);
+  transition: var(--transition-smooth);
+}
+
+.light-theme .ai-digest-modal-overlay {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .ai-digest-modal-content {
   position: relative;
   width: 90%;
-  max-width: 650px;
+  max-width: 680px;
   max-height: 80vh;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   z-index: 101;
   animation: modalScaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   overflow: hidden;
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(24px);
 }
 
 @keyframes modalScaleIn {
@@ -1831,7 +1836,7 @@ body {
   font-size: 16.5px;
   font-weight: 700;
   margin: 20px 0 10px 0;
-  border-left: 4px solid var(--accent-color, #4f46e5);
+  border-left: 4px solid var(--color-brand-hatebu, #00a4de);
   padding-left: 10px;
   color: var(--text-primary);
 }
@@ -1859,8 +1864,12 @@ body {
 }
 
 #ai-digest-modal-body a {
-  color: var(--accent-color, #4f46e5);
+  color: #3b82f6; /* 明確で美しいブルーに固定 */
   text-decoration: underline;
+}
+
+.light-theme #ai-digest-modal-body a {
+  color: #1d4ed8;
 }
 
 /* リスト */
@@ -2753,6 +2762,22 @@ body {
   font-weight: 600;
   color: var(--text-muted);
 }
+
+/* キーボードフォーカス用のアクティブカードインジケータ */
+.news-card.focused-card, .card-item.focused-card {
+  outline: none !important;
+  border-color: #6366f1 !important; /* 明るめのインディゴでフォーカスを際立たせる */
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4), var(--shadow-card);
+  transform: scale(1.015) translateY(-2px);
+  z-index: 5;
+  transition: var(--transition-fast);
+}
+
+.light-theme .news-card.focused-card, .light-theme .card-item.focused-card {
+  border-color: #4f46e5 !important;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25), var(--shadow-card);
+}
+
 
 
 
