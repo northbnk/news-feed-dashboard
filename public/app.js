@@ -219,19 +219,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // クリックイベントの登録 (バー全体)
     const handleHeadlineClick = () => {
-      // 既読状態をローカルに保存
       localStorage.setItem('read_headline', headline.title);
       headlineBar.classList.remove('unread');
       headlineBar.classList.add('read');
       
-      openDrawer({
-        category: '速報',
-        aiTitle: headline.title,
-        aiSummary: headline.summary,
-        sources: headline.sources,
-        sns: null,
-        emotion: 'hot'
-      });
+      const sourcesMd = headline.sources ? headline.sources.map(src => `* [${src.publisher}](${src.url})`).join('\n') : '';
+      renderGeneratedDigestInModal(
+        `## ${headline.title}\n\n${headline.summary || '要約はありません。'}\n\n**情報元（ソース）**:\n${sourcesMd || 'なし'}`,
+        '速報'
+      );
     };
 
     headlineBar.onclick = handleHeadlineClick;
@@ -278,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       card.addEventListener('click', () => {
         markAsRead(defaultUrl, card);
-        openDrawer({
+        toggleCardDetails(card, {
           category: 'トップニュース',
           aiTitle: item.aiTitle,
           aiSummary: item.aiSummary,
@@ -590,7 +586,7 @@ document.addEventListener('DOMContentLoaded', () => {
         markAsRead(defaultUrl, card);
         const emotion = item.emotion || 'approved';
         
-        openDrawer({
+        toggleCardDetails(card, {
           category: 'ニュース',
           aiTitle: item.title,
           aiSummary: item.summary || '詳細記事を参照してください。',
@@ -670,7 +666,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       card.addEventListener('click', () => {
         markAsRead(defaultUrl, card);
-        openDrawer({
+        toggleCardDetails(card, {
           category: '話題のニュース',
           aiTitle: item.aiTitle,
           aiSummary: item.aiSummary,
@@ -721,7 +717,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       card.addEventListener('click', () => {
         markAsRead(defaultUrl, card);
-        openDrawer({
+        toggleCardDetails(card, {
           category: `スポーツ (${getSportLabel(currentSportsTab)})`,
           aiTitle: item.aiTitle,
           aiSummary: item.aiSummary,
@@ -743,69 +739,104 @@ document.addEventListener('DOMContentLoaded', () => {
     // ニュースデータのカルーセル構築は廃止されました
   }
 
+  // --- 4. 詳細表示アコーディオンの制御（カード直下展開） ---
+  function toggleCardDetails(cardElement, item) {
+    closeBookmarkDrawer(); // 左ドロワーが開いていたら閉じる
+
+    // すでに開いている他のカードがあれば閉じる (排他制御)
+    const currentlyActive = document.querySelector('.news-card.expanded, .card-item.expanded');
+    const isSame = (currentlyActive === cardElement);
+
+    if (currentlyActive) {
+      currentlyActive.classList.remove('expanded');
+      const expandedPart = currentlyActive.querySelector('.card-details-expanded');
+      if (expandedPart) {
+        expandedPart.style.maxHeight = '0';
+        expandedPart.style.opacity = '0';
+        setTimeout(() => expandedPart.remove(), 350);
+      }
+    }
+
+    // 同じカードをクリックして閉じるだけの場合はここで終了
+    if (isSame) return;
+
+    // カードを拡張状態にする
+    cardElement.classList.add('expanded');
+
+    // 詳細領域の作成
+    const detailsDiv = document.createElement('div');
+    detailsDiv.className = 'card-details-expanded';
+    
+    // 詳細領域内をクリックした時はカード自体のトグルが走らないようにする
+    detailsDiv.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // 感情バッジHTML
+    let emotionHtml = '';
+    if (item.emotion && item.sns) {
+      const emotionNames = { hot: '大注目', surprised: '驚き', funny: '面白い', sad: '懸念', approved: '賛同' };
+      emotionHtml = `<span class="emotion-badge ${item.emotion}-badge">${emotionNames[item.emotion] || '話題'}</span>`;
+    }
+
+    // SNS統計
+    let snsHtml = '';
+    if (item.sns) {
+      snsHtml = `
+        <div class="details-sns-row">
+          <span class="sns-stat">𝕏 ${formatCount(item.sns.x)}</span>
+          <span class="sns-stat">🔖 ${formatCount(item.sns.hatebu)}</span>
+        </div>
+      `;
+    }
+
+    // ソースリンク
+    let sourcesHtml = '';
+    if (item.sources && item.sources.length > 0) {
+      sourcesHtml = item.sources.map(src => `
+        <a href="${src.url}" target="_blank" rel="noopener noreferrer" class="source-link-tag" title="${src.title}">
+          <span>${src.publisher}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="10" height="10">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      `).join('');
+    } else {
+      sourcesHtml = '<span class="loading-placeholder">詳細ソース記事がありません</span>';
+    }
+
+    detailsDiv.innerHTML = `
+      <div class="details-content-inner">
+        <div class="details-summary">${item.aiSummary || '要約情報はありません。'}</div>
+        <div class="details-meta-row">
+          <div class="details-sources">
+            ${sourcesHtml}
+          </div>
+          <div class="details-right-badges">
+            ${snsHtml}
+            ${emotionHtml}
+          </div>
+        </div>
+      </div>
+    `;
+
+    cardElement.appendChild(detailsDiv);
+
+    // アニメーション用に高さを動的に適用
+    requestAnimationFrame(() => {
+      detailsDiv.style.maxHeight = detailsDiv.scrollHeight + 'px';
+      detailsDiv.style.opacity = '1';
+    });
+  }
+
   // --- 4. 詳細表示ドロワーの開閉 ＆ データ注入 ---
   function openDrawer(item) {
-    closeBookmarkDrawer(); // 左ドロワーが開いていたら閉じる
-    drawerCategory.textContent = item.category;
-    drawerTitle.textContent = item.aiTitle;
-    drawerSummary.textContent = item.aiSummary;
-
-    // 感情表示設定
-    drawerEmotionWrap.innerHTML = '';
-    if (item.sns) {
-      const emotionNames = { hot: '大注目', surprised: '驚き', funny: '面白い', sad: '懸念', approved: '賛同' };
-      const badge = document.createElement('div');
-      badge.className = `emotion-badge ${item.emotion}-badge`;
-      badge.innerHTML = `<span>${emotionNames[item.emotion] || '話題'}</span>`;
-      
-      const templateSvg = document.getElementById(`svg-emotion-${item.emotion}`);
-      if (templateSvg) {
-        const clonedSvg = templateSvg.cloneNode(true);
-        clonedSvg.removeAttribute('id');
-        badge.insertBefore(clonedSvg, badge.firstChild);
-      }
-      drawerEmotionWrap.appendChild(badge);
-    }
-
-    // SNSカウンター設定 (話題の場合のみ表示)
-    if (item.sns) {
-      drawerSnsSection.style.display = 'block';
-      drawerCountX.textContent = formatCount(item.sns.x);
-      drawerCountThreads.textContent = formatCount(item.sns.threads);
-      drawerCountHatebu.textContent = formatCount(item.sns.hatebu);
-    } else {
-      drawerSnsSection.style.display = 'none';
-    }
-
-    // メディア比較リンクの構築
-    drawerSourcesList.innerHTML = '';
-    if (!item.sources || item.sources.length === 0) {
-      drawerSourcesList.innerHTML = '<div class="loading-placeholder">詳細ソース記事がありません。</div>';
-    } else {
-      item.sources.forEach(src => {
-        const linkCard = document.createElement('a');
-        linkCard.href = src.url;
-        linkCard.target = '_blank';
-        linkCard.rel = 'noopener noreferrer';
-        linkCard.className = 'source-link-card';
-        linkCard.innerHTML = `
-          <div class="source-card-header">
-            <span class="source-publisher">${src.publisher}</span>
-            <!-- 外部リンク用矢印アイコン -->
-            <svg class="arrow-icon icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="source-original-title">${src.title}</div>
-        `;
-        drawerSourcesList.appendChild(linkCard);
-      });
-    }
-
-    // ドロワー表示
-    detailDrawer.classList.add('active');
-    drawerOverlay.classList.add('active');
-    detailDrawer.setAttribute('aria-hidden', 'false');
+    // 後方互換用：サイドドロワーの代わりにモーダル表示へフォールバック
+    const sourcesMd = item.sources ? item.sources.map(src => `* [${src.publisher}](${src.url})`).join('\n') : '';
+    renderGeneratedDigestInModal(
+      `## ${item.aiTitle}\n\n${item.aiSummary || '要約はありません。'}\n\n**情報元（ソース）**:\n${sourcesMd || 'なし'}`,
+      item.category
+    );
   }
 
   function closeDrawer() {
@@ -1175,14 +1206,11 @@ document.addEventListener('DOMContentLoaded', () => {
       
       item.addEventListener('click', (e) => {
         e.stopPropagation();
-        openDrawer({
-          category: '地方ニュース',
-          aiTitle: n.aiTitle,
-          aiSummary: n.aiSummary,
-          sources: n.sources,
-          sns: { hatebu: n.hatebu, x: Math.floor(n.hatebu * 6.5), threads: Math.floor(n.hatebu * 1.2) },
-          emotion: 'approved'
-        });
+        const sourcesMd = n.sources ? n.sources.map(src => `* [${src.publisher}](${src.url})`).join('\n') : '';
+        renderGeneratedDigestInModal(
+          `## ${n.aiTitle}\n\n${n.aiSummary || '要約はありません。'}\n\n**情報元（ソース）**:\n${sourcesMd || 'なし'}`,
+          '地方ニュース'
+        );
       });
       cityNewsList.appendChild(item);
     });

@@ -2626,6 +2626,135 @@ body {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
+/* ==========================================================================
+   Accordion expandable news card details
+   ========================================================================== */
+/* カードの基本設定（アコーディオンはみ出し制御） */
+.news-card, .card-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: auto !important; /* アコーディオン展開に対応 */
+  overflow: hidden;
+  transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth), transform var(--transition-smooth);
+}
+
+/* 展開状態のカードスタイル */
+.news-card.expanded, .card-item.expanded {
+  border-color: var(--accent-color, #4f46e5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* アコーディオン詳細領域 */
+.card-details-expanded {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.015);
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+}
+
+.light-theme .card-details-expanded {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.01);
+}
+
+/* 内部コンテンツのパディング調整 */
+.details-content-inner {
+  padding: 16px;
+}
+
+/* 要約テキスト */
+.details-summary {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+/* 下部メタ行 */
+.details-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  padding-top: 12px;
+}
+
+.light-theme .details-meta-row {
+  border-top: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+/* メディア比較リンク */
+.details-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.source-link-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 5px 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-primary);
+  text-decoration: none !important;
+  transition: var(--transition-fast);
+}
+
+.light-theme .source-link-tag {
+  background-color: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.source-link-tag:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--border-color-hover);
+  transform: translateY(-1px);
+}
+
+.light-theme .source-link-tag:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.source-link-tag svg {
+  opacity: 0.7;
+}
+
+/* 右側バッジ群 */
+.details-right-badges {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* SNS件数 */
+.details-sns-row {
+  display: flex;
+  gap: 10px;
+}
+
+.details-sns-row .sns-stat {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+
 
 
 
