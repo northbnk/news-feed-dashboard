@@ -849,6 +849,15 @@ document.addEventListener('DOMContentLoaded', () => {
       sourcesHtml = '<span class="loading-placeholder">詳細ソース記事がありません</span>';
     }
 
+    const defaultUrl = item.sources?.[0]?.url || '#';
+    const geminiPrompt = `WEB検索を利用してこの記事の深掘りをして：\n${defaultUrl}`;
+    const geminiUrl = `https://gemini.google.com/app?prompt=${encodeURIComponent(geminiPrompt)}`;
+    const geminiBtnHtml = defaultUrl !== '#' ? `
+      <a href="${geminiUrl}" target="_blank" rel="noopener noreferrer" class="gemini-deep-dive-btn" title="Geminiでこの記事を深掘り・検索">
+        <span>✨ Geminiで深掘り</span>
+      </a>
+    ` : '';
+
     detailsDiv.innerHTML = `
       <div class="details-content-inner">
         <div class="details-meta-row">
@@ -858,6 +867,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="details-right-badges">
             ${snsHtml}
             ${emotionHtml}
+            ${geminiBtnHtml}
           </div>
         </div>
       </div>
