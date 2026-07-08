@@ -297,6 +297,88 @@ function sortClustersByScore(clusters) {
   });
 }
 
+// HTMLエンティティのデコード
+function decodeHtmlEntities(str) {
+  if (!str) return '';
+  return str
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&#x2F;/g, '/')
+    .replace(/&#x60;/g, String.fromCharCode(96))
+    .replace(/&#x3D;/g, '=');
+}
+
+// 記事のURLからメタ情報（説明文）を自動的にクロールして抽出
+async function fetchArticleSummaryFromUrl(url) {
+  if (!url) return '';
+  
+  // ダミーリンク、またはRSSのインデックスページ、特定の不適合なソースはスキップ
+  if (url.startsWith('mock_') || url.includes('toyokeizai.net/articles') || url.includes('mainichi.jp/rss') || url.includes('nikkei.com/RSS')) {
+    return '';
+  }
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // 8秒タイムアウト
+
+    const res = await fetch(url, {
+      headers: { 
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' 
+      },
+      signal: controller.signal
+    });
+    
+    clearTimeout(timeoutId);
+    if (!res.ok) return '';
+
+    const html = await res.text();
+
+    // 1. og:description の抽出
+    let match = html.match(/<meta\s+[^>]*property=["']og:description["']\s+[^>]*content=["'](.*?)["']/i) ||
+                html.match(/<meta\s+[^>]*content=["'](.*?)["']\s+[^>]*property=["']og:description["']/i);
+    if (match && match[1]) {
+      const desc = decodeHtmlEntities(match[1].trim());
+      if (desc.length > 5) return desc;
+    }
+
+    // 2. description の抽出
+    match = html.match(/<meta\s+[^>]*name=["']description["']\s+[^>]*content=["'](.*?)["']/i) ||
+            html.match(/<meta\s+[^>]*content=["'](.*?)["']\s+[^>]*name=["']description["']/i);
+    if (match && match[1]) {
+      const desc = decodeHtmlEntities(match[1].trim());
+      if (desc.length > 5) return desc;
+    }
+
+    // 3. bodyのテキストから冒頭リードを抽出
+    const bodyMatch = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+    if (bodyMatch && bodyMatch[1]) {
+      let bodyText = bodyMatch[1]
+        .replace(/<script[^>]*>([\s\S]*?)<\/script>/gi, '')
+        .replace(/<style[^>]*>([\s\S]*?)<\/style>/gi, '')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      
+      bodyText = decodeHtmlEntities(bodyText);
+      if (bodyText.length > 150) {
+        return bodyText.substring(0, 150) + '...';
+      }
+      if (bodyText.length > 10) {
+        return bodyText;
+      }
+    }
+
+    return '';
+  } catch (err) {
+    console.warn(`[Summary Crawler] クロール失敗 (${url}):`, err.message);
+    return '';
+  }
+}
+
 // はてなブックマーク数の取得（実API）
 async function fetchHatenaCount(url) {
   try {
@@ -926,6 +1008,15 @@ async function collectAndCluster() {
         aiContent = selectRepresentativeTitleAndSummary(cluster);
       }
       
+      // クロールによる要約救済
+      if (!aiContent.summary || aiContent.summary.trim() === '' || aiContent.summary.includes('詳細記事を参照してください')) {
+        const repUrl = cluster.articles[0].link;
+        const crawledSummary = await fetchArticleSummaryFromUrl(repUrl);
+        if (crawledSummary) {
+          aiContent.summary = crawledSummary;
+        }
+      }
+      
       // 一般ニュースのジャンル判定 (society / politics / business)
       let genre = 'society';
       const titleLower = aiContent.title.toLowerCase();
@@ -989,6 +1080,15 @@ async function collectAndCluster() {
         aiContent = await generateAITitleAndSummary(cluster);
       } else {
         aiContent = selectRepresentativeTitleAndSummary(cluster);
+      }
+      
+      // クロールによる要約救済
+      if (!aiContent.summary || aiContent.summary.trim() === '' || aiContent.summary.includes('詳細記事を参照してください')) {
+        const repUrl = cluster.articles[0].link;
+        const crawledSummary = await fetchArticleSummaryFromUrl(repUrl);
+        if (crawledSummary) {
+          aiContent.summary = crawledSummary;
+        }
       }
       
       // 話題のニュースのジャンル判定 (culture / tech / entertainment)
@@ -1076,6 +1176,15 @@ async function collectAndCluster() {
           aiContent = await generateAITitleAndSummary(cluster);
         } else {
           aiContent = selectRepresentativeTitleAndSummary(cluster);
+        }
+        
+        // クロールによる要約救済
+        if (!aiContent.summary || aiContent.summary.trim() === '' || aiContent.summary.includes('詳細記事を参照してください')) {
+          const repUrl = cluster.articles[0].link;
+          const crawledSummary = await fetchArticleSummaryFromUrl(repUrl);
+          if (crawledSummary) {
+            aiContent.summary = crawledSummary;
+          }
         }
         clusteredData.sports[key].push({
           id: cluster.id,
