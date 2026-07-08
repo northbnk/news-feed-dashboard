@@ -2653,6 +2653,7 @@ body {
 .news-card.expanded, .card-item.expanded {
   border-color: var(--accent-color, #4f46e5);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  max-height: none !important;
 }
 
 /* アコーディオン詳細領域 */
