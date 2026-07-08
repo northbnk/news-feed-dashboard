@@ -91,7 +91,7 @@ const FEEDS = {
   ],
   sports: [
     { name: 'NHKスポーツ', url: 'https://www3.nhk.or.jp/rss/news/cat7.xml', weight: 5 },
-    { name: '毎日新聞スポーツ', url: 'https://mainichi.jp/rss/etc/sports.rss', weight: 5 }
+    { name: '毎日新聞スポーツ', url: 'https://mainichi.jp/rss/etc/mainichi-sports.rss', weight: 5 }
   ]
 };
 
