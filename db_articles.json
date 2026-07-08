@@ -1508,22 +1508,6 @@
     ]
   },
   {
-    "title": "はやぶさ2、フライバイ成功のポイント5つ　小惑星トリフネに最接近",
-    "originalTitle": "はやぶさ2、フライバイ成功のポイント5つ　小惑星トリフネに最接近",
-    "link": "http://www.asahi.com/articles/ASV721VKFV72UTFL00NM.html?ref=rss",
-    "contentSnippet": "",
-    "pubDate": "2026-07-06T09:16:39.000Z",
-    "category": "general",
-    "feedName": "朝日新聞ニュース",
-    "weight": 6,
-    "keywords": [
-      "フライバイ成功",
-      "ポイント5",
-      "小惑星トリフネ",
-      "最接近"
-    ]
-  },
-  {
     "title": "俳優の山本耕一さん死去、90歳　「そうなんですよ、川崎さん」",
     "originalTitle": "俳優の山本耕一さん死去、90歳　「そうなんですよ、川崎さん」",
     "link": "http://www.asahi.com/articles/ASV772VPJV77UCVL025M.html?ref=rss",
@@ -10081,7 +10065,7 @@
     "originalTitle": "アサヒグループHD 最終利益が36％減 去年のシステム障害の影響",
     "link": "http://www3.nhk.or.jp/news/html/20260708/k10015171721000.html",
     "contentSnippet": "アサヒグループホールディングスは、去年発生したサイバー攻撃によるシステム障害の影響などで去年1年間の最終的な利益が36％余り減ったことを明らかにしました。",
-    "pubDate": "Wed, 08 Jul 2026 12:50:19 +0900",
+    "pubDate": "Wed, 08 Jul 2026 18:18:25 +0900",
     "category": "general",
     "feedName": "NHK経済ニュース",
     "weight": 7,
@@ -12948,6 +12932,82 @@
       "環境",
       "最高",
       "相棒"
+    ]
+  },
+  {
+    "title": "パキスタン沖で貨物機が消息絶つ 乗員5人 機体捜索活動続く",
+    "originalTitle": "パキスタン沖で貨物機が消息絶つ 乗員5人 機体捜索活動続く",
+    "link": "http://www3.nhk.or.jp/news/html/20260708/k10015172051000.html",
+    "contentSnippet": "パキスタンの沖合で7日夜、乗員5人が乗った貨物機が消息を絶ち、地元当局が捜索活動を続けています。",
+    "pubDate": "Wed, 08 Jul 2026 18:11:10 +0900",
+    "category": "headline",
+    "feedName": "NHK主要ニュース",
+    "weight": 10,
+    "keywords": [
+      "パキスタン沖",
+      "貨物機",
+      "消息絶",
+      "乗員5人",
+      "機体捜索活動続"
+    ]
+  },
+  {
+    "title": "清算手続きの旧統一教会、施設使えず　同名の任意団体で活動継続意向",
+    "originalTitle": "清算手続きの旧統一教会、施設使えず　同名の任意団体で活動継続意向",
+    "link": "http://www.asahi.com/articles/ASV772JXMV77UTIL01TM.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T08:00:00.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "清算手続",
+      "旧統一教会",
+      "施設使",
+      "同名",
+      "任意団体",
+      "活動継続意向"
+    ]
+  },
+  {
+    "title": "上半期の倒産、12年ぶり5千件超え　人件費高騰による倒産2.4倍",
+    "originalTitle": "上半期の倒産、12年ぶり5千件超え　人件費高騰による倒産2.4倍",
+    "link": "http://www.asahi.com/articles/ASV782W29V78ULFA016M.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-08T09:05:10.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "上半期",
+      "倒産",
+      "12年",
+      "5千件超",
+      "人件費高騰",
+      "倒産2",
+      "4倍"
+    ]
+  },
+  {
+    "title": "「Claude Cowork」の用途はソフトウェア開発が8.7％で大半はスライド作成などの事務作業、コーディング以外にもAI利用が広がっている実態が明らかに",
+    "originalTitle": "「Claude Cowork」の用途はソフトウェア開発が8.7％で大半はスライド作成などの事務作業、コーディング以外にもAI利用が広がっている実態が明らかに",
+    "link": "https://gigazine.net/news/20260708-claude-cowork-using/",
+    "contentSnippet": "PC操作を助けるAI「Claude Cowork」がどのように活用されているのか、120万件のセッションに基づいたレポートをAnthropicが公開し、セッションのおよそ3分の1が「業務処理と運用」に分類されるもので、ソフトウェア開発は10％にも満たないことが明らかになりました。\n続きを読む...",
+    "pubDate": "Wed, 08 Jul 2026 18:15:00 +0900",
+    "category": "trending",
+    "feedName": "GIGAZINE",
+    "weight": 5,
+    "keywords": [
+      "Claude",
+      "Cowork",
+      "用途",
+      "ソフトウェア開発",
+      "大半",
+      "スライド作成",
+      "事務作業",
+      "コーディング以外",
+      "AI利用",
+      "実態"
     ]
   }
 ]

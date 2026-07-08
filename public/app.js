@@ -588,6 +588,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       card.innerHTML = `
         <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.title}</h4>
+        <p class="card-summary-preview">${item.summary || '詳細記事を参照してください。'}</p>
         <div class="card-meta">
           <div class="source-comparison">
             ${scoreBadgeHtml}
