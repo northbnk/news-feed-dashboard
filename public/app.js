@@ -280,7 +280,10 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       
+      // アイテムデータをDOMに紐付ける
+      card.__itemData = item;
       card.addEventListener('click', (e) => {
+        syncFocusOnCardClick(card);
         if (card.classList.contains('expanded') && (e.target.tagName === 'H4' || e.target.closest('h4'))) {
           e.stopPropagation();
           window.open(defaultUrl, '_blank', 'noopener,noreferrer');
@@ -595,7 +598,10 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       
+      // アイテムデータをDOMに紐付ける
+      card.__itemData = item;
       card.addEventListener('click', (e) => {
+        syncFocusOnCardClick(card);
         if (card.classList.contains('expanded') && (e.target.tagName === 'H4' || e.target.closest('h4'))) {
           e.stopPropagation();
           window.open(defaultUrl, '_blank', 'noopener,noreferrer');
@@ -682,7 +688,10 @@ document.addEventListener('DOMContentLoaded', () => {
         badgeContainer.insertBefore(clonedSvg, badgeContainer.firstChild);
       }
 
+      // アイテムデータをDOMに紐付ける
+      card.__itemData = item;
       card.addEventListener('click', (e) => {
+        syncFocusOnCardClick(card);
         if (card.classList.contains('expanded') && (e.target.tagName === 'H4' || e.target.closest('h4'))) {
           e.stopPropagation();
           window.open(defaultUrl, '_blank', 'noopener,noreferrer');
@@ -738,7 +747,10 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
       
+      // アイテムデータをDOMに紐付ける
+      card.__itemData = item;
       card.addEventListener('click', (e) => {
+        syncFocusOnCardClick(card);
         if (card.classList.contains('expanded') && (e.target.tagName === 'H4' || e.target.closest('h4'))) {
           e.stopPropagation();
           window.open(defaultUrl, '_blank', 'noopener,noreferrer');
@@ -852,8 +864,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // アニメーション用に高さを動的に適用
     requestAnimationFrame(() => {
-      detailsDiv.style.maxHeight = detailsDiv.scrollHeight + 'px';
+      detailsDiv.style.maxHeight = (detailsDiv.scrollHeight + 40) + 'px';
       detailsDiv.style.opacity = '1';
+      // アニメーション完了後に maxHeight を 'none' に解除して見切れを完全に防止
+      setTimeout(() => {
+        if (cardElement.classList.contains('expanded')) {
+          detailsDiv.style.maxHeight = 'none';
+        }
+      }, 350);
     });
   }
 
@@ -2004,6 +2022,36 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeCol = 1;      // 初期カラム: 一般トップニュース (0=キュレーション, 1=一般, 2=話題・スポーツ)
   let activeCardIdx = 0;  // カラム内のアクティブカード
 
+  // カードクリック時にフォーカス状態（アクティブカラム、インデックス）を連動・同期する
+  function syncFocusOnCardClick(cardElement) {
+    const parentCurated = cardElement.closest('#curated-news-list');
+    const parentTop = cardElement.closest('#top-news-list');
+    const parentTrending = cardElement.closest('#trending-news-list');
+    const parentSports = cardElement.closest('#sports-news-list');
+
+    if (parentCurated) {
+      activeCol = 0;
+    } else if (parentTop) {
+      activeCol = 1;
+    } else if (parentTrending || parentSports) {
+      activeCol = 2;
+    } else {
+      return;
+    }
+
+    const cards = getCardsInColumn(activeCol);
+    const idx = cards.indexOf(cardElement);
+    if (idx !== -1) {
+      activeCardIdx = idx;
+      
+      // フォーカス表示だけを更新（アコーディオンのトグルは個別のクリックイベントに任せる）
+      document.querySelectorAll('.news-card, .card-item').forEach(el => {
+        el.classList.remove('focused-card');
+      });
+      cardElement.classList.add('focused-card');
+    }
+  }
+
   function getCardsInColumn(colIdx) {
     if (colIdx === 0) {
       return Array.from(document.querySelectorAll('#curated-news-list .news-card'));
@@ -2038,6 +2086,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (targetCard) {
       targetCard.classList.add('focused-card');
       targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      // 他のカードが展開中の場合は、移動先のカードも自動展開し、古いカードを閉じる
+      const currentlyActive = document.querySelector('.news-card.expanded, .card-item.expanded');
+      if (currentlyActive && currentlyActive !== targetCard) {
+        if (targetCard.__itemData) {
+          toggleCardDetails(targetCard, targetCard.__itemData);
+        }
+      }
     }
   }
 
