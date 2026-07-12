@@ -2885,6 +2885,32 @@ body {
   opacity: 0.95;
 }
 
+/* ソース追加フォーム内のインプットスタイル調整 */
+#add-source-form-container input:focus, 
+#add-source-form-container select:focus {
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 8px var(--accent-glow) !important;
+}
+
+#add-source-form-container select option {
+  background-color: #1e1b4b; /* ダークテーマ用オプション背景 */
+  color: var(--text-primary);
+}
+
+.light-theme #add-source-form-container select option {
+  background-color: #ffffff;
+  color: var(--text-primary);
+}
+
+#crawler-preview-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+#crawler-preview-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
 
 
 

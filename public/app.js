@@ -36,6 +36,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const authModalOverlay = document.getElementById('auth-modal-overlay');
   const authModalClose = document.getElementById('auth-modal-close');
   
+  // RSSフィード追加フォームの要素
+  const toggleAddSourceBtn = document.getElementById('toggle-add-source-btn');
+  const addSourceFormContainer = document.getElementById('add-source-form-container');
+  const newFeedNameInput = document.getElementById('new-feed-name');
+  const newFeedUrlInput = document.getElementById('new-feed-url');
+  const newFeedCategoryInput = document.getElementById('new-feed-category');
+  const newFeedWeightInput = document.getElementById('new-feed-weight');
+  const btnTestCrawler = document.getElementById('btn-test-crawler');
+  const btnSubmitFeed = document.getElementById('btn-submit-feed');
+  const crawlerPreviewContainer = document.getElementById('crawler-preview-container');
+  const crawlerPreviewStatus = document.getElementById('crawler-preview-status');
+  const crawlerPreviewTitle = document.getElementById('crawler-preview-title');
+  const crawlerPreviewText = document.getElementById('crawler-preview-text');
+  const addSourceMessage = document.getElementById('add-source-message');
+
   // フィードステータスモーダルの各要素
   const feedStatusModal = document.getElementById('feed-status-modal');
   const feedStatusModalOverlay = document.getElementById('feed-status-modal-overlay');
@@ -2286,10 +2301,21 @@ document.addEventListener('DOMContentLoaded', () => {
       // エラー内容
       const errorMsg = feed.error ? `<span style="color:var(--text-muted); font-size:11px; word-break:break-all;">${feed.error}</span>` : '<span style="color:#10b981; font-size:11px;">エラーなし</span>';
 
+      // 重み（優先度）のバッジ化
+      let weightBadgeHtml = '';
+      const w = Number(feed.weight);
+      if (w >= 10) {
+        weightBadgeHtml = '<span class="status-indicator error" style="background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.25); min-width: 60px; display: inline-block;">最優先</span>';
+      } else if (w >= 5) {
+        weightBadgeHtml = '<span class="status-indicator fetching" style="background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); min-width: 60px; display: inline-block;">重要</span>';
+      } else {
+        weightBadgeHtml = '<span class="status-indicator success" style="background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.25); min-width: 60px; display: inline-block;">通常</span>';
+      }
+
       row.innerHTML = `
         <td style="padding: 12px 8px; font-weight: 600; color: var(--text-primary);">${name}</td>
         <td style="padding: 12px 8px; color: var(--text-secondary); font-size: 11.5px;">${categoryNames[feed.category] || feed.category}</td>
-        <td style="padding: 12px 8px; text-align: center; color: var(--text-primary); font-weight: 700;">${feed.weight}</td>
+        <td style="padding: 12px 8px; text-align: center;">${weightBadgeHtml}</td>
         <td style="padding: 12px 8px; text-align: center;">${statusBadge}</td>
         <td style="padding: 12px 8px; text-align: center; font-weight: 600; color: var(--text-primary); font-size: 13px;">${feed.articleCount}</td>
         <td style="padding: 12px 8px; color: var(--text-secondary); font-size: 11.5px;">${timeStr}</td>
@@ -2367,6 +2393,137 @@ document.addEventListener('DOMContentLoaded', () => {
         feedStatusRefreshBtn.textContent = '今すぐ収集';
       }
     });
+  }
+
+  // 新規ソース登録フォームの開閉 (トグル)
+  if (toggleAddSourceBtn && addSourceFormContainer) {
+    toggleAddSourceBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isHidden = addSourceFormContainer.style.display === 'none';
+      addSourceFormContainer.style.display = isHidden ? 'flex' : 'none';
+      toggleAddSourceBtn.querySelector('span').textContent = isHidden ? '➖ フォームを閉じる' : '➕ 新規ソースの登録';
+      
+      // メッセージやプレビューの初期化
+      addSourceMessage.style.display = 'none';
+      crawlerPreviewContainer.style.display = 'none';
+    });
+  }
+
+  // クロール接続テストの実行
+  if (btnTestCrawler) {
+    btnTestCrawler.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const url = newFeedUrlInput.value.trim();
+      if (!url) {
+        showFormMessage('フィードURLを入力してください。', 'error');
+        return;
+      }
+
+      btnTestCrawler.disabled = true;
+      btnTestCrawler.textContent = '🔍 クロール中...';
+      crawlerPreviewContainer.style.display = 'none';
+      addSourceMessage.style.display = 'none';
+
+      try {
+        const res = await fetch('/api/feeds/preview-crawler', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url })
+        });
+        const data = await res.json();
+        btnTestCrawler.disabled = false;
+        btnTestCrawler.textContent = '🔍 接続・クロールテスト';
+
+        if (!res.ok || !data.success) {
+          showFormMessage(data.message || 'クロールテストに失敗しました。', 'error');
+          return;
+        }
+
+        // クロール結果の表示
+        crawlerPreviewContainer.style.display = 'block';
+        crawlerPreviewTitle.textContent = `最新記事: ${data.articleTitle}`;
+        crawlerPreviewText.textContent = data.summary;
+
+        if (data.isSkipped) {
+          crawlerPreviewStatus.innerHTML = '⚠️ <span style="color: #f59e0b; font-weight: 700;">クロール制限ドメイン</span>';
+          crawlerPreviewText.textContent = '（このドメインはスクレイピング制限があるため、RSS側の標準データのみを使用します。個別URLクロールは行いません）';
+        } else if (data.isError) {
+          crawlerPreviewStatus.innerHTML = '⚠️ <span style="color: #ef4444; font-weight: 700;">本文取得エラー (フォールバック)</span>';
+        } else {
+          crawlerPreviewStatus.innerHTML = '✅ <span style="color: #10b981; font-weight: 700;">クローラー正常稼働（要約抽出に成功）</span>';
+        }
+
+      } catch (err) {
+        btnTestCrawler.disabled = false;
+        btnTestCrawler.textContent = '🔍 接続・クロールテスト';
+        showFormMessage('サーバーへの接続に失敗しました: ' + err.message, 'error');
+      }
+    });
+  }
+
+  // 新規フィードの登録
+  if (btnSubmitFeed) {
+    btnSubmitFeed.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const name = newFeedNameInput.value.trim();
+      const url = newFeedUrlInput.value.trim();
+      const category = newFeedCategoryInput.value;
+      const weight = newFeedWeightInput.value;
+
+      if (!name || !url) {
+        showFormMessage('ソース名とフィードURLを入力してください。', 'error');
+        return;
+      }
+
+      btnSubmitFeed.disabled = true;
+      btnSubmitFeed.textContent = '💾 登録中...';
+      addSourceMessage.style.display = 'none';
+
+      try {
+        const res = await fetch('/api/feeds', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, url, category, weight })
+        });
+        const data = await res.json();
+        btnSubmitFeed.disabled = false;
+        btnSubmitFeed.textContent = '💾 登録する';
+
+        if (!res.ok || !data.success) {
+          showFormMessage(data.message || '登録に失敗しました。', 'error');
+          return;
+        }
+
+        showFormMessage(data.message, 'success');
+        newFeedNameInput.value = '';
+        newFeedUrlInput.value = '';
+        
+        // トースト表示
+        showToast('新しいニュースソースを登録しました。', 'success');
+        
+        // 即座にフィードステータスを更新
+        loadFeedStatus();
+
+      } catch (err) {
+        btnSubmitFeed.disabled = false;
+        btnSubmitFeed.textContent = '💾 登録する';
+        showFormMessage('サーバーへの登録要求に失敗しました: ' + err.message, 'error');
+      }
+    });
+  }
+
+  function showFormMessage(text, type) {
+    addSourceMessage.style.display = 'block';
+    addSourceMessage.textContent = text;
+    if (type === 'success') {
+      addSourceMessage.style.background = 'rgba(16,185,129,0.15)';
+      addSourceMessage.style.color = '#10b981';
+      addSourceMessage.style.border = '1px solid rgba(16,185,129,0.25)';
+    } else {
+      addSourceMessage.style.background = 'rgba(239,68,68,0.15)';
+      addSourceMessage.style.color = '#ef4444';
+      addSourceMessage.style.border = '1px solid rgba(239,68,68,0.25)';
+    }
   }
 
   // ESCキーで閉じる

@@ -59,8 +59,8 @@ const parser = new Parser({
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-// RSSフィードのリスト（一次ソース）
-const FEEDS = {
+// 初期 RSS フィードのリスト（feeds.json が存在しない場合のデフォルト値）
+const DEFAULT_FEEDS = {
   headline: [
     { name: 'NHK主要ニュース', url: 'https://www3.nhk.or.jp/rss/news/cat0.xml', weight: 10 }
   ],
@@ -94,6 +94,37 @@ const FEEDS = {
     { name: '毎日新聞スポーツ', url: 'https://mainichi.jp/rss/etc/mainichi-sports.rss', weight: 5 }
   ]
 };
+
+const FEEDS_FILE = path.join(__dirname, 'feeds.json');
+let FEEDS = {};
+
+function loadFeeds() {
+  try {
+    if (fs.existsSync(FEEDS_FILE)) {
+      FEEDS = JSON.parse(fs.readFileSync(FEEDS_FILE, 'utf8'));
+      console.log('feeds.json からフィードリストを正常にロードしました。');
+    } else {
+      FEEDS = JSON.parse(JSON.stringify(DEFAULT_FEEDS));
+      fs.writeFileSync(FEEDS_FILE, JSON.stringify(FEEDS, null, 2), 'utf8');
+      console.log('デフォルトのフィードリストで feeds.json を作成しました。');
+    }
+  } catch (err) {
+    console.error('フィードリストのロード中にエラーが発生しました:', err);
+    FEEDS = JSON.parse(JSON.stringify(DEFAULT_FEEDS));
+  }
+}
+
+function saveFeeds() {
+  try {
+    fs.writeFileSync(FEEDS_FILE, JSON.stringify(FEEDS, null, 2), 'utf8');
+    console.log('feeds.json を正常に更新・保存しました。');
+  } catch (err) {
+    console.error('フィードリストの保存中にエラーが発生しました:', err);
+  }
+}
+
+// フィード初期ロード
+loadFeeds();
 
 // XML構造破損やAtomフォーマット対策のフォールバック用正規表現RSSパーサー
 function parseRssRegex(xml) {
@@ -1703,6 +1734,118 @@ app.get('/api/feed-status', (req, res) => {
     statuses: feedStatuses,
     isCollecting: isCollecting
   });
+});
+
+// APIエンドポイント: フィード一覧の取得
+app.get('/api/feeds', (req, res) => {
+  res.json({ success: true, feeds: FEEDS });
+});
+
+// APIエンドポイント: 新規フィードの登録
+app.post('/api/feeds', (req, res) => {
+  const { name, url, category, weight } = req.body;
+  if (!name || !url) {
+    return res.status(400).json({ success: false, message: 'フィード名とURLは必須です。' });
+  }
+
+  // 重複チェック
+  let isDuplicate = false;
+  for (const cat of Object.keys(FEEDS)) {
+    if (FEEDS[cat].some(f => f.url.trim() === url.trim())) {
+      isDuplicate = true;
+      break;
+    }
+  }
+  if (isDuplicate) {
+    return res.status(400).json({ success: false, message: 'このフィードURLは既に登録されています。' });
+  }
+
+  const targetCategory = FEEDS[category] ? category : 'general';
+  const numericWeight = Number(weight) || 1.5;
+
+  FEEDS[targetCategory].push({
+    name: name.trim(),
+    url: url.trim(),
+    weight: numericWeight
+  });
+
+  saveFeeds();
+
+  res.json({ success: true, message: `ソース「${name}」を正常に登録しました。` });
+});
+
+// APIエンドポイント: 接続・クローラープレビューテスト
+app.post('/api/feeds/preview-crawler', async (req, res) => {
+  const { url } = req.body;
+  if (!url) {
+    return res.status(400).json({ success: false, message: 'フィードURLが必要です。' });
+  }
+
+  try {
+    // 1. フィードのフェッチ
+    const response = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' } });
+    if (!response.ok) {
+      throw new Error(`フィードの取得に失敗しました (ステータス: ${response.status})`);
+    }
+    const xml = await response.text();
+
+    // 簡易パースで最初の1件目の記事URLとタイトルを抽出
+    let items = [];
+    try {
+      items = parseRssRegex(xml);
+    } catch (e) {
+      // フォールバック
+      const itemRegex = /<item>([\s\S]*?)<\/item>/gi;
+      let match;
+      while ((match = itemRegex.exec(xml)) !== null && items.length < 1) {
+        const itemContent = match[1];
+        const titleMatch = /<title>([\s\S]*?)<\/title>/i.exec(itemContent);
+        const linkMatch = /<link>([\s\S]*?)<\/link>/i.exec(itemContent);
+        if (linkMatch) {
+          items.push({
+            title: titleMatch ? titleMatch[1].replace(/<!\[CDATA\[([\s\S]*?)\]\]>/i, '$1').trim() : '無題',
+            link: linkMatch[1].replace(/<!\[CDATA\[([\s\S]*?)\]\]>/i, '$1').trim()
+          });
+        }
+      }
+    }
+
+    if (items.length === 0) {
+      return res.status(400).json({ success: false, message: 'フィードから記事のURLを抽出できませんでした。有効なRSS/Atomフィードかご確認ください。' });
+    }
+
+    const testItem = items[0];
+    const targetUrl = testItem.link;
+    const testTitle = testItem.title || '（タイトルなし）';
+
+    // 2. 記事URLからクローラーで要約を抽出
+    let extractedSummary = '';
+    let isSkipped = false;
+    let isError = false;
+
+    // スキップ判定
+    if (targetUrl.startsWith('mock_') || targetUrl.includes('toyokeizai.net/articles') || targetUrl.includes('mainichi.jp/rss') || targetUrl.includes('nikkei.com/RSS')) {
+      isSkipped = true;
+    } else {
+      try {
+        extractedSummary = await fetchArticleSummaryFromUrl(targetUrl);
+      } catch (err) {
+        isError = true;
+      }
+    }
+
+    res.json({
+      success: true,
+      articleTitle: testTitle,
+      articleUrl: targetUrl,
+      summary: extractedSummary || '詳細記事を参照してください。',
+      isSkipped: isSkipped,
+      isError: isError
+    });
+
+  } catch (err) {
+    res.status(500).json({ success: false, message: `クロールテストエラー: ${err.message}` });
+  }
 });
 
 // --- AIニュースダイジェストのキャッシュと処理 ---
