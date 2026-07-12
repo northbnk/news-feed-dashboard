@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentTopNewsTab = 'all';
   let currentTrendingNewsTab = 'all';
   let currentCuratedTab = 'all';
+  let currentViewMode = 'dashboard';
   let currentCity = { name: '東京', lat: 35.6895, lon: 139.6917, region: '関東', pref: '東京' };
   let dashboardData = null;
   let curatedNewsItems = [];
@@ -58,6 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const feedStatusRefreshBtn = document.getElementById('feed-status-refresh-btn');
   const feedStatusTableBody = document.getElementById('feed-status-table-body');
   const headerLogoContainer = document.querySelector('.header-logo-container');
+  const dashboardMain = document.querySelector('.dashboard-main');
+  const viewModeToggle = document.getElementById('view-mode-toggle');
+  const viewModeToggleText = document.getElementById('view-mode-toggle-text');
+  const timelineViewContainer = document.getElementById('timeline-view-container');
+  const timelineEventsList = document.getElementById('timeline-events-list');
   const authForm = document.getElementById('auth-form');
   const authEmail = document.getElementById('auth-email');
   const authPassword = document.getElementById('auth-password');
@@ -2261,6 +2267,140 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // タイムラインデータのロードと描画
+  async function loadTimeline() {
+    if (!timelineEventsList) return;
+    timelineEventsList.innerHTML = '<div class="loading-placeholder">タイムラインデータを取得中...</div>';
+
+    try {
+      const response = await fetch('/api/timeline?t=' + Date.now());
+      if (!response.ok) throw new Error('タイムラインデータの取得に失敗しました');
+
+      const data = await response.json();
+      if (!data.success || !data.timeline || data.timeline.length === 0) {
+        timelineEventsList.innerHTML = '<div class="loading-placeholder">現在、タイムライン用の重大ニュースはありません。定時収集をお待ちください。</div>';
+        return;
+      }
+
+      renderTimeline(data.timeline);
+    } catch (err) {
+      console.error('Timeline load error:', err.message);
+      timelineEventsList.innerHTML = `<div class="loading-placeholder" style="color:var(--text-error);">データのロードに失敗しました: ${err.message}</div>`;
+    }
+  }
+
+  // タイムラインのレンダリング
+  function renderTimeline(timelineItems) {
+    timelineEventsList.innerHTML = '';
+    
+    // 日付ごとにグループ化（"7月13日 (月)" 等の文字列をキーにする）
+    const groups = {};
+    
+    timelineItems.forEach(item => {
+      const pubDate = new Date(item.pubDate);
+      if (isNaN(pubDate.getTime())) return;
+      
+      const options = { month: 'short', day: 'numeric', weekday: 'short' };
+      const dateKey = pubDate.toLocaleDateString('ja-JP', options);
+      
+      if (!groups[dateKey]) {
+        groups[dateKey] = [];
+      }
+      groups[dateKey].push(item);
+    });
+
+    // 各日付グループをレンダリング
+    Object.keys(groups).forEach(dateKey => {
+      // 日付セクション
+      const dateHeader = document.createElement('div');
+      dateHeader.className = 'timeline-date-header';
+      dateHeader.innerHTML = `<span>${dateKey}</span>`;
+      timelineEventsList.appendChild(dateHeader);
+
+      // その日の記事リスト
+      groups[dateKey].forEach(item => {
+        const itemDate = new Date(item.pubDate);
+        const timeStr = String(itemDate.getHours()).padStart(2, '0') + ':' + String(itemDate.getMinutes()).padStart(2, '0');
+        
+        const card = document.createElement('article');
+        const defaultUrl = item.url || '#';
+        const isRead = readNewsUrls.has(defaultUrl);
+        
+        card.className = `timeline-card fade-in${isRead ? ' is-read' : ''}`;
+        
+        // 優先度バッジのマッピング
+        let weightBadge = '';
+        const w = Number(item.score);
+        if (w >= 85) {
+          weightBadge = '<span class="status-indicator error" style="background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.25);">重大</span>';
+        } else {
+          weightBadge = '<span class="status-indicator fetching" style="background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25);">主要</span>';
+        }
+
+        const sources = item.sources || [{ publisher: item.publisher, title: item.title, url: item.url }];
+        const publisherName = item.publisher || sources[0]?.publisher || '一次ソース';
+        const otherSourcesCount = sources.length - 1;
+
+        card.innerHTML = `
+          <!-- タイムライン左側のインジケータ（ドットと時刻） -->
+          <div class="timeline-badge-column">
+            <span class="timeline-time-label">${timeStr}</span>
+            <div class="timeline-dot-outer">
+              <div class="timeline-dot-pulse"></div>
+              <div class="timeline-dot"></div>
+            </div>
+          </div>
+          
+          <!-- カードコンテンツ -->
+          <div class="timeline-card-content">
+            <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.title}</h4>
+            <p class="card-summary-preview">${item.summary || '詳細記事を参照してください。'}</p>
+            
+            <div class="card-meta">
+              <div class="source-comparison">
+                ${weightBadge}
+                <span class="source-badge">${publisherName}</span>
+                ${otherSourcesCount > 0 ? `<span class="source-badge">他 ${otherSourcesCount} 社</span>` : ''}
+              </div>
+              ${addCardActionsHtml(defaultUrl, item.title)}
+            </div>
+          </div>
+        `;
+
+        // 展開等のインタラクションをバインド
+        card.__itemData = {
+          ...item,
+          aiTitle: item.title,
+          aiSummary: item.summary,
+          sources: sources
+        };
+
+        const contentArea = card.querySelector('.timeline-card-content');
+        contentArea.addEventListener('click', (e) => {
+          syncFocusOnCardClick(card);
+          if (card.classList.contains('expanded') && (e.target.tagName === 'H4' || e.target.closest('h4'))) {
+            e.stopPropagation();
+            window.open(defaultUrl, '_blank', 'noopener,noreferrer');
+            return;
+          }
+          markAsRead(defaultUrl, card);
+          
+          toggleCardDetails(card, {
+            category: '一般',
+            aiTitle: item.title,
+            aiSummary: item.summary || '詳細記事を参照してください。',
+            sources: sources,
+            sns: { hatebu: 0, x: 0, threads: 0 },
+            emotion: 'approved'
+          });
+        });
+
+        bindCardActions(card);
+        timelineEventsList.appendChild(card);
+      });
+    });
+  }
+
   function renderFeedStatus(statuses) {
     if (!feedStatusTableBody) return;
     feedStatusTableBody.innerHTML = '';
@@ -2533,6 +2673,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+
+  // 表示モードの切り替え (ダッシュボード ⇄ タイムライン)
+  if (viewModeToggle) {
+    viewModeToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentViewMode === 'dashboard') {
+        currentViewMode = 'timeline';
+        dashboardMain.style.display = 'none';
+        timelineViewContainer.style.display = 'block';
+        viewModeToggle.classList.add('active');
+        viewModeToggleText.textContent = 'グリッド';
+        viewModeToggle.title = 'グリッド表示に切り替え';
+        
+        // タイムラインのデータをロード
+        loadTimeline();
+      } else {
+        currentViewMode = 'dashboard';
+        dashboardMain.style.display = 'grid';
+        timelineViewContainer.style.display = 'none';
+        viewModeToggle.classList.remove('active');
+        viewModeToggleText.textContent = 'タイムライン';
+        viewModeToggle.title = 'タイムライン表示に切り替え';
+        
+        // 通常データを再読み込み
+        loadData(true);
+      }
+    });
+  }
 
   // --- 9. 初期読み込み ＆ ポーリング (30秒) ---
   loadData();

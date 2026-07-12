@@ -126,6 +126,102 @@ function saveFeeds() {
 // フィード初期ロード
 loadFeeds();
 
+const TIMELINE_FILE = path.join(__dirname, 'timeline_archive.json');
+
+function loadTimelineArchive() {
+  try {
+    if (fs.existsSync(TIMELINE_FILE)) {
+      return JSON.parse(fs.readFileSync(TIMELINE_FILE, 'utf8'));
+    }
+  } catch (err) {
+    console.error('timeline_archive.jsonの読み込み中にエラーが発生しました:', err);
+  }
+  return [];
+}
+
+function saveTimelineArchive(data) {
+  try {
+    fs.writeFileSync(TIMELINE_FILE, JSON.stringify(data, null, 2), 'utf8');
+    console.log('timeline_archive.jsonを保存しました。');
+  } catch (err) {
+    console.error('timeline_archive.jsonの保存中にエラーが発生しました:', err);
+  }
+}
+
+// 注目スコア70以上のニュースを抽出して過去30日間のタイムラインアーカイブに統合する
+function archiveImportantNews(curatedList = [], topNewsList = []) {
+  console.log('--- タイムラインアーカイブ処理開始 ---');
+  let archive = loadTimelineArchive();
+  const now = Date.now();
+  const thirtyDaysAgo = now - (30 * 24 * 60 * 60 * 1000); // 30日
+
+  // 1. 重大ニュースの抽出
+  const candidates = [];
+
+  // キュレーションニュースから抽出
+  curatedList.forEach(item => {
+    if (Number(item.score) >= 70) {
+      candidates.push({
+        title: item.title,
+        summary: item.summary,
+        url: item.link || (item.metadata?.sources?.[0]?.url) || '#',
+        pubDate: item.pubDate || new Date().toISOString(),
+        score: Number(item.score),
+        category: item.category || 'ニュース',
+        publisher: item.feed_name || (item.metadata?.sources?.[0]?.publisher) || 'ニュースソース',
+        sources: item.metadata?.sources || []
+      });
+    }
+  });
+
+  // 一般ニュース（topNews）から抽出
+  topNewsList.forEach(item => {
+    if (Number(item.score) >= 70) {
+      candidates.push({
+        title: item.aiTitle || item.title,
+        summary: item.aiSummary || item.summary,
+        url: item.link || (item.sources?.[0]?.url) || '#',
+        pubDate: item.pubDate || new Date().toISOString(),
+        score: Number(item.score),
+        category: '一般',
+        publisher: item.publisher || (item.sources?.[0]?.publisher) || 'ニュースソース',
+        sources: item.sources || []
+      });
+    }
+  });
+
+  // 2. マージと重複排除（URL またはタイトルで同一視）
+  candidates.forEach(candidate => {
+    if (candidate.url === '#') return;
+    
+    const isDuplicate = archive.some(existing => 
+      existing.url === candidate.url || 
+      existing.title.trim() === candidate.title.trim()
+    );
+
+    if (!isDuplicate) {
+      archive.push(candidate);
+      console.log(`新規アーカイブ追加: 「${candidate.title}」 (Score: ${candidate.score})`);
+    }
+  });
+
+  // 3. 30日より古いもののクリーンアップ
+  const beforeCount = archive.length;
+  archive = archive.filter(item => {
+    const pubTime = new Date(item.pubDate).getTime();
+    return pubTime >= thirtyDaysAgo;
+  });
+  const afterCount = archive.length;
+  if (beforeCount !== afterCount) {
+    console.log(`タイムラインアーカイブのTTLクリーンアップ: ${beforeCount - afterCount}件の古い記事を削除しました。`);
+  }
+
+  // 4. 時系列（新しい順）に並び替えて保存
+  archive.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
+  saveTimelineArchive(archive);
+  console.log(`--- タイムラインアーカイブ処理完了 (合計: ${archive.length}件) ---`);
+}
+
 // XML構造破損やAtomフォーマット対策のフォールバック用正規表現RSSパーサー
 function parseRssRegex(xml) {
   const items = [];
@@ -1270,6 +1366,31 @@ async function collectAndCluster() {
     fs.writeFileSync(dataPath, JSON.stringify(clusteredData, null, 2), 'utf-8');
     console.log(`--- ニュースデータ更新完了 (${dataPath}) ---`);
 
+    // タイムライン用に、一般ニュース (topNews) からスコア70以上の重大ニュースを抽出・保存
+    const timelineCandidates = (clusteredData.topNews || []).map(item => {
+      // 各ソース記事の公開時間を使用する（無い場合は現在）
+      const pubDate = item.sources?.[0]?.pubDate || item.pubDate || new Date().toISOString();
+      const score = calcScore({
+        hatebu: item.hatebu || 0,
+        sns: item.sns || { x: 0, threads: 0 },
+        emotion: item.emotion || 'approved',
+        pubDate: pubDate,
+        weight: item.weight || 5
+      });
+      return {
+        title: item.aiTitle || item.title,
+        summary: item.aiSummary || item.summary,
+        url: item.sources?.[0]?.url || '#',
+        pubDate: pubDate,
+        score: score,
+        category: '一般',
+        publisher: item.sources?.[0]?.publisher || 'ニュースソース',
+        sources: item.sources || []
+      };
+    });
+
+    archiveImportantNews([], timelineCandidates);
+
     // Supabase にキュレーション結果を保存（設定がある場合）
     if (supabase) {
       try {
@@ -1734,6 +1855,12 @@ app.get('/api/feed-status', (req, res) => {
     statuses: feedStatuses,
     isCollecting: isCollecting
   });
+});
+
+// APIエンドポイント: タイムラインデータの取得 (過去30日間の重大ニュース)
+app.get('/api/timeline', (req, res) => {
+  const archive = loadTimelineArchive();
+  res.json({ success: true, timeline: archive });
 });
 
 // APIエンドポイント: フィード一覧の取得
