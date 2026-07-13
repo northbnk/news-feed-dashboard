@@ -3784,6 +3784,70 @@ body {
   }
 }
 
+/* ニュースソースChip型UI */
+.rss-source-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-normal);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.light-theme .rss-source-chip {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.rss-source-chip:hover {
+  background-color: rgba(67, 97, 238, 0.1);
+  border-color: var(--accent-color);
+}
+
+.rss-source-favicon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  border-radius: 2px;
+  background-color: transparent;
+}
+
+/* 注目度スコアバッジ */
+.rss-weight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: linear-gradient(135deg, rgba(255, 159, 67, 0.12), rgba(255, 82, 82, 0.12));
+  border: 1px solid rgba(255, 82, 82, 0.22);
+  color: #ff5252;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 10.5px;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+}
+
+.rss-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  width: 100%;
+}
+
+.rss-card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 
 
 

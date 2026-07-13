@@ -3022,6 +3022,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ニュースソースのURLから Favicon URL を取得するヘルパー
+  function getFaviconUrl(url) {
+    try {
+      const parsed = new URL(url);
+      return "https://www.google.com/s2/favicons?domain=" + parsed.hostname + "&sz=32";
+    } catch (e) {
+      return '';
+    }
+  }
+
   // キーボードショートカットで追跡する現在の選択インデックス
   let currentSelectedIndex = -1;
   let filteredArticlesListForKeys = []; // ショートカット処理で参照するフィルタされた現在の一覧
@@ -3093,7 +3103,17 @@ document.addEventListener('DOMContentLoaded', () => {
           ${imageHtml}
           <div class="rss-card-content">
             <div class="rss-card-header">
-              <span class="rss-card-source">[${item.feedName}]</span>
+              <div class="rss-card-header-left">
+                <span class="rss-source-chip" data-feed-name="${item.feedName}">
+                  <img src="${getFaviconUrl(item.link)}" alt="" class="rss-source-favicon">
+                  <span>${item.feedName}</span>
+                </span>
+                ${item.weight ? `
+                  <span class="rss-weight-badge" title="AI注目度スコア">
+                    🔥 ${item.weight}
+                  </span>
+                ` : ''}
+              </div>
               <span class="rss-card-time">${formattedTime}</span>
             </div>
             <h4 class="rss-card-title">
@@ -3178,6 +3198,29 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
       };
+
+      // ニュースソースChipクリックイベント（絞り込み）
+      const sourceChip = card.querySelector('.rss-source-chip');
+      if (sourceChip) {
+        sourceChip.addEventListener('click', (e) => {
+          e.stopPropagation(); // カード本体の開閉クリックイベントをキャンセル
+          
+          // そのフィード名に対応するフィードURLを探す
+          const foundFeed = Object.values(rssFeeds).flat().find(f => f.name === item.feedName);
+          if (foundFeed) {
+            // サイドバーのアクティブクラスの移行
+            document.querySelectorAll('.feed-item, .sidebar-item').forEach(el => el.classList.remove('active'));
+            const sidebarTarget = document.querySelector(`[data-feed-url="${foundFeed.url}"]`);
+            if (sidebarTarget) sidebarTarget.classList.add('active');
+            
+            activeFeedId = foundFeed.url;
+            activeCategory = 'all';
+            
+            if (currentViewTitle) currentViewTitle.textContent = foundFeed.name;
+            renderRssArticles();
+          }
+        });
+      }
 
       // カード本体のクリックイベント
       card.addEventListener('click', (e) => {
