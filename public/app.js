@@ -198,15 +198,13 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // 同期日時の表示更新
       const syncDate = new Date(data.timestamp);
-      lastSyncElement.textContent = `同期: ${String(syncDate.getHours()).padStart(2, '0')}:${String(syncDate.getMinutes()).padStart(2, '0')}:${String(syncDate.getSeconds()).padStart(2, '0')}`;
+      if (lastSyncElement) {
+        lastSyncElement.textContent = `同期: ${String(syncDate.getHours()).padStart(2, '0')}:${String(syncDate.getMinutes()).padStart(2, '0')}:${String(syncDate.getSeconds()).padStart(2, '0')}`;
+      }
       
-      // 描画実行
+      // 描画実行 (テロップ系のみ)
       renderHeadline(data.headline);
-      renderTopNews(data.topNews);
-      renderTrendingNews(data.trendingNews);
-      renderSportsNews(data.sports);
       renderTicker(data);
-      fetchAndRenderCuratedNews();
 
     } catch (err) {
       console.error('Data load error:', err.message);
@@ -3214,8 +3212,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 9. 初期読み込み ＆ ポーリング (30秒) ---
   loadData();
-  loadAIDigest();
   initWeather();
+  initRssReader(); // 本格RSSリーダーの起動
   setInterval(loadData, 30000);
-  setInterval(loadAIDigest, 5 * 60 * 1000);
 });

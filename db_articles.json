@@ -105,24 +105,6 @@
     ]
   },
   {
-    "title": "ストライカーのいま:最後立ちすくんだ位置は…　仲間救うルカクの誇り　サッカーW杯",
-    "originalTitle": "ストライカーのいま:最後立ちすくんだ位置は…　仲間救うルカクの誇り　サッカーW杯",
-    "link": "https://mainichi.jp/articles/20260711/k00/00m/050/163000c",
-    "contentSnippet": "",
-    "pubDate": "2026-07-11T12:41:08.000Z",
-    "category": "sports",
-    "feedName": "毎日新聞スポーツ",
-    "weight": 5,
-    "keywords": [
-      "ストライカー",
-      "最後立",
-      "位置",
-      "仲間救",
-      "ルカク",
-      "サッカーW杯"
-    ]
-  },
-  {
     "title": "上地結衣 日本女子初の生涯ゴールデンスラム 車いすテニス",
     "originalTitle": "上地結衣 日本女子初の生涯ゴールデンスラム 車いすテニス",
     "link": "http://www3.nhk.or.jp/news/html/20260711/k10015174621000.html",
@@ -168,22 +150,6 @@
       "12日",
       "西日本各地",
       "猛暑日予想"
-    ]
-  },
-  {
-    "title": "「息子はいつ見つかるの」異臭漂う土ぼこりの現場　ベネズエラ地震",
-    "originalTitle": "「息子はいつ見つかるの」異臭漂う土ぼこりの現場　ベネズエラ地震",
-    "link": "http://www.asahi.com/articles/ASV7C3CJLV7CUHBI012M.html?ref=rss",
-    "contentSnippet": "",
-    "pubDate": "2026-07-11T12:41:44.000Z",
-    "category": "general",
-    "feedName": "朝日新聞ニュース",
-    "weight": 6,
-    "keywords": [
-      "息子",
-      "異臭漂",
-      "現場",
-      "ベネズエラ地震"
     ]
   },
   {
@@ -10210,8 +10176,8 @@
     ]
   },
   {
-    "title": "兵庫県、違法な地方債借り換え　「早期健全化団体」転落の恐れも",
-    "originalTitle": "兵庫県、違法な地方債借り換え　「早期健全化団体」転落の恐れも",
+    "title": "兵庫県、338億円の地方債を違法に発行　違法性認識なく、理由不明",
+    "originalTitle": "兵庫県、338億円の地方債を違法に発行　違法性認識なく、理由不明",
     "link": "http://www.asahi.com/articles/ASV7F1RSCV7FPIHB015M.html?ref=rss",
     "contentSnippet": "",
     "pubDate": "2026-07-13T12:03:11.000Z",
@@ -10220,10 +10186,12 @@
     "weight": 6,
     "keywords": [
       "兵庫県",
+      "338億円",
+      "地方債",
       "違法",
-      "地方債借",
-      "早期健全化団体",
-      "転落"
+      "発行",
+      "違法性認識",
+      "理由不明"
     ]
   },
   {
@@ -13408,6 +13376,24 @@
       "マイクロソフト",
       "800人",
       "解雇"
+    ]
+  },
+  {
+    "title": "皇室典範、参院で15日審議入り　立憲は修正要求「だまし討ち法案」",
+    "originalTitle": "皇室典範、参院で15日審議入り　立憲は修正要求「だまし討ち法案」",
+    "link": "http://www.asahi.com/articles/ASV7F416ZV7FUTFK00BM.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-13T12:30:00.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "皇室典範",
+      "参院",
+      "15日審議入",
+      "立憲",
+      "修正要求",
+      "法案"
     ]
   }
 ]
