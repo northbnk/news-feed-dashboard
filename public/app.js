@@ -2958,7 +2958,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ブックマーク数のバッジ更新
     const bookmarksBadge = document.getElementById('bookmarks-count');
     if (bookmarksBadge) {
-      const bCount = Object.keys(bookmarkedNewsUrls).length;
+      const bCount = userBookmarks.size;
       bookmarksBadge.textContent = bCount;
       bookmarksBadge.style.display = bCount > 0 ? 'inline-block' : 'none';
     }
@@ -3032,7 +3032,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (activeFeedId === 'all') {
       filtered = [...rssArticles];
     } else if (activeFeedId === 'bookmarks') {
-      filtered = rssArticles.filter(art => bookmarkedNewsUrls[art.link]);
+      filtered = rssArticles.filter(art => userBookmarks.has(art.link));
     } else {
       // 特定のフィードURLでフィルタリング
       filtered = rssArticles.filter(art => {
@@ -3057,7 +3057,7 @@ document.addEventListener('DOMContentLoaded', () => {
     filtered.forEach(item => {
       const card = document.createElement('article');
       const isRead = readNewsUrls.has(item.link);
-      const isBookmarked = bookmarkedNewsUrls[item.link];
+      const isBookmarked = userBookmarks.has(item.link);
       
       card.className = `rss-article-card${isRead ? ' is-read' : ''}${item.image ? ' has-image' : ''}`;
       card.setAttribute('data-link', item.link);
@@ -3100,7 +3100,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.addEventListener('click', (e) => {
         if (e.target.closest('.bookmark-action-btn')) {
           e.stopPropagation();
-          toggleBookmark(item.link, item.title);
+          toggleBookmark(item.link, card.querySelector('.bookmark-action-btn'));
           renderRssSidebar();
           renderRssArticles(false);
           return;
