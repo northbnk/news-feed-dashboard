@@ -2961,14 +2961,14 @@ body {
 .timeline-card {
   position: relative;
   display: flex;
-  margin-bottom: 24px;
+  margin-bottom: 35px;
 }
 
 /* タイムライン左側のインジケータカラム */
 .timeline-badge-column {
   position: absolute;
   left: -50px;
-  top: 12px;
+  top: 6px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -3031,102 +3031,98 @@ body {
   }
 }
 
-/* タイムラインカードのコンテンツ（右側） */
+/* タイムラインコンテンツ (カード枠・背景を完全排除してテキストツリー化) */
 .timeline-card-content {
   flex: 1;
-  background-color: rgba(255, 255, 255, 0.015);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-md);
-  padding: 14px 16px;
-  cursor: pointer;
-  transition: var(--transition-smooth);
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
   margin-left: 30px;
-}
-
-.light-theme .timeline-card-content {
-  background-color: rgba(0, 0, 0, 0.008);
-}
-
-.timeline-card-content:hover {
-  background-color: var(--bg-card-hover);
-  border-color: var(--accent-color);
-  box-shadow: 0 4px 20px -2px var(--accent-glow);
-  transform: translateY(-1.5px);
+  cursor: default !important;
 }
 
 .timeline-card-content h4 {
-  font-size: 14.5px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 700;
   line-height: 1.4;
-  margin-bottom: 6px;
+  margin: 4px 0 10px 0;
   color: var(--text-primary);
-}
-
-/* 展開時のトランジション高さ制限解除 */
-.timeline-card.expanded .timeline-card-content {
-  border-color: var(--accent-color);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-}
-
-.timeline-card.expanded .card-summary-preview {
-  display: block;
-  overflow: visible;
-  -webkit-line-clamp: unset;
-  color: var(--text-primary);
-}
-
-/* タイムライン箇条書きソースリスト */
-.timeline-sources-list {
-  margin: 12px 0 0 0;
-  padding: 8px 12px;
-  background: rgba(0, 0, 0, 0.15);
-  border-radius: 6px;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-}
-
-.light-theme .timeline-sources-list {
-  background: rgba(0, 0, 0, 0.02);
-  border: 1px solid rgba(0, 0, 0, 0.03);
-}
-
-.timeline-sources-list li {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
-  line-height: 1.4;
-  color: var(--text-secondary);
-  flex-wrap: wrap;
 }
 
-.source-time-badge {
+/* 出来事から枝分かれするツリーリスト */
+.timeline-sources-list {
+  position: relative;
+  margin: 8px 0 0 10px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: none !important;
+  border: none !important;
+}
+
+/* 縦の枝ガイド線 */
+.timeline-sources-list::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  bottom: 12px;
+  left: 4px;
+  width: 1.5px;
+  background: var(--border-color);
+  opacity: 0.35;
+}
+
+/* 横の枝ガイド線 (L字) */
+.timeline-sources-list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  padding-left: 20px;
+}
+
+.timeline-sources-list li::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 12px;
+  height: 1.5px;
+  background: var(--border-color);
+  opacity: 0.35;
+  transform: translateY(-50%);
+}
+
+/* 日付バッジ (mm/dd) */
+.source-date-label {
   font-size: 11px;
   font-weight: 700;
   color: var(--text-muted);
-  opacity: 0.8;
+  min-width: 36px;
+  opacity: 0.9;
 }
 
-.source-publisher-badge {
-  font-size: 10.5px;
+/* メディア名ラベル */
+.source-publisher-label {
+  font-size: 11px;
   font-weight: 600;
-  padding: 2px 6px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text-secondary);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  opacity: 0.8;
+  white-space: nowrap;
 }
 
-.light-theme .source-publisher-badge {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.08);
-}
-
+/* 記事タイトルリンク */
 .source-article-link {
-  color: #3b82f6 !important;
+  color: var(--text-primary) !important;
   text-decoration: none;
   font-weight: 500;
   transition: color var(--transition-fast);
@@ -3134,11 +3130,11 @@ body {
 
 .source-article-link:hover {
   text-decoration: underline;
-  color: #60a5fa !important;
+  color: var(--accent-color) !important;
 }
 
 .source-article-link.is-read {
-  opacity: 0.55;
+  opacity: 0.45;
   color: var(--text-muted) !important;
 }
 

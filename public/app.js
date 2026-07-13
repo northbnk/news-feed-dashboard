@@ -2312,7 +2312,7 @@ document.addEventListener('DOMContentLoaded', () => {
       groups[dateKey].push(item);
     });
 
-    // 2. 各日付グループを古い順に並び替えられるように、日付キーをソートしてレンダリング
+    // 2. 各日付グループを古い順にソートしてレンダリング
     const sortedDateKeys = Object.keys(groups).sort((a, b) => {
       const parseDateStr = (str) => {
         const m = str.match(/(\d+)月\s*(\d+)日/);
@@ -2329,27 +2329,15 @@ document.addEventListener('DOMContentLoaded', () => {
       dateHeader.innerHTML = `<span>${dateKey}</span>`;
       timelineEventsList.appendChild(dateHeader);
 
-      // その日の記事リスト
+      // その日の出来事リスト
       groups[dateKey].forEach(item => {
         const itemDate = new Date(item.pubDate);
         const timeStr = String(itemDate.getHours()).padStart(2, '0') + ':' + String(itemDate.getMinutes()).padStart(2, '0');
         
         const card = document.createElement('article');
-        const defaultUrl = item.url || '#';
-        const isRead = readNewsUrls.has(defaultUrl);
+        card.className = 'timeline-card fade-in';
         
-        card.className = `timeline-card fade-in${isRead ? ' is-read' : ''}`;
-        
-        // 優先度バッジのマッピング
-        let weightBadge = '';
-        const w = Number(item.score);
-        if (w >= 85) {
-          weightBadge = '<span class="status-indicator error" style="background: rgba(239,68,68,0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.25);">重大</span>';
-        } else {
-          weightBadge = '<span class="status-indicator fetching" style="background: rgba(245,158,11,0.15); color: #f59e0b; border: 1px solid rgba(245,158,11,0.25);">主要</span>';
-        }
-
-        const sources = item.sources || [{ publisher: item.publisher, title: item.title, url: item.url }];
+        const sources = item.sources || [{ publisher: item.publisher, title: item.title, url: item.url, pubDate: item.pubDate }];
         
         // 各社報道（sources）を時系列（古い順）にソート
         const sortedSources = [...sources].sort((sa, sb) => {
@@ -2358,17 +2346,24 @@ document.addEventListener('DOMContentLoaded', () => {
           return da - db;
         });
 
-        // 子要素（個別記事の箇流書きツリー）を組み立てる
+        // 子要素（個別記事の箇条書きツリー）を組み立てる
         const sourcesListHtml = sortedSources.map(src => {
           const srcDate = src.pubDate ? new Date(src.pubDate) : itemDate;
-          const formattedTime = String(srcDate.getHours()).padStart(2, '0') + ':' + String(srcDate.getMinutes()).padStart(2, '0');
+          
+          // mm/dd フォーマット
+          const mm = String(srcDate.getMonth() + 1).padStart(2, '0');
+          const dd = String(srcDate.getDate()).padStart(2, '0');
+          const dateStr = `${mm}/${dd}`;
+          
+          // 未読既読チェック
           const isSrcRead = readNewsUrls.has(src.url);
+          
           return `
             <li>
-              <span class="source-time-badge">${formattedTime}</span>
-              <span class="source-publisher-badge">${src.publisher}</span>
+              <span class="source-date-label">${dateStr}</span>
+              <span class="source-publisher-label">[${src.publisher}]</span>
               <a href="${src.url}" target="_blank" rel="noopener noreferrer" class="source-article-link ${isSrcRead ? 'is-read' : ''}" data-url="${src.url}">
-                ${!isSrcRead ? '<span class="unread-dot" style="display:inline-block; width:6px; height:6px; background:#a78bfa; border-radius:50%; margin-right:4px; vertical-align:middle;"></span>' : ''}${src.title}
+                ${!isSrcRead ? '<span class="unread-dot" style="display:inline-block; width:6px; height:6px; background:#8b5cf6; border-radius:50%; margin-right:6px; vertical-align:middle;"></span>' : ''}${src.title}
               </a>
             </li>
           `;
@@ -2384,65 +2379,30 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
           
-          <!-- カードコンテンツ -->
+          <!-- カードコンテンツ (カード枠なしのシンプルなテキストツリー) -->
           <div class="timeline-card-content">
-            <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.title}</h4>
-            <p class="card-summary-preview" style="-webkit-line-clamp: 3; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 12px; color: var(--text-primary);">${item.summary || '詳細記事を参照してください。'}</p>
+            <h4>${item.title}</h4>
             
             <!-- 出来事を構成する報道元ツリー -->
             <ul class="timeline-sources-list">
               ${sourcesListHtml}
             </ul>
-
-            <div class="card-meta" style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
-              <div class="source-comparison">
-                ${weightBadge}
-                <span class="source-badge">計 ${sources.length} 社の報道</span>
-              </div>
-              ${addCardActionsHtml(defaultUrl, item.title)}
-            </div>
           </div>
         `;
 
-        // 展開等のインタラクションをバインド
-        card.__itemData = {
-          ...item,
-          aiTitle: item.title,
-          aiSummary: item.summary,
-          sources: sources
-        };
-
-        const contentArea = card.querySelector('.timeline-card-content');
-        
-        contentArea.addEventListener('click', (e) => {
-          if (e.target.closest('.source-article-link')) {
-            const linkEl = e.target.closest('.source-article-link');
-            const url = linkEl.getAttribute('data-url');
+        // リンククリック時に既読処理を行うためのバインド
+        const links = card.querySelectorAll('.source-article-link');
+        links.forEach(link => {
+          link.addEventListener('click', (e) => {
+            const url = link.getAttribute('data-url');
             markAsRead(url, card);
-            const dot = linkEl.querySelector('.unread-dot');
+            
+            const dot = link.querySelector('.unread-dot');
             if (dot) dot.remove();
-            return;
-          }
-          
-          syncFocusOnCardClick(card);
-          if (card.classList.contains('expanded') && (e.target.tagName === 'H4' || e.target.closest('h4'))) {
-            e.stopPropagation();
-            window.open(defaultUrl, '_blank', 'noopener,noreferrer');
-            return;
-          }
-          markAsRead(defaultUrl, card);
-          
-          toggleCardDetails(card, {
-            category: '一般',
-            aiTitle: item.title,
-            aiSummary: item.summary || '詳細記事を参照してください。',
-            sources: sources,
-            sns: { hatebu: 0, x: 0, threads: 0 },
-            emotion: 'approved'
+            link.classList.add('is-read');
           });
         });
 
-        bindCardActions(card);
         timelineEventsList.appendChild(card);
       });
     });
