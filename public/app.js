@@ -3022,6 +3022,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // キーボードショートカットで追跡する現在の選択インデックス
+  let currentSelectedIndex = -1;
+  let filteredArticlesListForKeys = []; // ショートカット処理で参照するフィルタされた現在の一覧
+
   // 中央ペイン (生のRSS記事リスト) の描画
   function renderRssArticles(resetScroll = true) {
     if (!rssArticlesList) return;
@@ -3041,8 +3045,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    filteredArticlesListForKeys = filtered; // キーボード移動用リストに同期
+
     if (timelineCountLabel) {
-      timelineCountLabel.textContent = `${filtered.length} 件の記事`;
+      timelineCountLabel.textContent = filtered.length + " 件の記事";
     }
 
     // スクロール位置の退避
@@ -3051,23 +3057,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (filtered.length === 0) {
       rssArticlesList.innerHTML = '<div class="loading-placeholder">表示する記事がありません。</div>';
+      currentSelectedIndex = -1;
       return;
     }
 
-    filtered.forEach(item => {
+    filtered.forEach((item, index) => {
       const card = document.createElement('article');
       const isRead = readNewsUrls.has(item.link);
       const isBookmarked = userBookmarks.has(item.link);
       
-      card.className = `rss-article-card${isRead ? ' is-read' : ''}${item.image ? ' has-image' : ''}`;
+      card.className = "rss-article-card" + (isRead ? " is-read" : "") + (item.image ? " has-image" : "");
       card.setAttribute('data-link', item.link);
+      card.setAttribute('data-index', index);
 
       const pubDate = new Date(item.pubDate);
       const mm = String(pubDate.getMonth() + 1).padStart(2, '0');
       const dd = String(pubDate.getDate()).padStart(2, '0');
       const hh = String(pubDate.getHours()).padStart(2, '0');
       const min = String(pubDate.getMinutes()).padStart(2, '0');
-      const formattedTime = `${mm}/${dd} ${hh}:${min}`;
+      const formattedTime = mm + "/" + dd + " " + hh + ":" + min;
 
       const imageHtml = item.image ? `
         <div class="rss-card-image-wrapper">
@@ -3075,29 +3083,105 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       ` : '';
 
+      // ChatGPT / Perplexity プロンプトURLバインド
+      const chatGptPrompt = encodeURIComponent("「" + item.title + "」についてWEB検索を利用して記事の深掘りをして");
+      const perplexityPrompt = encodeURIComponent("「" + item.title + "」について関連報道や進展をWEB検索を利用して深掘りして");
+
+      // 2ペイン・アコーディオン展開型のHTML設計
       card.innerHTML = `
-        ${imageHtml}
-        <div class="rss-card-content">
-          <div class="rss-card-header">
-            <span class="rss-card-source">[${item.feedName}]</span>
-            <span class="rss-card-time">${formattedTime}</span>
+        <div class="rss-card-main-row">
+          ${imageHtml}
+          <div class="rss-card-content">
+            <div class="rss-card-header">
+              <span class="rss-card-source">[${item.feedName}]</span>
+              <span class="rss-card-time">${formattedTime}</span>
+            </div>
+            <h4 class="rss-card-title">
+              ${!isRead ? '<span class="unread-dot"></span>' : ''}
+              ${item.title}
+            </h4>
+            <div class="rss-card-footer">
+              <button class="bookmark-action-btn${isBookmarked ? ' active' : ''}" title="あとで読む">
+                <svg viewBox="0 0 24 24" fill="${isBookmarked ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
+                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                </svg>
+              </button>
+            </div>
           </div>
-          <h4 class="rss-card-title">
-            ${!isRead ? '<span class="unread-dot"></span>' : ''}
-            ${item.title}
-          </h4>
-          <div class="rss-card-footer">
-            <button class="bookmark-action-btn${isBookmarked ? ' active' : ''}" title="あとで読む">
-              <svg viewBox="0 0 24 24" fill="${isBookmarked ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
-                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
-              </svg>
-            </button>
+        </div>
+        
+        <!-- アコーディオン展開詳細エリア -->
+        <div class="rss-card-details-expanded">
+          <div class="rss-details-section">
+            <p class="rss-details-summary">AI要約を取得中...</p>
+            <div class="rss-details-actions">
+              <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="rss-details-primary-btn">
+                一次ソースを開く ➔
+              </a>
+              <div class="rss-details-deep-dive">
+                <a href="https://chatgpt.com/?q=${chatGptPrompt}&hints=search" target="_blank" rel="noopener noreferrer" class="rss-details-dive-btn chatgpt">
+                  <span class="icon">💬</span> ChatGPT
+                </a>
+                <a href="https://perplexity.ai/search?q=${perplexityPrompt}" target="_blank" rel="noopener noreferrer" class="rss-details-dive-btn perplexity">
+                  <span class="icon">🔍</span> Perplexity
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       `;
 
-      // 記事カードクリックイベント（プレビューを表示し、既読化する）
+      // 記事選択・展開のハンドラ
+      const selectAndExpandCard = () => {
+        const isExpanded = card.classList.contains('expanded');
+        
+        // 1. 他のすべての展開状態をクリア
+        document.querySelectorAll('.rss-article-card').forEach(el => {
+          el.classList.remove('expanded');
+          el.classList.remove('selected');
+        });
+
+        if (isExpanded) {
+          // すでに開いているなら閉じる
+          card.classList.remove('expanded');
+          return;
+        }
+
+        // 2. ターゲットのカードを展開 & 選択ハイライト
+        card.classList.add('expanded');
+        card.classList.add('selected');
+        currentSelectedIndex = index; // 現在の選択インデックスを更新
+
+        // 3. 既読化
+        if (!readNewsUrls.has(item.link)) {
+          markAsRead(item.link, card);
+          const dot = card.querySelector('.unread-dot');
+          if (dot) dot.remove();
+          card.classList.add('is-read');
+          renderRssSidebar(); // サイドバーの未読数を即座に再計算・再描画
+        }
+
+        // 4. 非同期で要約コンテンツをロード
+        const summaryElement = card.querySelector('.rss-details-summary');
+        if (summaryElement && summaryElement.textContent === 'AI要約を取得中...') {
+          fetch('/api/scrape-image?url=' + encodeURIComponent(item.link))
+            .then(res => res.json())
+            .then(data => {
+              if (item.contentSnippet) {
+                summaryElement.textContent = item.contentSnippet;
+              } else {
+                summaryElement.textContent = '直接ニュースソースから詳細記事を参照してください。';
+              }
+            })
+            .catch(() => {
+              summaryElement.textContent = item.contentSnippet || '直接ニュースソースから詳細記事を参照してください。';
+            });
+        }
+      };
+
+      // カード本体のクリックイベント
       card.addEventListener('click', (e) => {
+        // ブックマークアクションボタンの場合はトグル
         if (e.target.closest('.bookmark-action-btn')) {
           e.stopPropagation();
           toggleBookmark(item.link, card.querySelector('.bookmark-action-btn'));
@@ -3106,107 +3190,116 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        // アクティブ表示の切り替え
-        document.querySelectorAll('.rss-article-card').forEach(el => el.classList.remove('selected'));
-        card.classList.add('selected');
+        // 展開アクションリンクは除外
+        if (e.target.closest('.rss-card-details-expanded a')) {
+          return;
+        }
 
-        // 既読化
-        markAsRead(item.link, card);
-        const dot = card.querySelector('.unread-dot');
-        if (dot) dot.remove();
-        card.classList.add('is-read');
-        
-        // サイドバーのバッジ数を即座に再計算・再描画
-        renderRssSidebar();
-
-        // 右プレビューペインに記事詳細を展開
-        showArticlePreview(item);
+        selectAndExpandCard();
       });
 
       rssArticlesList.appendChild(card);
     });
+
+    // キーボード移動によるフォーカスの再適用
+    if (currentSelectedIndex >= 0 && currentSelectedIndex < filtered.length) {
+      const activeCard = rssArticlesList.querySelector(`[data-index="${currentSelectedIndex}"]`);
+      if (activeCard) {
+        activeCard.classList.add('selected');
+        activeCard.classList.add('expanded');
+        
+        // 要約の復元ロード
+        const item = filtered[currentSelectedIndex];
+        const summaryElement = activeCard.querySelector('.rss-details-summary');
+        if (summaryElement && item.contentSnippet) {
+          summaryElement.textContent = item.contentSnippet;
+        }
+      }
+    }
 
     if (!resetScroll) {
       rssArticlesList.scrollTop = scrollTop;
     }
   }
 
-  // 右ペイン (記事プレビュー) の表示
-  function showArticlePreview(item) {
-    if (!previewPlaceholder || !previewContentArea) return;
+  // キーボードによるアイテムの選択移動とスクロール調整
+  function moveSelection(direction) {
+    if (filteredArticlesListForKeys.length === 0) return;
+    
+    let newIndex = currentSelectedIndex + direction;
+    if (newIndex < 0) newIndex = 0;
+    if (newIndex >= filteredArticlesListForKeys.length) newIndex = filteredArticlesListForKeys.length - 1;
+    
+    const targetCard = rssArticlesList.querySelector(`[data-index="${newIndex}"]`);
+    if (targetCard) {
+      // 1クリックイベントを模倣して展開・既読化
+      targetCard.click();
+      
+      // 2. 表示エリア内にスクロールイン
+      targetCard.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+  }
 
-    previewPlaceholder.style.display = 'none';
-    previewContentArea.style.display = 'block';
-
-    const pubDate = new Date(item.pubDate);
-    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-    const dateStr = pubDate.toLocaleDateString('ja-JP', options);
-
-    if (previewCategory) previewCategory.textContent = item.category || '一般';
-    if (previewPublisher) previewPublisher.textContent = item.feedName || '一次ソース';
-    if (previewDate) previewDate.textContent = dateStr;
-    if (previewTitle) previewTitle.textContent = item.title;
-
-    // AI要約（クローラー取得）の展開
-    if (previewSummaryText) {
-      previewSummaryText.innerHTML = '<div class="loading-placeholder">AI本文要約を取得中...</div>';
+  // グローバルキーボードショートカットハンドラー
+  window.addEventListener('keydown', (e) => {
+    // インプット入力欄などでタイピングしている場合はショートカットをバイパス
+    if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') {
+      return;
     }
 
-    // scrape-image から OGP要約・画像を非同期で取得して差し替える
-    fetch('/api/scrape-image?url=' + encodeURIComponent(item.link))
-      .then(res => res.json())
-      .then(data => {
-        // バックエンド経由で抽出された OGP要約（または本文リード）を優先表示
-        if (item.contentSnippet) {
-          previewSummaryText.textContent = item.contentSnippet;
-        } else {
-          previewSummaryText.textContent = '直接ニュースソースから詳細記事を参照してください。';
+    const currentItem = filteredArticlesListForKeys[currentSelectedIndex];
+
+    switch (e.key.toLowerCase()) {
+      case 'j':
+      case 'arrowdown':
+        e.preventDefault();
+        moveSelection(1); // 次の記事へ
+        break;
+      case 'k':
+      case 'arrowup':
+        e.preventDefault();
+        moveSelection(-1); // 前の記事へ
+        break;
+      case 'o':
+      case 'enter':
+      case 'v':
+        if (currentItem) {
+          e.preventDefault();
+          window.open(currentItem.link, '_blank', 'noopener,noreferrer');
         }
-      })
-      .catch(() => {
-        previewSummaryText.textContent = item.contentSnippet || '直接ニュースソースから詳細記事を参照してください。';
-      });
-
-    // 元記事へのリンク
-    if (previewOriginalLink) {
-      previewOriginalLink.href = item.link;
+        break;
+      case 'b':
+        if (currentItem && rssArticlesList) {
+          e.preventDefault();
+          const targetCard = rssArticlesList.querySelector(`[data-index="${currentSelectedIndex}"]`);
+          if (targetCard) {
+            const bBtn = targetCard.querySelector('.bookmark-action-btn');
+            if (bBtn) bBtn.click(); // ブックマークトグルを模倣
+          }
+        }
+        break;
+      case 'c':
+        if (currentItem) {
+          e.preventDefault();
+          const prompt = encodeURIComponent("「" + currentItem.title + "」についてWEB検索を利用して記事の深掘りをして");
+          window.open("https://chatgpt.com/?q=" + prompt + "&hints=search", '_blank', 'noopener,noreferrer');
+        }
+        break;
+      case 'p':
+        if (currentItem) {
+          e.preventDefault();
+          const prompt = encodeURIComponent("「" + currentItem.title + "」について関連報道や進展をWEB検索を利用して深掘りして");
+          window.open("https://perplexity.ai/search?q=" + prompt, '_blank', 'noopener,noreferrer');
+        }
+        break;
+      case 'a':
+        e.preventDefault();
+        if (markAllReadBtn) {
+          markAllReadBtn.click(); // すべて既読
+        }
+        break;
     }
-
-    // ChatGPT 連携URLバインド (自動検索付き)
-    if (previewBtnChatgpt) {
-      const prompt = "「" + item.title + "」についてWEB検索を利用して記事の深掘りをして";
-      previewBtnChatgpt.href = "https://chatgpt.com/?q=" + encodeURIComponent(prompt) + "&hints=search";
-    }
-
-    // Perplexity 連携URLバインド
-    if (previewBtnPerplexity) {
-      const prompt = "「" + item.title + "」について関連報道や進展をWEB検索を利用して深掘りして";
-      previewBtnPerplexity.href = "https://perplexity.ai/search?q=" + encodeURIComponent(prompt);
-    }
-  }
-
-  // 左ペイン (すべて、ブックマークメニュー) のクリックバインド
-  if (menuAllUnread) {
-    menuAllUnread.addEventListener('click', () => {
-      document.querySelectorAll('.feed-item, .sidebar-item').forEach(el => el.classList.remove('active'));
-      menuAllUnread.classList.add('active');
-      activeFeedId = 'all';
-      activeCategory = 'all';
-      if (currentViewTitle) currentViewTitle.textContent = 'すべての未読';
-      renderRssArticles();
-    });
-  }
-
-  if (menuBookmarks) {
-    menuBookmarks.addEventListener('click', () => {
-      document.querySelectorAll('.feed-item, .sidebar-item').forEach(el => el.classList.remove('active'));
-      menuBookmarks.classList.add('active');
-      activeFeedId = 'bookmarks';
-      activeCategory = 'all';
-      if (currentViewTitle) currentViewTitle.textContent = 'あとで読む';
-      renderRssArticles();
-    });
-  }
+  });
 
   // すべて既読にするボタンの処理
   if (markAllReadBtn) {

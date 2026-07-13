@@ -159,65 +159,6 @@
           <div class="loading-placeholder">記事データを取得中...</div>
         </div>
       </section>
-
-      <!-- ペイン3: 右プレビューペイン (要約 & 深掘り) -->
-      <section id="rss-preview-pane" class="rss-preview scrollable">
-        <!-- 空の状態 -->
-        <div id="preview-placeholder" class="preview-empty-state">
-          <div class="empty-icon">📰</div>
-          <p>リストから記事を選択すると、ここに詳細プレビューが展開されます。</p>
-        </div>
-        
-        <!-- コンテンツ表示エリア -->
-        <div id="preview-content-area" class="preview-content" style="display: none;">
-          <div class="preview-header">
-            <div class="preview-meta">
-              <span id="preview-category" class="category-badge">カテゴリ</span>
-              <span id="preview-publisher" class="publisher-badge">メディア</span>
-              <span id="preview-date" class="date-badge">日付</span>
-            </div>
-            <h2 id="preview-title" class="preview-title">記事のタイトル</h2>
-          </div>
-          
-          <div class="preview-body">
-            <!-- AI要約ダイジェスト -->
-            <div class="preview-section summary-section">
-              <h3>🤖 AIによる記事要約</h3>
-              <p id="preview-summary-text" class="summary-text">本文の要約文がここに表示されます...</p>
-            </div>
-            
-            <!-- 一次ソースへのリンク -->
-            <div class="preview-section link-section">
-              <a id="preview-original-link" href="#" target="_blank" rel="noopener noreferrer" class="primary-action-btn">
-                <span>一次ソースの記事を読む</span>
-                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            </div>
-
-            <!-- ChatGPT / Perplexity 深掘りリンク -->
-            <div class="preview-section deep-dive-section">
-              <h3>🔍 外部ツールでさらに深掘りする</h3>
-              <div class="deep-dive-grid">
-                <a id="preview-btn-chatgpt" href="#" target="_blank" rel="noopener noreferrer" class="deep-dive-button chatgpt">
-                  <span class="icon">💬</span>
-                  <div class="button-label">
-                    <strong>ChatGPT</strong>
-                    <span>WEB検索付きで出来事を深掘り</span>
-                  </div>
-                </a>
-                <a id="preview-btn-perplexity" href="#" target="_blank" rel="noopener noreferrer" class="deep-dive-button perplexity">
-                  <span class="icon">🔍</span>
-                  <div class="button-label">
-                    <strong>Perplexity</strong>
-                    <span>関連報道や進展を自動リサーチ</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
     </main>
