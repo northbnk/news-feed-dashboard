@@ -260,12 +260,30 @@ function parseRssRegex(xml) {
     const descMatch = content.match(/<(description|summary|content)>(?:<!\[CDATA\[([\s\S]*?)\]\]>|([\s\S]*?))<\/\1>/i);
     const contentSnippet = descMatch ? (descMatch[2] || descMatch[3] || '').trim().replace(/<[^>]+>/g, '').substring(0, 200) : '';
 
+    // 画像の抽出 (media:content, media:thumbnail, enclosure, img tag)
+    let imageUrl = '';
+    const mediaContentMatch = content.match(/<media:content[^>]*?url=["']([^"']+)["']/i);
+    const mediaThumbnailMatch = content.match(/<media:thumbnail[^>]*?url=["']([^"']+)["']/i);
+    const enclosureImageMatch = content.match(/<enclosure[^>]*?type=["']image\/[^"']+["'][^>]*?url=["']([^"']+)["']/i) || content.match(/<enclosure[^>]*?url=["']([^"']+)["'][^>]*?type=["']image\/[^"']+["']/i);
+    const imgTagMatch = content.match(/<img[^>]*?src=["']([^"']+)["']/i);
+
+    if (mediaContentMatch) {
+      imageUrl = mediaContentMatch[1].trim();
+    } else if (mediaThumbnailMatch) {
+      imageUrl = mediaThumbnailMatch[1].trim();
+    } else if (enclosureImageMatch) {
+      imageUrl = enclosureImageMatch[1].trim();
+    } else if (imgTagMatch) {
+      imageUrl = imgTagMatch[1].trim();
+    }
+
     if (title && link) {
       items.push({
         title,
         link,
         pubDate,
-        contentSnippet
+        contentSnippet,
+        image: imageUrl
       });
     }
   }
@@ -440,6 +458,9 @@ function decodeHtmlEntities(str) {
 }
 
 // 記事のURLからメタ情報（説明文）を自動的にクロールして抽出
+// 記事URLから抽出された画像のメモリキャッシュ
+const articleImageCache = {};
+
 async function fetchArticleSummaryFromUrl(url) {
   if (!url) return '';
   
@@ -463,6 +484,26 @@ async function fetchArticleSummaryFromUrl(url) {
     if (!res.ok) return '';
 
     const html = await res.text();
+
+    // og:image (OGP画像) の抽出とキャッシュ
+    const ogImageMatch = html.match(/<meta\s+[^>]*property=["']og:image["']\s+[^>]*content=["'](.*?)["']/i) ||
+                         html.match(/<meta\s+[^>]*content=["'](.*?)["']\s+[^>]*property=["']og:image["']/i);
+    if (ogImageMatch && ogImageMatch[1]) {
+      const imgUrl = ogImageMatch[1].trim();
+      // 相対パスの場合は絶対URLに直す（簡易対応）
+      if (imgUrl.startsWith('//')) {
+        articleImageCache[url] = 'https:' + imgUrl;
+      } else if (imgUrl.startsWith('/')) {
+        try {
+          const parsed = new URL(url);
+          articleImageCache[url] = parsed.origin + imgUrl;
+        } catch (e) {
+          articleImageCache[url] = imgUrl;
+        }
+      } else if (imgUrl.startsWith('http')) {
+        articleImageCache[url] = imgUrl;
+      }
+    }
 
     // 1. og:description の抽出
     let match = html.match(/<meta\s+[^>]*property=["']og:description["']\s+[^>]*content=["'](.*?)["']/i) ||
@@ -1169,12 +1210,17 @@ async function collectAndCluster() {
       
       const maxWeight = Math.max(...cluster.articles.map(a => a.weight || 5));
       
+      // 代表画像URLの決定
+      const repUrl = cluster.articles[0].link;
+      const repImage = cluster.articles.find(a => a.image)?.image || articleImageCache[repUrl] || null;
+
       clusteredData.topNews.push({
         id: cluster.id,
         aiTitle: aiContent.title,
         aiSummary: aiContent.summary,
         genre: genre,
-        sources: cluster.articles.map(a => ({ publisher: a.feedName, title: a.title, url: a.link, pubDate: a.pubDate })),
+        sources: cluster.articles.map(a => ({ publisher: a.feedName, title: a.title, url: a.link, pubDate: a.pubDate, image: a.image })),
+        image: repImage,
         hatebu: totalHatebu,
         weight: maxWeight
       });
@@ -1249,12 +1295,17 @@ async function collectAndCluster() {
 
       const maxWeight = Math.max(...cluster.articles.map(a => a.weight || 5));
 
+      // 代表画像URLの決定
+      const repUrl = cluster.articles[0].link;
+      const repImage = cluster.articles.find(a => a.image)?.image || articleImageCache[repUrl] || null;
+
       clusteredData.trendingNews.push({
         id: cluster.id,
         aiTitle: aiContent.title,
         aiSummary: aiContent.summary,
         genre: genre,
-        sources: cluster.articles.map(a => ({ publisher: a.feedName, title: a.title, url: a.link })),
+        sources: cluster.articles.map(a => ({ publisher: a.feedName, title: a.title, url: a.link, pubDate: a.pubDate, image: a.image })),
+        image: repImage,
         sns: {
           x: xShares,
           threads: threadsShares,
@@ -1313,11 +1364,16 @@ async function collectAndCluster() {
             aiContent.summary = crawledSummary;
           }
         }
+        // 代表画像URLの決定
+        const repUrl = cluster.articles[0].link;
+        const repImage = cluster.articles.find(a => a.image)?.image || articleImageCache[repUrl] || null;
+
         clusteredData.sports[key].push({
           id: cluster.id,
           aiTitle: aiContent.title,
           aiSummary: aiContent.summary,
-          sources: cluster.articles.map(a => ({ publisher: a.feedName, title: a.title, url: a.link }))
+          sources: cluster.articles.map(a => ({ publisher: a.feedName, title: a.title, url: a.link, pubDate: a.pubDate, image: a.image })),
+          image: repImage
         });
       }
     }
@@ -1385,7 +1441,8 @@ async function collectAndCluster() {
         score: score,
         category: '一般',
         publisher: item.sources?.[0]?.publisher || 'ニュースソース',
-        sources: item.sources || []
+        sources: item.sources || [],
+        image: item.image || null
       };
     });
 

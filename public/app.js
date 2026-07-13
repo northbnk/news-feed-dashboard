@@ -289,16 +289,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const defaultUrl = item.sources[0]?.url || '#';
       const isRead = readNewsUrls.has(defaultUrl);
       
-      card.className = `news-card fade-in${isRead ? ' is-read' : ''}`;
+      const itemImage = item.image || null;
+      card.className = `news-card fade-in${isRead ? ' is-read' : ''}${itemImage ? ' has-image' : ''}`;
+      
+      const imageHtml = itemImage ? `
+        <div class="card-cover-image-wrapper">
+          <img src="${itemImage}" alt="${item.aiTitle}" class="card-cover-image" loading="lazy" onerror="this.parentNode.style.display='none'">
+        </div>
+      ` : '';
+
       card.innerHTML = `
-        <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.aiTitle}</h4>
-        <p class="card-summary-preview">${item.aiSummary || '要約情報はありません。'}</p>
-        <div class="card-meta">
-          <div class="source-comparison">
-            <span class="source-badge">${item.sources[0]?.publisher || '一次ソース'}</span>
-            ${item.sources.length > 1 ? `<span class="source-badge">他 ${item.sources.length - 1} 社</span>` : ''}
+        ${imageHtml}
+        <div class="card-body-content">
+          <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.aiTitle}</h4>
+          <p class="card-summary-preview">${item.aiSummary || '要約情報はありません。'}</p>
+          <div class="card-meta">
+            <div class="source-comparison">
+              <span class="source-badge">${item.sources[0]?.publisher || '一次ソース'}</span>
+              ${item.sources.length > 1 ? `<span class="source-badge">他 ${item.sources.length - 1} 社</span>` : ''}
+            </div>
+            ${addCardActionsHtml(defaultUrl, item.aiTitle)}
           </div>
-          ${addCardActionsHtml(defaultUrl, item.aiTitle)}
         </div>
       `;
       
@@ -583,7 +594,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const defaultUrl = item.link || '#';
       const isRead = readNewsUrls.has(defaultUrl);
       
-      card.className = `news-card fade-in${isRead ? ' is-read' : ''}`;
+      const itemImage = item.image || (item.metadata?.image) || null;
+      card.className = `news-card fade-in${isRead ? ' is-read' : ''}${itemImage ? ' has-image' : ''}`;
       
       // 注目度スコア（数値のみ・単色）の設定
       const scoreNum = Number(item.score);
@@ -607,17 +619,26 @@ document.addEventListener('DOMContentLoaded', () => {
       const publisherName = sources[0]?.publisher || item.feed_name || '一次ソース';
       const otherSourcesCount = sources.length - 1;
 
+      const imageHtml = itemImage ? `
+        <div class="card-cover-image-wrapper">
+          <img src="${itemImage}" alt="${item.title}" class="card-cover-image" loading="lazy" onerror="this.parentNode.style.display='none'">
+        </div>
+      ` : '';
+
       card.innerHTML = `
-        <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.title}</h4>
-        <p class="card-summary-preview">${item.summary || '詳細記事を参照してください。'}</p>
-        <div class="card-meta">
-          <div class="source-comparison">
-            ${scoreBadgeHtml}
-            ${categoryBadgeHtml}
-            <span class="source-badge">${publisherName}</span>
-            ${otherSourcesCount > 0 ? `<span class="source-badge">他 ${otherSourcesCount} 社</span>` : ''}
+        ${imageHtml}
+        <div class="card-body-content">
+          <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.title}</h4>
+          <p class="card-summary-preview">${item.summary || '詳細記事を参照してください。'}</p>
+          <div class="card-meta">
+            <div class="source-comparison">
+              ${scoreBadgeHtml}
+              ${categoryBadgeHtml}
+              <span class="source-badge">${publisherName}</span>
+              ${otherSourcesCount > 0 ? `<span class="source-badge">他 ${otherSourcesCount} 社</span>` : ''}
+            </div>
+            ${addCardActionsHtml(defaultUrl, item.title)}
           </div>
-          ${addCardActionsHtml(defaultUrl, item.title)}
         </div>
       `;
       
@@ -671,7 +692,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const defaultUrl = item.sources[0]?.url || '#';
       const isRead = readNewsUrls.has(defaultUrl);
       
-      card.className = `news-card fade-in${isRead ? ' is-read' : ''}`;
+      const itemImage = item.image || null;
+      card.className = `news-card fade-in${isRead ? ' is-read' : ''}${itemImage ? ' has-image' : ''}`;
       
       // 感情名日本語マッピング
       const emotionNames = {
@@ -686,19 +708,28 @@ document.addEventListener('DOMContentLoaded', () => {
       const emotionText = emotionNames[item.emotion] || '話題';
       const badgeClass = `${item.emotion}-badge`;
       
+      const imageHtml = itemImage ? `
+        <div class="card-cover-image-wrapper">
+          <img src="${itemImage}" alt="${item.aiTitle}" class="card-cover-image" loading="lazy" onerror="this.parentNode.style.display='none'">
+        </div>
+      ` : '';
+
       card.innerHTML = `
-        <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.aiTitle}</h4>
-        <p class="card-summary-preview">${item.aiSummary || '要約情報はありません。'}</p>
-        <div class="card-meta">
-          <div class="emotion-badge ${badgeClass}" id="badge-em-${item.id}">
-            <!-- ここにSVGがインサートされます -->
-            <span>${emotionText}</span>
-          </div>
-          <div class="sns-badge-row">
-            <span class="sns-pill x">X: ${formatCount(item.sns.x)}</span>
-            <span class="sns-pill threads">Threads: ${formatCount(item.sns.threads)}</span>
-            <span class="sns-pill hatebu">B!: ${formatCount(item.sns.hatebu)}</span>
-            ${addCardActionsHtml(defaultUrl, item.aiTitle)}
+        ${imageHtml}
+        <div class="card-body-content">
+          <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.aiTitle}</h4>
+          <p class="card-summary-preview">${item.aiSummary || '要約情報はありません。'}</p>
+          <div class="card-meta">
+            <div class="emotion-badge ${badgeClass}" id="badge-em-${item.id}">
+              <!-- ここにSVGがインサートされます -->
+              <span>${emotionText}</span>
+            </div>
+            <div class="sns-badge-row">
+              <span class="sns-pill x">X: ${formatCount(item.sns.x)}</span>
+              <span class="sns-pill threads">Threads: ${formatCount(item.sns.threads)}</span>
+              <span class="sns-pill hatebu">B!: ${formatCount(item.sns.hatebu)}</span>
+              ${addCardActionsHtml(defaultUrl, item.aiTitle)}
+            </div>
           </div>
         </div>
       `;
@@ -759,16 +790,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const defaultUrl = item.sources[0]?.url || '#';
       const isRead = readNewsUrls.has(defaultUrl);
       
-      card.className = `news-card fade-in${isRead ? ' is-read' : ''}`;
+      const itemImage = item.image || null;
+      card.className = `news-card fade-in${isRead ? ' is-read' : ''}${itemImage ? ' has-image' : ''}`;
+      
+      const imageHtml = itemImage ? `
+        <div class="card-cover-image-wrapper">
+          <img src="${itemImage}" alt="${item.aiTitle}" class="card-cover-image" loading="lazy" onerror="this.parentNode.style.display='none'">
+        </div>
+      ` : '';
+
       card.innerHTML = `
-        <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.aiTitle}</h4>
-        <p class="card-summary-preview">${item.aiSummary || '要約情報はありません。'}</p>
-        <div class="card-meta">
-          <div class="source-comparison">
-            <span class="source-badge">${item.sources[0]?.publisher || 'スポーツ紙'}</span>
-            ${item.sources.length > 1 ? `<span class="source-badge">他 ${item.sources.length - 1} 社</span>` : ''}
+        ${imageHtml}
+        <div class="card-body-content">
+          <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.aiTitle}</h4>
+          <p class="card-summary-preview">${item.aiSummary || '要約情報はありません。'}</p>
+          <div class="card-meta">
+            <div class="source-comparison">
+              <span class="source-badge">${item.sources[0]?.publisher || 'スポーツ紙'}</span>
+              ${item.sources.length > 1 ? `<span class="source-badge">他 ${item.sources.length - 1} 社</span>` : ''}
+            </div>
+            ${addCardActionsHtml(defaultUrl, item.aiTitle)}
           </div>
-          ${addCardActionsHtml(defaultUrl, item.aiTitle)}
         </div>
       `;
       
