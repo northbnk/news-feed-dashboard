@@ -89,21 +89,6 @@
     ]
   },
   {
-    "title": "「あっという間」ベルギー黄金世代が戦った6週間　サッカーW杯",
-    "originalTitle": "「あっという間」ベルギー黄金世代が戦った6週間　サッカーW杯",
-    "link": "https://mainichi.jp/articles/20260711/k00/00m/050/115000c",
-    "contentSnippet": "",
-    "pubDate": "2026-07-11T12:29:59.000Z",
-    "category": "sports",
-    "feedName": "毎日新聞スポーツ",
-    "weight": 5,
-    "keywords": [
-      "ベルギー黄金世代",
-      "6週間",
-      "サッカーW杯"
-    ]
-  },
-  {
     "title": "イラン外相 ホルムズ海峡めぐりオマーン訪問 米との協議再開は",
     "originalTitle": "イラン外相 ホルムズ海峡めぐりオマーン訪問 米との協議再開は",
     "link": "http://www3.nhk.or.jp/news/html/20260711/k10015174571000.html",
@@ -154,22 +139,6 @@
     ]
   },
   {
-    "title": "風速シミュレーターかよ！ 「傘がさせない」爆風サーキュレーターが20%OFF",
-    "originalTitle": "風速シミュレーターかよ！ 「傘がさせない」爆風サーキュレーターが20%OFF",
-    "link": "https://www.gizmodo.jp/article/amazon-primeday-vornado-circulator/",
-    "contentSnippet": "風の出力基準、間違えてない?サーキュレーターって、エアコンの空気を循環させたり、部屋干しの乾燥を早めたり…と、地味ながら一年中働いてくれる名脇役。1台あると暮らしの快適度があがりますよねー。ただ、世の中には「地味」とは無縁のサーキュレーター…",
-    "pubDate": "Sat, 11 Jul 2026 12:30:00 GMT",
-    "category": "trending",
-    "feedName": "ギズモード・ジャパン",
-    "weight": 5,
-    "keywords": [
-      "風速シミュレーター",
-      "爆風サーキュレーター",
-      "20",
-      "OFF"
-    ]
-  },
-  {
     "title": "【Amazonプライムデー最終日】ギズモード編集部が買ったもの",
     "originalTitle": "【Amazonプライムデー最終日】ギズモード編集部が買ったもの",
     "link": "https://www.gizmodo.jp/article/amazon-primday-2026-editors-buy-2/",
@@ -181,25 +150,6 @@
     "keywords": [
       "Amazonプライムデー最終日",
       "ギズモード編集部"
-    ]
-  },
-  {
-    "title": "【毎日書評】月曜の「なんとなく憂鬱」は体内時計のせい？毎日の朝食でリズムを整える方法",
-    "originalTitle": "【毎日書評】月曜の「なんとなく憂鬱」は体内時計のせい？毎日の朝食でリズムを整える方法",
-    "link": "https://www.lifehacker.jp/article/2607_book_to_read_weekend_161/",
-    "contentSnippet": "【毎日書評】『知って得する、体内時計のはなし』（中村孝博 著、中公新書ラクレ）より、月曜の「なんとなく憂鬱」は体内時計のせい？毎日の朝食でリズムを整える方法について解説します。",
-    "pubDate": "Sat, 11 Jul 2026 12:30:00 GMT",
-    "category": "trending",
-    "feedName": "ライフハッカー・ジャパン",
-    "weight": 5,
-    "keywords": [
-      "毎日書評",
-      "月曜",
-      "憂鬱",
-      "体内時計",
-      "毎日",
-      "朝食",
-      "リズム"
     ]
   },
   {
@@ -3204,25 +3154,6 @@
       "小屋",
       "シリコンバレー",
       "源流"
-    ]
-  },
-  {
-    "title": "Markdownをpushするだけで社内資料PDFを常に最新に — WIF×Google Driveで鍵レス自動配信",
-    "originalTitle": "Markdownをpushするだけで社内資料PDFを常に最新に — WIF×Google Driveで鍵レス自動配信",
-    "link": "https://zenn.dev/o2wsu9/articles/36dea065f5d73c",
-    "contentSnippet": "社内向けドキュメントを Markdown のまま Git で管理し、push するだけで Google Drive 上の PDF を最新化する仕組みを、鍵レス認証（Workload Identity Federation）で構築する手順を解説します。\n\n TL;DR\n\nMarkdown を main に push すると、PDF が自動生成されて Google Drive の同じファイルが上書きされます。共有リンクは変わらず、開けば常に最新版です。\n正本は GitHub（履歴管理・レビュー）、表示は Drive（PDF）。「書き出して上げ直して周知する」という共有作業が消えます。\n認証は...",
-    "pubDate": "Sat, 11 Jul 2026 12:31:50 GMT",
-    "category": "tech",
-    "feedName": "Zenn（トレンド）",
-    "weight": 6,
-    "keywords": [
-      "Markdown",
-      "push",
-      "社内資料PDF",
-      "WIF",
-      "Google",
-      "Drive",
-      "鍵レス自動配信"
     ]
   },
   {
@@ -13455,6 +13386,26 @@
       "マイケル",
       "余韻",
       "子役"
+    ]
+  },
+  {
+    "title": "「人をいい意味で無気力にするイス」×夏の夜風で一杯。最高な1日の締めくくり方教えます",
+    "originalTitle": "「人をいい意味で無気力にするイス」×夏の夜風で一杯。最高な1日の締めくくり方教えます",
+    "link": "https://www.lifehacker.jp/article/amazon-sale-coleman-chair/",
+    "contentSnippet": "「座る人をダメにする」と言われるコールマンのインフィニティチェア。実際に使っていてわかるオススメポイントを紹介します。",
+    "pubDate": "Mon, 13 Jul 2026 12:30:00 GMT",
+    "category": "trending",
+    "feedName": "ライフハッカー・ジャパン",
+    "weight": 5,
+    "keywords": [
+      "意味",
+      "無気力",
+      "イス",
+      "夜風",
+      "一杯",
+      "最高",
+      "1日",
+      "方教"
     ]
   }
 ]

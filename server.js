@@ -1914,6 +1914,59 @@ app.get('/api/feed-status', (req, res) => {
   });
 });
 
+// OGP画像のみを軽量に抽出する関数
+async function scrapeOgImage(url) {
+  if (!url) return null;
+  if (articleImageCache[url]) return articleImageCache[url];
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000); // 4秒タイムアウト
+
+    const res = await fetch(url, {
+      headers: { 
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' 
+      },
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+    if (!res.ok) return null;
+
+    const html = await res.text();
+    const ogImageMatch = html.match(/<meta[^>]*?property=["']og:image["'][^>]*?content=["']([^"']+)["']/i) ||
+                         html.match(/<meta[^>]*?content=["']([^"']+)["'][^>]*?property=["']og:image["']/i) ||
+                         html.match(/<meta[^>]*?name=["']twitter:image["'][^>]*?content=["']([^"']+)["']/i);
+    
+    if (ogImageMatch && ogImageMatch[1]) {
+      let imgUrl = ogImageMatch[1].trim();
+      if (imgUrl.startsWith('//')) {
+        imgUrl = 'https:' + imgUrl;
+      } else if (imgUrl.startsWith('/')) {
+        try {
+          const parsed = new URL(url);
+          imgUrl = parsed.origin + imgUrl;
+        } catch (e) {
+          // 何もしない
+        }
+      }
+      articleImageCache[url] = imgUrl;
+      return imgUrl;
+    }
+  } catch (e) {
+    // エラー時はスキップ
+  }
+  return null;
+}
+
+// APIエンドポイント: 画像プロキシスクレイパー (フロントエンドからの非同期ロード用)
+app.get('/api/scrape-image', async (req, res) => {
+  const targetUrl = req.query.url;
+  if (!targetUrl) return res.status(400).json({ success: false, message: 'URLを指定してください。' });
+  
+  const imgUrl = await scrapeOgImage(targetUrl);
+  res.json({ success: true, image: imgUrl });
+});
+
 // APIエンドポイント: タイムラインデータの取得 (過去30日間の重大ニュース)
 app.get('/api/timeline', (req, res) => {
   const archive = loadTimelineArchive();

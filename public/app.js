@@ -267,6 +267,49 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // B. トップニュース描画
+  // ニュースカードの画像を非同期で取得して適用する関数
+  function applyCardCoverImage(card, defaultUrl, initialImage) {
+    if (!card) return;
+    
+    const imgWrapper = card.querySelector('.card-cover-image-wrapper');
+    if (!imgWrapper) return;
+
+    const img = imgWrapper.querySelector('.card-cover-image');
+
+    // すでに有効な画像URLがある場合はそれを即時適用
+    if (initialImage && initialImage.startsWith('http')) {
+      if (img) {
+        img.src = initialImage;
+        img.style.display = 'block';
+        const skeleton = imgWrapper.querySelector('.image-skeleton-loader');
+        if (skeleton) skeleton.style.display = 'none';
+      }
+      return;
+    }
+
+    // 画像がnullの場合は非同期でバックエンドから OGP 画像を取得
+    fetch('/api/scrape-image?url=' + encodeURIComponent(defaultUrl))
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.image) {
+          if (img) {
+            img.src = data.image;
+            img.style.display = 'block';
+            const skeleton = imgWrapper.querySelector('.image-skeleton-loader');
+            if (skeleton) skeleton.style.display = 'none';
+          }
+        } else {
+          // 取得失敗時は枠ごと消去してテキストを広げる
+          imgWrapper.style.display = 'none';
+          card.classList.remove('has-image');
+        }
+      })
+      .catch(() => {
+        imgWrapper.style.display = 'none';
+        card.classList.remove('has-image');
+      });
+  }
+
   function renderTopNews(topNews) {
     topNewsList.innerHTML = '';
     if (!topNews || topNews.length === 0) {
@@ -289,17 +332,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const defaultUrl = item.sources[0]?.url || '#';
       const isRead = readNewsUrls.has(defaultUrl);
       
-      const itemImage = item.image || null;
-      card.className = `news-card fade-in${isRead ? ' is-read' : ''}${itemImage ? ' has-image' : ''}`;
+      card.className = `news-card fade-in${isRead ? ' is-read' : ''} has-image`;
       
-      const imageHtml = itemImage ? `
-        <div class="card-cover-image-wrapper">
-          <img src="${itemImage}" alt="${item.aiTitle}" class="card-cover-image" loading="lazy" onerror="this.parentNode.style.display='none'">
-        </div>
-      ` : '';
-
       card.innerHTML = `
-        ${imageHtml}
+        <div class="card-cover-image-wrapper">
+          <div class="image-skeleton-loader" style="width:100%; height:100%; background:linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%); background-size: 200% 100%; animation: skeletonShimmer 1.5s infinite;"></div>
+          <img src="" alt="${item.aiTitle}" class="card-cover-image" loading="lazy" style="display:none;" onerror="this.parentNode.style.display='none'; this.closest('.news-card').classList.remove('has-image');">
+        </div>
         <div class="card-body-content">
           <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.aiTitle}</h4>
           <p class="card-summary-preview">${item.aiSummary || '要約情報はありません。'}</p>
@@ -312,6 +351,9 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `;
+      
+      // 画像の非同期ロード＆フォールバックの実行
+      applyCardCoverImage(card, defaultUrl, item.image);
       
       // アイテムデータをDOMに紐付ける
       card.__itemData = item;
@@ -790,17 +832,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const defaultUrl = item.sources[0]?.url || '#';
       const isRead = readNewsUrls.has(defaultUrl);
       
-      const itemImage = item.image || null;
-      card.className = `news-card fade-in${isRead ? ' is-read' : ''}${itemImage ? ' has-image' : ''}`;
+      card.className = `news-card fade-in${isRead ? ' is-read' : ''} has-image`;
       
-      const imageHtml = itemImage ? `
-        <div class="card-cover-image-wrapper">
-          <img src="${itemImage}" alt="${item.aiTitle}" class="card-cover-image" loading="lazy" onerror="this.parentNode.style.display='none'">
-        </div>
-      ` : '';
-
       card.innerHTML = `
-        ${imageHtml}
+        <div class="card-cover-image-wrapper">
+          <div class="image-skeleton-loader" style="width:100%; height:100%; background:linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%); background-size: 200% 100%; animation: skeletonShimmer 1.5s infinite;"></div>
+          <img src="" alt="${item.aiTitle}" class="card-cover-image" loading="lazy" style="display:none;" onerror="this.parentNode.style.display='none'; this.closest('.news-card').classList.remove('has-image');">
+        </div>
         <div class="card-body-content">
           <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.aiTitle}</h4>
           <p class="card-summary-preview">${item.aiSummary || '要約情報はありません。'}</p>
@@ -813,6 +851,9 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `;
+      
+      // 画像の非同期ロード＆フォールバックの実行
+      applyCardCoverImage(card, defaultUrl, item.image);
       
       // アイテムデータをDOMに紐付ける
       card.__itemData = item;
