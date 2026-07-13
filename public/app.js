@@ -258,10 +258,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     headlineBar.onclick = handleHeadlineClick;
-    headlineDetailBtn.onclick = (e) => {
-      e.stopPropagation(); // 親要素(headlineBar)のクリックイベント重複発火を防止
-      handleHeadlineClick();
-    };
+    if (headlineDetailBtn) {
+      headlineDetailBtn.onclick = (e) => {
+        e.stopPropagation(); // 親要素(headlineBar)のクリックイベント重複発火を防止
+        handleHeadlineClick();
+      };
+    }
   }
 
   // B. トップニュース描画
@@ -352,6 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderTopNews(topNews) {
+    if (!topNewsList) return;
     topNewsList.innerHTML = '';
     if (!topNews || topNews.length === 0) {
       topNewsList.innerHTML = '<div class="loading-placeholder">ニュースがありません。</div>';
@@ -754,6 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // C. 話題 of ニュース描画 (感情SVG・SNSバッジ付き)
   function renderTrendingNews(trendingNews) {
+    if (!trendingNewsList) return;
     trendingNewsList.innerHTML = '';
     if (!trendingNews || trendingNews.length === 0) {
       trendingNewsList.innerHTML = '<div class="loading-placeholder">話題がありません。</div>';
@@ -853,6 +857,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // D. スポーツニュース描画
   function renderSportsNews(sportsData) {
+    if (!sportsNewsList) return;
     sportsNewsList.innerHTML = '';
     if (!sportsData) return;
     
@@ -1059,49 +1064,55 @@ document.addEventListener('DOMContentLoaded', () => {
     detailDrawer.setAttribute('aria-hidden', 'true');
   }
 
-  drawerClose.addEventListener('click', closeDrawer);
-  drawerOverlay.addEventListener('click', closeDrawer);
+  if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+  if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
 
   // --- 5. スポーツタブの切り替え ---
-  sportsTabs.addEventListener('click', (e) => {
-    if (!e.target.classList.contains('tab-btn')) return;
-    
-    // アクティブなボタンの切り替え
-    sportsTabs.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    e.target.classList.add('active');
-    
-    // データ切り替え
-    currentSportsTab = e.target.dataset.tab;
-    if (dashboardData) {
-      renderSportsNews(dashboardData.sports);
-    }
-  });
+  if (sportsTabs) {
+    sportsTabs.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('tab-btn')) return;
+      
+      // アクティブなボタンの切り替え
+      sportsTabs.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      e.target.classList.add('active');
+      
+      // データ切り替え
+      currentSportsTab = e.target.dataset.tab;
+      if (dashboardData) {
+        renderSportsNews(dashboardData.sports);
+      }
+    });
+  }
 
   // --- 5-2. トップニュースタブの切り替え ---
-  topNewsTabs.addEventListener('click', (e) => {
-    if (!e.target.classList.contains('tab-btn')) return;
-    
-    topNewsTabs.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    e.target.classList.add('active');
-    
-    currentTopNewsTab = e.target.dataset.tab;
-    if (dashboardData) {
-      renderTopNews(dashboardData.topNews);
-    }
-  });
+  if (topNewsTabs) {
+    topNewsTabs.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('tab-btn')) return;
+      
+      topNewsTabs.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      e.target.classList.add('active');
+      
+      currentTopNewsTab = e.target.dataset.tab;
+      if (dashboardData) {
+        renderTopNews(dashboardData.topNews);
+      }
+    });
+  }
 
   // --- 5-3. 話題のニュースタブの切り替え ---
-  trendingNewsTabs.addEventListener('click', (e) => {
-    if (!e.target.classList.contains('tab-btn')) return;
-    
-    trendingNewsTabs.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-    e.target.classList.add('active');
-    
-    currentTrendingNewsTab = e.target.dataset.tab;
-    if (dashboardData) {
-      renderTrendingNews(dashboardData.trendingNews);
-    }
-  });
+  if (trendingNewsTabs) {
+    trendingNewsTabs.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('tab-btn')) return;
+      
+      trendingNewsTabs.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      e.target.classList.add('active');
+      
+      currentTrendingNewsTab = e.target.dataset.tab;
+      if (dashboardData) {
+        renderTrendingNews(dashboardData.trendingNews);
+      }
+    });
+  }
 
   // --- 6. 手動更新ボタン (API呼び出し) ---
   refreshBtn.addEventListener('click', async () => {
@@ -1267,6 +1278,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 7. 天気情報取得ロジック (Open-Meteo) ---
   function initWeather() {
     const weatherElement = document.getElementById('weather-display');
+    if (!weatherElement) return;
+    
     if (!navigator.geolocation) {
       weatherElement.textContent = '位置情報非対応';
       fetchWeather(currentCity.lat, currentCity.lon, currentCity);
@@ -1293,6 +1306,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const cityElement = document.getElementById('weather-city');
     const infoElement = document.getElementById('weather-info');
     const forecastList = document.getElementById('forecast-list');
+    
+    if (!cityElement || !infoElement || !forecastList) return;
+    
     try {
       const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=temperature_2m,weathercode&timezone=Asia%2FTokyo`);
       if (!response.ok) throw new Error('天気データの取得に失敗しました');
@@ -1367,22 +1383,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const weatherForecastPopup = document.getElementById('weather-forecast-popup');
   const cityNewsList = document.getElementById('city-news-list');
 
-  weatherCityWrapper.addEventListener('mouseenter', () => {
-    buildCityNews();
-    cityNewsPopup.style.display = 'block';
-  });
+  if (weatherCityWrapper) {
+    weatherCityWrapper.addEventListener('mouseenter', () => {
+      buildCityNews();
+      if (cityNewsPopup) cityNewsPopup.style.display = 'block';
+    });
 
-  weatherCityWrapper.addEventListener('mouseleave', () => {
-    cityNewsPopup.style.display = 'none';
-  });
+    weatherCityWrapper.addEventListener('mouseleave', () => {
+      if (cityNewsPopup) cityNewsPopup.style.display = 'none';
+    });
+  }
 
-  weatherInfoWrapper.addEventListener('mouseenter', () => {
-    weatherForecastPopup.style.display = 'flex';
-  });
+  if (weatherInfoWrapper) {
+    weatherInfoWrapper.addEventListener('mouseenter', () => {
+      if (weatherForecastPopup) weatherForecastPopup.style.display = 'flex';
+    });
 
-  weatherInfoWrapper.addEventListener('mouseleave', () => {
-    weatherForecastPopup.style.display = 'none';
-  });
+    weatherInfoWrapper.addEventListener('mouseleave', () => {
+      if (weatherForecastPopup) weatherForecastPopup.style.display = 'none';
+    });
+  }
 
   function buildCityNews() {
     cityNewsList.innerHTML = '';
@@ -1951,9 +1971,9 @@ document.addEventListener('DOMContentLoaded', () => {
     bookmarkDrawer.setAttribute('aria-hidden', 'true');
   }
 
-  headerBookmarkBtn.addEventListener('click', openBookmarkDrawer);
-  bookmarkDrawerClose.addEventListener('click', closeBookmarkDrawer);
-  bookmarkDrawerOverlay.addEventListener('click', closeBookmarkDrawer);
+  if (headerBookmarkBtn) headerBookmarkBtn.addEventListener('click', openBookmarkDrawer);
+  if (bookmarkDrawerClose) bookmarkDrawerClose.addEventListener('click', closeBookmarkDrawer);
+  if (bookmarkDrawerOverlay) bookmarkDrawerOverlay.addEventListener('click', closeBookmarkDrawer);
 
   // 認証状態のリアルタイム監視
   supabaseClient.auth.onAuthStateChange(async (event, session) => {
@@ -1962,7 +1982,7 @@ document.addEventListener('DOMContentLoaded', () => {
       authUserEmail.textContent = currentUser.email;
       authUserEmail.style.display = 'inline-block';
       authBtnText.textContent = 'ログアウト';
-      headerBookmarkBtn.style.display = 'flex'; // ログイン中に「あとで読む」ボタンを出す
+      if (headerBookmarkBtn) headerBookmarkBtn.style.display = 'flex'; // ログイン中に「あとで読む」ボタンを出す
       
       await loadUserBookmarks();
     } else {
@@ -1970,7 +1990,7 @@ document.addEventListener('DOMContentLoaded', () => {
       authUserEmail.textContent = '';
       authUserEmail.style.display = 'none';
       authBtnText.textContent = 'ログイン';
-      headerBookmarkBtn.style.display = 'none'; // ログアウト時は非表示に
+      if (headerBookmarkBtn) headerBookmarkBtn.style.display = 'none'; // ログアウト時は非表示に
       closeBookmarkDrawer(); // ドロワーが開いていたら閉じる
       userBookmarks.clear();
       
