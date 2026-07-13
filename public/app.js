@@ -310,6 +310,49 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
+  // ニュースカードの画像を非同期で取得して適用する関数
+  function applyCardCoverImage(card, defaultUrl, initialImage) {
+    if (!card) return;
+    
+    const imgWrapper = card.querySelector('.card-cover-image-wrapper');
+    if (!imgWrapper) return;
+
+    const img = imgWrapper.querySelector('.card-cover-image');
+
+    // すでに有効な画像URLがある場合はそれを即時適用
+    if (initialImage && initialImage.startsWith('http')) {
+      if (img) {
+        img.src = initialImage;
+        img.style.display = 'block';
+        const skeleton = imgWrapper.querySelector('.image-skeleton-loader');
+        if (skeleton) skeleton.style.display = 'none';
+      }
+      return;
+    }
+
+    // 画像がnullの場合は非同期でバックエンドから OGP 画像を取得
+    fetch('/api/scrape-image?url=' + encodeURIComponent(defaultUrl))
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.image) {
+          if (img) {
+            img.src = data.image;
+            img.style.display = 'block';
+            const skeleton = imgWrapper.querySelector('.image-skeleton-loader');
+            if (skeleton) skeleton.style.display = 'none';
+          }
+        } else {
+          // 取得失敗時は枠ごと消去してテキストを広げる
+          imgWrapper.style.display = 'none';
+          card.classList.remove('has-image');
+        }
+      })
+      .catch(() => {
+        imgWrapper.style.display = 'none';
+        card.classList.remove('has-image');
+      });
+  }
+
   function renderTopNews(topNews) {
     topNewsList.innerHTML = '';
     if (!topNews || topNews.length === 0) {
@@ -2789,6 +2832,383 @@ document.addEventListener('DOMContentLoaded', () => {
         // 通常データを再読み込み
         loadData(true);
       }
+    });
+  }
+
+  // =========================================================================
+  // 📥 本格的3ペイン型 RSS リーダーのフロントエンド実装
+  // =========================================================================
+
+  // DOM 参照のマッピング
+  const rssSidebar = document.getElementById('rss-sidebar');
+  const rssFeedsAccordion = document.getElementById('rss-feeds-accordion');
+  const rssArticleTimeline = document.getElementById('rss-article-timeline');
+  const rssArticlesList = document.getElementById('rss-articles-list');
+  const rssPreviewPane = document.getElementById('rss-preview-pane');
+  const previewPlaceholder = document.getElementById('preview-placeholder');
+  const previewContentArea = document.getElementById('preview-content-area');
+  
+  const currentViewTitle = document.getElementById('current-view-title');
+  const timelineCountLabel = document.getElementById('timeline-count-label');
+  const totalUnreadCount = document.getElementById('total-unread-count');
+  
+  const menuAllUnread = document.getElementById('menu-all-unread');
+  const menuBookmarks = document.getElementById('menu-bookmarks');
+  const markAllReadBtn = document.getElementById('mark-all-read-btn');
+
+  // プレビュー表示要素の参照
+  const previewCategory = document.getElementById('preview-category');
+  const previewPublisher = document.getElementById('preview-publisher');
+  const previewDate = document.getElementById('preview-date');
+  const previewTitle = document.getElementById('preview-title');
+  const previewSummaryText = document.getElementById('preview-summary-text');
+  const previewOriginalLink = document.getElementById('preview-original-link');
+  const previewBtnChatgpt = document.getElementById('preview-btn-chatgpt');
+  const previewBtnPerplexity = document.getElementById('preview-btn-perplexity');
+
+  // RSS リーダーの内部状態
+  let rssFeeds = {}; // APIからロードされるフィード一覧
+  let rssArticles = []; // 現在ロードされている生の全記事一覧
+  let activeFeedId = 'all'; // 現在選択されているフィードID/URL、または 'all', 'bookmarks'
+  let activeCategory = 'all'; // 現在選択されているカテゴリ
+
+  // RSS リーダーの初期ロード処理
+  async function initRssReader() {
+    try {
+      // 1. フィード一覧の取得
+      const feedRes = await fetch('/api/feeds?t=' + Date.now());
+      const feedData = await feedRes.json();
+      if (feedData.success) {
+        rssFeeds = feedData.feeds;
+      }
+
+      // 2. 記事データのロード
+      await loadRssArticles();
+
+      // 3. サイドバー・未読数バッジ・リストの初期描画
+      renderRssSidebar();
+      renderRssArticles();
+
+      // 4. 定期ポーリング（15秒おきに記事を自動更新）
+      setInterval(async () => {
+        await loadRssArticles();
+        renderRssSidebar();
+        renderRssArticles(false); // スクロール位置維持のため再レンダリングのみ
+      }, 15000);
+
+    } catch (err) {
+      console.error('RSS Reader init failed:', err);
+    }
+  }
+
+  // 記事データのAPIからの取得
+  async function loadRssArticles() {
+    try {
+      const res = await fetch('/api/articles?limit=300&t=' + Date.now());
+      const data = await res.json();
+      if (data.success) {
+        rssArticles = data.articles;
+      }
+    } catch (err) {
+      console.error('Failed to load raw articles:', err);
+    }
+  }
+
+  // 左サイドバー (フィードアコーディオン) の描画
+  function renderRssSidebar() {
+    if (!rssFeedsAccordion) return;
+    rssFeedsAccordion.innerHTML = '';
+
+    let totalUnread = 0;
+    
+    // 各フィードおよび全体の未読数を計算
+    const unreadCounts = {};
+    rssArticles.forEach(art => {
+      const isRead = readNewsUrls.has(art.link);
+      if (!isRead) {
+        totalUnread++;
+        unreadCounts[art.feedName] = (unreadCounts[art.feedName] || 0) + 1;
+      }
+    });
+
+    // 全体未読数の更新
+    if (totalUnreadCount) {
+      totalUnreadCount.textContent = totalUnread;
+      totalUnreadCount.style.display = totalUnread > 0 ? 'inline-block' : 'none';
+    }
+
+    // ブックマーク数のバッジ更新
+    const bookmarksBadge = document.getElementById('bookmarks-count');
+    if (bookmarksBadge) {
+      const bCount = Object.keys(bookmarkedNewsUrls).length;
+      bookmarksBadge.textContent = bCount;
+      bookmarksBadge.style.display = bCount > 0 ? 'inline-block' : 'none';
+    }
+
+    // カテゴリごとにフィードを整理してアコーディオン構築
+    Object.keys(rssFeeds).forEach(category => {
+      const feeds = rssFeeds[category];
+      if (feeds.length === 0) return;
+
+      const categoryGroup = document.createElement('div');
+      categoryGroup.className = 'accordion-group';
+
+      // カテゴリヘッダー
+      const catHeader = document.createElement('div');
+      catHeader.className = 'accordion-header';
+      catHeader.innerHTML = `
+        <span class="folder-icon">📁</span>
+        <span class="category-name">${category}</span>
+      `;
+
+      const catList = document.createElement('ul');
+      catList.className = 'accordion-list';
+
+      feeds.forEach(f => {
+        const unread = unreadCounts[f.name] || 0;
+        const feedItem = document.createElement('li');
+        feedItem.className = `feed-item${activeFeedId === f.url ? ' active' : ''}`;
+        feedItem.setAttribute('data-feed-url', f.url);
+        feedItem.innerHTML = `
+          <span class="feed-icon">📰</span>
+          <span class="feed-title">${f.name}</span>
+          <span class="feed-badge"${unread > 0 ? ' style="display:inline-block;"' : ' style="display:none;"'}>${unread}</span>
+        `;
+
+        // フィードクリックイベント
+        feedItem.addEventListener('click', (e) => {
+          e.stopPropagation();
+          document.querySelectorAll('.feed-item, .sidebar-item').forEach(el => el.classList.remove('active'));
+          feedItem.classList.add('active');
+          activeFeedId = f.url;
+          activeCategory = 'all';
+          
+          if (currentViewTitle) currentViewTitle.textContent = f.name;
+          renderRssArticles();
+        });
+
+        catList.appendChild(feedItem);
+      });
+
+      // カテゴリヘッダーのクリックでアコーディオン開閉
+      catHeader.addEventListener('click', () => {
+        categoryGroup.classList.toggle('expanded');
+      });
+
+      // デフォルトで展開状態にする
+      categoryGroup.classList.add('expanded');
+
+      categoryGroup.appendChild(catHeader);
+      categoryGroup.appendChild(catList);
+      rssFeedsAccordion.appendChild(categoryGroup);
+    });
+  }
+
+  // 中央ペイン (生のRSS記事リスト) の描画
+  function renderRssArticles(resetScroll = true) {
+    if (!rssArticlesList) return;
+    
+    // 現在のアクティブ表示に沿って記事をフィルタリング
+    let filtered = [];
+
+    if (activeFeedId === 'all') {
+      filtered = [...rssArticles];
+    } else if (activeFeedId === 'bookmarks') {
+      filtered = rssArticles.filter(art => bookmarkedNewsUrls[art.link]);
+    } else {
+      // 特定のフィードURLでフィルタリング
+      filtered = rssArticles.filter(art => {
+        const feedInfo = Object.values(rssFeeds).flat().find(f => f.url === activeFeedId);
+        return art.feedName === (feedInfo?.name || '');
+      });
+    }
+
+    if (timelineCountLabel) {
+      timelineCountLabel.textContent = `${filtered.length} 件の記事`;
+    }
+
+    // スクロール位置の退避
+    const scrollTop = rssArticlesList.scrollTop;
+    rssArticlesList.innerHTML = '';
+
+    if (filtered.length === 0) {
+      rssArticlesList.innerHTML = '<div class="loading-placeholder">表示する記事がありません。</div>';
+      return;
+    }
+
+    filtered.forEach(item => {
+      const card = document.createElement('article');
+      const isRead = readNewsUrls.has(item.link);
+      const isBookmarked = bookmarkedNewsUrls[item.link];
+      
+      card.className = `rss-article-card${isRead ? ' is-read' : ''}${item.image ? ' has-image' : ''}`;
+      card.setAttribute('data-link', item.link);
+
+      const pubDate = new Date(item.pubDate);
+      const mm = String(pubDate.getMonth() + 1).padStart(2, '0');
+      const dd = String(pubDate.getDate()).padStart(2, '0');
+      const hh = String(pubDate.getHours()).padStart(2, '0');
+      const min = String(pubDate.getMinutes()).padStart(2, '0');
+      const formattedTime = `${mm}/${dd} ${hh}:${min}`;
+
+      const imageHtml = item.image ? `
+        <div class="rss-card-image-wrapper">
+          <img src="${item.image}" alt="${item.title}" class="rss-card-image" loading="lazy" onerror="this.parentNode.style.display='none'">
+        </div>
+      ` : '';
+
+      card.innerHTML = `
+        ${imageHtml}
+        <div class="rss-card-content">
+          <div class="rss-card-header">
+            <span class="rss-card-source">[${item.feedName}]</span>
+            <span class="rss-card-time">${formattedTime}</span>
+          </div>
+          <h4 class="rss-card-title">
+            ${!isRead ? '<span class="unread-dot"></span>' : ''}
+            ${item.title}
+          </h4>
+          <div class="rss-card-footer">
+            <button class="bookmark-action-btn${isBookmarked ? ' active' : ''}" title="あとで読む">
+              <svg viewBox="0 0 24 24" fill="${isBookmarked ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      `;
+
+      // 記事カードクリックイベント（プレビューを表示し、既読化する）
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.bookmark-action-btn')) {
+          e.stopPropagation();
+          toggleBookmark(item.link, item.title);
+          renderRssSidebar();
+          renderRssArticles(false);
+          return;
+        }
+
+        // アクティブ表示の切り替え
+        document.querySelectorAll('.rss-article-card').forEach(el => el.classList.remove('selected'));
+        card.classList.add('selected');
+
+        // 既読化
+        markAsRead(item.link, card);
+        const dot = card.querySelector('.unread-dot');
+        if (dot) dot.remove();
+        card.classList.add('is-read');
+        
+        // サイドバーのバッジ数を即座に再計算・再描画
+        renderRssSidebar();
+
+        // 右プレビューペインに記事詳細を展開
+        showArticlePreview(item);
+      });
+
+      rssArticlesList.appendChild(card);
+    });
+
+    if (!resetScroll) {
+      rssArticlesList.scrollTop = scrollTop;
+    }
+  }
+
+  // 右ペイン (記事プレビュー) の表示
+  function showArticlePreview(item) {
+    if (!previewPlaceholder || !previewContentArea) return;
+
+    previewPlaceholder.style.display = 'none';
+    previewContentArea.style.display = 'block';
+
+    const pubDate = new Date(item.pubDate);
+    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    const dateStr = pubDate.toLocaleDateString('ja-JP', options);
+
+    if (previewCategory) previewCategory.textContent = item.category || '一般';
+    if (previewPublisher) previewPublisher.textContent = item.feedName || '一次ソース';
+    if (previewDate) previewDate.textContent = dateStr;
+    if (previewTitle) previewTitle.textContent = item.title;
+
+    // AI要約（クローラー取得）の展開
+    if (previewSummaryText) {
+      previewSummaryText.innerHTML = '<div class="loading-placeholder">AI本文要約を取得中...</div>';
+    }
+
+    // scrape-image から OGP要約・画像を非同期で取得して差し替える
+    fetch('/api/scrape-image?url=' + encodeURIComponent(item.link))
+      .then(res => res.json())
+      .then(data => {
+        // バックエンド経由で抽出された OGP要約（または本文リード）を優先表示
+        if (item.contentSnippet) {
+          previewSummaryText.textContent = item.contentSnippet;
+        } else {
+          previewSummaryText.textContent = '直接ニュースソースから詳細記事を参照してください。';
+        }
+      })
+      .catch(() => {
+        previewSummaryText.textContent = item.contentSnippet || '直接ニュースソースから詳細記事を参照してください。';
+      });
+
+    // 元記事へのリンク
+    if (previewOriginalLink) {
+      previewOriginalLink.href = item.link;
+    }
+
+    // ChatGPT 連携URLバインド (自動検索付き)
+    if (previewBtnChatgpt) {
+      const prompt = "「" + item.title + "」についてWEB検索を利用して記事の深掘りをして";
+      previewBtnChatgpt.href = "https://chatgpt.com/?q=" + encodeURIComponent(prompt) + "&hints=search";
+    }
+
+    // Perplexity 連携URLバインド
+    if (previewBtnPerplexity) {
+      const prompt = "「" + item.title + "」について関連報道や進展をWEB検索を利用して深掘りして";
+      previewBtnPerplexity.href = "https://perplexity.ai/search?q=" + encodeURIComponent(prompt);
+    }
+  }
+
+  // 左ペイン (すべて、ブックマークメニュー) のクリックバインド
+  if (menuAllUnread) {
+    menuAllUnread.addEventListener('click', () => {
+      document.querySelectorAll('.feed-item, .sidebar-item').forEach(el => el.classList.remove('active'));
+      menuAllUnread.classList.add('active');
+      activeFeedId = 'all';
+      activeCategory = 'all';
+      if (currentViewTitle) currentViewTitle.textContent = 'すべての未読';
+      renderRssArticles();
+    });
+  }
+
+  if (menuBookmarks) {
+    menuBookmarks.addEventListener('click', () => {
+      document.querySelectorAll('.feed-item, .sidebar-item').forEach(el => el.classList.remove('active'));
+      menuBookmarks.classList.add('active');
+      activeFeedId = 'bookmarks';
+      activeCategory = 'all';
+      if (currentViewTitle) currentViewTitle.textContent = 'あとで読む';
+      renderRssArticles();
+    });
+  }
+
+  // すべて既読にするボタンの処理
+  if (markAllReadBtn) {
+    markAllReadBtn.addEventListener('click', () => {
+      let filtered = [];
+      if (activeFeedId === 'all') {
+        filtered = [...rssArticles];
+      } else if (activeFeedId !== 'bookmarks') {
+        filtered = rssArticles.filter(art => {
+          const feedInfo = Object.values(rssFeeds).flat().find(f => f.url === activeFeedId);
+          return art.feedName === (feedInfo?.name || '');
+        });
+      }
+
+      filtered.forEach(item => {
+        markAsRead(item.link);
+      });
+
+      renderRssSidebar();
+      renderRssArticles();
     });
   }
 

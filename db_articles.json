@@ -3817,22 +3817,6 @@
     ]
   },
   {
-    "title": "【VRChat】WorldではEditorOnlyだけだとアップロードされる",
-    "originalTitle": "【VRChat】WorldではEditorOnlyだけだとアップロードされる",
-    "link": "https://qiita.com/dimebag29/items/0e0aa286ca74a13789dc?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
-    "contentSnippet": "概要\nVRChatのWorldでは、アップロードしたくないオブジェクトをアクティブ状態のままTagだけをEditorOnlyに設定しても、そのオブジェクトで使用されているメッシュデータが除外されるだけで、テクスチャなどはアップロードされてしまうようです。\nアップロードした...",
-    "pubDate": "2026-07-11T12:36:10.000Z",
-    "category": "tech",
-    "feedName": "Qiita（トレンド）",
-    "weight": 6,
-    "keywords": [
-      "VRChat",
-      "World",
-      "EditorOnly",
-      "アップロード"
-    ]
-  },
-  {
     "title": "AtCoderで入緑しました！",
     "originalTitle": "AtCoderで入緑しました！",
     "link": "https://qiita.com/WebP/items/e57e661b4131a074a8e2?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
@@ -13406,6 +13390,24 @@
       "最高",
       "1日",
       "方教"
+    ]
+  },
+  {
+    "title": "Xbox社員の約20％が対象。マイクロソフトが4,800人を解雇",
+    "originalTitle": "Xbox社員の約20％が対象。マイクロソフトが4,800人を解雇",
+    "link": "https://www.gizmodo.jp/article/xbox-hits-reset-button-with-thousands-of-job-cuts-and-game-studio-spin-offs/",
+    "contentSnippet": "ゲームの世界よろしく、事業や人員もリセットされちゃうってことか。2026年7月6日、米Microsoft（マイクロソフト）は、従業員全体の2%にあたる約4,800人をレイオフすると発表しました。対象となるのは、法人営業部門やゲーム部門のXb…",
+    "pubDate": "Mon, 13 Jul 2026 12:30:00 GMT",
+    "category": "trending",
+    "feedName": "ギズモード・ジャパン",
+    "weight": 5,
+    "keywords": [
+      "Xbox社員",
+      "約20",
+      "対象",
+      "マイクロソフト",
+      "800人",
+      "解雇"
     ]
   }
 ]

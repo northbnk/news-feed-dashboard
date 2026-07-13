@@ -3209,6 +3209,463 @@ body {
   }
 }
 
+/* =========================================================================
+   📥 3ペイン型 RSS リーダーレイアウト
+   ========================================================================= */
+
+.rss-reader-main {
+  display: grid;
+  grid-template-columns: 260px 1fr 400px;
+  height: calc(100vh - 100px);
+  overflow: hidden;
+  background-color: var(--bg-dashboard);
+  gap: 1px;
+}
+
+.scrollable {
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* ペイン1: サイドバー */
+.rss-sidebar {
+  background-color: var(--card-bg);
+  border-right: 1px solid var(--border-color);
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-section {
+  padding: 0 16px;
+}
+
+.sidebar-section h3 {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  padding-left: 8px;
+}
+
+.sidebar-menu, .accordion-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-item, .feed-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  margin-bottom: 4px;
+  font-size: 13px;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.sidebar-item:hover, .feed-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.light-theme .sidebar-item:hover, .light-theme .feed-item:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-item.active, .feed-item.active {
+  background-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.sidebar-icon, .feed-icon {
+  margin-right: 10px;
+  font-size: 15px;
+}
+
+.sidebar-text, .feed-title {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 未読バッジ */
+.sidebar-badge, .feed-badge {
+  background-color: var(--danger-color);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+}
+
+.sidebar-item.active .sidebar-badge, .feed-item.active .feed-badge {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* アコーディオン */
+.accordion-group {
+  margin-bottom: 8px;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: var(--border-radius-sm);
+}
+
+.accordion-header:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.accordion-group .accordion-list {
+  display: none;
+  padding-left: 12px;
+  margin-top: 4px;
+}
+
+.accordion-group.expanded .accordion-list {
+  display: block;
+}
+
+.folder-icon {
+  margin-right: 8px;
+  font-size: 13px;
+  transition: transform var(--transition-fast);
+}
+
+.accordion-group.expanded .folder-icon {
+  transform: rotate(90deg);
+}
+
+.category-name {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--text-normal);
+}
+
+/* ペイン2: 中央タイムライン */
+.rss-timeline {
+  background-color: var(--bg-dashboard);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--card-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-title-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.header-title-row h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.article-count-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.timeline-action-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-normal);
+  padding: 6px 12px;
+  border-radius: var(--border-radius-sm);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.timeline-action-btn:hover {
+  background-color: var(--border-color);
+}
+
+/* 記事カード */
+.rss-card-list {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.rss-article-card {
+  display: flex;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  gap: 16px;
+}
+
+.rss-article-card:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rss-article-card.selected {
+  border-color: var(--accent-color);
+  background-color: rgba(67, 97, 238, 0.05);
+}
+
+.rss-card-image-wrapper {
+  width: 90px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.rss-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rss-card-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rss-card-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.rss-card-source {
+  font-weight: bold;
+}
+
+.rss-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 6px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.rss-article-card.is-read .rss-card-title {
+  color: var(--text-muted);
+  font-weight: normal;
+}
+
+.rss-card-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bookmark-action-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+}
+
+.bookmark-action-btn:hover {
+  color: var(--accent-color);
+}
+
+.bookmark-action-btn.active {
+  color: #ff9f43;
+}
+
+.bookmark-action-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ペイン3: 右プレビューペイン */
+.rss-preview {
+  background-color: var(--card-bg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+  text-align: center;
+  gap: 16px;
+}
+
+.empty-icon {
+  font-size: 48px;
+}
+
+.preview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.preview-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 16px;
+}
+
+.preview-meta {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.preview-title {
+  font-size: 20px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.preview-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preview-section h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.summary-text {
+  font-size: 14px;
+  line-height: 1.6;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  padding: 16px;
+  border-radius: var(--border-radius-md);
+  margin: 0;
+}
+
+.light-theme .summary-text {
+  background-color: rgba(0, 0, 0, 0.01);
+}
+
+.primary-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--accent-color);
+  color: #ffffff;
+  padding: 12px;
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: opacity var(--transition-fast);
+}
+
+.primary-action-btn:hover {
+  opacity: 0.9;
+}
+
+.primary-action-btn .btn-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.deep-dive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.deep-dive-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  transition: background-color var(--transition-fast);
+  color: var(--text-normal);
+}
+
+.deep-dive-button:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.light-theme .deep-dive-button:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.deep-dive-button .icon {
+  font-size: 24px;
+}
+
+.button-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-label strong {
+  font-size: 13px;
+}
+
+.button-label span {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* レスポンシブ */
+@media (max-width: 1024px) {
+  .rss-reader-main {
+    grid-template-columns: 200px 1fr;
+  }
+  .rss-preview {
+    display: none;
+  }
+}
+
 
 
 

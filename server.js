@@ -27,12 +27,16 @@ const DB_PATH = path.join(__dirname, 'db_articles.json');
 const ARTICLE_TTL_HOURS = 48; // 過去48時間分を保持
 const geminiRateLimiter = createGeminiRateLimiter(4);
 
+let rawArticlesCache = [];
+
 // 蓄積記事の読み込み
 function loadArticles() {
   try {
     if (fs.existsSync(DB_PATH)) {
       const data = fs.readFileSync(DB_PATH, 'utf-8');
-      return JSON.parse(data);
+      const loaded = JSON.parse(data);
+      rawArticlesCache = loaded; // 初期ロード
+      return loaded;
     }
   } catch (err) {
     console.error('データベースの読み込み失敗:', err.message);
@@ -44,6 +48,7 @@ function loadArticles() {
 function saveArticles(articles) {
   try {
     fs.writeFileSync(DB_PATH, JSON.stringify(articles, null, 2), 'utf-8');
+    rawArticlesCache = articles; // メモリキャッシュも最新に更新
   } catch (err) {
     console.error('データベースの保存失敗:', err.message);
   }
@@ -1957,6 +1962,40 @@ async function scrapeOgImage(url) {
   }
   return null;
 }
+
+// APIエンドポイント: 生の個別RSS記事一覧の取得
+app.get('/api/articles', (req, res) => {
+  const category = req.query.category;
+  const feed = req.query.feed;
+  const limit = Math.min(parseInt(req.query.limit || '150', 10), 500);
+
+  let filtered = [...rawArticlesCache];
+
+  if (category && category !== 'all') {
+    filtered = filtered.filter(a => a.category === category);
+  }
+  if (feed && feed !== 'all') {
+    filtered = filtered.filter(a => a.feedName === feed || a.feedUrl === feed);
+  }
+
+  // 重複排除 (URL またはタイトルで一元化)
+  const seen = new Set();
+  filtered = filtered.filter(a => {
+    if (!a.link || seen.has(a.link) || seen.has(a.title)) return false;
+    seen.add(a.link);
+    seen.add(a.title);
+    return true;
+  });
+
+  // 最新順にソート
+  filtered.sort((a, b) => {
+    const da = a.pubDate ? new Date(a.pubDate).getTime() : 0;
+    const db = b.pubDate ? new Date(b.pubDate).getTime() : 0;
+    return db - da;
+  });
+
+  res.json({ success: true, articles: filtered.slice(0, limit) });
+});
 
 // APIエンドポイント: 画像プロキシスクレイパー (フロントエンドからの非同期ロード用)
 app.get('/api/scrape-image', async (req, res) => {

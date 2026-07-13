@@ -112,175 +112,112 @@
         <span class="bar-unread-indicator">NEW</span>
         <span class="source-tag" id="headline-source">NHKニュース</span>
         <p id="headline-title" class="bar-title">ニュースデータを読み込み中...</p>
-      </div>
-      <button id="headline-detail-btn" class="bar-action-btn">詳細</button>
-    </div>
-    
-    <!-- AIニュースダイジェスト（スリムバナー形式・モーダル表示） -->
-    <div id="ai-digest-banner" class="ai-digest-banner" style="display: none;">
-      <div class="ai-digest-banner-content">
-        <span class="ai-digest-banner-badge" id="ai-digest-badge">AIダイジェスト</span>
-        <span class="ai-digest-banner-title">本日のAI主要ニュースダイジェストが届いています。</span>
-      </div>
-      <button id="ai-digest-open-btn" class="ai-digest-banner-btn">ダイジェストを読む</button>
-    </div>
-    
-    <!-- 3. メインコンテンツグリッド（3カラム） -->
-    <main class="dashboard-main">
+       <!-- 3. メインコンテンツ: 3ペイン型 RSS リーダーレイアウト -->
+    <main class="rss-reader-main">
       
-      <!-- カラム1: ニュース -->
-      <section class="dashboard-col col-curated" aria-labelledby="col-curated-heading">
-        <div class="col-header">
-          <h2 id="col-curated-heading">ニュース</h2>
+      <!-- ペイン1: 左サイドバー (フィード一覧) -->
+      <aside id="rss-sidebar" class="rss-sidebar scrollable">
+        <div class="sidebar-section">
+          <ul class="sidebar-menu">
+            <li class="sidebar-item active" data-feed-id="all" id="menu-all-unread">
+              <span class="sidebar-icon">📥</span>
+              <span class="sidebar-text">すべての未読</span>
+              <span class="sidebar-badge" id="total-unread-count">0</span>
+            </li>
+            <li class="sidebar-item" data-feed-id="bookmarks" id="menu-bookmarks">
+              <span class="sidebar-icon">🔖</span>
+              <span class="sidebar-text">あとで読む</span>
+              <span class="sidebar-badge" id="bookmarks-count" style="display:none;">0</span>
+            </li>
+          </ul>
         </div>
-        <div class="col-body scrollable">
-          <div id="curated-news-list" class="card-list">
-            <!-- JSで動的に追加されます -->
-            <div class="loading-placeholder">データを取得中...</div>
+        
+        <div class="sidebar-section">
+          <h3>登録フィード</h3>
+          <div id="rss-feeds-accordion" class="feeds-accordion">
+            <div class="loading-placeholder">フィードをロード中...</div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ペイン2: 中央タイムライン (生のRSS新着記事リスト) -->
+      <section id="rss-article-timeline" class="rss-timeline scrollable">
+        <div class="timeline-header">
+          <div class="header-title-row">
+            <h2 id="current-view-title">すべての未読</h2>
+            <span class="article-count-label" id="timeline-count-label">0件の記事</span>
+          </div>
+          <div class="timeline-actions">
+            <button id="mark-all-read-btn" class="timeline-action-btn">すべて既読にする</button>
+          </div>
+        </div>
+        
+        <div id="rss-articles-list" class="rss-card-list">
+          <div class="loading-placeholder">記事データを取得中...</div>
+        </div>
+      </section>
+
+      <!-- ペイン3: 右プレビューペイン (要約 & 深掘り) -->
+      <section id="rss-preview-pane" class="rss-preview scrollable">
+        <!-- 空の状態 -->
+        <div id="preview-placeholder" class="preview-empty-state">
+          <div class="empty-icon">📰</div>
+          <p>リストから記事を選択すると、ここに詳細プレビューが展開されます。</p>
+        </div>
+        
+        <!-- コンテンツ表示エリア -->
+        <div id="preview-content-area" class="preview-content" style="display: none;">
+          <div class="preview-header">
+            <div class="preview-meta">
+              <span id="preview-category" class="category-badge">カテゴリ</span>
+              <span id="preview-publisher" class="publisher-badge">メディア</span>
+              <span id="preview-date" class="date-badge">日付</span>
+            </div>
+            <h2 id="preview-title" class="preview-title">記事のタイトル</h2>
+          </div>
+          
+          <div class="preview-body">
+            <!-- AI要約ダイジェスト -->
+            <div class="preview-section summary-section">
+              <h3>🤖 AIによる記事要約</h3>
+              <p id="preview-summary-text" class="summary-text">本文の要約文がここに表示されます...</p>
+            </div>
+            
+            <!-- 一次ソースへのリンク -->
+            <div class="preview-section link-section">
+              <a id="preview-original-link" href="#" target="_blank" rel="noopener noreferrer" class="primary-action-btn">
+                <span>一次ソースの記事を読む</span>
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- ChatGPT / Perplexity 深掘りリンク -->
+            <div class="preview-section deep-dive-section">
+              <h3>🔍 外部ツールでさらに深掘りする</h3>
+              <div class="deep-dive-grid">
+                <a id="preview-btn-chatgpt" href="#" target="_blank" rel="noopener noreferrer" class="deep-dive-button chatgpt">
+                  <span class="icon">💬</span>
+                  <div class="button-label">
+                    <strong>ChatGPT</strong>
+                    <span>WEB検索付きで出来事を深掘り</span>
+                  </div>
+                </a>
+                <a id="preview-btn-perplexity" href="#" target="_blank" rel="noopener noreferrer" class="deep-dive-button perplexity">
+                  <span class="icon">🔍</span>
+                  <div class="button-label">
+                    <strong>Perplexity</strong>
+                    <span>関連報道や進展を自動リサーチ</span>
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- カラム2: トップニュース -->
-      <section class="dashboard-col col-top-news" aria-labelledby="col-top-news-heading">
-        <div class="col-header">
-          <h2 id="col-top-news-heading">トップニュース</h2>
-          <div class="tab-controls" id="top-news-tabs" role="tablist">
-            <button class="tab-btn active" role="tab" aria-selected="true" data-tab="all">すべて</button>
-            <button class="tab-btn" role="tab" aria-selected="false" data-tab="society">社会</button>
-            <button class="tab-btn" role="tab" aria-selected="false" data-tab="politics">政治・国際</button>
-            <button class="tab-btn" role="tab" aria-selected="false" data-tab="business">経済</button>
-          </div>
-        </div>
-        <div class="col-body scrollable">
-          <div id="top-news-list" class="card-list">
-            <!-- JSで動的に追加されます -->
-            <div class="loading-placeholder">データを取得中...</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- カラム3: 上下分割（話題のニュース ＆ スポーツニュース） -->
-      <div class="dashboard-col-wrapper col-trending-sports">
-        
-        <!-- 上部: 話題のニュース -->
-        <section class="dashboard-col col-trending" aria-labelledby="col-trending-heading">
-          <div class="col-header">
-            <h2 id="col-trending-heading">話題のニュース</h2>
-            <div class="tab-controls" id="trending-news-tabs" role="tablist">
-              <button class="tab-btn active" role="tab" aria-selected="true" data-tab="all">すべて</button>
-              <button class="tab-btn" role="tab" aria-selected="false" data-tab="culture">カルチャー</button>
-              <button class="tab-btn" role="tab" aria-selected="false" data-tab="tech">IT・科学</button>
-              <button class="tab-btn" role="tab" aria-selected="false" data-tab="entertainment">エンタメ</button>
-            </div>
-          </div>
-          <div class="col-body scrollable">
-            <div id="trending-news-list" class="card-list">
-              <!-- JSで動的に追加されます -->
-              <div class="loading-placeholder">データを取得中...</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 下部: スポーツニュース -->
-        <section class="dashboard-col col-sports" aria-labelledby="col-sports-heading">
-          <div class="col-header">
-            <h2 id="col-sports-heading">スポーツ</h2>
-            <div class="tab-controls" id="sports-tabs" role="tablist">
-              <button class="tab-btn active" role="tab" aria-selected="true" data-tab="baseball">プロ野球</button>
-              <button class="tab-btn" role="tab" aria-selected="false" data-tab="mlb">MLB</button>
-              <button class="tab-btn" role="tab" aria-selected="false" data-tab="soccer">海外サッカー</button>
-              <button class="tab-btn" role="tab" aria-selected="false" data-tab="seasonal">大会・季節</button>
-            </div>
-          </div>
-          <div class="col-body scrollable">
-            <div id="sports-news-list" class="card-list">
-              <!-- JSで動的に追加されます -->
-              <div class="loading-placeholder">データを取得中...</div>
-            </div>
-          </div>
-        </section>
-        
-      </div>
-
     </main>
-
-    <!-- 3.5 タイムラインビュー (トグル切り替え用) -->
-    <main id="timeline-view-container" class="timeline-main scrollable" style="display: none;">
-      <div class="timeline-wrapper">
-        <!-- 垂直のタイムラインガイド線 -->
-        <div class="timeline-line"></div>
-        
-        <!-- 動的にタイムラインアイテムが挿入されます -->
-        <div id="timeline-events-list">
-          <div class="loading-placeholder">タイムラインデータを読み込み中...</div>
-        </div>
-      </div>
-    </main>
-
-
-
-  </div>
-
-  <!-- 5. 詳細表示サイドドロワー -->
-  <div id="detail-drawer-overlay" class="drawer-overlay"></div>
-  <aside id="detail-drawer" class="detail-drawer" aria-hidden="true" aria-labelledby="drawer-title">
-    <div class="drawer-header">
-      <div class="drawer-meta">
-        <span id="drawer-category" class="category-badge">一般</span>
-        <div id="drawer-emotion-wrap" class="drawer-emotion">
-          <!-- 感情アイコンが動的に入ります -->
-        </div>
-      </div>
-      <button id="drawer-close" class="close-btn" aria-label="閉じる">&times;</button>
-    </div>
-    
-    <div class="drawer-body">
-      <h2 id="drawer-title" class="drawer-title">記事タイトル</h2>
-      
-      <!-- 記事要約セクション -->
-      <div class="drawer-section ai-summary-section">
-        <h3>記事要約</h3>
-        <p id="drawer-summary" class="ai-summary-text">要約文がここに表示されます。</p>
-      </div>
-
-      <!-- SNS反応数（話題のみ表示） -->
-      <div class="drawer-section sns-section" id="drawer-sns-section">
-        <h3>SNSでの反応状況</h3>
-        <div class="sns-stats-container">
-          <div class="sns-stat-card x-stat">
-            <svg class="sns-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-            <span class="sns-name">X (Twitter)</span>
-            <span class="sns-count" id="drawer-count-x">0</span>
-          </div>
-          <div class="sns-stat-card threads-stat">
-            <svg class="sns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"/>
-              <path d="M12 8a4 4 0 1 0 0 8c1.5 0 2.5 -1 2.5 -2.5c0 -1.5 -1 -2 -2.5 -2c-2 0 -3.5 1.5 -3.5 3.5s1.5 3.5 3.5 3.5c1.5 0 2.5 -.5 3.5 -1.5"/>
-            </svg>
-            <span class="sns-name">Threads</span>
-            <span class="sns-count" id="drawer-count-threads">0</span>
-          </div>
-          <div class="sns-stat-card hatebu-stat">
-            <div class="hatebu-icon">B!</div>
-            <span class="sns-name">はてな</span>
-            <span class="sns-count" id="drawer-count-hatebu">0</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- メディア比較リンク -->
-      <div class="drawer-section sources-section">
-        <h3>各メディアの報道を比較する</h3>
-        <p class="section-desc">同一の出来事に関する実際の配信記事です。リンク先で詳細を読めます。</p>
-        <div id="drawer-sources-list" class="sources-link-list">
-          <!-- 動的にリンクボタンが追加されます -->
-        </div>
-      </div>
-    </div>
-  </aside>
 
   <!-- 各種カスタム感情SVGアセットテンプレート (非表示にしてHTML内に保持し、JSでクローン) -->
   <div id="svg-templates" style="display: none;">
