@@ -1174,7 +1174,7 @@ async function collectAndCluster() {
         aiTitle: aiContent.title,
         aiSummary: aiContent.summary,
         genre: genre,
-        sources: cluster.articles.map(a => ({ publisher: a.feedName, title: a.title, url: a.link })),
+        sources: cluster.articles.map(a => ({ publisher: a.feedName, title: a.title, url: a.link, pubDate: a.pubDate })),
         hatebu: totalHatebu,
         weight: maxWeight
       });

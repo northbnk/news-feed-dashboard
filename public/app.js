@@ -2293,6 +2293,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderTimeline(timelineItems) {
     timelineEventsList.innerHTML = '';
     
+    // 1. タイムライン全体を古い順（昇順）に並び替える
+    timelineItems.sort((a, b) => new Date(a.pubDate).getTime() - new Date(b.pubDate).getTime());
+    
     // 日付ごとにグループ化（"7月13日 (月)" 等の文字列をキーにする）
     const groups = {};
     
@@ -2309,8 +2312,17 @@ document.addEventListener('DOMContentLoaded', () => {
       groups[dateKey].push(item);
     });
 
-    // 各日付グループをレンダリング
-    Object.keys(groups).forEach(dateKey => {
+    // 2. 各日付グループを古い順に並び替えられるように、日付キーをソートしてレンダリング
+    const sortedDateKeys = Object.keys(groups).sort((a, b) => {
+      const parseDateStr = (str) => {
+        const m = str.match(/(\d+)月\s*(\d+)日/);
+        if (!m) return 0;
+        return new Date(2026, parseInt(m[1], 10) - 1, parseInt(m[2], 10)).getTime();
+      };
+      return parseDateStr(a) - parseDateStr(b);
+    });
+
+    sortedDateKeys.forEach(dateKey => {
       // 日付セクション
       const dateHeader = document.createElement('div');
       dateHeader.className = 'timeline-date-header';
@@ -2338,8 +2350,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const sources = item.sources || [{ publisher: item.publisher, title: item.title, url: item.url }];
-        const publisherName = item.publisher || sources[0]?.publisher || '一次ソース';
-        const otherSourcesCount = sources.length - 1;
+        
+        // 各社報道（sources）を時系列（古い順）にソート
+        const sortedSources = [...sources].sort((sa, sb) => {
+          const da = sa.pubDate ? new Date(sa.pubDate).getTime() : 0;
+          const db = sb.pubDate ? new Date(sb.pubDate).getTime() : 0;
+          return da - db;
+        });
+
+        // 子要素（個別記事の箇流書きツリー）を組み立てる
+        const sourcesListHtml = sortedSources.map(src => {
+          const srcDate = src.pubDate ? new Date(src.pubDate) : itemDate;
+          const formattedTime = String(srcDate.getHours()).padStart(2, '0') + ':' + String(srcDate.getMinutes()).padStart(2, '0');
+          const isSrcRead = readNewsUrls.has(src.url);
+          return `
+            <li>
+              <span class="source-time-badge">${formattedTime}</span>
+              <span class="source-publisher-badge">${src.publisher}</span>
+              <a href="${src.url}" target="_blank" rel="noopener noreferrer" class="source-article-link ${isSrcRead ? 'is-read' : ''}" data-url="${src.url}">
+                ${!isSrcRead ? '<span class="unread-dot" style="display:inline-block; width:6px; height:6px; background:#a78bfa; border-radius:50%; margin-right:4px; vertical-align:middle;"></span>' : ''}${src.title}
+              </a>
+            </li>
+          `;
+        }).join('');
 
         card.innerHTML = `
           <!-- タイムライン左側のインジケータ（ドットと時刻） -->
@@ -2354,13 +2387,17 @@ document.addEventListener('DOMContentLoaded', () => {
           <!-- カードコンテンツ -->
           <div class="timeline-card-content">
             <h4>${!isRead ? '<span class="unread-dot"></span>' : ''}${item.title}</h4>
-            <p class="card-summary-preview">${item.summary || '詳細記事を参照してください。'}</p>
+            <p class="card-summary-preview" style="-webkit-line-clamp: 3; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 12px; color: var(--text-primary);">${item.summary || '詳細記事を参照してください。'}</p>
             
-            <div class="card-meta">
+            <!-- 出来事を構成する報道元ツリー -->
+            <ul class="timeline-sources-list">
+              ${sourcesListHtml}
+            </ul>
+
+            <div class="card-meta" style="margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.05);">
               <div class="source-comparison">
                 ${weightBadge}
-                <span class="source-badge">${publisherName}</span>
-                ${otherSourcesCount > 0 ? `<span class="source-badge">他 ${otherSourcesCount} 社</span>` : ''}
+                <span class="source-badge">計 ${sources.length} 社の報道</span>
               </div>
               ${addCardActionsHtml(defaultUrl, item.title)}
             </div>
@@ -2376,7 +2413,17 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const contentArea = card.querySelector('.timeline-card-content');
+        
         contentArea.addEventListener('click', (e) => {
+          if (e.target.closest('.source-article-link')) {
+            const linkEl = e.target.closest('.source-article-link');
+            const url = linkEl.getAttribute('data-url');
+            markAsRead(url, card);
+            const dot = linkEl.querySelector('.unread-dot');
+            if (dot) dot.remove();
+            return;
+          }
+          
           syncFocusOnCardClick(card);
           if (card.classList.contains('expanded') && (e.target.tagName === 'H4' || e.target.closest('h4'))) {
             e.stopPropagation();
@@ -2401,7 +2448,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function renderFeedStatus(statuses) {
+    function renderFeedStatus(statuses) {
     if (!feedStatusTableBody) return;
     feedStatusTableBody.innerHTML = '';
 
