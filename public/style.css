@@ -3413,13 +3413,14 @@ body {
 
 .rss-article-card {
   display: flex;
+  flex-direction: column;
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
   padding: 12px 16px;
   cursor: pointer;
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
-  gap: 16px;
+  gap: 0;
 }
 
 .rss-article-card:hover {
