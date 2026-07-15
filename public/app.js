@@ -1120,31 +1120,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- 6. 手動更新ボタン (API呼び出し) ---
-  refreshBtn.addEventListener('click', async () => {
-    // スピンアニメーション適用・二重送信防止
-    const icon = refreshBtn.querySelector('.icon');
-    icon.classList.add('spin');
-    refreshBtn.disabled = true;
-    
-    try {
-      const response = await fetch('/api/refresh');
-      const data = await response.json();
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', async () => {
+      // スピンアニメーション適用・二重送信防止
+      const icon = refreshBtn.querySelector('.icon');
+      if (icon) icon.classList.add('spin');
+      refreshBtn.disabled = true;
       
-      if (data.success) {
-        // 更新成功後、即時データを描画更新
-        await loadData(true);
-        await loadAIDigest();
-      } else {
-        alert('同期に失敗しました: ' + (data.error || '不明なエラー'));
+      try {
+        const response = await fetch('/api/refresh');
+        const data = await response.json();
+        
+        if (data.success) {
+          // 更新成功後、即時データを描画更新
+          await loadData(true);
+          await loadAIDigest();
+        } else {
+          alert('同期に失敗しました: ' + (data.error || '不明なエラー'));
+        }
+      } catch (e) {
+        alert('サーバー通信に失敗しました。');
+      } finally {
+        // アニメーション解除
+        if (icon) icon.classList.remove('spin');
+        refreshBtn.disabled = false;
       }
-    } catch (e) {
-      alert('サーバー通信に失敗しました。');
-    } finally {
-      // アニメーション解除
-      icon.classList.remove('spin');
-      refreshBtn.disabled = false;
-    }
-  });
+    });
+  }
 
   // --- ヘルパー関数 ---
   function formatCount(num) {
@@ -3187,15 +3189,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const formattedTime = mm + "/" + dd + " " + hh + ":" + min;
 
       // 画像表示用のスケルトンプレースホルダーを常に設置 (画像が無い場合は非同期取得失敗時に自動で wrapper が remove される)
+      const cleanTitleForAlt = (item.title || '').replace(/"/g, '&quot;');
       const imageHtml = `
         <div class="rss-card-image-wrapper">
           <div class="image-skeleton-loader"></div>
-          <img src="" alt="${item.title}" class="rss-card-image" loading="lazy" style="display: none;">
+          <img src="" alt="${cleanTitleForAlt}" class="rss-card-image" loading="lazy" style="display: none;">
         </div>
       `;
 
-      // LIVEマークの削除処理
-      const cleanTitle = item.title.replace(/\[LIVE\]|LIVE\s*/gi, '').trim();
+      // LIVEマークの削除処理とヌルセーフ対策
+      const cleanTitle = (item.title || '').replace(/\[LIVE\]|LIVE\s*/gi, '').trim();
 
       // ChatGPT / Perplexity プロンプトURLバインド
       const chatGptPrompt = encodeURIComponent("「" + cleanTitle + "」についてWEB検索を利用して記事の深掘りをして");

@@ -336,26 +336,6 @@
     ]
   },
   {
-    "title": "イギリス猛暑、5月と6月の熱波で2700人以上死亡の可能性　研究チームが推定",
-    "originalTitle": "イギリス猛暑、5月と6月の熱波で2700人以上死亡の可能性　研究チームが推定",
-    "link": "https://www.bbc.com/japanese/articles/c5yz1dzp4m2o?at_medium=RSS&at_campaign=rss",
-    "contentSnippet": "5月と6月にイギリスを襲った異常な猛暑により、2700人以上が熱中症で死亡した可能性がある。 インペリアル・コレッジ・ロンドン、イギリス気象庁、ロンドン大学衛生熱帯医学大学院の研究チームが13日、推計を発表した。極端な暑さの危険性に関する、既知の情報に基づいているという。",
-    "pubDate": "Mon, 13 Jul 2026 07:49:38 GMT",
-    "category": "general",
-    "feedName": "BBCニュース（日本・国際）",
-    "weight": 7,
-    "keywords": [
-      "イギリス猛暑",
-      "5月",
-      "6月",
-      "熱波",
-      "2700人以上死亡",
-      "可能性",
-      "研究チーム",
-      "推定"
-    ]
-  },
-  {
     "title": "タイ首都のバーで火災、少なくとも30人死亡　重体24人含む70人超負傷",
     "originalTitle": "タイ首都のバーで火災、少なくとも30人死亡　重体24人含む70人超負傷",
     "link": "https://www.bbc.com/japanese/articles/cp8l3dxejy6o?at_medium=RSS&at_campaign=rss",
@@ -3418,22 +3398,6 @@
       "Kubernetes",
       "多方面",
       "徹底比較"
-    ]
-  },
-  {
-    "title": "Javaの文字列結合における += と StringBuilder の実行時間比較検証",
-    "originalTitle": "Javaの文字列結合における += と StringBuilder の実行時間比較検証",
-    "link": "https://qiita.com/migomigo/items/aba78f4e8faf6668d8c5?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
-    "contentSnippet": "はじめに\n新卒入社し、現在エンジニアのオンボーディング中です。\n同期から誘われてAtCoder Beginner Contestに毎週参加しています。\n今回はAtCoderで学んだ内の1つである、StringBuilderについて自分用のメモとしてまとめます。\n\nそもそも...",
-    "pubDate": "2026-07-13T07:49:27.000Z",
-    "category": "tech",
-    "feedName": "Qiita（トレンド）",
-    "weight": 6,
-    "keywords": [
-      "Java",
-      "文字列結合",
-      "StringBuilder",
-      "実行時間比較検証"
     ]
   },
   {
@@ -16543,22 +16507,21 @@
     ]
   },
   {
-    "title": "株価 値上がり AI・半導体関連の業績 堅調に推移との見方から",
-    "originalTitle": "株価 値上がり AI・半導体関連の業績 堅調に推移との見方から",
+    "title": "株価 値上がり 半導体の需要拡大の見方から関連銘柄値上がり",
+    "originalTitle": "株価 値上がり 半導体の需要拡大の見方から関連銘柄値上がり",
     "link": "http://www3.nhk.or.jp/news/html/20260715/k10015177371000.html",
-    "contentSnippet": "15日の東京株式市場、AI・半導体関連の企業の業績が堅調に推移するという見方から、日経平均株価は値上がりしています。",
-    "pubDate": "Wed, 15 Jul 2026 13:17:31 +0900",
+    "contentSnippet": "15日の東京株式市場、今後も半導体需要は拡大するという見方から、関連する銘柄を中心に買い注文が広がって、日経平均株価は、1000円以上、値上がりしました。",
+    "pubDate": "Wed, 15 Jul 2026 16:48:24 +0900",
     "category": "general",
     "feedName": "NHK経済ニュース",
     "weight": 7,
     "keywords": [
       "株価",
       "値上",
-      "AI・半導体関連",
-      "業績",
-      "堅調",
-      "推移",
-      "見方"
+      "半導体",
+      "需要拡大",
+      "見方",
+      "関連銘柄値上"
     ]
   },
   {
@@ -18194,6 +18157,41 @@
     "weight": 5,
     "keywords": [
       "イヤーピース変"
+    ]
+  },
+  {
+    "title": "JALと東電、ガス料金でマイルが貯まる「JALガス」",
+    "originalTitle": "JALと東電、ガス料金でマイルが貯まる「JALガス」",
+    "link": "https://www.watch.impress.co.jp/docs/news/2125398.html",
+    "contentSnippet": "日本航空(JAL)と東京電力エナジーパートナーは、ガス料金の支払いでマイルや「JAL Life Status ポイント」がたまる新サービス「JALガス Powered by TEPCO」(JALガス)の提供を7月23日から開始する。JALマイレージバンク(JMB)会員向けの新サービス。",
+    "pubDate": "2026-07-15T07:47:08.000Z",
+    "category": "trending",
+    "feedName": "Impress Watch",
+    "weight": 5,
+    "keywords": [
+      "JAL",
+      "東電",
+      "ガス料金",
+      "マイル",
+      "JALガス"
+    ]
+  },
+  {
+    "title": "パソコン工房、認定再生メモリとRTX 5090 Founders Edition搭載PC",
+    "originalTitle": "パソコン工房、認定再生メモリとRTX 5090 Founders Edition搭載PC ",
+    "link": "https://pc.watch.impress.co.jp/docs/news/2125403.html",
+    "contentSnippet": "パソコン工房を運営するユニットコムは7月15日、認定再生メモリとGeForce RTX 5090 Founders Editionを搭載したPCを、全国のパソコン工房店舗およびWeb通販サイトにて発売した。いずれも厳しい品質検査と動作検証をクリアした「認定再生メモリ」を採用するハイエンドマシン。",
+    "pubDate": "2026-07-15T07:46:23.000Z",
+    "category": "trending",
+    "feedName": "PC Watch",
+    "weight": 5,
+    "keywords": [
+      "パソコン工房",
+      "認定再生メモリ",
+      "RTX",
+      "5090",
+      "Founders",
+      "Edition搭載PC"
     ]
   }
 ]
