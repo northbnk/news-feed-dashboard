@@ -2999,8 +2999,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <select id="mgr-category">
                   <option value="general">一般 (general)</option>
                   <option value="tech">技術 (tech)</option>
-                  <option value="trending">話題 (trending)</option>
+                  <option value="ai">AI (ai)</option>
+                  <option value="gadget">ガジェット (gadget)</option>
+                  <option value="car">自動車 (car)</option>
+                  <option value="business">ビジネス・経済 (business)</option>
+                  <option value="entertainment">映画・エンタメ (entertainment)</option>
+                  <option value="game">ゲーム (game)</option>
+                  <option value="running">ランニング (running)</option>
+                  <option value="outdoor">登山・アウトドア (outdoor)</option>
                   <option value="sports">スポーツ (sports)</option>
+                  <option value="science">科学 (science)</option>
                   <option value="headline">ヘッドライン (headline)</option>
                 </select>
               </div>
@@ -3150,8 +3158,16 @@ document.addEventListener('DOMContentLoaded', () => {
       <select class="inline-edit-select" id="edit-category">
         <option value="general"${currentCategory === 'general' ? ' selected' : ''}>general</option>
         <option value="tech"${currentCategory === 'tech' ? ' selected' : ''}>tech</option>
-        <option value="trending"${currentCategory === 'trending' ? ' selected' : ''}>trending</option>
+        <option value="ai"${currentCategory === 'ai' ? ' selected' : ''}>ai</option>
+        <option value="gadget"${currentCategory === 'gadget' ? ' selected' : ''}>gadget</option>
+        <option value="car"${currentCategory === 'car' ? ' selected' : ''}>car</option>
+        <option value="business"${currentCategory === 'business' ? ' selected' : ''}>business</option>
+        <option value="entertainment"${currentCategory === 'entertainment' ? ' selected' : ''}>entertainment</option>
+        <option value="game"${currentCategory === 'game' ? ' selected' : ''}>game</option>
+        <option value="running"${currentCategory === 'running' ? ' selected' : ''}>running</option>
+        <option value="outdoor"${currentCategory === 'outdoor' ? ' selected' : ''}>outdoor</option>
         <option value="sports"${currentCategory === 'sports' ? ' selected' : ''}>sports</option>
+        <option value="science"${currentCategory === 'science' ? ' selected' : ''}>science</option>
         <option value="headline"${currentCategory === 'headline' ? ' selected' : ''}>headline</option>
       </select>
     `;

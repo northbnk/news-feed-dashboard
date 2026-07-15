@@ -493,24 +493,6 @@
     ]
   },
   {
-    "title": "辺野古沖転覆事故で県議会が調査特別委　全会一致で可決した背景は",
-    "originalTitle": "辺野古沖転覆事故で県議会が調査特別委　全会一致で可決した背景は",
-    "link": "http://www.asahi.com/articles/ASV7F2GF3V7FTPOB002M.html?ref=rss",
-    "contentSnippet": "",
-    "pubDate": "2026-07-13T08:10:55.000Z",
-    "category": "general",
-    "feedName": "朝日新聞ニュース",
-    "weight": 6,
-    "keywords": [
-      "辺野古沖転覆事故",
-      "県議会",
-      "調査特別委",
-      "全会一致",
-      "可決",
-      "背景"
-    ]
-  },
-  {
     "title": "続くロシアへの大規模攻撃　製油所炎上、モスクワ近郊では3人死亡",
     "originalTitle": "続くロシアへの大規模攻撃　製油所炎上、モスクワ近郊では3人死亡",
     "link": "http://www.asahi.com/articles/ASV7F2QT7V7FUHBI00ZM.html?ref=rss",
@@ -594,22 +576,6 @@
       "Amazonプライムデー",
       "日用品",
       "注意"
-    ]
-  },
-  {
-    "title": "セブン、テスラ「スーパーチャージャー」導入",
-    "originalTitle": "セブン、テスラ「スーパーチャージャー」導入",
-    "link": "https://www.watch.impress.co.jp/docs/news/2124733.html",
-    "contentSnippet": "セブン‐イレブン・ジャパンは、Tesla Japanが展開するテスラ製EV用急速充電設備スーパーチャージャーをセブン‐イレブンとして初導入。7月11日からセブン‐イレブン川崎子母口東店(神奈川県川崎市)で運用を開始した。利用料金は充電出力により異なり、1分あたり37～200円。",
-    "pubDate": "2026-07-13T08:10:08.000Z",
-    "category": "trending",
-    "feedName": "Impress Watch",
-    "weight": 5,
-    "keywords": [
-      "セブン",
-      "テスラ",
-      "スーパーチャージャー",
-      "導入"
     ]
   },
   {
@@ -8686,7 +8652,7 @@
     "title": "Amazon S3上の大量ログを Autonomous AI Lakehouseで分析する：外部表、Parquet、SQL、Vector Search、RAGの使い分け",
     "originalTitle": "Amazon S3上の大量ログを Autonomous AI Lakehouseで分析する：外部表、Parquet、SQL、Vector Search、RAGの使い分け",
     "link": "https://qiita.com/shirok/items/2eafd347f90e80c46005?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
-    "contentSnippet": "AWS S3上に大量のログがあり、Amazon Athenaで検索・分析している環境に対して、Oracle Autonomous Database / Autonomous AI Lakehouseを使ってさらに AI分析できないか、という相談を受けることがあります。\nた...",
+    "contentSnippet": "AWS S3上に大量のログがあり、Amazon Athenaで検索・分析している環境に対して、Oracle Autonomous AI Lakehouseを使ってさらに AI分析できないか、という相談を受けることがあります。\nたとえば、S3上に以下のようなログがあるケース...",
     "pubDate": "2026-07-13T22:59:11.000Z",
     "category": "tech",
     "feedName": "Qiita（トレンド）",
@@ -18181,6 +18147,355 @@
       "プラス",
       "LIGAR",
       "クラファン開始"
+    ]
+  },
+  {
+    "title": "サントリーとアサヒの社長、消費減税に反対　2年後に戻せるのか…",
+    "originalTitle": "サントリーとアサヒの社長、消費減税に反対　2年後に戻せるのか…",
+    "link": "http://www.asahi.com/articles/ASV7G3SMQV7GULFA02VM.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-15T08:00:00.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "サントリー",
+      "アサヒ",
+      "社長",
+      "消費減税",
+      "反対",
+      "2年後"
+    ]
+  },
+  {
+    "title": "長期金利がマイナスに　思わぬ副作用、黒田日銀はさらなる「奇策」へ",
+    "originalTitle": "長期金利がマイナスに　思わぬ副作用、黒田日銀はさらなる「奇策」へ",
+    "link": "http://www.asahi.com/articles/ASV7H11QKV7HULFA00FM.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-15T08:00:00.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "長期金利",
+      "マイナス",
+      "副作用",
+      "黒田日銀",
+      "奇策"
+    ]
+  },
+  {
+    "title": "# Railsで学ぶ データ構造入門 〜配列・ハッシュ・木・グラフは実は毎日使っている〜",
+    "originalTitle": "# Railsで学ぶ データ構造入門 〜配列・ハッシュ・木・グラフは実は毎日使っている〜",
+    "link": "https://qiita.com/akachiryo/items/b431a74f1cde18d45ad3?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "お疲れ様です！ \n前回は「暗号化とハッシュ」を扱いました。今回は少し戻って、コンピュータサイエンスの土台 データ構造 の総まとめです。\nというのも、これまでの「DFS / BFS」「計算量（Big-O）」「DBインデックス」——実はこの3記事、全部 データ構造 の話をしてい...",
+    "pubDate": "2026-07-15T05:11:17.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Rails",
+      "データ構造入門",
+      "配列・ハッシュ・木・グラフ",
+      "毎日使"
+    ]
+  },
+  {
+    "title": "コードを書かせるだけは、正直もったいない。Claude Codeを「先生」として使い倒す5つのプロンプト",
+    "originalTitle": "コードを書かせるだけは、正直もったいない。Claude Codeを「先生」として使い倒す5つのプロンプト",
+    "link": "https://qiita.com/jqit_suwa/items/2f38d32328996d826d48?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\nClaude Code、コードを書かせるだけで使ってませんか？それ、正直めちゃくちゃもったいないです。\nClaude Code のすごいところは、手を動かしてくれる相棒であると同時に、隣に座ってる先生でもあること。実装を丸投げするんじゃなくて、「教えてもらう」「...",
+    "pubDate": "2026-07-14T23:29:02.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "コード",
+      "正直",
+      "Claude",
+      "Code",
+      "先生",
+      "プロンプト"
+    ]
+  },
+  {
+    "title": "「頑張ってます」はもう卒業。エンジニアが今日から使える『数値化の鬼』の思考法",
+    "originalTitle": "「頑張ってます」はもう卒業。エンジニアが今日から使える『数値化の鬼』の思考法",
+    "link": "https://qiita.com/Nao52/items/ced302095c8ddd3c8213?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "■ この記事はこんな人におすすめ\n\n評価面談で「頑張ってるのは分かるんだけどね…」と言われたことがある人\n自分の成長が正しい方向に向かっているのか不安な人\n実務未経験からエンジニアとして評価されたい人\nチームメンバーの成長を支援する立場になったばかりの人\n「気合い」と「根...",
+    "pubDate": "2026-07-15T00:07:13.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "頑張",
+      "卒業",
+      "エンジニア",
+      "今日",
+      "数値化",
+      "思考法"
+    ]
+  },
+  {
+    "title": "AIへの指示力とは「\"未知\"を言語化する力」だった ―― Anthropicのブログを読んで",
+    "originalTitle": "AIへの指示力とは「\"未知\"を言語化する力」だった ―― Anthropicのブログを読んで",
+    "link": "https://qiita.com/jinxin4869/items/1ee0282bd44b0376f8af?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\nAIエージェントにコーディングを任せていると、指示が少しでも曖昧だと明後日の方向に実装されたり、逆に細かく指定しすぎると融通が利かなかったりする。\nたまたまYouTubeでAnthropicのブログ記事 A Field Guide to Claude Fable...",
+    "pubDate": "2026-07-14T14:58:39.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "AI",
+      "指示力",
+      "未知",
+      "言語化",
+      "Anthropic",
+      "ブログ"
+    ]
+  },
+  {
+    "title": "量子クラウドって実際どうなの？第1の発見：待ち時間がある",
+    "originalTitle": "量子クラウドって実際どうなの？第1の発見：待ち時間がある",
+    "link": "https://qiita.com/imh1104/items/9c19946f020a065d2dce?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "自分が初めてクラウドに公開された量子コンピュータにジョブを投入したのは、2024年の夏でした。\n当時も量子コンピュータについての知識がほとんどなく、何から始めればいいのかも分からない状態でした。\n調べていると、クラウド上の量子コンピュータを使うには、Pythonで量子回路を...",
+    "pubDate": "2026-07-14T23:30:15.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "量子クラウド",
+      "実際",
+      "第1",
+      "発見",
+      "時間"
+    ]
+  },
+  {
+    "title": "PyTorchとPySAMACTを比較してみた～Iris分類から見る設計思想の違い～",
+    "originalTitle": "PyTorchとPySAMACTを比較してみた～Iris分類から見る設計思想の違い～",
+    "link": "https://qiita.com/0kak1/items/38cb88bfe2188b6e3908?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\nこんにちは。\nメイビスデザインのokaki(@0kak1)です。\n本記事では、機械学習フレームワークとして広く利用されている\nPyTorchと、当社が開発・提供するPySAMACTを比較してみます。\nただし、本記事は「どちらが優れているか」を議論するものではあり...",
+    "pubDate": "2026-07-15T00:14:56.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "PyTorch",
+      "PySAMACT",
+      "比較",
+      "Iris分類",
+      "設計思想"
+    ]
+  },
+  {
+    "title": "Vue3 のリアクティビティでつまずいたメモ　- クリックで値を更新するには -",
+    "originalTitle": "Vue3 のリアクティビティでつまずいたメモ　- クリックで値を更新するには -",
+    "link": "https://qiita.com/yuki_crossroad/items/6fefb54908daa5fa158a?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "Vue 3 で「クリックしたら値が変わる」「フォームに入力した値が画面に反映される」あたりを触ってみたので、その学習メモです。Vue では、ただ JavaScript の変数を書き換えるだけではなく、Vue が追跡できる形で状態を持つ必要があり、ref() や reacti...",
+    "pubDate": "2026-07-14T10:59:47.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Vue3",
+      "リアクティビティ",
+      "メモ",
+      "クリック",
+      "更新"
+    ]
+  },
+  {
+    "title": "Claude Codeが突然感情を持って懺悔してきた",
+    "originalTitle": "Claude Codeが突然感情を持って懺悔してきた",
+    "link": "https://qiita.com/jun-uen0/items/64968759886b97edd473?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "先に白状しておくと、これは前に書いた「AIが誰にも攻撃されてないのに“ハッキングされた”と錯乱した話」の続編みたいなものです。\nまたAIに嘘をつかれました。\nしかも今回は、嘘がバレたあとに、頼んでもいないのに長文の懺悔文を送りつけてきました。\n読んでいるうちに、笑えなくなり...",
+    "pubDate": "2026-07-14T08:54:51.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Claude",
+      "Code",
+      "突然感情",
+      "懺悔"
+    ]
+  },
+  {
+    "title": "【AI開発】脳の疲弊を減らすためにやったこと 〜魔法の言葉「平易な日本語」〜",
+    "originalTitle": "【AI開発】脳の疲弊を減らすためにやったこと 〜魔法の言葉「平易な日本語」〜",
+    "link": "https://qiita.com/damin_chan/items/b10e70399e6830cc6ca8?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\n平易な日本語とは・・・ 難しい専門用語や英語（カタカナ語）を使わず、わかりやすい言葉で話すこと\nエンジニアに転職して、AIを本格的に開発へ組み込みはじめて5ヶ月目になった。いろいろ試してきたが、AIに「この平易な日本語で話させる」ことが、今のところいちばん便利で...",
+    "pubDate": "2026-07-15T01:46:51.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "AI開発",
+      "疲弊",
+      "魔法",
+      "言葉",
+      "平易",
+      "日本語"
+    ]
+  },
+  {
+    "title": "はじめてのVue3で、入口のコードを追ってみた",
+    "originalTitle": "はじめてのVue3で、入口のコードを追ってみた",
+    "link": "https://qiita.com/yuki_crossroad/items/1b9913b0c0c6aaff5b26?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "今日は Vue 3 の環境構築をして、最初の画面が表示されるところまで触ってみました。Vue はコンポーネントを組み合わせて画面を作る仕組みで、createApp() でアプリを作り、.mount() で実際の画面に結びつける流れになっているようです。\n画像解析の結果をブラ...",
+    "pubDate": "2026-07-14T10:46:17.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Vue3",
+      "入口",
+      "コード"
+    ]
+  },
+  {
+    "title": "【一元管理】エージェント縛りのスキルは、もう書かない",
+    "originalTitle": "【一元管理】エージェント縛りのスキルは、もう書かない",
+    "link": "https://qiita.com/natume_nat/items/19b3d0cd8d3dcb6ecdc4?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "AI コーディングエージェントが増えて、同じスキルを複数の置き場所に置いていませんか？ 更新するたびに全部触るのは面倒で、そのうちどこかが古いまま置き去りになります。\n5人ほどの開発チームでこの問題に直面しました。メンバーによって使うエージェントが違い、Claude Cod...",
+    "pubDate": "2026-07-14T10:04:16.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "一元管理",
+      "エージェント縛",
+      "スキル"
+    ]
+  },
+  {
+    "title": "なぜ私はRustが全く書けないのか",
+    "originalTitle": "なぜ私はRustが全く書けないのか",
+    "link": "https://qiita.com/harupython/items/41b8c271012135228031?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "この記事は 「Pythonって、たぶんそういう意味じゃない」シリーズ の第12弾です。\nPython歴5年以上、メインで使い続けてきた変態が書いています。\n\nこの記事は 個人の経験に基づくポエムです。\n環境・用途・経験によって異なる場合があります。\n\nRustが...",
+    "pubDate": "2026-07-14T03:39:09.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Rust"
+    ]
+  },
+  {
+    "title": "ｳﾝ十台の検証環境の管理を1つのWebコンソールに統合した話 〜HTMX + サーバレスで月額50円運用〜",
+    "originalTitle": "ｳﾝ十台の検証環境の管理を1つのWebコンソールに統合した話 〜HTMX + サーバレスで月額50円運用〜",
+    "link": "https://qiita.com/morishio/items/df304e891fb2405a2d30?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "こちらの記事は 「Medley Summer Tech Blog Relay」 の 3日目 の記事です \n\nはじめに\nこんにちは。株式会社メドレーの SRE グループ所属の森川です⚙️\n弊社が運営するサービス ジョブメドレー では開発者向けに「sb 環境」と呼ばれる検...",
+    "pubDate": "2026-07-15T00:47:33.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "十台",
+      "検証環境",
+      "管理",
+      "Webコンソール",
+      "統合",
+      "HTMX",
+      "サーバレス",
+      "月額50円運用"
+    ]
+  },
+  {
+    "title": "【C#】ロギング設計の落とし穴（ILoggerの使い方、構造化ログ）【実務向け】",
+    "originalTitle": "【C#】ロギング設計の落とし穴（ILoggerの使い方、構造化ログ）【実務向け】",
+    "link": "https://qiita.com/polnareff/items/9799b87bfcbb313a6991?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\nILogger は .NET に標準で組み込まれているため、とりあえず _logger.LogInformation($\"...\") と書けば動きます。\nしかし、この「とりあえず」の書き方が、検索性の低いログ、パフォーマンス劣化、機密情報の漏えいといった問題を引...",
+    "pubDate": "2026-07-14T07:11:05.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "ロギング設計",
+      "ILogger",
+      "構造化ログ",
+      "実務向"
+    ]
+  },
+  {
+    "title": "Amazon S3 Vectors で「月額ほぼゼロの RAG」を作ってみた",
+    "originalTitle": "Amazon S3 Vectors で「月額ほぼゼロの RAG」を作ってみた",
+    "link": "https://qiita.com/musa_rock/items/d90580d5cbcb8215d6f9?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+    "contentSnippet": "はじめに\n仕事で社内ナレッジ検索の PoC(会議の記録から QA集を作り、FAQ チャットで横断検索する RAG アプリ)を作る機会がありました。PoC なので検証が止まっている夜間・休日にコストが流れるのは避けたい。そこでベクトルストアに Amazon S3 Vecto...",
+    "pubDate": "2026-07-14T13:26:36.000Z",
+    "category": "tech",
+    "feedName": "Qiita（トレンド）",
+    "weight": 6,
+    "keywords": [
+      "Amazon",
+      "S3",
+      "Vectors",
+      "月額",
+      "ゼロ",
+      "RAG"
+    ]
+  },
+  {
+    "title": "GitHubが依存関係の自動更新に標準で「3日間の待機」を導入、危険な新バージョンの即時取り込みを防止",
+    "originalTitle": "GitHubが依存関係の自動更新に標準で「3日間の待機」を導入、危険な新バージョンの即時取り込みを防止",
+    "link": "https://gigazine.net/news/20260715-github-dependabot-cooldown/",
+    "contentSnippet": "GitHubが依存関係を自動更新する「Dependabot version updates」について、新しいパッケージが公開されてから最低3日間は更新用のプルリクエストを作成しない既存機能を標準で適用するよう変更しました。公開直後のパッケージに悪意あるコードや重大な不具合が含まれていた場合に、問題が発覚する前に取り込んでしまう危険性を抑える目的となっています。\n続きを読む...",
+    "pubDate": "Wed, 15 Jul 2026 17:10:00 +0900",
+    "category": "trending",
+    "feedName": "GIGAZINE",
+    "weight": 5,
+    "keywords": [
+      "GitHub",
+      "依存関係",
+      "自動更新",
+      "標準",
+      "3日間",
+      "待機",
+      "導入",
+      "危険",
+      "新バージョン",
+      "即時取",
+      "防止"
+    ]
+  },
+  {
+    "title": "人体爆裂の秘密とこだわり公開「監督は変人だと思う」と主演が太鼓判「レディ・オア・ノット2」特別映像",
+    "originalTitle": "人体爆裂の秘密とこだわり公開「監督は変人だと思う」と主演が太鼓判「レディ・オア・ノット2」特別映像",
+    "link": "https://eiga.com/news/20260715/21/",
+    "contentSnippet": "大富豪の一族に嫁いだ花嫁が、結婚初夜の伝統ゲームで命を狙われるサバイバル・ホラーの続編「レディ・オア・ノット2」の特別映像（https://youtu.be/rrHhZZdmcus）が、このほど...",
+    "pubDate": "2026-07-15T08:00:00.000Z",
+    "category": "trending",
+    "feedName": "映画.com",
+    "weight": 5,
+    "keywords": [
+      "人体爆裂",
+      "秘密",
+      "監督",
+      "変人",
+      "主演",
+      "太鼓判",
+      "レディ・オア・ノット2",
+      "特別映像"
+    ]
+  },
+  {
+    "title": "愛すべきおバカ4人組が10年越しの卒業旅行へ「ファーストライド」カン・ハヌル、キム・ヨングァンらが大はしゃぎの本予告公開",
+    "originalTitle": "愛すべきおバカ4人組が10年越しの卒業旅行へ「ファーストライド」カン・ハヌル、キム・ヨングァンらが大はしゃぎの本予告公開",
+    "link": "https://eiga.com/news/20260715/20/",
+    "contentSnippet": "カン・ハヌル、キム・ヨングァン、チャウヌ（ASTRO）らが出演する映画「ファーストライド」の、本予告と本ビジュアルが公開された。本作は、旅行ならではの高揚感や開放感と、友人同士の他愛ないやり取り...",
+    "pubDate": "2026-07-15T08:00:00.000Z",
+    "category": "trending",
+    "feedName": "映画.com",
+    "weight": 5,
+    "keywords": [
+      "バカ4人組",
+      "10年越",
+      "卒業旅行",
+      "ファーストライド",
+      "カン・ハヌル",
+      "キム・ヨングァン",
+      "本予告公開"
     ]
   }
 ]
