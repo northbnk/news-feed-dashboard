@@ -728,22 +728,6 @@
     ]
   },
   {
-    "title": "ローソン店頭で日本円ステーブルコイン決済　8月に実証",
-    "originalTitle": "ローソン店頭で日本円ステーブルコイン決済　8月に実証",
-    "link": "https://www.watch.impress.co.jp/docs/news/2124726.html",
-    "contentSnippet": "HashPortとKDDI・ローソンは、「ローソン高輪ゲートウェイシティ店」において、日本円ステーブルコインによる店頭決済の技術実証を8月から実施する。",
-    "pubDate": "2026-07-13T07:54:34.000Z",
-    "category": "trending",
-    "feedName": "Impress Watch",
-    "weight": 5,
-    "keywords": [
-      "ローソン店頭",
-      "日本円ステーブルコイン決済",
-      "8月",
-      "実証"
-    ]
-  },
-  {
     "title": "アベンジャーズ　ドゥームズデイ」コンセプトアートで復活「X-MEN」の面々が明らかに",
     "originalTitle": "アベンジャーズ　ドゥームズデイ」コンセプトアートで復活「X-MEN」の面々が明らかに",
     "link": "https://eiga.com/news/20260713/14/",
@@ -8932,27 +8916,6 @@
       "Modernization",
       "UI",
       "Modernization"
-    ]
-  },
-  {
-    "title": "GA4 Reports Builder for Google Analytics™で設定できるディメンションとメトリクスの例",
-    "originalTitle": "GA4 Reports Builder for Google Analytics™で設定できるディメンションとメトリクスの例",
-    "link": "https://qiita.com/m0ka/items/f8333211511e88593ae6?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
-    "contentSnippet": "記事の概要\nGoogleスプレッドシートのアドオン「GA4 Reports Builder for Google Analytics™」を使ってレポートを出す際に、Dimensions（ディメンション） と Metrics（メトリクス） の選択で迷ったり、エラーが出たりし...",
-    "pubDate": "2026-07-13T07:55:27.000Z",
-    "category": "tech",
-    "feedName": "Qiita（トレンド）",
-    "weight": 6,
-    "keywords": [
-      "GA4",
-      "Reports",
-      "Builder",
-      "for",
-      "Google",
-      "Analytics",
-      "設定",
-      "ディメンション",
-      "メトリクス"
     ]
   },
   {
@@ -18192,6 +18155,42 @@
       "5090",
       "Founders",
       "Edition搭載PC"
+    ]
+  },
+  {
+    "title": "世帯の半数以上が「生活苦しい」　母子世帯では8割　厚労省調査",
+    "originalTitle": "世帯の半数以上が「生活苦しい」　母子世帯では8割　厚労省調査",
+    "link": "http://www.asahi.com/articles/ASV7H255JV7HUTFL00LM.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-15T07:40:00.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "世帯",
+      "半数以上",
+      "生活苦",
+      "母子世帯",
+      "8割",
+      "厚労省調査"
+    ]
+  },
+  {
+    "title": "経産省、イスラエル半導体企業に1600億円助成　富山や新潟で生産",
+    "originalTitle": "経産省、イスラエル半導体企業に1600億円助成　富山や新潟で生産",
+    "link": "http://www.asahi.com/articles/ASV7H2FPQV7HULFA00PM.html?ref=rss",
+    "contentSnippet": "",
+    "pubDate": "2026-07-15T07:42:24.000Z",
+    "category": "general",
+    "feedName": "朝日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "経産省",
+      "イスラエル半導体企業",
+      "1600億円助成",
+      "富山",
+      "新潟",
+      "生産"
     ]
   }
 ]

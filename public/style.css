@@ -3680,7 +3680,7 @@ body {
 
 /* 2ペイン化に伴うグリッド定義の上書き */
 .rss-reader-main {
-  grid-template-columns: 260px 4px 1fr !important;
+  grid-template-columns: 260px 4px 1fr;
 }
 
 /* 記事カード内部のメイン行 */
@@ -3972,17 +3972,23 @@ body {
 
 /* ペインドラッグリサイズ用仕切りバー */
 .rss-resizer {
-  width: 4px;
-  background-color: var(--border-color);
+  width: 8px; /* 全体の当たり判定を 8px に拡張 */
+  margin: 0 -2px; /* 隙間を詰める */
+  background-color: transparent; /* 通常時は背景透明 */
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  /* border の内側にだけ背景色（細線）を描画する CSS テクニック */
+  background-clip: padding-box;
+  background-image: linear-gradient(var(--border-color), var(--border-color));
   cursor: col-resize;
-  transition: background-color 0.2s;
+  transition: background-image 0.2s;
   z-index: 100;
   height: 100%;
 }
 
 .rss-resizer:hover,
 .rss-resizer.is-dragging {
-  background-color: var(--accent-color);
+  background-image: linear-gradient(var(--accent-color), var(--accent-color)); /* ホバー時は青く発光 */
 }
 
 /* グローバルスクロールバーテーマ統一 */
