@@ -3409,8 +3409,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 左右ペインのドラッグリサイズ制御
+  function initPaneResizer() {
+    const resizer = document.getElementById('rss-pane-resizer');
+    const mainContainer = document.querySelector('.rss-reader-main');
+    if (!resizer || !mainContainer) return;
+
+    // 前回の設定幅があれば localStorage から復元
+    const savedWidth = localStorage.getItem('rssSidebarWidth');
+    if (savedWidth) {
+      mainContainer.style.gridTemplateColumns = `${savedWidth}px 4px 1fr`;
+    }
+
+    resizer.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      resizer.classList.add('is-dragging');
+      document.body.style.cursor = 'col-resize';
+
+      const doDrag = (moveEvent) => {
+        let newWidth = moveEvent.clientX;
+        // サイドバー崩れ防止用の範囲制限 (最小180px, 最大500px)
+        if (newWidth < 180) newWidth = 180;
+        if (newWidth > 500) newWidth = 500;
+
+        mainContainer.style.gridTemplateColumns = `${newWidth}px 4px 1fr`;
+      };
+
+      const stopDrag = () => {
+        resizer.classList.remove('is-dragging');
+        document.body.style.cursor = '';
+        
+        // 現在の列幅を localStorage に永続化
+        const columns = window.getComputedStyle(mainContainer).gridTemplateColumns.split(' ');
+        const finalWidth = parseInt(columns[0], 10);
+        localStorage.setItem('rssSidebarWidth', finalWidth);
+
+        document.removeEventListener('mousemove', doDrag);
+        document.removeEventListener('mouseup', stopDrag);
+      };
+
+      document.addEventListener('mousemove', doDrag);
+      document.addEventListener('mouseup', stopDrag);
+    });
+  }
+
   // --- 9. 初期読み込み ＆ ポーリング (30秒) ---
   loadData();
+  initPaneResizer(); // ドラッグリサイズ制御の開始
   initRssReader(); // 本格RSSリーダーの起動
   setInterval(loadData, 30000);
 });

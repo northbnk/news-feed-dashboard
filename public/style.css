@@ -3221,11 +3221,11 @@ body {
 
 .rss-reader-main {
   display: grid;
-  grid-template-columns: 260px 1fr 400px;
+  grid-template-columns: 260px 4px 1fr; /* ドラッグ調整仕切りを含む3列 */
   height: calc(100vh - 100px);
   overflow: hidden;
   background-color: var(--bg-dashboard);
-  gap: 1px;
+  gap: 0;
 }
 
 .scrollable {
@@ -3678,7 +3678,7 @@ body {
 
 /* 2ペイン化に伴うグリッド定義の上書き */
 .rss-reader-main {
-  grid-template-columns: 260px 1fr !important;
+  grid-template-columns: 260px 4px 1fr !important;
 }
 
 /* 記事カード内部のメイン行 */
@@ -3966,4 +3966,43 @@ body {
 .dark-theme .rss-sns-badge.threads {
   background-color: rgba(255, 255, 255, 0.1);
   color: #e0e0e0;
+}
+
+/* ペインドラッグリサイズ用仕切りバー */
+.rss-resizer {
+  width: 4px;
+  background-color: var(--border-color);
+  cursor: col-resize;
+  transition: background-color 0.2s;
+  z-index: 100;
+  height: 100%;
+}
+
+.rss-resizer:hover,
+.rss-resizer.is-dragging {
+  background-color: var(--accent-color);
+}
+
+/* グローバルスクロールバーテーマ統一 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-thumb);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scroll-thumb-hover);
 }
