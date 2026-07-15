@@ -3451,8 +3451,33 @@ body {
   overflow: hidden;
   border: 1px solid var(--border-color);
   align-self: flex-start; /* 左寄せ */
+}
+
+/* 新設: 画像と要約の横並びボディ行 */
+.rss-card-body-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
   margin-top: 8px;
   margin-bottom: 6px;
+  align-items: flex-start;
+}
+
+.rss-card-body-summary-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.rss-card-body-summary {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* 最大4行でクランプ */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .rss-card-image {
@@ -3707,15 +3732,7 @@ body {
   padding: 0;
 }
 
-.rss-details-summary {
-  font-size: 13px;
-  line-height: 1.65;
-  color: var(--text-secondary);
-  background: none !important;
-  border: none !important;
-  padding: 0 !important;
-  margin: 0 0 6px 0;
-}
+
 
 .rss-details-actions {
   display: flex;

@@ -3048,7 +3048,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const skeleton = imgWrapper.querySelector('.image-skeleton-loader');
 
     const handleFailure = () => {
-      imgWrapper.remove(); // 取得失敗時はラッパーを削除し、テキスト幅を100%にする
+      if (skeleton) skeleton.style.display = 'none';
+      if (img) {
+        // ダークテーマとライトテーマに応じたNo Image SVG
+        const isLightTheme = document.body.classList.contains('light-theme');
+        const bgFill = isLightTheme ? '%23f0f0f0' : '%23222';
+        const textFill = isLightTheme ? '%23999' : '%23666';
+        img.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="94" viewBox="0 0 140 94"><rect width="140" height="94" fill="${bgFill}" /><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="12" fill="${textFill}">No Image</text></svg>`;
+        img.style.display = 'block';
+      }
     };
 
     // すでに画像URLがある場合はそれを即座に適用
@@ -3235,7 +3243,8 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
-      // 2ペイン・常時表示・超ミニマル設計 (タイトル最上部・画像左寄せでタイトルの下・フッター左右スプリット配置)
+      // 2ペイン・常時表示・固定画像＆要約横並び設計 (タイトル最上部・画像は固定枠・右に要約・フッター左右スプリット配置)
+      const hasValidSummary = item.contentSnippet && item.contentSnippet !== '直接ニュースソースから詳細記事を参照してください。';
       card.innerHTML = `
         ${!isRead ? '<span class="unread-dot"></span>' : ''}
         <div class="rss-card-main-row">
@@ -3243,16 +3252,21 @@ document.addEventListener('DOMContentLoaded', () => {
             <h4 class="rss-card-title">
               ${cleanTitle}
             </h4>
-            ${imageHtml} <!-- 画像はタイトルの下に左寄せで表示 -->
+            <!-- 画像と要約の横並びボディセクション -->
+            <div class="rss-card-body-row">
+              ${imageHtml} <!-- 左側: 固定枠画像 -->
+              <div class="rss-card-body-summary-wrap">
+                ${hasValidSummary ? `
+                  <p class="rss-card-body-summary">${item.contentSnippet}</p>
+                ` : ''}
+              </div>
+            </div>
           </div>
         </div>
         
-        <!-- 常時表示詳細エリア -->
+        <!-- アクションフッターエリア -->
         <div class="rss-card-details-expanded">
           <div class="rss-details-section">
-            ${item.contentSnippet && item.contentSnippet !== '直接ニュースソースから詳細記事を参照してください。' ? `
-              <p class="rss-details-summary">${item.contentSnippet}</p>
-            ` : ''}
             <div class="rss-details-actions">
               <!-- 左寄せ: 記事ソースChip、注目度、SNS反響、配信時間 -->
               <div class="rss-card-meta">
