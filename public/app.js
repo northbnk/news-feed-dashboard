@@ -3035,6 +3035,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // RSSカード用非同期 OGP 画像読み込みハンドラ
+  function loadRssCardImage(card, articleUrl, initialImage) {
+    if (!card) return;
+    const imgWrapper = card.querySelector('.rss-card-image-wrapper');
+    if (!imgWrapper) return;
+    const img = imgWrapper.querySelector('.rss-card-image');
+    const skeleton = imgWrapper.querySelector('.image-skeleton-loader');
+
+    const handleFailure = () => {
+      imgWrapper.remove(); // 取得失敗時はラッパーを削除し、テキスト幅を100%にする
+    };
+
+    // すでに画像URLがある場合はそれを即座に適用
+    if (initialImage && initialImage.startsWith('http')) {
+      if (img) {
+        img.src = initialImage;
+        img.style.display = 'block';
+      }
+      if (skeleton) {
+        skeleton.style.display = 'none';
+      }
+      return;
+    }
+
+    // 画像がnullの場合は非同期でバックエンドから OGP 画像を取得
+    fetch('/api/scrape-image?url=' + encodeURIComponent(articleUrl))
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.image && data.image.startsWith('http')) {
+          if (img) {
+            img.src = data.image;
+            img.style.display = 'block';
+          }
+          if (skeleton) {
+            skeleton.style.display = 'none';
+          }
+        } else {
+          handleFailure();
+        }
+      })
+      .catch(() => {
+        handleFailure();
+      });
+  }
+
   let rssScrollObserver = null;
 
   function initRssObserver() {
@@ -3139,11 +3184,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const min = String(pubDate.getMinutes()).padStart(2, '0');
       const formattedTime = mm + "/" + dd + " " + hh + ":" + min;
 
-      const imageHtml = item.image ? `
+      // 画像表示用のスケルトンプレースホルダーを常に設置 (画像が無い場合は非同期取得失敗時に自動で wrapper が remove される)
+      const imageHtml = `
         <div class="rss-card-image-wrapper">
-          <img src="${item.image}" alt="${item.title}" class="rss-card-image" loading="lazy" onerror="this.parentNode.style.display='none'">
+          <div class="image-skeleton-loader"></div>
+          <img src="" alt="${item.title}" class="rss-card-image" loading="lazy" style="display: none;">
         </div>
-      ` : '';
+      `;
 
       // ChatGPT / Perplexity プロンプトURLバインド
       const chatGptPrompt = encodeURIComponent("「" + item.title + "」についてWEB検索を利用して記事の深掘りをして");
@@ -3288,6 +3335,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       rssArticlesList.appendChild(card);
+
+      // 非同期で画像をロード・適用
+      loadRssCardImage(card, item.link, item.image);
       
       // 生成した瞬間に直接スクロール交差監視に登録！
       if (rssScrollObserver && !isRead) {
