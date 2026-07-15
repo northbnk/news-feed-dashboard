@@ -3480,7 +3480,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
-  margin: 0 0 6px 0;
+  margin: 0;
   display: flex;
   align-items: flex-start;
   gap: 6px;
@@ -3653,7 +3653,7 @@ body {
 .rss-card-details-expanded {
   width: 100%;
   border-top: none;
-  margin-top: 8px;
+  margin-top: 2px; /* タイトルの真下に要約が流れるように限界まで縮小 */
   padding-top: 0;
   display: block;
 }
@@ -3661,8 +3661,8 @@ body {
 .rss-details-section {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 4px;
+  gap: 8px; /* 要約とフッターボタンの隙間をスリム化 */
+  padding: 0;
 }
 
 .rss-details-summary {
@@ -3869,17 +3869,53 @@ body {
 }
 
 /* ライトテーマ時のアクティブバッジ視認性改善 */
-.light-theme .sidebar-item.active .sidebar-badge, 
+.light-theme .sidebar-item.active .sidebar-badge,
 .light-theme .feed-item.active .feed-badge {
-  background-color: rgba(0, 0, 0, 0.12) !important;
-  color: #111111 !important; /* 濃い文字色でコントラストを確保 */
+  background-color: #ffffff !important;
+  color: var(--accent-color, #3b82f6) !important;
 }
 
+/* SNS反響数バッジのスタイリッシュデザイン */
+.rss-sns-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1.5px 5px;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: opacity 0.15s;
+}
 
+/* X (Twitter) */
+.rss-sns-badge.x-twitter {
+  background-color: rgba(29, 161, 242, 0.08);
+  color: #1da1f2;
+}
 
+.dark-theme .rss-sns-badge.x-twitter {
+  background-color: rgba(29, 161, 242, 0.15);
+  color: #4fc3f7;
+}
 
+/* はてなブックマーク */
+.rss-sns-badge.hatebu {
+  background-color: rgba(0, 164, 222, 0.08);
+  color: #00a4de;
+}
 
+.dark-theme .rss-sns-badge.hatebu {
+  background-color: rgba(0, 164, 222, 0.15);
+  color: #4dd0e1;
+}
 
+/* Threads */
+.rss-sns-badge.threads {
+  background-color: rgba(168, 168, 168, 0.08);
+  color: #a8a8a8;
+}
 
-
-
+.dark-theme .rss-sns-badge.threads {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #e0e0e0;
+}

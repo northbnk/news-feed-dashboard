@@ -3149,7 +3149,35 @@ document.addEventListener('DOMContentLoaded', () => {
       const chatGptPrompt = encodeURIComponent("「" + item.title + "」についてWEB検索を利用して記事の深掘りをして");
       const perplexityPrompt = encodeURIComponent("「" + item.title + "」について関連報道や進展をWEB検索を利用して深掘りして");
 
-      // 2ペイン・常時表示型のスタイリッシュなHTML設計 (画像は右端固定・ブックマークはフッター統合)
+      // SNS反響数バッジの構築
+      const xCount = Number(item.sns?.x || 0);
+      const hatebuCount = Number(item.hatebu || 0);
+      const threadsCount = Number(item.sns?.threads || 0);
+      
+      let snsBadgesHtml = '';
+      if (xCount > 0) {
+        snsBadgesHtml += `
+          <span class="rss-sns-badge x-twitter" title="X (Twitter) 反響数: ${xCount}">
+            <span class="mdi mdi-twitter"></span>${xCount}
+          </span>
+        `;
+      }
+      if (hatebuCount > 0) {
+        snsBadgesHtml += `
+          <span class="rss-sns-badge hatebu" title="はてなブックマーク数: ${hatebuCount}">
+            <span class="mdi mdi-bookmark-outline"></span>${hatebuCount}
+          </span>
+        `;
+      }
+      if (threadsCount > 0) {
+        snsBadgesHtml += `
+          <span class="rss-sns-badge threads" title="Threads 反響数: ${threadsCount}">
+            <span class="mdi mdi-at"></span>${threadsCount}
+          </span>
+        `;
+      }
+
+      // 2ペイン・常時表示型のスタイリッシュなHTML設計 (画像は右端固定・ブックマークはフッター統合・SNS反響数・記事を開く)
       card.innerHTML = `
         ${!isRead ? '<span class="unread-dot"></span>' : ''}
         <div class="rss-card-main-row">
@@ -3165,6 +3193,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     注目度: ${item.weight}
                   </span>
                 ` : ''}
+                ${snsBadgesHtml}
               </div>
               <span class="rss-card-time">${formattedTime}</span>
             </div>
@@ -3181,7 +3210,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="rss-details-summary">${item.contentSnippet || '直接ニュースソースから詳細記事を参照してください。'}</p>
             <div class="rss-details-actions">
               <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="rss-details-primary-btn">
-                一次ソースを開く <span class="mdi mdi-open-in-new"></span>
+                記事を開く <span class="mdi mdi-open-in-new"></span>
               </a>
               <div class="rss-details-deep-dive">
                 <a href="https://chatgpt.com/?q=${chatGptPrompt}&hints=search" target="_blank" rel="noopener noreferrer" class="rss-details-dive-btn chatgpt">
