@@ -3038,8 +3038,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let rssScrollObserver = null;
 
   function initRssObserver() {
-    const timelineContainer = document.getElementById('rss-article-timeline');
-    if (!timelineContainer) return;
     if (rssScrollObserver) {
       rssScrollObserver.disconnect();
     }
@@ -3060,9 +3058,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, {
-      root: timelineContainer,
-      rootMargin: '0px',
-      threshold: 0.15
+      root: null, // ブラウザの表示領域全体を監視範囲とする
+      rootMargin: '-5% 0px -5% 0px', // 上下の若干の内側に入った時点で検知
+      threshold: 0.1 // 10% 以上が見えたら既読にする
     });
   }
 
@@ -3235,6 +3233,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       rssArticlesList.appendChild(card);
+      
+      // 生成した瞬間に直接スクロール交差監視に登録！
+      if (rssScrollObserver && !isRead) {
+        rssScrollObserver.observe(card);
+      }
     });
 
     // キーボード移動によるフォーカスの再適用
@@ -3243,19 +3246,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (activeCard) {
         activeCard.classList.add('selected');
       }
-    }
-
-    // 新しく描画された未読カードを IntersectionObserver の監視に登録
-    if (rssScrollObserver) {
-      filtered.forEach((item, idx) => {
-        const isRead = readNewsUrls.has(item.link);
-        if (!isRead) {
-          const card = rssArticlesList.querySelector(`[data-index="${idx}"]`);
-          if (card) {
-            rssScrollObserver.observe(card);
-          }
-        }
-      });
     }
 
     if (!resetScroll) {

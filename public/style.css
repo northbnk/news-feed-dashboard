@@ -10,6 +10,7 @@
   --border-radius-sm: 8px;
   --border-radius-md: 14px;
   --border-radius-lg: 20px;
+  --danger-color: #ef4444;
   
   /* Brand color badges */
   --color-brand-x: #1da1f2;
@@ -35,6 +36,8 @@
   --shadow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
   --scroll-thumb: rgba(255, 255, 255, 0.15);
   --scroll-thumb-hover: rgba(255, 255, 255, 0.3);
+  --card-bg: var(--bg-card);
+  --bg-dashboard: var(--bg-base);
 }
 
 /* ライトモード用変数 */
@@ -55,6 +58,8 @@
   --shadow-card: 0 8px 32px 0 rgba(31, 38, 135, 0.06);
   --scroll-thumb: rgba(0, 0, 0, 0.12);
   --scroll-thumb-hover: rgba(0, 0, 0, 0.24);
+  --card-bg: var(--bg-card);
+  --bg-dashboard: var(--bg-base);
 }
 
 /* ==========================================================================
