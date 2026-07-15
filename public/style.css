@@ -3517,7 +3517,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
-  margin: 0 0 6px 0; /* 下に配置されたメタ情報ヘッダーとの間に適度なマージンを設定 */
+  margin: 0;
   display: flex;
   align-items: flex-start;
   gap: 6px;
@@ -3714,10 +3714,18 @@ body {
 
 .rss-details-actions {
   display: flex;
+  justify-content: space-between; /* メタ情報（左）とボタン（右）を左右に配置 */
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.rss-details-buttons {
+  display: flex;
+  align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  align-items: center;
-  width: 100%;
 }
 
 .rss-details-primary-btn {
