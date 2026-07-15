@@ -165,23 +165,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- 2.5 未読のみ表示モード初期設定 ＆ トグル処理 ---
-  if (unreadOnlyMode) {
-    document.body.classList.add('show-unread-only');
-    unreadOnlyToggle.classList.add('active');
-  }
-
-  unreadOnlyToggle.addEventListener('click', () => {
-    unreadOnlyMode = !unreadOnlyMode;
-    localStorage.setItem('unreadOnlyMode', unreadOnlyMode);
-    
+  if (unreadOnlyToggle) {
     if (unreadOnlyMode) {
       document.body.classList.add('show-unread-only');
       unreadOnlyToggle.classList.add('active');
-    } else {
-      document.body.classList.remove('show-unread-only');
-      unreadOnlyToggle.classList.remove('active');
     }
-  });
+
+    unreadOnlyToggle.addEventListener('click', () => {
+      unreadOnlyMode = !unreadOnlyMode;
+      localStorage.setItem('unreadOnlyMode', unreadOnlyMode);
+      
+      if (unreadOnlyMode) {
+        document.body.classList.add('show-unread-only');
+        unreadOnlyToggle.classList.add('active');
+      } else {
+        document.body.classList.remove('show-unread-only');
+        unreadOnlyToggle.classList.remove('active');
+      }
+    });
+  }
 
   // --- 3. データ取得 ＆ 描画ロジック ---
   async function loadData(forceRefresh = false) {

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-15T07:39:38.393Z",
+  "timestamp": "2026-07-15T07:49:14.386Z",
   "headline": {
     "title": "タイ 27人死亡の飲食店火災 非常口使えなかった可能性調べる",
     "summary": "タイの首都バンコクの飲食店で27人が死亡した火災で、店の奥のトイレ付近に多くの人が倒れていたことがわかり、警察はトイレのそばにあった非常口を利用できなかった可能性もあるとみて、店側の安全対策の状況を詳...",
@@ -15,7 +15,7 @@
   },
   "topNews": [
     {
-      "id": "cluster_1784101178396_y6knx",
+      "id": "cluster_1784101754389_dvck0",
       "aiTitle": "皇室典範改正案、立憲が採決見送りを自民へ伝達　会期延長に反発",
       "aiSummary": "皇族数の確保に向けた皇室典範改正案をめぐり、参議院自民党と立憲民主党の国会対策委員長が会談し、15日に参議院の特別委員会を開いて審議入りすることでおおむね合意しました。",
       "genre": "politics",
@@ -75,12 +75,12 @@
           "pubDate": "2026-07-13T10:28:48.000Z"
         }
       ],
-      "image": "https://imgu.web.nhk/news/u/news/html/20260715/K10015176941_2607151140_0715114534_01_02.jpg",
+      "image": null,
       "hatebu": 2,
       "weight": 10
     },
     {
-      "id": "cluster_1784101178400_wkmht",
+      "id": "cluster_1784101754394_xsb7z",
       "aiTitle": "米軍 イランへの海上封鎖再開 トランプ大統領「発電所も標的」",
       "aiSummary": "アメリカのトランプ大統領は、ホルムズ海峡の航行をめぐり、イランに対する海上封鎖を再開し、新たに、すべての通過貨物に20％分の対価を課すと主張しました。イラン側は、海峡を管理するのはイランだと主張して、双方の応酬が激しくなっています。",
       "genre": "politics",
@@ -110,12 +110,12 @@
           "pubDate": "Tue, 14 Jul 2026 05:34:27 +0900"
         }
       ],
-      "image": "https://imgu.web.nhk/news/u/news/html/20260715/K10015177001_2607150459_0715053908_01_02.jpg",
+      "image": null,
       "hatebu": 0,
       "weight": 10
     },
     {
-      "id": "cluster_1784101178400_bulln",
+      "id": "cluster_1784101754394_vpca8",
       "aiTitle": "【解説】 ホルムズ海峡の「対価20％」撤回が示すのは……トランプ氏は戦争終結に苦慮か",
       "aiSummary": "イランとの戦争をめぐるトランプ米大統領の13日の要求は、わずか24時間で撤回された。このことから、難しい状況から抜け出すために大統領が型破りな方法を模索している様子がうかがえる。",
       "genre": "politics",
@@ -151,12 +151,12 @@
           "pubDate": "2026-07-13T15:36:23.000Z"
         }
       ],
-      "image": "https://ichef.bbci.co.uk/news/1200/branded_japanese/87df/live/cb49bc70-7fc8-11f1-82bc-eb96a9eb8087.jpg",
+      "image": null,
       "hatebu": 7,
       "weight": 7
     },
     {
-      "id": "cluster_1784101178434_s6dvp",
+      "id": "cluster_1784101754441_cnmoi",
       "aiTitle": "ニチレイのシステム障害で物流混乱　イオンで欠品、KFC休業も",
       "aiSummary": "ファストフードチェーンの「ケンタッキーフライドチキン」を運営する日本法人は、食材の納入に遅れなどが出て、商品の品切れや店舗の営業休止などの影響が出る可能性があると発表しました。鶏肉などの配送を担う冷凍食品大手「ニチレイ」で発生したシステム障...",
       "genre": "business",
@@ -185,7 +185,7 @@
       "weight": 7
     },
     {
-      "id": "cluster_1784101178399_15r2i",
+      "id": "cluster_1784101754393_lrqdt",
       "aiTitle": "高市首相の悲願｢消費減税｣に垣間見える国民の本音…公約死守か､国債金利･超円安への配慮か | 政治・経済・投資",
       "aiSummary": "高市首相が掲げた食料品の消費減税が､1％税率と給付による｢実質ゼロ｣で現実味を帯びつつあります。しかし､5兆円超の財政支出や供給制約による減税効果の限定､財政悪化への不安､そして本音と建前が交錯する…",
       "genre": "business",
@@ -251,12 +251,12 @@
           "pubDate": "Mon, 13 Jul 2026 20:38:00 +0900"
         }
       ],
-      "image": "https://tk.ismcdn.jp/mwimgs/d/3/1200xm/img_d38d862df45450a133ba2134d18ba8ad91481.jpg",
+      "image": null,
       "hatebu": 0,
       "weight": 6
     },
     {
-      "id": "cluster_1784101178395_0b1d0",
+      "id": "cluster_1784101754388_wy35l",
       "aiTitle": "大分 佐伯 4人刃物で刺され2人重傷 44歳男を逮捕 事件に関与か",
       "aiSummary": "13日午前、大分県佐伯市の店舗の駐車場などで4人が刃物で刺されるなどして2人が重傷です。いずれも命に別状はなく、警察は現場近くで包丁を所持していたとして44歳の男の容疑者を逮捕し、事件に関わった疑いがあるとみて調べています。",
       "genre": "society",
@@ -274,12 +274,12 @@
           "pubDate": "Mon, 13 Jul 2026 20:56:40 +0900"
         }
       ],
-      "image": "https://imgopt.asahi.com/ogp/AS20260713001093_comm.jpg",
+      "image": null,
       "hatebu": 0,
       "weight": 10
     },
     {
-      "id": "cluster_1784101178395_ehrkv",
+      "id": "cluster_1784101754388_8xwle",
       "aiTitle": "【2026年サッカー男子W杯】 決定力、創造性、空中戦で優れているのは　ベスト4をデータ比較",
       "aiSummary": "サッカー男子ワールドカップ（W杯）北中米大会は14日（日本時間15日）、アメリカのダラス・スタジアムで準決勝があり、スペインが優勝候補フランスを相手に2-0の予想外の完勝を収め、決勝に進んだ。",
       "genre": "politics",
@@ -303,12 +303,12 @@
           "pubDate": "Mon, 13 Jul 2026 08:22:59 GMT"
         }
       ],
-      "image": "https://ichef.bbci.co.uk/news/1200/branded_japanese/ecab/live/60e3e860-7ff5-11f1-b976-0b9c15b0ccfc.jpg",
+      "image": null,
       "hatebu": 0,
       "weight": 7
     },
     {
-      "id": "cluster_1784101178413_hvxbj",
+      "id": "cluster_1784101754411_h9hn9",
       "aiTitle": "「槌音が聞きたい」半世紀待つ小浜、北陸新幹線「桂川」案に安堵の声",
       "aiSummary": "50年以上待つ鉄路の誘致に、再び青信号がともった。　与党の委員会が、北陸新幹線の敦賀（福井県）―新大阪間を「小浜・京都ルートの桂川案」とする方針を決めた15日、福井県内では安堵（あんど）の声が聞こえ…",
       "genre": "society",
@@ -343,7 +343,7 @@
       "weight": 6
     },
     {
-      "id": "cluster_1784101178411_d6fck",
+      "id": "cluster_1784101754408_whb7t",
       "aiTitle": "今年最多の全国147地点で猛暑日　浜松で38.3度　都内でも観測",
       "aiSummary": "詳細記事を参照してください。",
       "genre": "society",
@@ -372,7 +372,7 @@
       "weight": 6
     },
     {
-      "id": "cluster_1784101178404_xb81l",
+      "id": "cluster_1784101754396_fku11",
       "aiTitle": "東大合格者の6割が関東出身！地頭も努力も負けていない地方の受験生が東大を諦める\"学力差ではない\"本当の理由 | キャリア・教育",
       "aiSummary": "｢毎日勉強しているのに成績が上がらない…｣そんな悩みは､知識を\"点\"で覚えることが原因かもしれません。重要なのは知識同士を結びつけ､\"面\"として理解する力です。思考力や応用力を伸ばす秘訣とは？詳しく…",
       "genre": "business",
@@ -438,14 +438,14 @@
           "pubDate": "Tue, 14 Jul 2026 06:00:00 +0900"
         }
       ],
-      "image": "https://tk.ismcdn.jp/mwimgs/7/7/1200xm/img_777bb87313835b453ee7bb55cc4a1c67191539.jpg",
+      "image": null,
       "hatebu": 0,
       "weight": 6
     }
   ],
   "trendingNews": [
     {
-      "id": "cluster_1784101180134_tak7d",
+      "id": "cluster_1784101756226_9yqyc",
       "aiTitle": "Amazonで横開きスマホ「motorola razr fold」の予約受付がスタート、数量限定で3万円割引",
       "aiSummary": "Amazon.co.jpで「motorola razr fold」（8月4日発売）の予約受付が始まっている。価格は26万9820円だが、数量限定の3万円割引クーポンが配布されており、適用すると23万9820円で購入できる。",
       "genre": "tech",
@@ -475,17 +475,17 @@
           "pubDate": "2026-07-13T22:59:11.000Z"
         }
       ],
-      "image": "https://pc.watch.impress.co.jp/img/pcw/list/2125/358/001.jpg",
+      "image": null,
       "sns": {
-        "x": 172,
-        "threads": 20,
+        "x": 144,
+        "threads": 48,
         "hatebu": 1
       },
       "emotion": "hot",
       "weight": 6
     },
     {
-      "id": "cluster_1784101180125_40u18",
+      "id": "cluster_1784101756220_1jey0",
       "aiTitle": "もう迷わない！ChatGPT、Gemini、Claudeを使い分けて作業効率を最大化する方法",
       "aiSummary": "旅行直前の悪天候。飛行機は飛ぶの？キャンセルすべき？そんな「決断疲れ」をChatGPTで解消する方法を紹介。AIを旅行オペレーションセンターに任命し、複雑な条件整理と判断タイミングを任せる実践的なライフハックです。",
       "genre": "tech",
@@ -527,17 +527,17 @@
           "pubDate": "2026-07-13T08:45:15.000Z"
         }
       ],
-      "image": "https://i.gzn.jp/img/2026/07/15/claude-for-teachers/00_m.png",
+      "image": null,
       "sns": {
-        "x": 274,
-        "threads": 55,
+        "x": 275,
+        "threads": 53,
         "hatebu": 10
       },
       "emotion": "hot",
       "weight": 6
     },
     {
-      "id": "cluster_1784101180125_avr7k",
+      "id": "cluster_1784101756220_kbwcx",
       "aiTitle": "iPhoneの中身も「メイド・イン・USA」に？ Appleが4.8兆円の提携を発表",
       "aiSummary": "コスパって大事。Google（グーグル）の最新スマートウォッチ「Pixel Watch 5」に関するリーク情報が登場。新モデルはデザインに大きな変化なし、価格だけちょっとアップする見込みです。Googleのウェアラブル端末も、いよいよApp...",
       "genre": "tech",
@@ -573,17 +573,17 @@
           "pubDate": "Mon, 13 Jul 2026 17:50:00 +0900"
         }
       ],
-      "image": "https://media.loom-app.com/loom/2026/07/14/d74f9c26-a95c-4053-a73f-1c9574e092e5/original.jpg?w=1200&amp;h=630",
+      "image": null,
       "sns": {
-        "x": 454,
-        "threads": 99,
+        "x": 467,
+        "threads": 63,
         "hatebu": 33
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1784101180133_wn25x",
+      "id": "cluster_1784101756225_lrqhy",
       "aiTitle": "Google Play、日本の手数料を9月30日から前倒しで値下げ",
       "aiSummary": "Googleが予告した新AI「Gemini 3.5 Pro」のリリースが遅れています。競合が強力なフラッグシップをリリースしている状況で、SNSでもさまざまな声が観測できる状況です。",
       "genre": "tech",
@@ -631,17 +631,17 @@
           "pubDate": "2026-07-14T06:29:33.000Z"
         }
       ],
-      "image": "https://i.gzn.jp/img/2026/07/15/google-deepmind-demmis-hassabis-ai-framework/00_m.jpg",
+      "image": null,
       "sns": {
-        "x": 191,
-        "threads": 46,
-        "hatebu": 11
+        "x": 254,
+        "threads": 30,
+        "hatebu": 12
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1784101180135_tyafu",
+      "id": "cluster_1784101756227_vehx9",
       "aiTitle": "スマホで27B級LLMが動く！PrismMLが「Bonsai 27B」を無料公開",
       "aiSummary": "Appleが「iOS 27」「iPadOS 27」「macOS 27(Golden Gate)」「watchOS 27」「tvOS 27」のパブリックベータ版をリリースしました。",
       "genre": "tech",
@@ -671,17 +671,17 @@
           "pubDate": "2026-07-14T08:21:11.000Z"
         }
       ],
-      "image": "https://pc.watch.impress.co.jp/img/pcw/list/2125/273/1.jpg",
+      "image": null,
       "sns": {
-        "x": 209,
-        "threads": 42,
+        "x": 99,
+        "threads": 45,
         "hatebu": 5
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1784101180127_5gx3r",
+      "id": "cluster_1784101756222_93exb",
       "aiTitle": "20万円超えの「Galaxy S26 Ultra」。数ヶ月使って不満は一切なし",
       "aiSummary": "開発力に脱帽。Galaxy Unpacked 2026まで、もう1週間もありません。次期デバイスであるGalaxy S27シリーズや、折りたたみモデルへの期待もどんどんと高まっていますね。新モデルお披露目まであとわずかですが、Galaxy ...",
       "genre": "tech",
@@ -711,17 +711,17 @@
           "pubDate": "Tue, 14 Jul 2026 02:31:10 GMT"
         }
       ],
-      "image": "https://media.loom-app.com/loom/2026/07/14/ff24b927-9386-4868-8fc8-dbc87217382b/original.jpg?w=1200&amp;h=630",
+      "image": null,
       "sns": {
-        "x": 185,
-        "threads": 50,
+        "x": 136,
+        "threads": 36,
         "hatebu": 2
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1784101180149_a11pr",
+      "id": "cluster_1784101756239_48v2x",
       "aiTitle": "Google画像検索25周年　「AIによる概要」に画像生成機能",
       "aiSummary": "Googleは7月14日、Google画像検索が25周年を迎えるのにあわせて、ホーム画面の刷新やAI Overviewでの画像生成といった新機能を追加すると発表した。",
       "genre": "tech",
@@ -739,17 +739,17 @@
           "pubDate": "2026-07-15T02:17:55.000Z"
         }
       ],
-      "image": "https://www.watch.impress.co.jp/img/ipw/list/2125/340/01.jpg",
+      "image": null,
       "sns": {
-        "x": 128,
-        "threads": 47,
+        "x": 70,
+        "threads": 34,
         "hatebu": 2
       },
-      "emotion": "hot",
+      "emotion": "surprised",
       "weight": 5
     },
     {
-      "id": "cluster_1784101180147_aosi8",
+      "id": "cluster_1784101756238_el9gl",
       "aiTitle": "IIJから横折りスマホ「motorola razr fold」発売、MNPで20万円弱",
       "aiSummary": "モトローラ・モビリティ・ジャパンは15日、新型Androidスマートフォン「motorola razr fold」を発表した。本稿では、主に本体外観の写真をお届けする。",
       "genre": "tech",
@@ -773,17 +773,17 @@
           "pubDate": "2026-07-15T01:00:00.000Z"
         }
       ],
-      "image": "https://k-tai.watch.impress.co.jp/img/ktw/list/2125/286/cont0.jpg",
+      "image": null,
       "sns": {
-        "x": 186,
-        "threads": 26,
+        "x": 105,
+        "threads": 42,
         "hatebu": 2
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1784101180126_edt69",
+      "id": "cluster_1784101756221_5sby7",
       "aiTitle": "Microsoftが広告や余計な機能をすべて削除したWindowsの検索ボックスをテスト",
       "aiSummary": "現地時間の2026年7月13日、MicrosoftがWindowsの検索ボックスをより速く、使いやすいものにするため、広告や余計な機能を削除するアップデートを発表しました。",
       "genre": "culture",
@@ -819,17 +819,17 @@
           "pubDate": "2026-07-13T21:12:00.000Z"
         }
       ],
-      "image": "https://media.loom-app.com/loom/2026/07/14/5e88baec-0ddf-4c9b-9f75-7b81c901b33c/original.png?w=1200&amp;h=630&amp;f=jpg",
+      "image": null,
       "sns": {
-        "x": 1026,
-        "threads": 203,
-        "hatebu": 110
+        "x": 1002,
+        "threads": 209,
+        "hatebu": 112
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1784101180156_ohswt",
+      "id": "cluster_1784101756243_sad6f",
       "aiTitle": "ゼンデイヤ×ロバート・パティンソン「ドラマなふたり」特別映像　演技論からファッション、バットマンとの違い、愛についてを語る",
       "aiSummary": "ゼンデイヤとロバート・パティンソンが主演するA24のラブストーリー「ドラマなふたり」の特別映像（https://youtu.be/o88lbpgyxaE）が公開された。主演の二人とクリストファー...",
       "genre": "entertainment",
@@ -841,17 +841,17 @@
           "pubDate": "2026-07-15T07:00:00.000Z"
         }
       ],
-      "image": "https://media.eiga.com/images/buzz/127711/dc10670d22beb4be.jpg",
+      "image": null,
       "sns": {
-        "x": 348,
-        "threads": 82,
-        "hatebu": 29
+        "x": 462,
+        "threads": 121,
+        "hatebu": 49
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1784101180155_i2qu3",
+      "id": "cluster_1784101756243_4eolm",
       "aiTitle": "国産SNS「POPOPO」、9月17日にサービス終了　開始から半年",
       "aiSummary": "「カメラのいらないテレビ電話」として、26年3月にスタートしたばかりのコミュニケーションサービス「POPOPO」が、9月17日を持って終了する。3月18日のスタートから6カ月でのサービス終了となる。",
       "genre": "culture",
@@ -863,17 +863,17 @@
           "pubDate": "2026-07-15T06:56:57.000Z"
         }
       ],
-      "image": "https://www.watch.impress.co.jp/img/ipw/list/2125/368/po1.jpg",
+      "image": null,
       "sns": {
-        "x": 499,
-        "threads": 97,
-        "hatebu": 47
+        "x": 609,
+        "threads": 104,
+        "hatebu": 54
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1784101180129_jltj0",
+      "id": "cluster_1784101756223_p5w3s",
       "aiTitle": "ドコモの「dポイント」で1億ポイント山分けキャンペーン、8月と9月に実施",
       "aiSummary": "クオカードは、セブン-イレブンで1000円以上のQUOカードを購入すると、抽選で500円分の「QUOカードPay」が当たるキャンペーンを開始した。対象期間は27日まで。",
       "genre": "culture",
@@ -891,11 +891,11 @@
           "pubDate": "2026-07-14T03:01:39.000Z"
         }
       ],
-      "image": "https://k-tai.watch.impress.co.jp/img/ktw/list/2125/307/cont0.png",
+      "image": null,
       "sns": {
-        "x": 418,
-        "threads": 98,
-        "hatebu": 44
+        "x": 485,
+        "threads": 94,
+        "hatebu": 42
       },
       "emotion": "hot",
       "weight": 5
@@ -904,7 +904,7 @@
   "sports": {
     "baseball": [
       {
-        "id": "cluster_1784101180993_xtvc9",
+        "id": "cluster_1784101757175_eexa2",
         "aiTitle": "【プロ野球結果】ソフトバンクが両リーグ1番乗りで50勝到達",
         "aiSummary": "プロ野球は6試合が行われ、ソフトバンクは、今シーズンここまで10勝1敗と得意にしている日本ハムに正木智也選手のホームランなどで勝って3連勝としました。ソフトバンクは、両リーグ1番乗りで50勝到達です。",
         "sources": [
@@ -918,7 +918,7 @@
         "image": null
       },
       {
-        "id": "cluster_1784101180993_n1w48",
+        "id": "cluster_1784101757175_3lwua",
         "aiTitle": "プロ野球 球宴 監督推薦 巨人 井上やロッテ 横山が初選出",
         "aiSummary": "今月行われるプロ野球のオールスターゲームに監督推薦で出場する選手が発表され、セ・リーグで首位争いを続ける巨人の勝ち頭、井上温大投手や、セーブ数でパ・リーグトップのロッテの横山陸人投手などが初めて選ばれ...",
         "sources": [
@@ -934,7 +934,7 @@
     ],
     "mlb": [
       {
-        "id": "cluster_1784101180992_v2lr8",
+        "id": "cluster_1784101757175_cc1we",
         "aiTitle": "ドジャース 大谷翔平 22号ホームラン 日米通算350号に到達",
         "aiSummary": "大リーグ、ドジャースの大谷翔平選手が、オールスターゲーム前最後の試合となるダイヤモンドバックス戦で22号のソロホームランを打ち、日米通算350号に到達しました。",
         "sources": [
@@ -950,7 +950,7 @@
     ],
     "soccer": [
       {
-        "id": "cluster_1784101180993_zfx31",
+        "id": "cluster_1784101757175_i7t4p",
         "aiTitle": "football life:「奇跡の1枚」から始まった　ヤマル、必然の躍進　サッカーW杯",
         "aiSummary": "詳細記事を参照してください。",
         "sources": [
@@ -1012,7 +1012,7 @@
         "image": null
       },
       {
-        "id": "cluster_1784101180993_l7gcy",
+        "id": "cluster_1784101757175_bcnv9",
         "aiTitle": "サッカーＷ杯 いよいよ準決勝 躍進を支える実力者たち",
         "aiSummary": "サッカーワールドカップ北中米大会は、14日（日本時間15日）から準決勝が始まります。各チームのエースによる得点王争いが注目される一方、それ以外の実力者たちも躍進を支えています。",
         "sources": [
@@ -1026,7 +1026,7 @@
         "image": null
       },
       {
-        "id": "cluster_1784101180993_nvb9v",
+        "id": "cluster_1784101757175_2bgsv",
         "aiTitle": "サッカーＷ杯 ベスト4は世界の「4強」による争いに",
         "aiSummary": "サッカーワールドカップ北中米大会。準決勝はいずれも優勝経験がある世界ランキングの上位4チーム、文字通り世界の「4強」による争いとなりました。得点王争いを繰り広げるスター選手など役者もそろい、ハイレベル...",
         "sources": [
@@ -1040,7 +1040,7 @@
         "image": null
       },
       {
-        "id": "cluster_1784101180993_j4ezs",
+        "id": "cluster_1784101757175_0p128",
         "aiTitle": "サッカー日本代表 長友佑都が愛媛の母校をサプライズ訪問",
         "aiSummary": "サッカーワールドカップで日本選手最多の5回目の出場を果たした長友佑都選手が、ふるさとの愛媛県の母校を訪れ、子どもたちに夢を追い続ける大切さを伝えました。",
         "sources": [
@@ -1056,7 +1056,7 @@
     ],
     "seasonal": [
       {
-        "id": "cluster_1784101180993_x66yv",
+        "id": "cluster_1784101757175_croyx",
         "aiTitle": "上地結衣 生涯ゴールデンスラム達成で喜び語る 車いすテニス",
         "aiSummary": "車いすテニスで四大大会すべてとパラリンピックで優勝する「生涯ゴールデンスラム」を日本の女子選手で初めて達成した上地結衣選手が都内で取材に応じ「応援してくれた人たちとあの時間を共有できたのはすごくうれし...",
         "sources": [
@@ -1067,10 +1067,10 @@
             "pubDate": "Wed, 15 Jul 2026 16:27:44 +0900"
           }
         ],
-        "image": "https://imgu.web.nhk/news/u/news/html/20260715/K10015177541_2607151519_0715162745_01_02.jpg"
+        "image": null
       },
       {
-        "id": "cluster_1784101180993_0zd33",
+        "id": "cluster_1784101757175_9ng73",
         "aiTitle": "東京五輪談合事件 イベント制作会社に罰金2億5000万円の判決",
         "aiSummary": "東京オリンピック・パラリンピックをめぐる談合事件で、不正な受注調整を行ったとして独占禁止法違反の罪に問われたイベント制作会社の「フジクリエイティブコーポレーション」に対し、東京地方裁判所は罰金2億50...",
         "sources": [
@@ -1081,10 +1081,10 @@
             "pubDate": "Wed, 15 Jul 2026 16:13:29 +0900"
           }
         ],
-        "image": "https://imgu.web.nhk/news/u/news/html/20260715/K10015177431_2607151244_0715141532_01_03.jpg"
+        "image": null
       },
       {
-        "id": "cluster_1784101180993_jq6sz",
+        "id": "cluster_1784101757175_4r3ev",
         "aiTitle": "カンザス州立大の井上心太郎選手がアスレチックスとマイナー契約",
         "aiSummary": "詳細記事を参照してください。",
         "sources": [
@@ -1098,7 +1098,7 @@
         "image": null
       },
       {
-        "id": "cluster_1784101180993_24o62",
+        "id": "cluster_1784101757175_wnc6i",
         "aiTitle": "大リーグ オールスターゲーム 村上宗隆は163キロに空振り三振",
         "aiSummary": "大リーグ、ホワイトソックスの村上宗隆選手がオールスターゲームに初出場し、9回にまわった打席でパドレスのミラー投手の163キロのストレートに空振り三振に倒れました。試合は、アメリカンリーグが4対0で勝ち...",
         "sources": [
@@ -1109,10 +1109,10 @@
             "pubDate": "Wed, 15 Jul 2026 14:06:53 +0900"
           }
         ],
-        "image": "https://imgu.web.nhk/news/u/news/html/20260715/K10015177251_2607151010_0715104722_01_02.jpg"
+        "image": null
       },
       {
-        "id": "cluster_1784101180993_jeopz",
+        "id": "cluster_1784101757175_981xf",
         "aiTitle": "サッカーW杯 フランスとスペインが準決勝へ最終調整",
         "aiSummary": "サッカーワールドカップ北中米大会で、日本代表のキャプテンを務めた板倉滉選手が福岡市で取材に応じ、「今回の一体感を継続できれば、もっと上にいける。優勝という目標は絶対に変えてはいけない」と話しました。",
         "sources": [
@@ -1147,10 +1147,10 @@
             "pubDate": "Mon, 13 Jul 2026 18:52:03 +0900"
           }
         ],
-        "image": "https://imgu.web.nhk/news/u/news/html/20260715/K10015177451_2607151311_0715132147_01_02.jpg"
+        "image": null
       },
       {
-        "id": "cluster_1784101180993_7wch5",
+        "id": "cluster_1784101757175_qqb3f",
         "aiTitle": "W杯 スペイン 4大会ぶり決勝進出 フランス3大会連続決勝ならず",
         "aiSummary": "サッカーワールドカップ北中米大会の準決勝、フランス 対 スペインはスペインが2対0で勝って4大会ぶりに決勝へ進みました。フランスは3大会連続の決勝進出はなりませんでした。スペインは国際Aマッチと呼ばれ...",
         "sources": [
@@ -1161,7 +1161,7 @@
             "pubDate": "Wed, 15 Jul 2026 13:14:58 +0900"
           }
         ],
-        "image": "https://imgu.web.nhk/news/u/news/html/20260715/K10015177181_2607150640_0715064639_01_02.jpg"
+        "image": null
       }
     ]
   },
@@ -1253,10 +1253,10 @@
       "away": "浦和レッズ",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "live",
-      "detail": "前半5分",
-      "commentary": "キックオフ！両チーム主導権争いが続きます。",
-      "progress": 1
+      "status": "scheduled",
+      "detail": "19:00開始予定",
+      "commentary": "等々力陸上競技場にて本日19:00キックオフ",
+      "progress": 0
     }
   ]
 }
