@@ -3149,35 +3149,38 @@ document.addEventListener('DOMContentLoaded', () => {
       const chatGptPrompt = encodeURIComponent("「" + item.title + "」についてWEB検索を利用して記事の深掘りをして");
       const perplexityPrompt = encodeURIComponent("「" + item.title + "」について関連報道や進展をWEB検索を利用して深掘りして");
 
-      // SNS反響数バッジの構築
+      // SNS反響数のドット連結パーツ構築
       const xCount = Number(item.sns?.x || 0);
       const hatebuCount = Number(item.hatebu || 0);
       const threadsCount = Number(item.sns?.threads || 0);
       
-      let snsBadgesHtml = '';
+      let snsMetaHtml = '';
       if (xCount > 0) {
-        snsBadgesHtml += `
-          <span class="rss-sns-badge x-twitter" title="X (Twitter) 反響数: ${xCount}">
-            <span class="mdi mdi-twitter"></span>${xCount}
+        snsMetaHtml += `
+          <span class="rss-meta-item x-twitter" title="X (Twitter) 反響数: ${xCount}">
+            <span class="mdi mdi-twitter"></span> ${xCount}
           </span>
+          <span class="meta-divider">•</span>
         `;
       }
       if (hatebuCount > 0) {
-        snsBadgesHtml += `
-          <span class="rss-sns-badge hatebu" title="はてなブックマーク数: ${hatebuCount}">
-            <span class="mdi mdi-bookmark-outline"></span>${hatebuCount}
+        snsMetaHtml += `
+          <span class="rss-meta-item hatebu" title="はてなブックマーク数: ${hatebuCount}">
+            <span class="mdi mdi-bookmark-outline"></span> ${hatebuCount}
           </span>
+          <span class="meta-divider">•</span>
         `;
       }
       if (threadsCount > 0) {
-        snsBadgesHtml += `
-          <span class="rss-sns-badge threads" title="Threads 反響数: ${threadsCount}">
-            <span class="mdi mdi-at"></span>${threadsCount}
+        snsMetaHtml += `
+          <span class="rss-meta-item threads" title="Threads 反響数: ${threadsCount}">
+            <span class="mdi mdi-at"></span> ${threadsCount}
           </span>
+          <span class="meta-divider">•</span>
         `;
       }
 
-      // 2ペイン・常時表示型のスタイリッシュなHTML設計 (タイトル最上部・画像は右端固定・ブックマークはフッター統合・SNS反響数・記事を開く)
+      // 2ペイン・常時表示・超ミニマル設計 (タイトル最上部・画像右端・フッター左右スプリット配置)
       card.innerHTML = `
         ${!isRead ? '<span class="unread-dot"></span>' : ''}
         <div class="rss-card-main-row">
@@ -3185,21 +3188,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <h4 class="rss-card-title">
               ${item.title}
             </h4>
-            <div class="rss-card-header">
-              <div class="rss-card-header-left">
-                <span class="rss-source-chip" data-feed-name="${item.feedName}">
-                  <img src="${getFaviconUrl(item.link)}" alt="" class="rss-source-favicon">
-                  <span>${item.feedName}</span>
-                </span>
-                ${item.weight ? `
-                  <span class="rss-weight-badge" title="AI注目度スコア">
-                    注目度: dots${item.weight}
-                  </span>
-                ` : ''}
-                ${snsBadgesHtml}
-              </div>
-              <span class="rss-card-time">${formattedTime}</span>
-            </div>
           </div>
           ${imageHtml}
         </div>
@@ -3209,20 +3197,40 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="rss-details-section">
             <p class="rss-details-summary">${item.contentSnippet || '直接ニュースソースから詳細記事を参照してください。'}</p>
             <div class="rss-details-actions">
-              <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="rss-details-primary-btn">
-                記事を開く <span class="mdi mdi-open-in-new"></span>
-              </a>
-              <div class="rss-details-deep-dive">
-                <a href="https://chatgpt.com/?q=${chatGptPrompt}&hints=search" target="_blank" rel="noopener noreferrer" class="rss-details-dive-btn chatgpt">
-                  <span class="mdi mdi-chat-outline"></span> ChatGPT
-                </a>
-                <a href="https://perplexity.ai/search?q=${perplexityPrompt}" target="_blank" rel="noopener noreferrer" class="rss-details-dive-btn perplexity">
-                  <span class="mdi mdi-magnify"></span> Perplexity
-                </a>
+              <!-- 左寄せ: 記事ソースChip、注目度、SNS反響、配信時間 -->
+              <div class="rss-card-meta">
+                <span class="rss-card-source" data-feed-name="${item.feedName}">
+                  <img src="${getFaviconUrl(item.link)}" alt="" class="rss-source-favicon">
+                  <span>${item.feedName}</span>
+                </span>
+                <span class="meta-divider">•</span>
+                ${item.weight ? `
+                  <span class="rss-meta-item weight" title="AI注目度スコア">
+                    <span class="mdi mdi-star-outline"></span> 注目度: ${item.weight}
+                  </span>
+                  <span class="meta-divider">•</span>
+                ` : ''}
+                ${snsMetaHtml}
+                <span class="rss-card-time">${formattedTime}</span>
               </div>
-              <button class="bookmark-action-btn${isBookmarked ? ' active' : ''}" title="あとで読む">
-                <span class="mdi ${isBookmarked ? 'mdi-bookmark' : 'mdi-bookmark-outline'}"></span> あとで読む
-              </button>
+              
+              <!-- 右寄せ: アクションボタン群 -->
+              <div class="rss-details-buttons">
+                <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="rss-details-primary-btn">
+                  記事を開く <span class="mdi mdi-open-in-new"></span>
+                </a>
+                <div class="rss-details-deep-dive">
+                  <a href="https://chatgpt.com/?q=${chatGptPrompt}&hints=search" target="_blank" rel="noopener noreferrer" class="rss-details-dive-btn chatgpt">
+                    <span class="mdi mdi-chat-outline"></span> ChatGPT
+                  </a>
+                  <a href="https://perplexity.ai/search?q=${perplexityPrompt}" target="_blank" rel="noopener noreferrer" class="rss-details-dive-btn perplexity">
+                    <span class="mdi mdi-magnify"></span> Perplexity
+                  </a>
+                </div>
+                <button class="bookmark-action-btn${isBookmarked ? ' active' : ''}" title="あとで読む">
+                  <span class="mdi ${isBookmarked ? 'mdi-bookmark' : 'mdi-bookmark-outline'}"></span> あとで読む
+                </button>
+              </div>
             </div>
           </div>
         </div>

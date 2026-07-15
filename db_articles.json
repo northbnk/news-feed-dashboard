@@ -17885,21 +17885,22 @@
     ]
   },
   {
-    "title": "「検察なめんな」「録画は私の監視」上映へ　検事の第2回公判始まる",
-    "originalTitle": "「検察なめんな」「録画は私の監視」上映へ　検事の第2回公判始まる",
+    "title": "「録画は私の監視」映像を上映　「検察なめんな」検事の第2回公判",
+    "originalTitle": "「録画は私の監視」映像を上映　「検察なめんな」検事の第2回公判",
     "link": "http://www.asahi.com/articles/ASV7G2CDMV7GPTIL00HM.html?ref=rss",
     "contentSnippet": "",
-    "pubDate": "2026-07-15T05:10:10.000Z",
+    "pubDate": "2026-07-15T05:37:08.000Z",
     "category": "general",
     "feedName": "朝日新聞ニュース",
     "weight": 6,
     "keywords": [
-      "検察",
       "録画",
       "監視",
+      "映像",
       "上映",
+      "検察",
       "検事",
-      "第2回公判始"
+      "第2回公判"
     ]
   },
   {
@@ -17968,6 +17969,72 @@
       "物価高",
       "大学生",
       "正解"
+    ]
+  },
+  {
+    "title": "インフルエンサー「宮崎麗果」 脱税の罪で有罪判決 東京地裁",
+    "originalTitle": "インフルエンサー「宮崎麗果」 脱税の罪で有罪判決 東京地裁",
+    "link": "http://www3.nhk.or.jp/news/html/20260715/k10015177381000.html",
+    "contentSnippet": "「宮崎麗果」の名前で、インフルエンサーとして活動する広告代理店の代表が、脱税の罪に問われた裁判で、東京地方裁判所は「身勝手な考えから本件に及んだ責任は重い」として、執行猶予のついた有罪判決を言い渡しました。",
+    "pubDate": "Wed, 15 Jul 2026 14:30:15 +0900",
+    "category": "headline",
+    "feedName": "NHK主要ニュース",
+    "weight": 10,
+    "keywords": [
+      "インフルエンサー",
+      "宮崎麗果",
+      "脱税",
+      "有罪判決",
+      "東京地裁"
+    ]
+  },
+  {
+    "title": "熊本県職員が築60年空き家をDIY　「つながり生む場に」",
+    "originalTitle": "熊本県職員が築60年空き家をDIY　「つながり生む場に」",
+    "link": "https://mainichi.jp/articles/20260714/k00/00m/040/163000c",
+    "contentSnippet": "",
+    "pubDate": "2026-07-15T05:45:10.000Z",
+    "category": "general",
+    "feedName": "毎日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "熊本県職員",
+      "築60年空",
+      "DIY"
+    ]
+  },
+  {
+    "title": "カンザス州立大の井上心太郎選手がアスレチックスとマイナー契約",
+    "originalTitle": "カンザス州立大の井上心太郎選手がアスレチックスとマイナー契約",
+    "link": "https://mainichi.jp/articles/20260715/k00/00m/050/158000c",
+    "contentSnippet": "",
+    "pubDate": "2026-07-15T05:43:54.000Z",
+    "category": "sports",
+    "feedName": "毎日新聞スポーツ",
+    "weight": 5,
+    "keywords": [
+      "カンザス州立大",
+      "井上心太郎選手",
+      "アスレチックス",
+      "マイナー契約"
+    ]
+  },
+  {
+    "title": "サムスン、折りたたみ画面の新技術「Flex Titanium」を発表　さらに折り目を軽減",
+    "originalTitle": "サムスン、折りたたみ画面の新技術「Flex Titanium」を発表　さらに折り目を軽減",
+    "link": "https://k-tai.watch.impress.co.jp/docs/news/2125325.html",
+    "contentSnippet": "サムスン電子は、次世代Samsung Galaxy折りたたみ製品向けのディスプレイ新技術「Flex Titanium」を発表した。チタン合金フィルムとチタンプレートの2つの部品を組み合わせ、耐久性の向上と折り目の目立ちにくさを両立したという。",
+    "pubDate": "2026-07-15T05:34:39.000Z",
+    "category": "trending",
+    "feedName": "ケータイ Watch",
+    "weight": 5,
+    "keywords": [
+      "サムスン",
+      "画面",
+      "新技術",
+      "Flex",
+      "Titanium",
+      "軽減"
     ]
   }
 ]
