@@ -3035,6 +3035,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  let rssScrollObserver = null;
+
+  function initRssObserver() {
+    if (!rssArticlesList) return;
+    if (rssScrollObserver) {
+      rssScrollObserver.disconnect();
+    }
+
+    rssScrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          const link = card.getAttribute('data-link');
+          if (link && !readNewsUrls.has(link)) {
+            markAsRead(link, card);
+            const dot = card.querySelector('.unread-dot');
+            if (dot) dot.remove();
+            card.classList.add('is-read');
+            renderRssSidebar();
+          }
+          rssScrollObserver.unobserve(card);
+        }
+      });
+    }, {
+      root: rssArticlesList,
+      rootMargin: '0px',
+      threshold: 0.3
+    });
+  }
+
   // キーボードショートカットで追跡する現在の選択インデックス
   let currentSelectedIndex = -1;
   let filteredArticlesListForKeys = []; // ショートカット処理で参照するフィルタされた現在の一覧
@@ -3100,8 +3130,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const chatGptPrompt = encodeURIComponent("「" + item.title + "」についてWEB検索を利用して記事の深掘りをして");
       const perplexityPrompt = encodeURIComponent("「" + item.title + "」について関連報道や進展をWEB検索を利用して深掘りして");
 
-      // 2ペイン・アコーディオン展開型のHTML設計
+      // 2ペイン・アコーディオン展開型のHTML設計 (常時表示・ドット左上・注目度バッジ調整)
       card.innerHTML = `
+        ${!isRead ? '<span class="unread-dot"></span>' : ''}
         <div class="rss-card-main-row">
           ${imageHtml}
           <div class="rss-card-content">
@@ -3113,14 +3144,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </span>
                 ${item.weight ? `
                   <span class="rss-weight-badge" title="AI注目度スコア">
-                    <span class="mdi mdi-fire"></span> ${item.weight}
+                    注目度: ${item.weight}
                   </span>
                 ` : ''}
               </div>
               <span class="rss-card-time">${formattedTime}</span>
             </div>
             <h4 class="rss-card-title">
-              ${!isRead ? '<span class="unread-dot"></span>' : ''}
               ${item.title}
             </h4>
             <div class="rss-card-footer">
@@ -3131,10 +3161,10 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
         
-        <!-- アコーディオン展開詳細エリア -->
+        <!-- 常時表示詳細エリア -->
         <div class="rss-card-details-expanded">
           <div class="rss-details-section">
-            <p class="rss-details-summary">AI要約を取得中...</p>
+            <p class="rss-details-summary">${item.contentSnippet || '直接ニュースソースから詳細記事を参照してください。'}</p>
             <div class="rss-details-actions">
               <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="rss-details-primary-btn">
                 一次ソースを開く <span class="mdi mdi-open-in-new"></span>
@@ -3152,52 +3182,13 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      // 記事選択・展開のハンドラ
+      // 記事フォーカス選択のハンドラ (常時表示のため開閉は不要、選択枠表示のみ)
       const selectAndExpandCard = () => {
-        const isExpanded = card.classList.contains('expanded');
-        
-        // 1. 他のすべての展開状態をクリア
         document.querySelectorAll('.rss-article-card').forEach(el => {
-          el.classList.remove('expanded');
           el.classList.remove('selected');
         });
-
-        if (isExpanded) {
-          // すでに開いているなら閉じる
-          card.classList.remove('expanded');
-          return;
-        }
-
-        // 2. ターゲットのカードを展開 & 選択ハイライト
-        card.classList.add('expanded');
         card.classList.add('selected');
-        currentSelectedIndex = index; // 現在の選択インデックスを更新
-
-        // 3. 既読化
-        if (!readNewsUrls.has(item.link)) {
-          markAsRead(item.link, card);
-          const dot = card.querySelector('.unread-dot');
-          if (dot) dot.remove();
-          card.classList.add('is-read');
-          renderRssSidebar(); // サイドバーの未読数を即座に再計算・再描画
-        }
-
-        // 4. 非同期で要約コンテンツをロード
-        const summaryElement = card.querySelector('.rss-details-summary');
-        if (summaryElement && summaryElement.textContent === 'AI要約を取得中...') {
-          fetch('/api/scrape-image?url=' + encodeURIComponent(item.link))
-            .then(res => res.json())
-            .then(data => {
-              if (item.contentSnippet) {
-                summaryElement.textContent = item.contentSnippet;
-              } else {
-                summaryElement.textContent = '直接ニュースソースから詳細記事を参照してください。';
-              }
-            })
-            .catch(() => {
-              summaryElement.textContent = item.contentSnippet || '直接ニュースソースから詳細記事を参照してください。';
-            });
-        }
+        currentSelectedIndex = index;
       };
 
       // ニュースソースChipクリックイベント（絞り込み）
@@ -3250,15 +3241,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const activeCard = rssArticlesList.querySelector(`[data-index="${currentSelectedIndex}"]`);
       if (activeCard) {
         activeCard.classList.add('selected');
-        activeCard.classList.add('expanded');
-        
-        // 要約の復元ロード
-        const item = filtered[currentSelectedIndex];
-        const summaryElement = activeCard.querySelector('.rss-details-summary');
-        if (summaryElement && item.contentSnippet) {
-          summaryElement.textContent = item.contentSnippet;
-        }
       }
+    }
+
+    // 新しく描画された未読カードを IntersectionObserver の監視に登録
+    if (rssScrollObserver) {
+      filtered.forEach((item, idx) => {
+        const isRead = readNewsUrls.has(item.link);
+        if (!isRead) {
+          const card = rssArticlesList.querySelector(`[data-index="${idx}"]`);
+          if (card) {
+            rssScrollObserver.observe(card);
+          }
+        }
+      });
     }
 
     if (!resetScroll) {

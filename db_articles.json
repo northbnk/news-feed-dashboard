@@ -492,24 +492,6 @@
     ]
   },
   {
-    "title": "【本日みつけたお買い得品】【プライムデー最終日】Surfaceが10万円引きのチャンス！ノートPCを買うなら今！",
-    "originalTitle": "【本日みつけたお買い得品】【プライムデー最終日】Surfaceが10万円引きのチャンス！ノートPCを買うなら今！",
-    "link": "https://pc.watch.impress.co.jp/docs/news/todays_sales/2124597.html",
-    "contentSnippet": "Amazonプライムデーセールは本日(7月13日)まで。Surface Proが約10万円引きになっているほか、10万円切りノートPCも販売されており、セールが終了する前にチェックしておこう。",
-    "pubDate": "2026-07-13T03:32:30.000Z",
-    "category": "trending",
-    "feedName": "PC Watch",
-    "weight": 5,
-    "keywords": [
-      "得品",
-      "プライムデー最終日",
-      "Surface",
-      "10万円引",
-      "チャンス",
-      "ノートPC"
-    ]
-  },
-  {
     "title": "【きょうのおはBiz 7月13日(月)】過熱するコンビニ衣料品",
     "originalTitle": "【きょうのおはBiz 7月13日(月)】過熱するコンビニ衣料品",
     "link": "http://www3.nhk.or.jp/news/html/20260713/k10015175481000.html",
@@ -16182,20 +16164,20 @@
     ]
   },
   {
-    "title": "皇室典範改正案、きょうの採決は見送り　自民「かなり無理をした」",
-    "originalTitle": "皇室典範改正案、きょうの採決は見送り　自民「かなり無理をした」",
+    "title": "皇室典範改正案、きょうの採決見送り　参院特別委で自民・立憲が合意",
+    "originalTitle": "皇室典範改正案、きょうの採決見送り　参院特別委で自民・立憲が合意",
     "link": "http://www.asahi.com/articles/ASV7G7VR1V7GUTFK014M.html?ref=rss",
     "contentSnippet": "",
-    "pubDate": "2026-07-15T03:18:38.000Z",
+    "pubDate": "2026-07-15T03:26:32.000Z",
     "category": "general",
     "feedName": "朝日新聞ニュース",
     "weight": 6,
     "keywords": [
       "皇室典範改正案",
-      "採決",
-      "見送",
-      "自民",
-      "無理"
+      "採決見送",
+      "参院特別委",
+      "自民・立憲",
+      "合意"
     ]
   },
   {
@@ -18021,6 +18003,41 @@
       "ディスク容量",
       "完全",
       "可能性"
+    ]
+  },
+  {
+    "title": "EUが「バッテリーを取り外し・交換可能にするルール」からウェアラブル端末を除外へ",
+    "originalTitle": "EUが「バッテリーを取り外し・交換可能にするルール」からウェアラブル端末を除外へ",
+    "link": "https://gigazine.net/news/20260715-eu-wearable-battery-removal-rules/",
+    "contentSnippet": "EU域内で販売される製品は基本的に、バッテリーをユーザーが取り外し・交換できるようにする義務が課されていて、医療機器など一部製品だけがルールから除外されていますが、新たに、ウェアラブル端末など6つのカテゴリーを除外対象に追加することが検討されています。\n続きを読む...",
+    "pubDate": "Wed, 15 Jul 2026 12:32:00 +0900",
+    "category": "trending",
+    "feedName": "GIGAZINE",
+    "weight": 5,
+    "keywords": [
+      "EU",
+      "バッテリー",
+      "・交換可能",
+      "ルール",
+      "ウェアラブル端末",
+      "除外"
+    ]
+  },
+  {
+    "title": "一部Dell製PCで異常終了など不具合のため7月のWindows更新利用できず",
+    "originalTitle": "一部Dell製PCで異常終了など不具合のため7月のWindows更新利用できず ",
+    "link": "https://pc.watch.impress.co.jp/docs/news/2125271.html",
+    "contentSnippet": "Microsoftは、7月14日(米国時間)に公開した7月度Windows Update(KB5101650)に関して、Intel CPUを搭載した一部のDell製PCで互換性の問題が発生していると報告した。",
+    "pubDate": "2026-07-15T03:27:14.000Z",
+    "category": "trending",
+    "feedName": "PC Watch",
+    "weight": 5,
+    "keywords": [
+      "一部Dell製PC",
+      "異常終了",
+      "不具合",
+      "7月",
+      "Windows更新利用"
     ]
   }
 ]

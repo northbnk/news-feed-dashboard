@@ -712,16 +712,17 @@ body {
 
 /* 未読インジケータ（パルスする青いドット） */
 .unread-dot {
-  display: inline-block;
+  position: absolute;
+  top: 6px;
+  left: 6px;
   width: 7px;
   height: 7px;
   background-color: var(--accent-color);
   border-radius: 50%;
-  margin-right: 8px;
-  margin-top: 6px; /* 1行目のテキスト中央に合わせる */
   box-shadow: 0 0 6px var(--accent-color);
   animation: pulseGlow 2s infinite ease-in-out;
   flex-shrink: 0;
+  z-index: 10;
 }
 
 @keyframes pulseGlow {
@@ -3412,6 +3413,7 @@ body {
 }
 
 .rss-article-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: var(--card-bg);
@@ -3670,28 +3672,13 @@ body {
   width: 100%;
 }
 
-/* アコーディオン詳細パネル */
+/* 常時表示詳細パネル */
 .rss-card-details-expanded {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
   width: 100%;
   border-top: 1px dashed var(--border-color);
-  margin-top: 0;
-  padding-top: 0;
-}
-
-.rss-article-card.expanded {
-  border-color: var(--accent-color);
-  background-color: rgba(67, 97, 238, 0.02);
-}
-
-.rss-article-card.expanded .rss-card-details-expanded {
-  max-height: 500px;
-  opacity: 1;
   margin-top: 12px;
   padding-top: 12px;
+  display: block;
 }
 
 .rss-details-section {
@@ -3870,6 +3857,13 @@ body {
 
 .rss-details-dive-btn .mdi {
   font-size: 15px;
+}
+
+/* ライトテーマ時のアクティブバッジ視認性改善 */
+.light-theme .sidebar-item.active .sidebar-badge, 
+.light-theme .feed-item.active .feed-badge {
+  background-color: rgba(0, 0, 0, 0.12) !important;
+  color: #111111 !important; /* 濃い文字色でコントラストを確保 */
 }
 
 
