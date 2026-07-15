@@ -3467,46 +3467,52 @@ body {
   gap: 6px;
 }
 
-/* 一元化されたドット連結メタ情報行 */
+/* 一元化されたメタ情報バッジ行 */
 .rss-card-meta {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px; /* バッジ間の程よい隙間 */
   flex-wrap: wrap;
-  font-size: 11.5px;
+}
+
+/* メタ情報内の各バッジ要素の共通ベース */
+.rss-card-source,
+.rss-meta-item,
+.rss-card-time {
+  display: inline-flex;
+  align-items: center;
+  height: 26px; /* 右側のボタン群と完璧に高さを統一 */
+  padding: 0 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  font-size: 11px;
+  color: var(--text-secondary);
+  background-color: transparent;
+  gap: 4px;
+  box-sizing: border-box;
+}
+
+/* アイコンサイズの一貫調整 */
+.rss-card-meta .mdi {
+  font-size: 12px;
   color: var(--text-muted);
-  line-height: 1.5;
 }
 
 .rss-card-source {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
   font-weight: 500;
-  color: var(--text-secondary);
 }
 
 .rss-source-favicon {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   border-radius: 2px;
   object-fit: contain;
 }
 
-.meta-divider {
-  color: var(--border-color);
-  font-size: 10px;
-  user-select: none;
-}
-
-.rss-meta-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
 .rss-meta-item.weight {
   color: var(--accent-color);
+  border-color: var(--accent-glow);
+  background-color: rgba(67, 97, 238, 0.02);
 }
 
 .rss-card-time {
@@ -3728,17 +3734,18 @@ body {
 .rss-details-primary-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
-  background-color: transparent; /* 背景を透明にし、アウトライン化 */
+  gap: 4px;
+  background-color: transparent;
   border: 1px solid var(--accent-color);
   color: var(--accent-color);
-  padding: 8px 14px;
-  border-radius: var(--border-radius-sm);
+  padding: 0 10px;
+  border-radius: 4px;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   transition: background-color 0.2s, color 0.2s;
-  height: 34px;
+  height: 26px;
+  box-sizing: border-box;
 }
 
 .rss-details-primary-btn:hover {
@@ -3748,21 +3755,22 @@ body {
 
 .rss-details-deep-dive {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 
 .rss-details-dive-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  border-radius: var(--border-radius-sm);
+  gap: 4px;
+  padding: 0 10px;
+  border-radius: 4px;
   text-decoration: none;
   border: 1px solid var(--border-color);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-normal);
   transition: background-color 0.2s, border-color 0.2s;
-  height: 34px;
+  height: 26px;
+  box-sizing: border-box;
 }
 
 .rss-details-dive-btn:hover {
@@ -3778,16 +3786,17 @@ body {
 .rss-details-actions .bookmark-action-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  border-radius: var(--border-radius-sm);
+  gap: 4px;
+  padding: 0 10px;
+  border-radius: 4px;
   border: 1px solid var(--border-color);
   background-color: transparent;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-normal);
   cursor: pointer;
   transition: background-color 0.2s, border-color 0.2s, color 0.2s;
-  height: 34px;
+  height: 26px;
+  box-sizing: border-box;
 }
 
 .rss-details-actions .bookmark-action-btn:hover {
