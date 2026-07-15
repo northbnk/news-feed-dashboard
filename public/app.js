@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 1. 時計表示の更新 (日本時間) ---
   const weekDays = ['日', '月', '火', '水', '木', '金', '土'];
   function updateClock() {
+    if (!clockElement) return;
     const now = new Date();
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -144,8 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     clockElement.textContent = `${year}年${month}月${date}日 (${day}) ${hours}:${minutes}:${seconds}`;
   }
-  updateClock();
-  setInterval(updateClock, 1000);
+  if (clockElement) {
+    updateClock();
+    setInterval(updateClock, 1000);
+  }
 
   // --- 2. テーマ切り替え機能 (ダーク/ライト) ---
   const savedTheme = localStorage.getItem('theme') || 'dark-theme';
@@ -3368,7 +3371,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 9. 初期読み込み ＆ ポーリング (30秒) ---
   loadData();
-  initWeather();
   initRssReader(); // 本格RSSリーダーの起動
   setInterval(loadData, 30000);
 });
