@@ -3523,10 +3523,7 @@ body {
   gap: 6px;
 }
 
-.rss-article-card.is-read .rss-card-title {
-  color: var(--text-muted);
-  font-weight: normal;
-}
+
 
 
 
