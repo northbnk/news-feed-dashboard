@@ -2978,7 +2978,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const catHeader = document.createElement('div');
       catHeader.className = 'accordion-header';
       catHeader.innerHTML = `
-        <span class="folder-icon">📁</span>
+        <span class="folder-icon mdi mdi-folder-outline"></span>
         <span class="category-name">${category}</span>
       `;
 
@@ -2991,7 +2991,7 @@ document.addEventListener('DOMContentLoaded', () => {
         feedItem.className = `feed-item${activeFeedId === f.url ? ' active' : ''}`;
         feedItem.setAttribute('data-feed-url', f.url);
         feedItem.innerHTML = `
-          <span class="feed-icon">📰</span>
+          <img src="${getFaviconUrl(f.url)}" alt="" class="sidebar-feed-favicon" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' viewBox=\\\'0 0 24 24\\\'><circle cx=\\\'12\\\' cy=\\\'12\\\' r=\\\'8\\\' fill=\\\'%23666\\\'/></svg>'">
           <span class="feed-title">${f.name}</span>
           <span class="feed-badge"${unread > 0 ? ' style="display:inline-block;"' : ' style="display:none;"'}>${unread}</span>
         `;
@@ -3113,7 +3113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </span>
                 ${item.weight ? `
                   <span class="rss-weight-badge" title="AI注目度スコア">
-                    🔥 ${item.weight}
+                    <span class="mdi mdi-fire"></span> ${item.weight}
                   </span>
                 ` : ''}
               </div>
@@ -3125,9 +3125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </h4>
             <div class="rss-card-footer">
               <button class="bookmark-action-btn${isBookmarked ? ' active' : ''}" title="あとで読む">
-                <svg viewBox="0 0 24 24" fill="${isBookmarked ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
-                  <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
-                </svg>
+                <span class="mdi ${isBookmarked ? 'mdi-bookmark' : 'mdi-bookmark-outline'}"></span>
               </button>
             </div>
           </div>
@@ -3139,14 +3137,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="rss-details-summary">AI要約を取得中...</p>
             <div class="rss-details-actions">
               <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="rss-details-primary-btn">
-                一次ソースを開く ➔
+                一次ソースを開く <span class="mdi mdi-open-in-new"></span>
               </a>
               <div class="rss-details-deep-dive">
                 <a href="https://chatgpt.com/?q=${chatGptPrompt}&hints=search" target="_blank" rel="noopener noreferrer" class="rss-details-dive-btn chatgpt">
-                  <span class="icon">💬</span> ChatGPT
+                  <span class="mdi mdi-chat-outline"></span> ChatGPT
                 </a>
                 <a href="https://perplexity.ai/search?q=${perplexityPrompt}" target="_blank" rel="noopener noreferrer" class="rss-details-dive-btn perplexity">
-                  <span class="icon">🔍</span> Perplexity
+                  <span class="mdi mdi-magnify"></span> Perplexity
                 </a>
               </div>
             </div>

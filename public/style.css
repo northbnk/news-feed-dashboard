@@ -3848,6 +3848,30 @@ body {
   gap: 8px;
 }
 
+/* サイドバーのフィード用ファビコン */
+.sidebar-feed-favicon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  margin-right: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* MDIアイコン配置微調整 */
+.sidebar-icon.mdi {
+  font-size: 16px;
+  margin-right: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+}
+
+.rss-details-dive-btn .mdi {
+  font-size: 15px;
+}
+
 
 
 
