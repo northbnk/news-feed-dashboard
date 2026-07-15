@@ -3149,11 +3149,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const chatGptPrompt = encodeURIComponent("「" + item.title + "」についてWEB検索を利用して記事の深掘りをして");
       const perplexityPrompt = encodeURIComponent("「" + item.title + "」について関連報道や進展をWEB検索を利用して深掘りして");
 
-      // 2ペイン・アコーディオン展開型のHTML設計 (常時表示・ドット左上・注目度バッジ調整)
+      // 2ペイン・常時表示型のスタイリッシュなHTML設計 (画像は右端固定・ブックマークはフッター統合)
       card.innerHTML = `
         ${!isRead ? '<span class="unread-dot"></span>' : ''}
         <div class="rss-card-main-row">
-          ${imageHtml}
           <div class="rss-card-content">
             <div class="rss-card-header">
               <div class="rss-card-header-left">
@@ -3172,12 +3171,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <h4 class="rss-card-title">
               ${item.title}
             </h4>
-            <div class="rss-card-footer">
-              <button class="bookmark-action-btn${isBookmarked ? ' active' : ''}" title="あとで読む">
-                <span class="mdi ${isBookmarked ? 'mdi-bookmark' : 'mdi-bookmark-outline'}"></span>
-              </button>
-            </div>
           </div>
+          ${imageHtml}
         </div>
         
         <!-- 常時表示詳細エリア -->
@@ -3196,6 +3191,9 @@ document.addEventListener('DOMContentLoaded', () => {
                   <span class="mdi mdi-magnify"></span> Perplexity
                 </a>
               </div>
+              <button class="bookmark-action-btn${isBookmarked ? ' active' : ''}" title="あとで読む">
+                <span class="mdi ${isBookmarked ? 'mdi-bookmark' : 'mdi-bookmark-outline'}"></span> あとで読む
+              </button>
             </div>
           </div>
         </div>

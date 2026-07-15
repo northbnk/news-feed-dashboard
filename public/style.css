@@ -3424,16 +3424,15 @@ body {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-md);
-  padding: 12px 16px;
+  padding: 16px 20px 16px 24px; /* 左インデントを広げ、ドットとの重なりを防ぐ */
   cursor: pointer;
   transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
-  gap: 0;
+  gap: 12px; /* メイン行と詳細アコーディオンの間のスペース */
 }
 
 .rss-article-card:hover {
-  transform: translateY(-1px);
   border-color: var(--accent-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .rss-article-card.selected {
@@ -3442,12 +3441,13 @@ body {
 }
 
 .rss-card-image-wrapper {
-  width: 90px;
-  height: 60px;
+  width: 100px;
+  height: 68px;
   flex-shrink: 0;
   border-radius: var(--border-radius-sm);
   overflow: hidden;
   border: 1px solid var(--border-color);
+  align-self: center; /* タイトルの右側で縦中央に揃える */
 }
 
 .rss-card-image {
@@ -3461,7 +3461,7 @@ body {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 8px;
 }
 
 .rss-card-header {
@@ -3491,35 +3491,7 @@ body {
   font-weight: normal;
 }
 
-.rss-card-footer {
-  display: flex;
-  justify-content: flex-end;
-}
 
-.bookmark-action-btn {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color var(--transition-fast);
-}
-
-.bookmark-action-btn:hover {
-  color: var(--accent-color);
-}
-
-.bookmark-action-btn.active {
-  color: #ff9f43;
-}
-
-.bookmark-action-btn svg {
-  width: 16px;
-  height: 16px;
-}
 
 /* ペイン3: 右プレビューペイン */
 .rss-preview {
@@ -3710,9 +3682,10 @@ body {
 
 .rss-details-actions {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   align-items: center;
+  width: 100%;
 }
 
 .rss-details-primary-btn {
@@ -3721,12 +3694,13 @@ body {
   gap: 6px;
   background-color: var(--accent-color);
   color: #ffffff;
-  padding: 8px 16px;
+  padding: 8px 14px;
   border-radius: var(--border-radius-sm);
   text-decoration: none;
-  font-size: 12.5px;
-  font-weight: bold;
+  font-size: 12px;
+  font-weight: 500;
   transition: opacity 0.2s;
+  height: 34px;
 }
 
 .rss-details-primary-btn:hover {
@@ -3748,19 +3722,49 @@ body {
   border: 1px solid var(--border-color);
   font-size: 12px;
   color: var(--text-normal);
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, border-color 0.2s;
+  height: 34px;
 }
 
 .rss-details-dive-btn:hover {
   background-color: rgba(255, 255, 255, 0.03);
+  border-color: var(--accent-color);
 }
 
 .light-theme .rss-details-dive-btn:hover {
   background-color: rgba(0, 0, 0, 0.02);
 }
 
-.rss-details-dive-btn .icon {
-  font-size: 14px;
+/* フッター内のブックマークアクションボタンの統合デザイン */
+.rss-details-actions .bookmark-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  font-size: 12px;
+  color: var(--text-normal);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  height: 34px;
+}
+
+.rss-details-actions .bookmark-action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-color: var(--danger-color);
+  color: var(--danger-color);
+}
+
+.light-theme .rss-details-actions .bookmark-action-btn:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.rss-details-actions .bookmark-action-btn.active {
+  background-color: rgba(239, 68, 68, 0.12);
+  border-color: var(--danger-color);
+  color: var(--danger-color);
 }
 
 /* ショートカット用フォーカス表示 */
