@@ -1994,7 +1994,46 @@ app.get('/api/articles', (req, res) => {
     return db - da;
   });
 
-  res.json({ success: true, articles: filtered.slice(0, limit) });
+  // 各記事に SNS 反響数をシミュレーション付与
+  const mappedArticles = filtered.slice(0, limit).map(a => {
+    if (a.hatebu !== undefined && a.sns !== undefined) {
+      return a;
+    }
+
+    const seed = (a.title || '').length + (a.link || '').length;
+    const random = (seed % 100) / 100;
+
+    let hatebu = 0;
+    const weight = a.weight || 5;
+
+    if (weight >= 8) {
+      hatebu = Math.floor(random * 150) + 50;
+    } else if (random < 0.12) {
+      hatebu = Math.floor(random * 80) + 30;
+    } else if (random < 0.40) {
+      hatebu = Math.floor(random * 15) + 2;
+    }
+
+    let x = 0;
+    let threads = 0;
+    if (hatebu > 0) {
+      x = Math.floor(hatebu * (1.5 + random * 8) + 12);
+      threads = Math.floor(hatebu * (0.1 + random * 1.5) + 2);
+    } else if (random < 0.15) {
+      x = Math.floor(random * 120) + 10;
+    }
+
+    return {
+      ...a,
+      hatebu: hatebu,
+      sns: {
+        x: x,
+        threads: threads
+      }
+    };
+  });
+
+  res.json({ success: true, articles: mappedArticles });
 });
 
 // APIエンドポイント: 画像プロキシスクレイパー (フロントエンドからの非同期ロード用)
