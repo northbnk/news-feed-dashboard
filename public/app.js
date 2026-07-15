@@ -2879,6 +2879,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const menuAllUnread = document.getElementById('menu-all-unread');
   const menuBookmarks = document.getElementById('menu-bookmarks');
+  const menuManageFeeds = document.getElementById('menu-manage-feeds');
   const markAllReadBtn = document.getElementById('mark-all-read-btn');
 
   // プレビュー表示要素の参照
@@ -2937,6 +2938,234 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (err) {
       console.error('Failed to load raw articles:', err);
     }
+  }
+
+  // 右ペイン: フィード管理画面の描画と制御
+  function renderFeedManager() {
+    if (currentViewTitle) currentViewTitle.textContent = 'フィード管理';
+    if (markAllReadBtn) markAllReadBtn.style.display = 'none';
+
+    let totalFeeds = 0;
+    const categories = Object.keys(rssFeeds);
+    categories.forEach(cat => totalFeeds += rssFeeds[cat].length);
+
+    if (timelineCountLabel) {
+      timelineCountLabel.textContent = `${categories.length}個のカテゴリ, ${totalFeeds}個のフィード`;
+    }
+
+    rssArticlesList.innerHTML = `
+      <div class="feed-manager-container">
+        <!-- A. 新規追加フォーム -->
+        <div class="mgr-card">
+          <h4><span class="mdi mdi-plus-circle-outline"></span> 新規フィードの登録</h4>
+          <form id="mgr-add-form" class="mgr-form">
+            <div class="mgr-form-grid">
+              <div class="mgr-form-group">
+                <label>フィード名</label>
+                <input type="text" id="mgr-name" required placeholder="例: ITmedia NEWS">
+              </div>
+              <div class="mgr-form-group">
+                <label>フィード URL (RSS/Atom)</label>
+                <input type="url" id="mgr-url" required placeholder="https://...">
+              </div>
+              <div class="mgr-form-group">
+                <label>カテゴリ</label>
+                <select id="mgr-category">
+                  <option value="general">一般 (general)</option>
+                  <option value="tech">技術 (tech)</option>
+                  <option value="trending">話題 (trending)</option>
+                  <option value="sports">スポーツ (sports)</option>
+                  <option value="headline">ヘッドライン (headline)</option>
+                </select>
+              </div>
+              <div class="mgr-form-group">
+                <label>AI注目度ウェイト</label>
+                <input type="number" id="mgr-weight" step="0.1" min="0.1" max="10.0" value="1.5">
+              </div>
+            </div>
+            <button type="submit" class="mgr-submit-btn"><span class="mdi mdi-plus"></span> 登録する</button>
+          </form>
+        </div>
+
+        <!-- B. 登録済み一覧 -->
+        <div class="mgr-card">
+          <h4><span class="mdi mdi-format-list-bulleted"></span> 登録フィード一覧</h4>
+          <div class="mgr-table-wrapper">
+            <table class="mgr-table">
+              <thead>
+                <tr>
+                  <th>フィード名</th>
+                  <th>URL</th>
+                  <th>カテゴリ</th>
+                  <th>ウェイト</th>
+                  <th class="mgr-actions-header">操作</th>
+                </tr>
+              </thead>
+              <tbody id="mgr-tbody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // フォームの送信処理
+    const addForm = document.getElementById('mgr-add-form');
+    if (addForm) {
+      addForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('mgr-name').value;
+        const url = document.getElementById('mgr-url').value;
+        const category = document.getElementById('mgr-category').value;
+        const weight = document.getElementById('mgr-weight').value;
+
+        try {
+          const res = await fetch('/api/feeds', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, url, category, weight })
+          });
+          const result = await res.json();
+          if (result.success) {
+            showToast('フィードを登録しました。', 'success');
+            // フィード再読み込み & 再描画
+            await reloadAllFeedsAndArticles();
+          } else {
+            alert(result.message || '登録に失敗しました。');
+          }
+        } catch (err) {
+          alert('通信エラーが発生しました。');
+        }
+      });
+    }
+
+    // テーブル行の構築
+    const tbody = document.getElementById('mgr-tbody');
+    if (!tbody) return;
+
+    categories.forEach(cat => {
+      rssFeeds[cat].forEach(feed => {
+        const tr = document.createElement('tr');
+        tr.setAttribute('data-url', feed.url);
+        
+        tr.innerHTML = `
+          <td><span class="feed-name-txt">${feed.name}</span></td>
+          <td><span class="feed-url-txt" title="${feed.url}">${feed.url}</span></td>
+          <td><span class="feed-category-txt">${cat}</span></td>
+          <td><span class="feed-weight-txt">${feed.weight}</span></td>
+          <td class="mgr-actions-cell">
+            <button class="mgr-action-btn edit-btn" title="編集"><span class="mdi mdi-pencil-outline"></span> 編集</button>
+            <button class="mgr-action-btn delete-btn" title="削除"><span class="mdi mdi-delete-outline"></span> 削除</button>
+          </td>
+        `;
+
+        // 削除ボタン
+        const deleteBtn = tr.querySelector('.delete-btn');
+        if (deleteBtn) {
+          deleteBtn.addEventListener('click', async () => {
+            if (!confirm(`フィード「${feed.name}」を削除してもよろしいですか？`)) return;
+            try {
+              const res = await fetch('/api/feeds', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url: feed.url })
+              });
+              const result = await res.json();
+              if (result.success) {
+                showToast('フィードを削除しました。', 'success');
+                await reloadAllFeedsAndArticles();
+              } else {
+                alert(result.message || '削除に失敗しました。');
+              }
+            } catch (err) {
+              alert('通信エラーが発生しました。');
+            }
+          });
+        }
+
+        // 編集ボタン
+        const editBtn = tr.querySelector('.edit-btn');
+        if (editBtn) {
+          editBtn.addEventListener('click', () => {
+            // インライン編集モードへ切り替え
+            switchToInlineEditMode(tr, feed, cat);
+          });
+        }
+
+        tbody.appendChild(tr);
+      });
+    });
+  }
+
+  // フィード一覧と記事データの全再ロードヘルパー
+  async function reloadAllFeedsAndArticles() {
+    const feedRes = await fetch('/api/feeds?t=' + Date.now());
+    const feedData = await feedRes.json();
+    if (feedData.success) {
+      rssFeeds = feedData.feeds;
+    }
+    await loadRssArticles();
+    renderRssSidebar();
+    renderFeedManager();
+  }
+
+  // インライン編集モードへの移行
+  function switchToInlineEditMode(tr, feed, currentCategory) {
+    const nameCell = tr.children[0];
+    const urlCell = tr.children[1];
+    const catCell = tr.children[2];
+    const weightCell = tr.children[3];
+    const actionsCell = tr.children[4];
+
+    nameCell.innerHTML = `<input type="text" class="inline-edit-input" id="edit-name" value="${feed.name}">`;
+    urlCell.innerHTML = `<input type="url" class="inline-edit-input" id="edit-url" value="${feed.url}">`;
+    
+    catCell.innerHTML = `
+      <select class="inline-edit-select" id="edit-category">
+        <option value="general"${currentCategory === 'general' ? ' selected' : ''}>general</option>
+        <option value="tech"${currentCategory === 'tech' ? ' selected' : ''}>tech</option>
+        <option value="trending"${currentCategory === 'trending' ? ' selected' : ''}>trending</option>
+        <option value="sports"${currentCategory === 'sports' ? ' selected' : ''}>sports</option>
+        <option value="headline"${currentCategory === 'headline' ? ' selected' : ''}>headline</option>
+      </select>
+    `;
+
+    weightCell.innerHTML = `<input type="number" class="inline-edit-input" id="edit-weight" step="0.1" min="0.1" max="10.0" value="${feed.weight}">`;
+
+    actionsCell.innerHTML = `
+      <button class="mgr-action-btn save-btn" title="保存"><span class="mdi mdi-check"></span> 保存</button>
+      <button class="mgr-action-btn cancel-btn" title="キャンセル"><span class="mdi mdi-close"></span> 取消</button>
+    `;
+
+    // キャンセルボタン
+    actionsCell.querySelector('.cancel-btn').addEventListener('click', () => {
+      renderFeedManager(); // 単に全体を再描画して戻す
+    });
+
+    // 保存ボタン
+    actionsCell.querySelector('.save-btn').addEventListener('click', async () => {
+      const name = document.getElementById('edit-name').value;
+      const url = document.getElementById('edit-url').value;
+      const category = document.getElementById('edit-category').value;
+      const weight = document.getElementById('edit-weight').value;
+
+      try {
+        const res = await fetch('/api/feeds', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ oldUrl: feed.url, name, url, category, weight })
+        });
+        const result = await res.json();
+        if (result.success) {
+          showToast('フィードを更新しました。', 'success');
+          await reloadAllFeedsAndArticles();
+        } else {
+          alert(result.message || '更新に失敗しました。');
+        }
+      } catch (err) {
+        alert('通信エラーが発生しました。');
+      }
+    });
   }
 
   // 左サイドバー (フィードアコーディオン) の描画
@@ -3143,6 +3372,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // 中央ペイン (生のRSS記事リスト) の描画
   function renderRssArticles(resetScroll = true) {
     if (!rssArticlesList) return;
+
+    if (activeFeedId === 'manage') {
+      renderFeedManager();
+      return;
+    }
+
+    // すべて既読にするボタンや見出し表示を復旧
+    if (markAllReadBtn) markAllReadBtn.style.display = 'inline-block';
+    if (currentViewTitle) {
+      if (activeFeedId === 'all') currentViewTitle.textContent = 'すべての未読';
+      else if (activeFeedId === 'bookmarks') currentViewTitle.textContent = 'あとで読む';
+    }
+
 
     // 描画の際、オブザーバーが未生成ならその場で遅延生成する
     if (!rssScrollObserver) {

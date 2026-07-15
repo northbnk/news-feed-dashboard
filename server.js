@@ -2089,6 +2089,94 @@ app.post('/api/feeds', (req, res) => {
   res.json({ success: true, message: `ソース「${name}」を正常に登録しました。` });
 });
 
+// APIエンドポイント: フィードの削除
+app.delete('/api/feeds', (req, res) => {
+  const { url } = req.body;
+  if (!url) {
+    return res.status(400).json({ success: false, message: 'フィードURLが必要です。' });
+  }
+
+  let deleted = false;
+  for (const cat of Object.keys(FEEDS)) {
+    const idx = FEEDS[cat].findIndex(f => f.url.trim() === url.trim());
+    if (idx !== -1) {
+      FEEDS[cat].splice(idx, 1);
+      deleted = true;
+      break;
+    }
+  }
+
+  if (!deleted) {
+    return res.status(404).json({ success: false, message: '指定されたフィードが見つかりません。' });
+  }
+
+  saveFeeds();
+  res.json({ success: true, message: 'フィードを削除しました。' });
+});
+
+// APIエンドポイント: フィードの編集
+app.put('/api/feeds', (req, res) => {
+  const { oldUrl, name, url, category, weight } = req.body;
+  if (!oldUrl || !name || !url) {
+    return res.status(400).json({ success: false, message: '元のURL、新しいフィード名、新しいURLは必須です。' });
+  }
+
+  // 元のフィードを探す
+  let targetFeed = null;
+  let currentCategory = null;
+  let targetIdx = -1;
+
+  for (const cat of Object.keys(FEEDS)) {
+    const idx = FEEDS[cat].findIndex(f => f.url.trim() === oldUrl.trim());
+    if (idx !== -1) {
+      targetFeed = FEEDS[cat][idx];
+      currentCategory = cat;
+      targetIdx = idx;
+      break;
+    }
+  }
+
+  if (!targetFeed) {
+    return res.status(404).json({ success: false, message: '元のフィードが見つかりません。' });
+  }
+
+  // 重複チェック (新しいURLが以前と異なり、かつ他のフィードと重複している場合)
+  if (oldUrl.trim() !== url.trim()) {
+    let isDuplicate = false;
+    for (const cat of Object.keys(FEEDS)) {
+      if (FEEDS[cat].some(f => f.url.trim() === url.trim())) {
+        isDuplicate = true;
+        break;
+      }
+    }
+    if (isDuplicate) {
+      return res.status(400).json({ success: false, message: 'このフィードURLは既に他のフィードに登録されています。' });
+    }
+  }
+
+  const newCategory = category || 'general';
+  const numericWeight = Number(weight) || 1.5;
+
+  // フィードオブジェクトを更新
+  targetFeed.name = name.trim();
+  targetFeed.url = url.trim();
+  targetFeed.weight = numericWeight;
+
+  // カテゴリが変更された場合は移動
+  if (currentCategory !== newCategory) {
+    // 既存の場所から削除
+    FEEDS[currentCategory].splice(targetIdx, 1);
+    // 新しいカテゴリが存在しなければ作成
+    if (!FEEDS[newCategory]) {
+      FEEDS[newCategory] = [];
+    }
+    FEEDS[newCategory].push(targetFeed);
+  }
+
+  saveFeeds();
+  res.json({ success: true, message: 'フィードを更新しました。' });
+});
+
 // APIエンドポイント: 接続・クローラープレビューテスト
 app.post('/api/feeds/preview-crawler', async (req, res) => {
   const { url } = req.body;
