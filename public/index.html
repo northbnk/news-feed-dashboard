@@ -28,12 +28,7 @@
           <img src="logo.png" class="header-logo-img" alt="NEWS TERMINAL Logo">
           <h1 id="dashboard-title">NEWS TERMINAL</h1>
         </div>
-        <span class="status-badge" id="live-indicator">
-          <span class="pulse-dot"></span>LIVE
-        </span>
       </div>
-      
-      <div class="header-center"></div>
       
       <div class="header-right">
         <div id="auth-status" class="auth-status">
@@ -51,29 +46,6 @@
         <div class="sync-info">
           <span id="last-sync-time">最終同期: --:--:--</span>
         </div>
-        <button id="refresh-btn" class="icon-btn" title="手動更新">
-          <!-- リフレッシュSVGアイコン -->
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.73-.73" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="btn-text">手動更新</span>
-        </button>
-        <button id="unread-only-toggle" class="icon-btn toggle-btn" title="未読のみ表示">
-          <!-- 未読（チェック）アイコン -->
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
-            <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="btn-text">未読のみ</span>
-        </button>
-        <button id="view-mode-toggle" class="icon-btn toggle-btn" title="タイムライン表示に切り替え">
-          <!-- タイムライン / 時計 / スレッド風アイコン -->
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
-          <span class="btn-text" id="view-mode-toggle-text">タイムライン</span>
-        </button>
         <button id="theme-toggle" class="icon-btn" title="テーマ切り替え">
           <!-- 太陽SVG（ライトモード時） -->
           <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -405,27 +377,7 @@
   </aside>
 
   <!-- 9. モバイル用下部タブナビゲーション -->
-  <nav class="mobile-nav-bar" id="mobile-nav-bar">
-    <button class="mobile-nav-btn active" data-target="curated" title="ニュース">
-      <svg class="nav-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-        <polyline points="14 2 14 8 20 8"></polyline>
-        <line x1="16" y1="13" x2="8" y2="13"></line>
-        <line x1="16" y1="17" x2="8" y2="17"></line>
-        <polyline points="10 9 9 9 8 9"></polyline>
-      </svg>
-    </button>
-    <button class="mobile-nav-btn" data-target="top" title="トップニュース">
-      <svg class="nav-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-      </svg>
-    </button>
-    <button class="mobile-nav-btn" data-target="trending" title="話題・スポーツ">
-      <svg class="nav-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3.5z"></path>
-      </svg>
-    </button>
-  </nav>
+
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>

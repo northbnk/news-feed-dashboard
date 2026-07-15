@@ -3192,11 +3192,14 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      // ChatGPT / Perplexity プロンプトURLバインド
-      const chatGptPrompt = encodeURIComponent("「" + item.title + "」についてWEB検索を利用して記事の深掘りをして");
-      const perplexityPrompt = encodeURIComponent("「" + item.title + "」について関連報道や進展をWEB検索を利用して深掘りして");
+      // LIVEマークの削除処理
+      const cleanTitle = item.title.replace(/\[LIVE\]|LIVE\s*/gi, '').trim();
 
-      // SNS反響数のドット連結パーツ構築
+      // ChatGPT / Perplexity プロンプトURLバインド
+      const chatGptPrompt = encodeURIComponent("「" + cleanTitle + "」についてWEB検索を利用して記事の深掘りをして");
+      const perplexityPrompt = encodeURIComponent("「" + cleanTitle + "」について関連報道や進展をWEB検索を利用して深掘りして");
+
+      // SNS反響数のバッジパーツ構築 (セパレータをハイフンに統一)
       const xCount = Number(item.sns?.x || 0);
       const hatebuCount = Number(item.hatebu || 0);
       const threadsCount = Number(item.sns?.threads || 0);
@@ -3207,7 +3210,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="rss-meta-item x-twitter" title="X (Twitter) 反響数: ${xCount}">
             <span class="mdi mdi-twitter"></span> ${xCount}
           </span>
-          <span class="meta-divider">•</span>
+          <span class="meta-divider">-</span>
         `;
       }
       if (hatebuCount > 0) {
@@ -3215,7 +3218,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="rss-meta-item hatebu" title="はてなブックマーク数: ${hatebuCount}">
             <span class="mdi mdi-bookmark-outline"></span> ${hatebuCount}
           </span>
-          <span class="meta-divider">•</span>
+          <span class="meta-divider">-</span>
         `;
       }
       if (threadsCount > 0) {
@@ -3223,26 +3226,28 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="rss-meta-item threads" title="Threads 反響数: ${threadsCount}">
             <span class="mdi mdi-at"></span> ${threadsCount}
           </span>
-          <span class="meta-divider">•</span>
+          <span class="meta-divider">-</span>
         `;
       }
 
-      // 2ペイン・常時表示・超ミニマル設計 (タイトル最上部・画像右端・フッター左右スプリット配置)
+      // 2ペイン・常時表示・超ミニマル設計 (タイトル最上部・画像左寄せでタイトルの下・フッター左右スプリット配置)
       card.innerHTML = `
         ${!isRead ? '<span class="unread-dot"></span>' : ''}
         <div class="rss-card-main-row">
           <div class="rss-card-content">
             <h4 class="rss-card-title">
-              ${item.title}
+              ${cleanTitle}
             </h4>
+            ${imageHtml} <!-- 画像はタイトルの下に左寄せで表示 -->
           </div>
-          ${imageHtml}
         </div>
         
         <!-- 常時表示詳細エリア -->
         <div class="rss-card-details-expanded">
           <div class="rss-details-section">
-            <p class="rss-details-summary">${item.contentSnippet || '直接ニュースソースから詳細記事を参照してください。'}</p>
+            ${item.contentSnippet && item.contentSnippet !== '直接ニュースソースから詳細記事を参照してください。' ? `
+              <p class="rss-details-summary">${item.contentSnippet}</p>
+            ` : ''}
             <div class="rss-details-actions">
               <!-- 左寄せ: 記事ソースChip、注目度、SNS反響、配信時間 -->
               <div class="rss-card-meta">
@@ -3250,12 +3255,12 @@ document.addEventListener('DOMContentLoaded', () => {
                   <img src="${getFaviconUrl(item.link)}" alt="" class="rss-source-favicon">
                   <span>${item.feedName}</span>
                 </span>
-                <span class="meta-divider">•</span>
+                <span class="meta-divider">-</span>
                 ${item.weight ? `
                   <span class="rss-meta-item weight" title="AI注目度スコア">
                     <span class="mdi mdi-star-outline"></span> 注目度: ${item.weight}
                   </span>
-                  <span class="meta-divider">•</span>
+                  <span class="meta-divider">-</span>
                 ` : ''}
                 ${snsMetaHtml}
                 <span class="rss-card-time">${formattedTime}</span>
