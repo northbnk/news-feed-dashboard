@@ -3177,11 +3177,14 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       }
 
-      // 2ペイン・常時表示型のスタイリッシュなHTML設計 (画像は右端固定・ブックマークはフッター統合・SNS反響数・記事を開く)
+      // 2ペイン・常時表示型のスタイリッシュなHTML設計 (タイトル最上部・画像は右端固定・ブックマークはフッター統合・SNS反響数・記事を開く)
       card.innerHTML = `
         ${!isRead ? '<span class="unread-dot"></span>' : ''}
         <div class="rss-card-main-row">
           <div class="rss-card-content">
+            <h4 class="rss-card-title">
+              ${item.title}
+            </h4>
             <div class="rss-card-header">
               <div class="rss-card-header-left">
                 <span class="rss-source-chip" data-feed-name="${item.feedName}">
@@ -3190,16 +3193,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </span>
                 ${item.weight ? `
                   <span class="rss-weight-badge" title="AI注目度スコア">
-                    注目度: ${item.weight}
+                    注目度: dots${item.weight}
                   </span>
                 ` : ''}
                 ${snsBadgesHtml}
               </div>
               <span class="rss-card-time">${formattedTime}</span>
             </div>
-            <h4 class="rss-card-title">
-              ${item.title}
-            </h4>
           </div>
           ${imageHtml}
         </div>
