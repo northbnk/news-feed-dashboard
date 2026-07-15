@@ -2915,6 +2915,32 @@ document.addEventListener('DOMContentLoaded', () => {
       renderRssSidebar();
       renderRssArticles();
 
+      // 3.5 静的メニューへのクリックイベントバインド
+      if (menuAllUnread) {
+        menuAllUnread.addEventListener('click', () => {
+          activeFeedId = 'all';
+          document.querySelectorAll('.sidebar-item, .feed-item').forEach(i => i.classList.remove('active'));
+          menuAllUnread.classList.add('active');
+          renderRssArticles();
+        });
+      }
+      if (menuBookmarks) {
+        menuBookmarks.addEventListener('click', () => {
+          activeFeedId = 'bookmarks';
+          document.querySelectorAll('.sidebar-item, .feed-item').forEach(i => i.classList.remove('active'));
+          menuBookmarks.classList.add('active');
+          renderRssArticles();
+        });
+      }
+      if (menuManageFeeds) {
+        menuManageFeeds.addEventListener('click', () => {
+          activeFeedId = 'manage';
+          document.querySelectorAll('.sidebar-item, .feed-item').forEach(i => i.classList.remove('active'));
+          menuManageFeeds.classList.add('active');
+          renderRssArticles();
+        });
+      }
+
       // 4. 定期ポーリング（15秒おきに記事を自動更新）
       setInterval(async () => {
         await loadRssArticles();
