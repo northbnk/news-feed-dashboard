@@ -45,22 +45,6 @@
     ]
   },
   {
-    "title": "佐々木麟太郎がマーリンズの8巡目指名受ける　MLBドラフト会議",
-    "originalTitle": "佐々木麟太郎がマーリンズの8巡目指名受ける　MLBドラフト会議",
-    "link": "http://www.asahi.com/articles/ASV7C5CM1V7CUTQP016M.html?ref=rss",
-    "contentSnippet": "",
-    "pubDate": "2026-07-13T03:37:55.000Z",
-    "category": "general",
-    "feedName": "朝日新聞ニュース",
-    "weight": 6,
-    "keywords": [
-      "木麟太郎",
-      "マーリンズ",
-      "8巡目指名受",
-      "MLBドラフト会議"
-    ]
-  },
-  {
     "title": "タイ 27人死亡の飲食店火災 非常口使えなかった可能性調べる",
     "originalTitle": "タイ 27人死亡の飲食店火災 非常口使えなかった可能性調べる",
     "link": "http://www3.nhk.or.jp/news/html/20260713/k10015175291000.html",
@@ -430,46 +414,6 @@
       "行方不明",
       "大騒動",
       "反AI運動グループ"
-    ]
-  },
-  {
-    "title": "「Claude Fable 5」のアクセス期間が全ての有料プランで7月19日まで延長、Claude Codeの週次レート制限も50％増量を維持",
-    "originalTitle": "「Claude Fable 5」のアクセス期間が全ての有料プランで7月19日まで延長、Claude Codeの週次レート制限も50％増量を維持",
-    "link": "https://gigazine.net/news/20260713-clude-fable-5-promotion-extended/",
-    "contentSnippet": "2026年7月13日、Anthropicが、最先端モデル「Claude Fable 5」を追加費用なしで利用できる期間を2026年7月20日16時(日本時間)まで延長することを明らかにしました。さらに、Claude Codeの利用制限量を増量するキャンペーンも延長しています。\n続きを読む...",
-    "pubDate": "Mon, 13 Jul 2026 12:36:00 +0900",
-    "category": "trending",
-    "feedName": "GIGAZINE",
-    "weight": 5,
-    "keywords": [
-      "Claude",
-      "Fable",
-      "アクセス期間",
-      "有料プラン",
-      "7月19日",
-      "延長",
-      "Claude",
-      "Code",
-      "週次レート制限",
-      "50",
-      "増量",
-      "維持"
-    ]
-  },
-  {
-    "title": "ソニーのブロックチェーン「ソニューム」が使えるVisaカード",
-    "originalTitle": "ソニーのブロックチェーン「ソニューム」が使えるVisaカード",
-    "link": "https://www.watch.impress.co.jp/docs/news/2124592.html",
-    "contentSnippet": "Startale Groupは、ソニーグループが開発するブロックチェーン「Soneium」(ソニューム)上の資産を日常の決済に利用できるというVisaカード「Startale Card」を発表した。Startale App上で同カードの先行登録受付を開始している。",
-    "pubDate": "2026-07-13T03:34:11.000Z",
-    "category": "trending",
-    "feedName": "Impress Watch",
-    "weight": 5,
-    "keywords": [
-      "ソニー",
-      "ブロックチェーン",
-      "ソニューム",
-      "Visaカード"
     ]
   },
   {
@@ -16464,7 +16408,7 @@
     "originalTitle": "真相・ニュースの現場から:子どもの性的動画の配信、「世界的中心地」フィリピンの実態は",
     "link": "https://mainichi.jp/articles/20260712/k00/00m/030/104000c",
     "contentSnippet": "",
-    "pubDate": "2026-07-15T03:24:22.000Z",
+    "pubDate": "2026-07-15T03:37:03.000Z",
     "category": "general",
     "feedName": "毎日新聞ニュース",
     "weight": 6,
@@ -18038,6 +17982,59 @@
       "不具合",
       "7月",
       "Windows更新利用"
+    ]
+  },
+  {
+    "title": "ケンタッキー 一部店舗で営業休止の可能性 委託先システム障害",
+    "originalTitle": "ケンタッキー 一部店舗で営業休止の可能性 委託先システム障害",
+    "link": "http://www3.nhk.or.jp/news/html/20260715/k10015177391000.html",
+    "contentSnippet": "ファストフードチェーンの「ケンタッキーフライドチキン」を運営する日本法人は、食材の納入に遅れなどが出て、商品の品切れや店舗の営業休止などの影響が出る可能性があると発表しました。鶏肉などの配送を担う冷凍食品大手「ニチレイ」で発生したシステム障害が原因だとしていて、ほかの飲食チェーンなどにも影響が出ています。",
+    "pubDate": "Wed, 15 Jul 2026 12:34:01 +0900",
+    "category": "general",
+    "feedName": "NHK経済ニュース",
+    "weight": 7,
+    "keywords": [
+      "ケンタッキー",
+      "一部店舗",
+      "営業休止",
+      "可能性",
+      "委託先システム障害"
+    ]
+  },
+  {
+    "title": "皇室典範改正案、立憲が採決見送りを自民へ伝達　会期延長に反発",
+    "originalTitle": "皇室典範改正案、立憲が採決見送りを自民へ伝達　会期延長に反発",
+    "link": "https://mainichi.jp/articles/20260715/k00/00m/010/116000c",
+    "contentSnippet": "",
+    "pubDate": "2026-07-15T03:37:18.000Z",
+    "category": "general",
+    "feedName": "毎日新聞ニュース",
+    "weight": 6,
+    "keywords": [
+      "皇室典範改正案",
+      "立憲",
+      "採決見送",
+      "自民",
+      "伝達",
+      "会期延長",
+      "反発"
+    ]
+  },
+  {
+    "title": "リークされたGalaxy Z Fold 8 Ultraの実機、もう折り目がほとんどない！",
+    "originalTitle": "リークされたGalaxy Z Fold 8 Ultraの実機、もう折り目がほとんどない！",
+    "link": "https://www.gizmodo.jp/article/galaxy-z-fold-8-ultra-display/",
+    "contentSnippet": "開発力に脱帽。Galaxy Unpacked 2026まで、もう1週間もありません。次期デバイスであるGalaxy S27シリーズや、折りたたみモデルへの期待もどんどんと高まっていますね。新モデルお披露目まであとわずかですが、Galaxy …",
+    "pubDate": "Wed, 15 Jul 2026 03:30:00 GMT",
+    "category": "trending",
+    "feedName": "ギズモード・ジャパン",
+    "weight": 5,
+    "keywords": [
+      "リーク",
+      "Galaxy",
+      "Fold",
+      "Ultra",
+      "実機"
     ]
   }
 ]

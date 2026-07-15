@@ -3038,7 +3038,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let rssScrollObserver = null;
 
   function initRssObserver() {
-    if (!rssArticlesList) return;
+    const timelineContainer = document.getElementById('rss-article-timeline');
+    if (!timelineContainer) return;
     if (rssScrollObserver) {
       rssScrollObserver.disconnect();
     }
@@ -3059,9 +3060,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, {
-      root: rssArticlesList,
+      root: timelineContainer,
       rootMargin: '0px',
-      threshold: 0.3
+      threshold: 0.15
     });
   }
 
