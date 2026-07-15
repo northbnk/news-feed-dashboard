@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-15T03:43:44.572Z",
+  "timestamp": "2026-07-15T05:12:37.385Z",
   "headline": {
     "title": "タイ 27人死亡の飲食店火災 非常口使えなかった可能性調べる",
     "summary": "タイの首都バンコクの飲食店で27人が死亡した火災で、店の奥のトイレ付近に多くの人が倒れていたことがわかり、警察はトイレのそばにあった非常口を利用できなかった可能性もあるとみて、店側の安全対策の状況を詳...",
@@ -15,28 +15,28 @@
   },
   "topNews": [
     {
-      "id": "cluster_1784087024583_nr0ih",
-      "aiTitle": "皇室典範改正案、立憲が採決見送りを自民へ伝達　会期延長に反発",
+      "id": "cluster_1784092357388_y65uw",
+      "aiTitle": "皇室典範改正案 参議院で審議入り 15日の委員会採決は見送り",
       "aiSummary": "皇族数の確保に向けた皇室典範改正案をめぐり、参議院自民党と立憲民主党の国会対策委員長が会談し、15日に参議院の特別委員会を開いて審議入りすることでおおむね合意しました。",
       "genre": "politics",
       "sources": [
         {
           "publisher": "NHK主要ニュース",
-          "title": "皇族数の確保に向けた皇室典範改正案 参議院で審議入り",
+          "title": "皇室典範改正案 参議院で審議入り 15日の委員会採決は見送り",
           "url": "http://www3.nhk.or.jp/news/html/20260715/k10015176941000.html",
-          "pubDate": "Wed, 15 Jul 2026 12:40:31 +0900"
+          "pubDate": "Wed, 15 Jul 2026 13:57:17 +0900"
+        },
+        {
+          "publisher": "朝日新聞ニュース",
+          "title": "皇室典範改正案、きょうの採決見送り　養子案「ほぼ赤の他人」批判も",
+          "url": "http://www.asahi.com/articles/ASV7G7VR1V7GUTFK014M.html?ref=rss",
+          "pubDate": "2026-07-15T03:46:32.000Z"
         },
         {
           "publisher": "毎日新聞ニュース",
           "title": "皇室典範改正案、立憲が採決見送りを自民へ伝達　会期延長に反発",
           "url": "https://mainichi.jp/articles/20260715/k00/00m/010/116000c",
           "pubDate": "2026-07-15T03:37:18.000Z"
-        },
-        {
-          "publisher": "朝日新聞ニュース",
-          "title": "皇室典範改正案、きょうの採決見送り　参院特別委で自民・立憲が合意",
-          "url": "http://www.asahi.com/articles/ASV7G7VR1V7GUTFK014M.html?ref=rss",
-          "pubDate": "2026-07-15T03:34:29.000Z"
         },
         {
           "publisher": "毎日新聞ニュース",
@@ -80,11 +80,58 @@
       "weight": 10
     },
     {
-      "id": "cluster_1784087024599_38ho7",
-      "aiTitle": "トランプ米大統領、ホルムズ海峡の貨物「対価20％」徴収を撤回　米はイラン港湾封鎖を再開",
-      "aiSummary": "アメリカのトランプ大統領は、ホルムズ海峡の航行をめぐり、イランに対する海上封鎖を再開し、新たに、すべての通過貨物に20％分の対価を課すと主張しました。イラン側は、海峡を管理するのはイランだと主張して、双方の応酬が激しくなっています。",
+      "id": "cluster_1784092357386_t5tx1",
+      "aiTitle": "米軍 イランへの海上封鎖再開 トランプ大統領「発電所も標的」",
+      "aiSummary": "アメリカとイランがホルムズ海峡をめぐり再び激しく対立する中、アメリカ軍はイランに対する海上封鎖を日本時間の15日朝、再開したと発表しました。双方による攻撃も続き、トランプ大統領は「来週は発電所や橋が標的になる」と述べるなど先月交わされた覚書...",
       "genre": "politics",
       "sources": [
+        {
+          "publisher": "NHK主要ニュース",
+          "title": "米軍 イランへの海上封鎖再開 トランプ大統領「発電所も標的」",
+          "url": "http://www3.nhk.or.jp/news/html/20260715/k10015177001000.html",
+          "pubDate": "Wed, 15 Jul 2026 14:11:30 +0900"
+        },
+        {
+          "publisher": "NHK主要ニュース",
+          "title": "米が海上封鎖再開へ 米イラン攻撃応酬続き事態悪化に懸念も",
+          "url": "http://www3.nhk.or.jp/news/html/20260714/k10015176211000.html",
+          "pubDate": "Tue, 14 Jul 2026 21:39:25 +0900"
+        },
+        {
+          "publisher": "朝日新聞ニュース",
+          "title": "トランプ氏、イランへの海上封鎖再開を表明　「対価20%」を船舶に",
+          "url": "http://www.asahi.com/articles/ASV7F52GXV7FUHBI02MM.html?ref=rss",
+          "pubDate": "2026-07-14T00:26:05.000Z"
+        },
+        {
+          "publisher": "毎日新聞ニュース",
+          "title": "激動期の安保:米国の代わりにならない　仏の核戦力増強と「結局はトランプ氏」",
+          "url": "https://mainichi.jp/articles/20260711/k00/00m/030/116000c",
+          "pubDate": "2026-07-13T07:00:25.000Z"
+        }
+      ],
+      "image": null,
+      "hatebu": 2,
+      "weight": 10
+    },
+    {
+      "id": "cluster_1784092357391_t8n2c",
+      "aiTitle": "トランプ米大統領、ホルムズ海峡の貨物「対価20％」徴収を撤回　橋や発電所の空爆を脅す",
+      "aiSummary": "停戦合意が頓挫する中、ホルムズ海峡を誰がどう管理するのかが、アメリカとイランの主要な争点となっている。",
+      "genre": "politics",
+      "sources": [
+        {
+          "publisher": "BBCニュース（日本・国際）",
+          "title": "トランプ米大統領、ホルムズ海峡の貨物「対価20％」徴収を撤回　橋や発電所の空爆を脅す",
+          "url": "https://www.bbc.com/japanese/articles/cy8w8lnn2vyo?at_medium=RSS&at_campaign=rss",
+          "pubDate": "Wed, 15 Jul 2026 04:45:38 GMT"
+        },
+        {
+          "publisher": "BBCニュース（日本・国際）",
+          "title": "【解説】 ホルムズ海峡めぐる対立、米イラン合意の弱点があらわに",
+          "url": "https://www.bbc.com/japanese/articles/cm202x4yne2o?at_medium=RSS&at_campaign=rss",
+          "pubDate": "Wed, 15 Jul 2026 04:43:13 GMT"
+        },
         {
           "publisher": "毎日新聞ニュース",
           "title": "イラン、ホルムズ海峡「再封鎖」　「近隣諸国の原油輸出認めず」",
@@ -92,65 +139,18 @@
           "pubDate": "2026-07-15T03:18:41.000Z"
         },
         {
-          "publisher": "NHK主要ニュース",
-          "title": "米がホルムズ海峡を再び封鎖 トランプ大統領 対価要求は撤回",
-          "url": "http://www3.nhk.or.jp/news/html/20260715/k10015177001000.html",
-          "pubDate": "Wed, 15 Jul 2026 10:22:42 +0900"
-        },
-        {
-          "publisher": "BBCニュース（日本・国際）",
-          "title": "トランプ米大統領、ホルムズ海峡の貨物「対価20％」徴収を撤回　米はイラン港湾封鎖を再開",
-          "url": "https://www.bbc.com/japanese/articles/cy8w8lnn2vyo?at_medium=RSS&at_campaign=rss",
-          "pubDate": "Wed, 15 Jul 2026 00:34:12 GMT"
-        },
-        {
-          "publisher": "NHK主要ニュース",
-          "title": "トランプ大統領「海上封鎖再開 20％対価も」 イラン反発",
-          "url": "http://www3.nhk.or.jp/news/html/20260714/k10015176161000.html",
-          "pubDate": "Tue, 14 Jul 2026 05:34:27 +0900"
+          "publisher": "毎日新聞ニュース",
+          "title": "ホルムズ海峡で米国が「20％の通航料徴収」　トランプ氏表明",
+          "url": "https://mainichi.jp/articles/20260714/k00/00m/030/001000c",
+          "pubDate": "2026-07-13T15:36:23.000Z"
         }
       ],
       "image": null,
-      "hatebu": 0,
-      "weight": 10
+      "hatebu": 7,
+      "weight": 7
     },
     {
-      "id": "cluster_1784087024574_615j9",
-      "aiTitle": "午前中から猛暑 熱中症対策を 元台風で北日本 非常に激しい雨",
-      "aiSummary": "15日は、全国的に気温が上がり、富山県では39度と危険な暑さが予想されています。熱中症対策を徹底してください。一方、台風9号から変わった低気圧が近づく影響で、北日本では15日夜は、非常に激しい雨が降るところがある見込みで、土砂災害などに警戒...",
-      "genre": "politics",
-      "sources": [
-        {
-          "publisher": "NHK主要ニュース",
-          "title": "午前中から猛暑 熱中症対策を 元台風で北日本 非常に激しい雨",
-          "url": "http://www3.nhk.or.jp/news/html/20260715/k10015176981000.html",
-          "pubDate": "Wed, 15 Jul 2026 11:59:54 +0900"
-        },
-        {
-          "publisher": "NHK主要ニュース",
-          "title": "東海・四国で危険な暑さ 熱中症対策の徹底を",
-          "url": "http://www3.nhk.or.jp/news/html/20260714/k10015176071000.html",
-          "pubDate": "Tue, 14 Jul 2026 19:14:22 +0900"
-        },
-        {
-          "publisher": "NHK社会ニュース",
-          "title": "急な気温上昇 体が対応できないおそれも 熱中症対策は",
-          "url": "http://www3.nhk.or.jp/news/html/20260713/k10015175581000.html",
-          "pubDate": "Mon, 13 Jul 2026 20:07:28 +0900"
-        },
-        {
-          "publisher": "NHK主要ニュース",
-          "title": "西日本で気温上昇 あす以降関東甲信も猛烈な暑さ 熱中症対策を",
-          "url": "http://www3.nhk.or.jp/news/html/20260713/k10015175321000.html",
-          "pubDate": "Mon, 13 Jul 2026 19:09:12 +0900"
-        }
-      ],
-      "image": null,
-      "hatebu": 0,
-      "weight": 10
-    },
-    {
-      "id": "cluster_1784087024574_hu9c9",
+      "id": "cluster_1784092357386_pj82p",
       "aiTitle": "大分 佐伯 4人刃物で刺され2人重傷 44歳男を逮捕 事件に関与か",
       "aiSummary": "13日午前、大分県佐伯市の店舗の駐車場などで4人が刃物で刺されるなどして2人が重傷です。いずれも命に別状はなく、警察は現場近くで包丁を所持していたとして44歳の男の容疑者を逮捕し、事件に関わった疑いがあるとみて調べています。",
       "genre": "society",
@@ -173,48 +173,183 @@
       "weight": 10
     },
     {
-      "id": "cluster_1784087024606_c3jn2",
-      "aiTitle": "トランプ氏、対イラン海上封鎖再開と海峡通る貨物の対価20％徴収を表明　攻撃の応酬続く",
-      "aiSummary": "アメリカのドナルド・トランプ大統領は13日、ホルムズ海峡付近においてイランの港湾に出入りする船に対する海上封鎖を再開し、同海峡を通過するすべての貨物について20%の対価を受け取ると発表した。イランはこれに反発している。両国の間ではここ数日、...",
-      "genre": "politics",
+      "id": "cluster_1784092357388_1jzvu",
+      "aiTitle": "くぎ刺す識者「当局が投資にお墨付きではない」暗号資産、金融商品に",
+      "aiSummary": "暗号資産が金融商品として認められることになった。業界団体である日本ブロックチェーン協会（JBA）の加納裕三代表理事（ビットフライヤーホールディングス社長）は「業界にとって大きな転換点になる」と述べた…",
+      "genre": "business",
       "sources": [
         {
           "publisher": "朝日新聞ニュース",
-          "title": "トランプ氏、ホルムズ通航「20%」徴収を撤回 「別の方法」に満足",
-          "url": "http://www.asahi.com/articles/ASV7G6G4QV7GSFVU2L8M.html?ref=rss",
-          "pubDate": "2026-07-15T01:26:51.000Z"
-        },
-        {
-          "publisher": "毎日新聞ニュース",
-          "title": "トランプ氏、通航料20％徴収見送り　湾岸諸国と投資で合意か",
-          "url": "https://mainichi.jp/articles/20260715/k00/00m/030/002000c",
-          "pubDate": "2026-07-14T16:35:43.000Z"
+          "title": "暗号資産、金融商品に「怪しいイメージ変えないと」業界団体代表理事",
+          "url": "http://www.asahi.com/articles/ASV7G3PSRV7GULFA01TM.html?ref=rss",
+          "pubDate": "2026-07-15T04:47:42.000Z"
         },
         {
           "publisher": "朝日新聞ニュース",
-          "title": "トランプ氏が船舶に「20％対価」要求　イラン主導打開できぬ焦りか",
-          "url": "http://www.asahi.com/articles/ASV7G0SHYV7GUHBI008M.html?ref=rss",
-          "pubDate": "2026-07-14T03:10:00.000Z"
+          "title": "くぎ刺す識者「当局が投資にお墨付きではない」暗号資産、金融商品に",
+          "url": "http://www.asahi.com/articles/ASV7G3QN8V7GULFA01VM.html?ref=rss",
+          "pubDate": "2026-07-15T04:47:02.000Z"
+        },
+        {
+          "publisher": "朝日新聞ニュース",
+          "title": "【まとめてわかる】暗号資産は金融商品、ETF解禁へ　改正法成立",
+          "url": "http://www.asahi.com/articles/ASV7G3JJGV7GULFA01RM.html?ref=rss",
+          "pubDate": "2026-07-15T04:15:11.000Z"
+        },
+        {
+          "publisher": "朝日新聞ニュース",
+          "title": "選挙のSNS対策の改正法成立　事業者に偽情報対策　統一選前に施行",
+          "url": "http://www.asahi.com/articles/ASV7F315ZV7FUTFK008M.html?ref=rss",
+          "pubDate": "2026-07-13T09:30:00.000Z"
+        }
+      ],
+      "image": "https://imgopt.asahi.com/ogp/AS20260714004496_comm.jpg",
+      "hatebu": 0,
+      "weight": 6
+    },
+    {
+      "id": "cluster_1784092357386_ygfyu",
+      "aiTitle": "【2026年サッカー男子W杯】 決定力、創造性、空中戦で優れているのは　ベスト4をデータ比較",
+      "aiSummary": "サッカー男子ワールドカップ（W杯）北中米大会は14日（日本時間15日）、アメリカのダラス・スタジアムで準決勝があり、スペインが優勝候補フランスを相手に2-0の予想外の完勝を収め、決勝に進んだ。",
+      "genre": "politics",
+      "sources": [
+        {
+          "publisher": "BBCニュース（日本・国際）",
+          "title": "【2026年サッカー男子W杯】 スペインがフランスに完勝、決勝進出",
+          "url": "https://www.bbc.com/japanese/articles/c78y8r2011zo?at_medium=RSS&at_campaign=rss",
+          "pubDate": "Wed, 15 Jul 2026 03:59:04 GMT"
         },
         {
           "publisher": "BBCニュース（日本・国際）",
-          "title": "トランプ氏、対イラン海上封鎖再開と海峡通る貨物の対価20％徴収を表明　攻撃の応酬続く",
-          "url": "https://www.bbc.com/japanese/articles/cdxdx6r3geqo?at_medium=RSS&at_campaign=rss",
-          "pubDate": "Tue, 14 Jul 2026 02:08:31 GMT"
+          "title": "【2026年サッカー男子W杯】 決定力、創造性、空中戦で優れているのは　ベスト4をデータ比較",
+          "url": "https://www.bbc.com/japanese/articles/c70y0ejl05vo?at_medium=RSS&at_campaign=rss",
+          "pubDate": "Tue, 14 Jul 2026 07:18:55 GMT"
         },
         {
-          "publisher": "毎日新聞ニュース",
-          "title": "トランプ氏、イラン港湾を再封鎖へ　地下核施設への攻撃も示唆",
-          "url": "https://mainichi.jp/articles/20260714/k00/00m/030/007000c",
-          "pubDate": "2026-07-14T00:47:06.000Z"
+          "publisher": "BBCニュース（日本・国際）",
+          "title": "【2026年サッカー男子W杯】 ノルウェーにくすぶる「イングランド同点ゴールは無効」の声　ボールが頭上ワイヤに触れていたと",
+          "url": "https://www.bbc.com/japanese/articles/cy8d0pr9rkxo?at_medium=RSS&at_campaign=rss",
+          "pubDate": "Mon, 13 Jul 2026 08:22:59 GMT"
         }
       ],
       "image": null,
-      "hatebu": 2,
+      "hatebu": 0,
       "weight": 7
     },
     {
-      "id": "cluster_1784087024579_uwz3c",
+      "id": "cluster_1784092357386_x7dvp",
+      "aiTitle": "米軍基地20kmの島を中国人が購入､水源･農地･神社仏閣まで…｢水源地に毒｣｢神社を破壊｣などの噂とデータの落差 | 政治・経済・投資",
+      "aiSummary": "現代の政治家たちは､社会を変える政策よりもメディアの注目を浴びることに躍起になっています。政治とメディアの癒着が生む｢ザ･ロビー｣の実態とは何か。扇動的見出しが権力とジャーナリズムを蝕む裏側に､私た…",
+      "genre": "business",
+      "sources": [
+        {
+          "publisher": "東洋経済オンライン",
+          "title": "なぜ政治家は｢コメンテーター化｣するのか　権力にすり寄るメディアと政界の歪んだ｢共犯関係｣ | 政治・経済・投資",
+          "url": "https://toyokeizai.net/articles/-/946905?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+          "pubDate": "Wed, 15 Jul 2026 13:00:00 +0900"
+        },
+        {
+          "publisher": "東洋経済オンライン",
+          "title": "米軍基地20kmの島を中国人が購入､水源･農地･神社仏閣まで…｢水源地に毒｣｢神社を破壊｣などの噂とデータの落差 | 政治・経済・投資",
+          "url": "https://toyokeizai.net/articles/-/949217?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+          "pubDate": "Wed, 15 Jul 2026 06:45:00 +0900"
+        },
+        {
+          "publisher": "東洋経済オンライン",
+          "title": "〈GPIF運用資産を円資産へ〉の場合に生じる円高圧力…公的年金の運用問題は今に始まった話ではない | 政治・経済・投資",
+          "url": "https://toyokeizai.net/articles/-/951511?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+          "pubDate": "Wed, 15 Jul 2026 06:00:00 +0900"
+        },
+        {
+          "publisher": "東洋経済オンライン",
+          "title": "｢ガソリン補助金やめ､EV普及へ政策転換を｣元IEA事務局長の田中伸男氏が語る､エネルギー危機克服への日本の道筋 | 政治・経済・投資",
+          "url": "https://toyokeizai.net/articles/-/951419?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+          "pubDate": "Wed, 15 Jul 2026 06:00:00 +0900"
+        },
+        {
+          "publisher": "東洋経済オンライン",
+          "title": "｢ヤミ屋のオヤジ｣と公文書に刻んだ不退転の覚悟 着任わずか53日の東日本大震災､伝説の国交次官が踏み越えた法規〈再配信〉 | 政治・経済・投資",
+          "url": "https://toyokeizai.net/articles/-/951178?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+          "pubDate": "Tue, 14 Jul 2026 15:00:00 +0900"
+        },
+        {
+          "publisher": "東洋経済オンライン",
+          "title": "今さら｢閣内入り｣ってなんでやねん！ 維新･藤田共同代表\"まさかの発言\"で浮き彫りになる自民党内｢仁義なき戦い｣の実態 | 政治・経済・投資",
+          "url": "https://toyokeizai.net/articles/-/951468?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+          "pubDate": "Tue, 14 Jul 2026 13:30:00 +0900"
+        },
+        {
+          "publisher": "東洋経済オンライン",
+          "title": "オーストラリア人は古民家を｢6000万円｣で､中国人は廃旅館を…外国人に買い占められる日本の空き家という\"宝の山\" | 政治・経済・投資",
+          "url": "https://toyokeizai.net/articles/-/949216?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+          "pubDate": "Tue, 14 Jul 2026 10:00:00 +0900"
+        },
+        {
+          "publisher": "東洋経済オンライン",
+          "title": "中国の南太平洋SLBM発射､フランス軍司令官が明かした｢事前通知｣､フランスが警戒する中国の核戦力 | 政治・経済・投資",
+          "url": "https://toyokeizai.net/articles/-/951288?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+          "pubDate": "Tue, 14 Jul 2026 06:00:00 +0900"
+        },
+        {
+          "publisher": "東洋経済オンライン",
+          "title": "韓国SKハイニックスはいかに躍進したか…20年前の経営危機から1兆ドル企業へ | 政治・経済・投資",
+          "url": "https://toyokeizai.net/articles/-/951342?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+          "pubDate": "Mon, 13 Jul 2026 20:38:00 +0900"
+        },
+        {
+          "publisher": "東洋経済オンライン",
+          "title": "再調査で大幅な実質債務超過に､｢このままではギブアップ｣だと兵銀の吉田社長が銀行局にSOS　銀行不倒神話の瓦解④ | 政治・経済・投資",
+          "url": "https://toyokeizai.net/articles/-/950930?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+          "pubDate": "Mon, 13 Jul 2026 16:00:00 +0900"
+        },
+        {
+          "publisher": "東洋経済オンライン",
+          "title": "｢れいわ消滅｣は単なる\"色物政党の退場劇\"ではなかった… 山本太郎氏の軽挙妄動が政界にもたらした\"重すぎる罪\" | 政治・経済・投資",
+          "url": "https://toyokeizai.net/articles/-/951321?utm_source=rss&utm_medium=http&utm_campaign=link_back",
+          "pubDate": "Mon, 13 Jul 2026 14:30:00 +0900"
+        }
+      ],
+      "image": null,
+      "hatebu": 0,
+      "weight": 6
+    },
+    {
+      "id": "cluster_1784092357397_polru",
+      "aiTitle": "国民投票法改正案、15日の参院憲法審で可決へ　改憲発議へ前進",
+      "aiSummary": "詳細記事を参照してください。",
+      "genre": "society",
+      "sources": [
+        {
+          "publisher": "毎日新聞ニュース",
+          "title": "国民投票法改正案、立憲が参院憲法審での採決見送りを自民へ伝達",
+          "url": "https://mainichi.jp/articles/20260715/k00/00m/010/133000c",
+          "pubDate": "2026-07-15T04:04:49.000Z"
+        },
+        {
+          "publisher": "毎日新聞ニュース",
+          "title": "読む政治:「なお一層の検討を」 国民投票法改正案、成立見通しに識者は",
+          "url": "https://mainichi.jp/articles/20260714/k00/00m/010/273000c",
+          "pubDate": "2026-07-14T11:44:24.000Z"
+        },
+        {
+          "publisher": "毎日新聞ニュース",
+          "title": "国民投票法改正案、15日の参院憲法審で可決へ　改憲発議へ前進",
+          "url": "https://mainichi.jp/articles/20260714/k00/00m/010/261000c",
+          "pubDate": "2026-07-14T09:15:53.000Z"
+        },
+        {
+          "publisher": "毎日新聞ニュース",
+          "title": "副首都法案、15日に衆院通過へ　会期内成立は困難な情勢",
+          "url": "https://mainichi.jp/articles/20260714/k00/00m/010/073000c",
+          "pubDate": "2026-07-14T02:49:40.000Z"
+        }
+      ],
+      "image": null,
+      "hatebu": 1,
+      "weight": 6
+    },
+    {
+      "id": "cluster_1784092357392_astpp",
       "aiTitle": "東大合格者の6割が関東出身！地頭も努力も負けていない地方の受験生が東大を諦める\"学力差ではない\"本当の理由 | キャリア・教育",
       "aiSummary": "｢毎日勉強しているのに成績が上がらない…｣そんな悩みは､知識を\"点\"で覚えることが原因かもしれません。重要なのは知識同士を結びつけ､\"面\"として理解する力です。思考力や応用力を伸ばす秘訣とは？詳しく…",
       "genre": "business",
@@ -278,12 +413,6 @@
           "title": "【天王寺高校】文化人&学者編 時代を刻んだ卒業生ファイル#2《作家の開高健､俳優の市川雷蔵､遺伝医学者の中村祐輔…》 | キャリア・教育",
           "url": "https://toyokeizai.net/articles/-/950458?utm_source=rss&utm_medium=http&utm_campaign=link_back",
           "pubDate": "Tue, 14 Jul 2026 06:00:00 +0900"
-        },
-        {
-          "publisher": "東洋経済オンライン",
-          "title": "SNSを排除することで人生は豊かになる？ 眼科医とインフルエンサーが語る｢現代の子育てと近視予防｣ | キャリア・教育",
-          "url": "https://toyokeizai.net/articles/-/947274?utm_source=rss&utm_medium=http&utm_campaign=link_back",
-          "pubDate": "Mon, 13 Jul 2026 14:00:00 +0900"
         }
       ],
       "image": null,
@@ -291,153 +420,48 @@
       "weight": 6
     },
     {
-      "id": "cluster_1784087024660_de9r4",
-      "aiTitle": "真相・ニュースの現場から:「5万円で娘と遊ばせる」　配信で売られた少女　児童性被害の闇",
+      "id": "cluster_1784092357389_cve3o",
+      "aiTitle": "＜QAで解説＞「声」をAIで無断利用は「違法」　法務省指針案",
       "aiSummary": "詳細記事を参照してください。",
       "genre": "society",
       "sources": [
         {
           "publisher": "毎日新聞ニュース",
-          "title": "真相・ニュースの現場から:「5万円で娘と遊ばせる」　配信で売られた少女　児童性被害の闇",
-          "url": "https://mainichi.jp/articles/20260712/k00/00m/030/076000c",
-          "pubDate": "2026-07-15T03:24:01.000Z"
+          "title": "＜QAで解説＞赤ちゃんが〝なでなで〟されると落ち着く部位は？",
+          "url": "https://mainichi.jp/articles/20260715/k00/00m/100/117000c",
+          "pubDate": "2026-07-15T04:14:15.000Z"
         },
         {
           "publisher": "毎日新聞ニュース",
-          "title": "真相・ニュースの現場から:子どもの裸をスマホで配信　フィリピンで広がる新たな児童性搾取",
-          "url": "https://mainichi.jp/articles/20260710/k00/00m/030/485000c",
-          "pubDate": "2026-07-15T03:23:47.000Z"
+          "title": "＜QAで解説＞「声」をAIで無断利用は「違法」　法務省指針案",
+          "url": "https://mainichi.jp/articles/20260714/k00/00m/040/154000c",
+          "pubDate": "2026-07-14T06:49:51.000Z"
         },
         {
-          "publisher": "朝日新聞ニュース",
-          "title": "チケット1万円→5万円、舞台近くは＋3万円　「転売ヤー」許さない",
-          "url": "http://www.asahi.com/articles/ASV771R1ZV77UTFL00KM.html?ref=rss",
-          "pubDate": "2026-07-15T00:02:00.000Z"
+          "publisher": "毎日新聞ニュース",
+          "title": "「声」も権利保護対象に　AIで無断利用「違法」、法務省指針案",
+          "url": "https://mainichi.jp/articles/20260713/k00/00m/040/346000c",
+          "pubDate": "2026-07-13T11:31:41.000Z"
         }
       ],
       "image": null,
-      "hatebu": 0,
-      "weight": 6
-    },
-    {
-      "id": "cluster_1784087024671_4o1g4",
-      "aiTitle": "夫が「数分間」飛行機の外に吸い出され……妻が恐怖の体験語る　ライアンエアー機事故",
-      "aiSummary": "ギリシャからドイツへ向かっていたアイルランドの格安航空ライアンエアーのボーイング機で10日、窓が壊れ、男性客が機外に吸い出されそうになる事故があった。男性の妻が、恐怖の体験を語った。",
-      "genre": "society",
-      "sources": [
-        {
-          "publisher": "BBCニュース（日本・国際）",
-          "title": "夫が「数分間」飛行機の外に吸い出され……妻が恐怖の体験語る　ライアンエアー機事故",
-          "url": "https://www.bbc.com/japanese/articles/cn0v0peevzyo?at_medium=RSS&at_campaign=rss",
-          "pubDate": "Wed, 15 Jul 2026 03:23:08 GMT"
-        }
-      ],
-      "image": null,
-      "hatebu": 0,
-      "weight": 7
-    },
-    {
-      "id": "cluster_1784087024670_rma1d",
-      "aiTitle": "「死ぬ時は一緒」、ライアンエアー機の窓が壊れ男性客が肩まで吸い出される　妻が当時の状況を語る",
-      "aiSummary": "ギリシャからドイツへ向かっていたアイルランドの格安航空ライアンエアーのボーイング機で10日、窓が壊れ、男性客が機外に吸い出されそうになる事故があった。男性の脚をつかみ続けたという妻は、「（夫の）右肩と...",
-      "genre": "society",
-      "sources": [
-        {
-          "publisher": "BBCニュース（日本・国際）",
-          "title": "「死ぬ時は一緒」、ライアンエアー機の窓が壊れ男性客が肩まで吸い出される　妻が当時の状況を語る",
-          "url": "https://www.bbc.com/japanese/articles/ckg8gey2xgro?at_medium=RSS&at_campaign=rss",
-          "pubDate": "Wed, 15 Jul 2026 02:18:35 GMT"
-        }
-      ],
-      "image": null,
-      "hatebu": 0,
-      "weight": 7
-    },
-    {
-      "id": "cluster_1784087024576_ynwh6",
-      "aiTitle": "米軍基地20kmの島を中国人が購入､水源･農地･神社仏閣まで…｢水源地に毒｣｢神社を破壊｣などの噂とデータの落差 | 政治・経済・投資",
-      "aiSummary": "中国人による日本の離島や水源地､神社仏閣の買い占めが安全保障や文化財保護の観点から物議を醸しています。SNSでは｢有事に拠点化される｣｢文化遺産が狙われる｣などと不安が拡散中。実態はデータとどう違う…",
-      "genre": "business",
-      "sources": [
-        {
-          "publisher": "東洋経済オンライン",
-          "title": "米軍基地20kmの島を中国人が購入､水源･農地･神社仏閣まで…｢水源地に毒｣｢神社を破壊｣などの噂とデータの落差 | 政治・経済・投資",
-          "url": "https://toyokeizai.net/articles/-/949217?utm_source=rss&utm_medium=http&utm_campaign=link_back",
-          "pubDate": "Wed, 15 Jul 2026 06:45:00 +0900"
-        },
-        {
-          "publisher": "東洋経済オンライン",
-          "title": "〈GPIF運用資産を円資産へ〉の場合に生じる円高圧力…公的年金の運用問題は今に始まった話ではない | 政治・経済・投資",
-          "url": "https://toyokeizai.net/articles/-/951511?utm_source=rss&utm_medium=http&utm_campaign=link_back",
-          "pubDate": "Wed, 15 Jul 2026 06:00:00 +0900"
-        },
-        {
-          "publisher": "東洋経済オンライン",
-          "title": "｢ガソリン補助金やめ､EV普及へ政策転換を｣元IEA事務局長の田中伸男氏が語る､エネルギー危機克服への日本の道筋 | 政治・経済・投資",
-          "url": "https://toyokeizai.net/articles/-/951419?utm_source=rss&utm_medium=http&utm_campaign=link_back",
-          "pubDate": "Wed, 15 Jul 2026 06:00:00 +0900"
-        },
-        {
-          "publisher": "東洋経済オンライン",
-          "title": "｢ヤミ屋のオヤジ｣と公文書に刻んだ不退転の覚悟 着任わずか53日の東日本大震災､伝説の国交次官が踏み越えた法規〈再配信〉 | 政治・経済・投資",
-          "url": "https://toyokeizai.net/articles/-/951178?utm_source=rss&utm_medium=http&utm_campaign=link_back",
-          "pubDate": "Tue, 14 Jul 2026 15:00:00 +0900"
-        },
-        {
-          "publisher": "東洋経済オンライン",
-          "title": "今さら｢閣内入り｣ってなんでやねん！ 維新･藤田共同代表\"まさかの発言\"で浮き彫りになる自民党内｢仁義なき戦い｣の実態 | 政治・経済・投資",
-          "url": "https://toyokeizai.net/articles/-/951468?utm_source=rss&utm_medium=http&utm_campaign=link_back",
-          "pubDate": "Tue, 14 Jul 2026 13:30:00 +0900"
-        },
-        {
-          "publisher": "東洋経済オンライン",
-          "title": "オーストラリア人は古民家を｢6000万円｣で､中国人は廃旅館を…外国人に買い占められる日本の空き家という\"宝の山\" | 政治・経済・投資",
-          "url": "https://toyokeizai.net/articles/-/949216?utm_source=rss&utm_medium=http&utm_campaign=link_back",
-          "pubDate": "Tue, 14 Jul 2026 10:00:00 +0900"
-        },
-        {
-          "publisher": "東洋経済オンライン",
-          "title": "中国の南太平洋SLBM発射､フランス軍司令官が明かした｢事前通知｣､フランスが警戒する中国の核戦力 | 政治・経済・投資",
-          "url": "https://toyokeizai.net/articles/-/951288?utm_source=rss&utm_medium=http&utm_campaign=link_back",
-          "pubDate": "Tue, 14 Jul 2026 06:00:00 +0900"
-        },
-        {
-          "publisher": "東洋経済オンライン",
-          "title": "韓国SKハイニックスはいかに躍進したか…20年前の経営危機から1兆ドル企業へ | 政治・経済・投資",
-          "url": "https://toyokeizai.net/articles/-/951342?utm_source=rss&utm_medium=http&utm_campaign=link_back",
-          "pubDate": "Mon, 13 Jul 2026 20:38:00 +0900"
-        },
-        {
-          "publisher": "東洋経済オンライン",
-          "title": "再調査で大幅な実質債務超過に､｢このままではギブアップ｣だと兵銀の吉田社長が銀行局にSOS　銀行不倒神話の瓦解④ | 政治・経済・投資",
-          "url": "https://toyokeizai.net/articles/-/950930?utm_source=rss&utm_medium=http&utm_campaign=link_back",
-          "pubDate": "Mon, 13 Jul 2026 16:00:00 +0900"
-        },
-        {
-          "publisher": "東洋経済オンライン",
-          "title": "｢れいわ消滅｣は単なる\"色物政党の退場劇\"ではなかった… 山本太郎氏の軽挙妄動が政界にもたらした\"重すぎる罪\" | 政治・経済・投資",
-          "url": "https://toyokeizai.net/articles/-/951321?utm_source=rss&utm_medium=http&utm_campaign=link_back",
-          "pubDate": "Mon, 13 Jul 2026 14:30:00 +0900"
-        },
-        {
-          "publisher": "東洋経済オンライン",
-          "title": "2027年のフランス大統領選､ルペン氏｢復活｣で大混戦へ､支持率首位バルデラ氏を待つ\"王女熱愛\"という新たな試練 | 政治・経済・投資",
-          "url": "https://toyokeizai.net/articles/-/951080?utm_source=rss&utm_medium=http&utm_campaign=link_back",
-          "pubDate": "Mon, 13 Jul 2026 13:30:00 +0900"
-        }
-      ],
-      "image": null,
-      "hatebu": 0,
+      "hatebu": 1,
       "weight": 6
     }
   ],
   "trendingNews": [
     {
-      "id": "cluster_1784087025900_5jk5b",
-      "aiTitle": "非エンジニア_はじめてのClaude Code CLI版応用編（Slack MCP）",
+      "id": "cluster_1784092359320_tbm1t",
+      "aiTitle": "Claudeの教師向けバージョン「Claude for Teachers」が登場、カリキュラムに沿って教材を生成可能",
       "aiSummary": "Dropbox Japanは、生成AIサービス「Claude」との連携を開始した。Claude向けDropboxコネクタ、Claude Cowork向けDropboxプラグイン、Claude Code向けDropboxプラグインの提供が開始...",
       "genre": "tech",
       "sources": [
+        {
+          "publisher": "GIGAZINE",
+          "title": "Claudeの教師向けバージョン「Claude for Teachers」が登場、カリキュラムに沿って教材を生成可能",
+          "url": "https://gigazine.net/news/20260715-claude-for-teachers/",
+          "pubDate": "Wed, 15 Jul 2026 13:20:00 +0900"
+        },
         {
           "publisher": "ライフハッカー・ジャパン",
           "title": "もう迷わない！ChatGPT、Gemini、Claudeを使い分けて作業効率を最大化する方法",
@@ -455,6 +479,12 @@
           "title": "Claude Codeで「YouTube集客テクニック」を多角的に調査してみた",
           "url": "https://qiita.com/maskot1977/items/de4d2912e11f63ad49b5?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
           "pubDate": "2026-07-14T15:24:28.000Z"
+        },
+        {
+          "publisher": "Zenn（トレンド）",
+          "title": "herdr を活用した Codex とのオーケストレーション用 Claude Code Plugin を作ってみた",
+          "url": "https://zenn.dev/genda_jp/articles/46745564b7a9dd",
+          "pubDate": "Tue, 14 Jul 2026 09:42:25 GMT"
         },
         {
           "publisher": "ケータイ Watch",
@@ -507,15 +537,95 @@
       ],
       "image": null,
       "sns": {
-        "x": 1451,
-        "threads": 299,
-        "hatebu": 165
+        "x": 1514,
+        "threads": 293,
+        "hatebu": 172
       },
       "emotion": "hot",
       "weight": 6
     },
     {
-      "id": "cluster_1784087025917_utond",
+      "id": "cluster_1784092359332_qyzvy",
+      "aiTitle": "Amazonで横開きスマホ「motorola razr fold」の予約受付がスタート、数量限定で3万円割引",
+      "aiSummary": "Amazon.co.jpで「motorola razr fold」（8月4日発売）の予約受付が始まっている。価格は26万9820円だが、数量限定の3万円割引クーポンが配布されており、適用すると23万9820円で購入できる。",
+      "genre": "tech",
+      "sources": [
+        {
+          "publisher": "ケータイ Watch",
+          "title": "Amazonで横開きスマホ「motorola razr fold」の予約受付がスタート、数量限定で3万円割引",
+          "url": "https://k-tai.watch.impress.co.jp/docs/news/2125297.html",
+          "pubDate": "2026-07-15T03:57:06.000Z"
+        },
+        {
+          "publisher": "ギズモード・ジャパン",
+          "title": "「折りたたみiPhone用ケース」がもうAmazonで売られている件について",
+          "url": "https://www.gizmodo.jp/article/iphone-fold-case/",
+          "pubDate": "Tue, 14 Jul 2026 22:00:00 GMT"
+        },
+        {
+          "publisher": "Qiita（トレンド）",
+          "title": "Amazon S3上の大量ログを Autonomous AI Lakehouseで分析する：外部表、Parquet、SQL、Vector Search、RAGの使い分け",
+          "url": "https://qiita.com/shirok/items/2eafd347f90e80c46005?utm_campaign=popular_items&utm_medium=feed&utm_source=popular_items",
+          "pubDate": "2026-07-13T22:59:11.000Z"
+        }
+      ],
+      "image": null,
+      "sns": {
+        "x": 547,
+        "threads": 113,
+        "hatebu": 58
+      },
+      "emotion": "hot",
+      "weight": 6
+    },
+    {
+      "id": "cluster_1784092359321_jel1e",
+      "aiTitle": "iPhoneの中身も「メイド・イン・USA」に？ Appleが4.8兆円の提携を発表",
+      "aiSummary": "コスパって大事。Google（グーグル）の最新スマートウォッチ「Pixel Watch 5」に関するリーク情報が登場。新モデルはデザインに大きな変化なし、価格だけちょっとアップする見込みです。Googleのウェアラブル端末も、いよいよApp...",
+      "genre": "tech",
+      "sources": [
+        {
+          "publisher": "ギズモード・ジャパン",
+          "title": "Pixel Watch 5、あまり変わらず価格だけアップの可能性",
+          "url": "https://www.gizmodo.jp/article/the-pixel-watch-5s-most-notable-change-might-be-its-price/",
+          "pubDate": "Wed, 15 Jul 2026 04:00:00 GMT"
+        },
+        {
+          "publisher": "ギズモード・ジャパン",
+          "title": "この秋、Apple Watchの“ジェスチャー”機能がさらに便利になります",
+          "url": "https://www.gizmodo.jp/article/watchos-27-update/",
+          "pubDate": "Wed, 15 Jul 2026 00:00:00 GMT"
+        },
+        {
+          "publisher": "GIGAZINE",
+          "title": "Appleのオンデバイス音声認識API「SpeechAnalyzer」が英語ベンチマークでWhisper Smallを上回る",
+          "url": "https://gigazine.net/news/20260714-apple-speech-analyzer-benchmark/",
+          "pubDate": "Tue, 14 Jul 2026 15:30:00 +0900"
+        },
+        {
+          "publisher": "ギズモード・ジャパン",
+          "title": "iPhoneの中身も「メイド・イン・USA」に？ Appleが4.8兆円の提携を発表",
+          "url": "https://www.gizmodo.jp/article/apple_broadcom_madeinusa/",
+          "pubDate": "Mon, 13 Jul 2026 11:30:00 GMT"
+        },
+        {
+          "publisher": "GIGAZINE",
+          "title": "トランプ政権がIntelを強力に後押し、Appleは関税回避と引き換えにIntelへの協力を飲まされた可能性",
+          "url": "https://gigazine.net/news/20260713-intel-with-white-house/",
+          "pubDate": "Mon, 13 Jul 2026 17:50:00 +0900"
+        }
+      ],
+      "image": null,
+      "sns": {
+        "x": 465,
+        "threads": 71,
+        "hatebu": 33
+      },
+      "emotion": "hot",
+      "weight": 5
+    },
+    {
+      "id": "cluster_1784092359330_y7bqk",
       "aiTitle": "Google Play、日本の手数料を9月30日から前倒しで値下げ",
       "aiSummary": "Googleが予告した新AI「Gemini 3.5 Pro」のリリースが遅れています。競合が強力なフラッグシップをリリースしている状況で、SNSでもさまざまな声が観測できる状況です。",
       "genre": "tech",
@@ -565,15 +675,95 @@
       ],
       "image": null,
       "sns": {
-        "x": 232,
-        "threads": 23,
-        "hatebu": 6
+        "x": 199,
+        "threads": 42,
+        "hatebu": 9
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1784087025899_tg8xd",
+      "id": "cluster_1784092359333_3nf9g",
+      "aiTitle": "スマホで27B級LLMが動く！PrismMLが「Bonsai 27B」を無料公開",
+      "aiSummary": "Appleが「iOS 27」「iPadOS 27」「macOS 27(Golden Gate)」「watchOS 27」「tvOS 27」のパブリックベータ版をリリースしました。",
+      "genre": "tech",
+      "sources": [
+        {
+          "publisher": "PC Watch",
+          "title": "スマホで27B級LLMが動く！PrismMLが「Bonsai 27B」を無料公開",
+          "url": "https://pc.watch.impress.co.jp/docs/news/2125273.html",
+          "pubDate": "2026-07-15T03:49:32.000Z"
+        },
+        {
+          "publisher": "GIGAZINE",
+          "title": "iPhoneでローカル実行可能な270億パラメータのAIモデル「Bonsai 27B」が登場、Qwen3.6-27Bをメモリ使用量3.9GBまで小型化してスマホ単体で実用的な速度で動作",
+          "url": "https://gigazine.net/news/20260715-bonsai-27b/",
+          "pubDate": "Wed, 15 Jul 2026 12:10:00 +0900"
+        },
+        {
+          "publisher": "GIGAZINE",
+          "title": "iOS 27やmacOS 27のパブリックベータ版が公開される、iPhoneのアップデート手順はこんな感じ",
+          "url": "https://gigazine.net/news/20260714-apple-ios-macos-public-beta/",
+          "pubDate": "Tue, 14 Jul 2026 17:59:00 +0900"
+        },
+        {
+          "publisher": "ケータイ Watch",
+          "title": "「iOS 27」パブリックベータ版公開",
+          "url": "https://k-tai.watch.impress.co.jp/docs/news/2125037.html",
+          "pubDate": "2026-07-14T08:21:11.000Z"
+        }
+      ],
+      "image": null,
+      "sns": {
+        "x": 172,
+        "threads": 30,
+        "hatebu": 4
+      },
+      "emotion": "hot",
+      "weight": 5
+    },
+    {
+      "id": "cluster_1784092359326_bt2mb",
+      "aiTitle": "20万円超えの「Galaxy S26 Ultra」。数ヶ月使って不満は一切なし",
+      "aiSummary": "開発力に脱帽。Galaxy Unpacked 2026まで、もう1週間もありません。次期デバイスであるGalaxy S27シリーズや、折りたたみモデルへの期待もどんどんと高まっていますね。新モデルお披露目まであとわずかですが、Galaxy ...",
+      "genre": "tech",
+      "sources": [
+        {
+          "publisher": "ギズモード・ジャパン",
+          "title": "リークされたGalaxy Z Fold 8 Ultraの実機、もう折り目がほとんどない！",
+          "url": "https://www.gizmodo.jp/article/galaxy-z-fold-8-ultra-display/",
+          "pubDate": "Wed, 15 Jul 2026 03:30:00 GMT"
+        },
+        {
+          "publisher": "PC Watch",
+          "title": "次世代折りたたみGalaxy、チタンで折り目が目立ちにくい新技術",
+          "url": "https://pc.watch.impress.co.jp/docs/news/2125192.html",
+          "pubDate": "2026-07-15T01:54:24.000Z"
+        },
+        {
+          "publisher": "ケータイ Watch",
+          "title": "サムスン、進化したAI搭載の次世代「Galaxy Watch」を予告",
+          "url": "https://k-tai.watch.impress.co.jp/docs/news/2124873.html",
+          "pubDate": "2026-07-14T02:36:31.000Z"
+        },
+        {
+          "publisher": "ギズモード・ジャパン",
+          "title": "20万円超えの「Galaxy S26 Ultra」。数ヶ月使って不満は一切なし",
+          "url": "https://www.gizmodo.jp/article/samsung-galaxy-s26-ultra-review-a-more-private-screen/",
+          "pubDate": "Tue, 14 Jul 2026 02:31:10 GMT"
+        }
+      ],
+      "image": null,
+      "sns": {
+        "x": 161,
+        "threads": 21,
+        "hatebu": 1
+      },
+      "emotion": "hot",
+      "weight": 5
+    },
+    {
+      "id": "cluster_1784092359320_nrdal",
       "aiTitle": "USB-AもCもこれ1本。端子問題を解決する1TB SSDがプライムデーでセール中",
       "aiSummary": "マウスコンピューターは8月5日10時59分までの期間限定で、「ビッグサマーセール」を開催中。GeForce RTX 5080搭載のゲーミングPCが最大14万円引きとなるなど、多数の製品を対象に値引きを実施している。",
       "genre": "tech",
@@ -607,99 +797,53 @@
           "title": "暑さ対策ならバルコニーシェードの導入を。プライムデーでお得なの販売中です",
           "url": "https://www.lifehacker.jp/article/candor-balcony-shade-amazon-prime-day/",
           "pubDate": "Mon, 13 Jul 2026 06:30:00 GMT"
-        },
-        {
-          "publisher": "ギズモード・ジャパン",
-          "title": "まだ安いよ。これらApple製品がセール中、プライムデーは今日まで",
-          "url": "https://www.gizmodo.jp/article/amazon-primeday-apple-products-0713/",
-          "pubDate": "Mon, 13 Jul 2026 04:45:00 GMT"
-        },
-        {
-          "publisher": "ライフハッカー・ジャパン",
-          "title": "ゲーム環境の改善は仕事環境の改善につながる！プライムデーでオススメのゲーミングアイテム",
-          "url": "https://www.lifehacker.jp/article/amazon-sale-game/",
-          "pubDate": "Mon, 13 Jul 2026 04:00:00 GMT"
         }
       ],
       "image": null,
       "sns": {
-        "x": 70,
-        "threads": 24,
+        "x": 79,
+        "threads": 12,
         "hatebu": 1
       },
-      "emotion": "hot",
+      "emotion": "surprised",
       "weight": 5
     },
     {
-      "id": "cluster_1784087025911_ix60u",
-      "aiTitle": "20万円超えの「Galaxy S26 Ultra」。数ヶ月使って不満は一切なし",
-      "aiSummary": "開発力に脱帽。Galaxy Unpacked 2026まで、もう1週間もありません。次期デバイスであるGalaxy S27シリーズや、折りたたみモデルへの期待もどんどんと高まっていますね。新モデルお披露目まであとわずかですが、Galaxy ...",
+      "id": "cluster_1784092359348_48gdb",
+      "aiTitle": "IIJから横折りスマホ「motorola razr fold」発売、MNPで20万円弱",
+      "aiSummary": "モトローラ・モビリティ・ジャパンは15日、新型Androidスマートフォン「motorola razr fold」を発表した。本稿では、主に本体外観の写真をお届けする。",
       "genre": "tech",
       "sources": [
         {
-          "publisher": "ギズモード・ジャパン",
-          "title": "リークされたGalaxy Z Fold 8 Ultraの実機、もう折り目がほとんどない！",
-          "url": "https://www.gizmodo.jp/article/galaxy-z-fold-8-ultra-display/",
-          "pubDate": "Wed, 15 Jul 2026 03:30:00 GMT"
-        },
-        {
-          "publisher": "PC Watch",
-          "title": "次世代折りたたみGalaxy、チタンで折り目が目立ちにくい新技術",
-          "url": "https://pc.watch.impress.co.jp/docs/news/2125192.html",
-          "pubDate": "2026-07-15T01:54:24.000Z"
-        },
-        {
-          "publisher": "ギズモード・ジャパン",
-          "title": "20万円超えの「Galaxy S26 Ultra」。数ヶ月使って不満は一切なし",
-          "url": "https://www.gizmodo.jp/article/samsung-galaxy-s26-ultra-review-a-more-private-screen/",
-          "pubDate": "Tue, 14 Jul 2026 02:31:10 GMT"
-        }
-      ],
-      "image": null,
-      "sns": {
-        "x": 61,
-        "threads": 13,
-        "hatebu": 1
-      },
-      "emotion": "hot",
-      "weight": 5
-    },
-    {
-      "id": "cluster_1784087025921_fghbw",
-      "aiTitle": "iOS 27やmacOS 27のパブリックベータ版が公開される、iPhoneのアップデート手順はこんな感じ",
-      "aiSummary": "Appleが「iOS 27」「iPadOS 27」「macOS 27(Golden Gate)」「watchOS 27」「tvOS 27」のパブリックベータ版をリリースしました。",
-      "genre": "tech",
-      "sources": [
-        {
-          "publisher": "GIGAZINE",
-          "title": "iPhoneでローカル実行可能な270億パラメータのAIモデル「Bonsai 27B」が登場、Qwen3.6-27Bをメモリ使用量3.9GBまで小型化してスマホ単体で実用的な速度で動作",
-          "url": "https://gigazine.net/news/20260715-bonsai-27b/",
-          "pubDate": "Wed, 15 Jul 2026 12:10:00 +0900"
-        },
-        {
-          "publisher": "GIGAZINE",
-          "title": "iOS 27やmacOS 27のパブリックベータ版が公開される、iPhoneのアップデート手順はこんな感じ",
-          "url": "https://gigazine.net/news/20260714-apple-ios-macos-public-beta/",
-          "pubDate": "Tue, 14 Jul 2026 17:59:00 +0900"
+          "publisher": "ケータイ Watch",
+          "title": "IIJから横折りスマホ「motorola razr fold」発売、MNPで20万円弱",
+          "url": "https://k-tai.watch.impress.co.jp/docs/news/2125286.html",
+          "pubDate": "2026-07-15T03:41:23.000Z"
         },
         {
           "publisher": "ケータイ Watch",
-          "title": "「iOS 27」パブリックベータ版公開",
-          "url": "https://k-tai.watch.impress.co.jp/docs/news/2125037.html",
-          "pubDate": "2026-07-14T08:21:11.000Z"
+          "title": "写真で見る「motorola razr fold」",
+          "url": "https://k-tai.watch.impress.co.jp/docs/review/2125090.html",
+          "pubDate": "2026-07-15T01:00:00.000Z"
+        },
+        {
+          "publisher": "ケータイ Watch",
+          "title": "モトローラ、初の横折りフォルダブル端末「motorola razr fold」　8月発売",
+          "url": "https://k-tai.watch.impress.co.jp/docs/news/2124797.html",
+          "pubDate": "2026-07-15T01:00:00.000Z"
         }
       ],
       "image": null,
       "sns": {
-        "x": 116,
-        "threads": 50,
-        "hatebu": 3
+        "x": 184,
+        "threads": 17,
+        "hatebu": 2
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1784087025908_os0xe",
+      "id": "cluster_1784092359323_p9lv6",
       "aiTitle": "Microsoftが広告や余計な機能をすべて削除したWindowsの検索ボックスをテスト",
       "aiSummary": "現地時間の2026年7月13日、MicrosoftがWindowsの検索ボックスをより速く、使いやすいものにするため、広告や余計な機能を削除するアップデートを発表しました。",
       "genre": "culture",
@@ -737,165 +881,81 @@
       ],
       "image": null,
       "sns": {
-        "x": 960,
-        "threads": 188,
-        "hatebu": 105
+        "x": 1026,
+        "threads": 198,
+        "hatebu": 107
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1784087025923_nkctm",
-      "aiTitle": "Metaのスマートグラスが日本語ライブ翻訳に対応！ 英語のプレゼン、字幕なしでイケたわ",
-      "aiSummary": "言った言わない、置き忘れなどを解決できるかもだけど...。スマートグラスは魅力的な反面、プライバシーの問題でいっぱいなので、嫌がる人もかなり多いのが事実です。その嫌悪感に対応するためにスマートグラスの企業は、小さいながらも改善や工夫を続けて...",
-      "genre": "tech",
+      "id": "cluster_1784092359321_d8u2w",
+      "aiTitle": "アベンジャーズ　ドゥームズデイ」コンセプトアートで復活「X-MEN」の面々が明らかに",
+      "aiSummary": "オスカー俳優ロバート・デ・ニーロが出演し、「アベンジャーズ　ドゥームズデイ」のルッソ兄弟（アンソニー・ルッソ、ジョー・ルッソ）がプロデューサーを務めるNetflix映画最新作「ウィスパーマン」が...",
+      "genre": "entertainment",
       "sources": [
         {
-          "publisher": "ギズモード・ジャパン",
-          "title": "ずっとすべてを録画するスマートグラスをMetaが検討中",
-          "url": "https://www.gizmodo.jp/article/meta-is-toying-with-the-idea-of-smart-glasses-that-record-everything-all-the-time/",
-          "pubDate": "Wed, 15 Jul 2026 03:00:00 GMT"
+          "publisher": "映画.com",
+          "title": "Netflix最新作「ウィスパーマン」8月28日世界独占配信 名優ロバート・デ・ニーロと「アベンジャーズ」シリーズのルッソ兄弟が組んだサイコスリラー 【予告映像あり】",
+          "url": "https://eiga.com/news/20260715/15/",
+          "pubDate": "2026-07-15T04:00:00.000Z"
         },
         {
-          "publisher": "ギズモード・ジャパン",
-          "title": "Metaのスマートグラスが日本語ライブ翻訳に対応！ 英語のプレゼン、字幕なしでイケたわ",
-          "url": "https://www.gizmodo.jp/article/ray-ban-meta-english-to-japanese-live-translation-test/",
-          "pubDate": "Tue, 14 Jul 2026 10:00:00 GMT"
+          "publisher": "映画.com",
+          "title": "アベンジャーズ　ドゥームズデイ」コンセプトアートで復活「X-MEN」の面々が明らかに",
+          "url": "https://eiga.com/news/20260713/14/",
+          "pubDate": "2026-07-13T08:00:00.000Z"
         }
       ],
       "image": null,
       "sns": {
-        "x": 591,
-        "threads": 100,
-        "hatebu": 50
+        "x": 620,
+        "threads": 124,
+        "hatebu": 52
       },
-      "emotion": "funny",
+      "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1784087025914_7ttx8",
-      "aiTitle": "【本日みつけたお買い得品】東芝のリビング扇風機が2,277円引き。DCモーター搭載",
-      "aiSummary": "Amazonにおいて、アイリスオーヤマのサーキュレータ「WOOZOO AZCF-BD15TEC-W」が7月10日の価格から1,000円引きで、5,980円にて購入できる。",
-      "genre": "culture",
+      "id": "cluster_1784092359354_24fgh",
+      "aiTitle": "「極限まで薄く」とはこのこと。ノートPCにも充電できるCIOの新作充電器【楽天5と0のつく日】",
+      "aiSummary": "厚さわずか12.5mm！CIOの極薄・軽量スリム充電器「NovaPort SLIM DUO Ⅱ」。180°スイングプラグ搭載で、新幹線のコンセントでも抜け落ちず、狭い隙間にもスマートにフィットします。",
+      "genre": "tech",
       "sources": [
         {
-          "publisher": "PC Watch",
-          "title": "【本日みつけたお買い得品】DCモーター搭載のアイリスオーヤマ製サーキュレータが千円引き",
-          "url": "https://pc.watch.impress.co.jp/docs/news/todays_sales/2125226.html",
-          "pubDate": "2026-07-15T02:42:39.000Z"
-        },
-        {
-          "publisher": "PC Watch",
-          "title": "【本日みつけたお買い得品】東芝のリビング扇風機が2,277円引き。DCモーター搭載",
-          "url": "https://pc.watch.impress.co.jp/docs/news/todays_sales/2124891.html",
-          "pubDate": "2026-07-14T03:14:59.000Z"
+          "publisher": "ライフハッカー・ジャパン",
+          "title": "「極限まで薄く」とはこのこと。ノートPCにも充電できるCIOの新作充電器【楽天5と0のつく日】",
+          "url": "https://www.lifehacker.jp/article/rakuten-5-0-day-cio-charger/",
+          "pubDate": "Wed, 15 Jul 2026 05:00:00 GMT"
         }
       ],
       "image": null,
       "sns": {
-        "x": 258,
-        "threads": 64,
+        "x": 374,
+        "threads": 47,
         "hatebu": 23
       },
       "emotion": "hot",
       "weight": 5
     },
     {
-      "id": "cluster_1784087025943_82wgy",
-      "aiTitle": "Instagram、リールのAI翻訳が日本語対応　声質再現やリップシンクも",
-      "aiSummary": "Metaは14日(米国時間)、Instagramのリール動画向けAI翻訳機能が日本語に対応したと発表した。日本語のほか、韓国語、フランス語、ドイツ語、イタリア語にも新たに対応し、すべての公開アカウント...",
-      "genre": "tech",
-      "sources": [
-        {
-          "publisher": "Impress Watch",
-          "title": "Instagram、リールのAI翻訳が日本語対応　声質再現やリップシンクも",
-          "url": "https://www.watch.impress.co.jp/docs/news/2125272.html",
-          "pubDate": "2026-07-15T03:36:28.000Z"
-        }
-      ],
-      "image": null,
-      "sns": {
-        "x": 762,
-        "threads": 161,
-        "hatebu": 83
-      },
-      "emotion": "hot",
-      "weight": 5
-    },
-    {
-      "id": "cluster_1784087025915_8c684",
-      "aiTitle": "AKB48・佐藤綺星が映画初主演！　「歌って！」10月2日公開決定＆ポスタービジュアル、予告編を披露",
-      "aiSummary": "AKB48の佐藤綺星が初主演を飾る映画「歌って！」の10月2日からkino cinéma新宿他にて全国公開が決定した。併せてポスタービジュアルと予告編が披露された。本作は、アイドルという夢を追い...",
-      "genre": "entertainment",
-      "sources": [
-        {
-          "publisher": "映画.com",
-          "title": "AKB48・佐藤綺星が映画初主演！　「歌って！」10月2日公開決定＆ポスタービジュアル、予告編を披露",
-          "url": "https://eiga.com/news/20260715/11/",
-          "pubDate": "2026-07-15T01:00:00.000Z"
-        },
-        {
-          "publisher": "映画.com",
-          "title": "ユースケ・サンタマリア、真矢みきらオリジナルメンバーも登場！　「踊る大捜査線 N.E.W.」最新予告＆ポスタービジュアルを披露",
-          "url": "https://eiga.com/news/20260714/11/",
-          "pubDate": "2026-07-14T04:05:00.000Z"
-        }
-      ],
-      "image": null,
-      "sns": {
-        "x": 740,
-        "threads": 146,
-        "hatebu": 68
-      },
-      "emotion": "surprised",
-      "weight": 5
-    },
-    {
-      "id": "cluster_1784087025937_ecm0z",
-      "aiTitle": "モトローラ、初の横折りフォルダブル端末「motorola razr fold」　8月発売",
-      "aiSummary": "モトローラ・モビリティ・ジャパンは15日、新型Androidスマートフォン「motorola razr fold」を発表した。本稿では、主に本体外観の写真をお届けする。",
-      "genre": "tech",
-      "sources": [
-        {
-          "publisher": "ケータイ Watch",
-          "title": "写真で見る「motorola razr fold」",
-          "url": "https://k-tai.watch.impress.co.jp/docs/review/2125090.html",
-          "pubDate": "2026-07-15T01:00:00.000Z"
-        },
-        {
-          "publisher": "ケータイ Watch",
-          "title": "モトローラ、初の横折りフォルダブル端末「motorola razr fold」　8月発売",
-          "url": "https://k-tai.watch.impress.co.jp/docs/news/2124797.html",
-          "pubDate": "2026-07-15T01:00:00.000Z"
-        }
-      ],
-      "image": null,
-      "sns": {
-        "x": 479,
-        "threads": 76,
-        "hatebu": 36
-      },
-      "emotion": "surprised",
-      "weight": 5
-    },
-    {
-      "id": "cluster_1784087025942_iyyjg",
-      "aiTitle": "ワイモバイルで1年間月額1100円割引キャンペーン「超！おトク割」、ネットや電気の契約不要",
-      "aiSummary": "ソフトバンクは、通信ブランド「ワイモバイル」で、最大1年間月額料金を1100円割り引く「超！おトク割」を7月17日から提供する。終了日は未定。",
+      "id": "cluster_1784092359354_4yhsd",
+      "aiTitle": "イオン、無料の健康サービス「からサポ」開始　食事記録や睡眠記録など",
+      "aiSummary": "イオンとイオンヘルステックは、7月16日からイオンの健康サービス「からサポ」を開始する。イオンのトータルアプリ「iAEON」内で提供する健康記録サービスで、食事記録や健康アドバイス、レシピ提案などを行...",
       "genre": "culture",
       "sources": [
         {
-          "publisher": "ケータイ Watch",
-          "title": "ワイモバイルで1年間月額1100円割引キャンペーン「超！おトク割」、ネットや電気の契約不要",
-          "url": "https://k-tai.watch.impress.co.jp/docs/news/2125262.html",
-          "pubDate": "2026-07-15T03:00:18.000Z"
+          "publisher": "Impress Watch",
+          "title": "イオン、無料の健康サービス「からサポ」開始　食事記録や睡眠記録など",
+          "url": "https://www.watch.impress.co.jp/docs/news/2125249.html",
+          "pubDate": "2026-07-15T04:16:34.000Z"
         }
       ],
       "image": null,
       "sns": {
-        "x": 565,
-        "threads": 108,
-        "hatebu": 60
+        "x": 706,
+        "threads": 144,
+        "hatebu": 70
       },
       "emotion": "hot",
       "weight": 5
@@ -904,7 +964,7 @@
   "sports": {
     "baseball": [
       {
-        "id": "cluster_1784087026844_szpsl",
+        "id": "cluster_1784092360444_x1frc",
         "aiTitle": "【プロ野球結果】ソフトバンクが両リーグ1番乗りで50勝到達",
         "aiSummary": "プロ野球は6試合が行われ、ソフトバンクは、今シーズンここまで10勝1敗と得意にしている日本ハムに正木智也選手のホームランなどで勝って3連勝としました。ソフトバンクは、両リーグ1番乗りで50勝到達です。",
         "sources": [
@@ -918,7 +978,7 @@
         "image": null
       },
       {
-        "id": "cluster_1784087026844_3p5uy",
+        "id": "cluster_1784092360444_9t40f",
         "aiTitle": "プロ野球 球宴 監督推薦 巨人 井上やロッテ 横山が初選出",
         "aiSummary": "今月行われるプロ野球のオールスターゲームに監督推薦で出場する選手が発表され、セ・リーグで首位争いを続ける巨人の勝ち頭、井上温大投手や、セーブ数でパ・リーグトップのロッテの横山陸人投手などが初めて選ばれ...",
         "sources": [
@@ -934,7 +994,7 @@
     ],
     "mlb": [
       {
-        "id": "cluster_1784087026843_zkjre",
+        "id": "cluster_1784092360443_ejh6v",
         "aiTitle": "ドジャース 大谷翔平 22号ホームラン 日米通算350号に到達",
         "aiSummary": "大リーグ、ドジャースの大谷翔平選手が、オールスターゲーム前最後の試合となるダイヤモンドバックス戦で22号のソロホームランを打ち、日米通算350号に到達しました。",
         "sources": [
@@ -950,7 +1010,7 @@
     ],
     "soccer": [
       {
-        "id": "cluster_1784087026844_ad4xj",
+        "id": "cluster_1784092360444_g8dwb",
         "aiTitle": "football life:「奇跡の1枚」から始まった　ヤマル、必然の躍進　サッカーW杯",
         "aiSummary": "詳細記事を参照してください。",
         "sources": [
@@ -1006,7 +1066,7 @@
         "image": null
       },
       {
-        "id": "cluster_1784087026844_vvdqd",
+        "id": "cluster_1784092360444_5v8bx",
         "aiTitle": "サッカーＷ杯 いよいよ準決勝 躍進を支える実力者たち",
         "aiSummary": "サッカーワールドカップ北中米大会は、14日（日本時間15日）から準決勝が始まります。各チームのエースによる得点王争いが注目される一方、それ以外の実力者たちも躍進を支えています。",
         "sources": [
@@ -1020,7 +1080,7 @@
         "image": null
       },
       {
-        "id": "cluster_1784087026844_i1v3v",
+        "id": "cluster_1784092360444_0tjvg",
         "aiTitle": "サッカーＷ杯 ベスト4は世界の「4強」による争いに",
         "aiSummary": "サッカーワールドカップ北中米大会。準決勝はいずれも優勝経験がある世界ランキングの上位4チーム、文字通り世界の「4強」による争いとなりました。得点王争いを繰り広げるスター選手など役者もそろい、ハイレベル...",
         "sources": [
@@ -1034,7 +1094,7 @@
         "image": null
       },
       {
-        "id": "cluster_1784087026843_h4f9h",
+        "id": "cluster_1784092360443_yh07p",
         "aiTitle": "サッカー日本代表 長友佑都が愛媛の母校をサプライズ訪問",
         "aiSummary": "サッカーワールドカップで日本選手最多の5回目の出場を果たした長友佑都選手が、ふるさとの愛媛県の母校を訪れ、子どもたちに夢を追い続ける大切さを伝えました。",
         "sources": [
@@ -1050,7 +1110,79 @@
     ],
     "seasonal": [
       {
-        "id": "cluster_1784087026844_pv4br",
+        "id": "cluster_1784092360445_utnua",
+        "aiTitle": "大リーグ オールスターゲーム 村上宗隆は163キロに空振り三振",
+        "aiSummary": "大リーグ、ホワイトソックスの村上宗隆選手がオールスターゲームに初出場し、9回にまわった打席でパドレスのミラー投手の163キロのストレートに空振り三振に倒れました。試合は、アメリカンリーグが4対0で勝ち...",
+        "sources": [
+          {
+            "publisher": "NHKスポーツ",
+            "title": "大リーグ オールスターゲーム 村上宗隆は163キロに空振り三振",
+            "url": "http://www3.nhk.or.jp/news/html/20260715/k10015177251000.html",
+            "pubDate": "Wed, 15 Jul 2026 14:06:53 +0900"
+          }
+        ],
+        "image": null
+      },
+      {
+        "id": "cluster_1784092360443_cq604",
+        "aiTitle": "サッカーW杯 フランスとスペインが準決勝へ最終調整",
+        "aiSummary": "サッカーワールドカップ北中米大会で、日本代表のキャプテンを務めた板倉滉選手が福岡市で取材に応じ、「今回の一体感を継続できれば、もっと上にいける。優勝という目標は絶対に変えてはいけない」と話しました。",
+        "sources": [
+          {
+            "publisher": "NHKスポーツ",
+            "title": "W杯 見どころ【7月16日】準決勝 イングランド×アルゼンチン",
+            "url": "http://www3.nhk.or.jp/news/html/20260715/k10015177451000.html",
+            "pubDate": "Wed, 15 Jul 2026 13:21:46 +0900"
+          },
+          {
+            "publisher": "NHKスポーツ",
+            "title": "W杯 見どころ【7月15日】準決勝 フランス×スペイン",
+            "url": "http://www3.nhk.or.jp/news/html/20260714/k10015176261000.html",
+            "pubDate": "Tue, 14 Jul 2026 09:26:02 +0900"
+          },
+          {
+            "publisher": "NHKスポーツ",
+            "title": "サッカーW杯 フランスとスペインが準決勝へ最終調整",
+            "url": "http://www3.nhk.or.jp/news/html/20260714/k10015176191000.html",
+            "pubDate": "Tue, 14 Jul 2026 08:57:09 +0900"
+          },
+          {
+            "publisher": "毎日新聞スポーツ",
+            "title": "football life:トランプ氏の排他的政策と一線画す　サッカーW杯に広がる多様性",
+            "url": "https://mainichi.jp/articles/20260713/k00/00m/050/322000c",
+            "pubDate": "2026-07-13T23:00:16.000Z"
+          },
+          {
+            "publisher": "NHKスポーツ",
+            "title": "サッカーW杯 日本代表 板倉滉 “優勝の目標 絶対変えずに”",
+            "url": "http://www3.nhk.or.jp/news/html/20260713/k10015175881000.html",
+            "pubDate": "Mon, 13 Jul 2026 18:52:03 +0900"
+          },
+          {
+            "publisher": "毎日新聞スポーツ",
+            "title": "football life:「国全体で船をこぐ」　ノルウェー一枚岩の大航海　サッカーW杯",
+            "url": "https://mainichi.jp/articles/20260713/k00/00m/050/129000c",
+            "pubDate": "2026-07-13T07:00:18.000Z"
+          }
+        ],
+        "image": null
+      },
+      {
+        "id": "cluster_1784092360444_wuryt",
+        "aiTitle": "W杯 スペイン 4大会ぶり決勝進出 フランス3大会連続決勝ならず",
+        "aiSummary": "サッカーワールドカップ北中米大会の準決勝、フランス 対 スペインはスペインが2対0で勝って4大会ぶりに決勝へ進みました。フランスは3大会連続の決勝進出はなりませんでした。スペインは国際Aマッチと呼ばれ...",
+        "sources": [
+          {
+            "publisher": "NHKスポーツ",
+            "title": "W杯 スペイン 4大会ぶり決勝進出 フランス3大会連続決勝ならず",
+            "url": "http://www3.nhk.or.jp/news/html/20260715/k10015177181000.html",
+            "pubDate": "Wed, 15 Jul 2026 13:14:58 +0900"
+          }
+        ],
+        "image": null
+      },
+      {
+        "id": "cluster_1784092360445_sexa0",
         "aiTitle": "Xゲームでリーグ戦スタート　どんな形式　新たな楽しみ方とは？",
         "aiSummary": "詳細記事を参照してください。",
         "sources": [
@@ -1064,47 +1196,7 @@
         "image": null
       },
       {
-        "id": "cluster_1784087026844_geshk",
-        "aiTitle": "大リーグオールスター 9回未決着時のHR競争 村上宗隆も代表に",
-        "aiSummary": "大リーグのオールスターゲームで、1年目で初選出されたホワイトソックスの村上宗隆選手が試合が9回で決着つかなかった場合に行われるホームラン競争のアメリカンリーグの代表選手に選ばれました。",
-        "sources": [
-          {
-            "publisher": "NHKスポーツ",
-            "title": "大リーグオールスター 9回未決着時のHR競争 村上宗隆も代表に",
-            "url": "http://www3.nhk.or.jp/news/html/20260715/k10015177251000.html",
-            "pubDate": "Wed, 15 Jul 2026 10:47:21 +0900"
-          },
-          {
-            "publisher": "NHKスポーツ",
-            "title": "大リーグオールスター 村上・山本がレッドカーペットに登場",
-            "url": "http://www3.nhk.or.jp/news/html/20260715/k10015177201000.html",
-            "pubDate": "Wed, 15 Jul 2026 06:47:22 +0900"
-          },
-          {
-            "publisher": "NHKスポーツ",
-            "title": "大リーグオールスター 村上宗隆 本塁打競争「パワー見せたい」",
-            "url": "http://www3.nhk.or.jp/news/html/20260714/k10015176221000.html",
-            "pubDate": "Tue, 14 Jul 2026 10:32:33 +0900"
-          }
-        ],
-        "image": null
-      },
-      {
-        "id": "cluster_1784087026844_e5rrj",
-        "aiTitle": "W杯 スペイン 4大会ぶり決勝進出 フランス3大会連続決勝ならず",
-        "aiSummary": "サッカーワールドカップ北中米大会の準決勝、フランス 対 スペインはスペインが2対0で勝って4大会ぶりに決勝へ進みました。フランスは3大会連続の決勝進出はなりませんでした。スペインは国際Aマッチと呼ばれ...",
-        "sources": [
-          {
-            "publisher": "NHKスポーツ",
-            "title": "W杯 スペイン 4大会ぶり決勝進出 フランス3大会連続決勝ならず",
-            "url": "http://www3.nhk.or.jp/news/html/20260715/k10015177181000.html",
-            "pubDate": "Wed, 15 Jul 2026 10:30:36 +0900"
-          }
-        ],
-        "image": null
-      },
-      {
-        "id": "cluster_1784087026844_06sgk",
+        "id": "cluster_1784092360444_zguta",
         "aiTitle": "【随時更新】Ｗ杯 決勝トーナメント日程・結果 動画 準決勝は",
         "aiSummary": "サッカーワールドカップ北中米大会は、準決勝です。スペインが決勝進出を決めました。イングランドとアルゼンチンがもう1枠を争います。決勝トーナメントの日程と結果を試合の2分ハイライトもまじえ、随時更新して...",
         "sources": [
@@ -1118,7 +1210,7 @@
         "image": null
       },
       {
-        "id": "cluster_1784087026844_59m9q",
+        "id": "cluster_1784092360444_g76nl",
         "aiTitle": "バレー推し:VNL大阪大会　石川、高橋藍らの元同僚も出場、注目の海外勢は",
         "aiSummary": "詳細記事を参照してください。",
         "sources": [
@@ -1127,26 +1219,6 @@
             "title": "バレー推し:VNL大阪大会　石川、高橋藍らの元同僚も出場、注目の海外勢は",
             "url": "https://mainichi.jp/articles/20260714/k00/00m/050/276000c",
             "pubDate": "2026-07-14T22:00:17.000Z"
-          }
-        ],
-        "image": null
-      },
-      {
-        "id": "cluster_1784087026844_vqsf7",
-        "aiTitle": "藤ノ川が横綱初挑戦から4連勝　戦後初の快挙　大相撲名古屋場所",
-        "aiSummary": "大相撲名古屋場所は4日目、14日に今場所初白星を挙げた横綱 大の里は平幕の豪ノ山と対戦します。",
-        "sources": [
-          {
-            "publisher": "NHKスポーツ",
-            "title": "大相撲名古屋場所 4日目見どころ 大の里は平幕の豪ノ山と",
-            "url": "http://www3.nhk.or.jp/news/html/20260715/k10015177091000.html",
-            "pubDate": "Wed, 15 Jul 2026 05:50:48 +0900"
-          },
-          {
-            "publisher": "毎日新聞スポーツ",
-            "title": "藤ノ川が横綱初挑戦から4連勝　戦後初の快挙　大相撲名古屋場所",
-            "url": "https://mainichi.jp/articles/20260714/k00/00m/050/395000c",
-            "pubDate": "2026-07-14T13:26:03.000Z"
           }
         ],
         "image": null
@@ -1205,34 +1277,34 @@
       "away": "阪神",
       "homeScore": 0,
       "awayScore": 0,
-      "status": "scheduled",
-      "detail": "18:00開始予定",
-      "commentary": "予告先発：戸郷（巨人）、才木（阪神）",
-      "progress": 0
+      "status": "live",
+      "detail": "2回裏",
+      "commentary": "エラーからピンチが広がるもなんとか無失点",
+      "progress": 4
     },
     {
       "id": "game_npb_2",
       "type": "baseball",
       "home": "ソフトバンク",
       "away": "オリックス",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
-      "status": "scheduled",
-      "detail": "18:00開始予定",
-      "commentary": "予告先発：有原（ソ）、宮城（オ）",
-      "progress": 0
+      "status": "live",
+      "detail": "4回裏",
+      "commentary": "ソフトバンクが1点獲得！ タイムリーヒットで1点追加！",
+      "progress": 8
     },
     {
       "id": "game_mlb_1",
       "type": "mlb",
       "home": "ドジャース",
       "away": "パドレス",
-      "homeScore": 0,
+      "homeScore": 3,
       "awayScore": 0,
-      "status": "scheduled",
-      "detail": "10:10開始予定",
-      "commentary": "ドジャース大谷は「2番・DH」で先発予定",
-      "progress": 0
+      "status": "live",
+      "detail": "3回裏",
+      "commentary": "エラーからピンチが広がるもなんとか無失点",
+      "progress": 6
     },
     {
       "id": "game_soccer_1",
@@ -1240,11 +1312,11 @@
       "home": "川崎フロンターレ",
       "away": "浦和レッズ",
       "homeScore": 0,
-      "awayScore": 0,
-      "status": "scheduled",
-      "detail": "19:00開始予定",
-      "commentary": "等々力陸上競技場にて本日19:00キックオフ",
-      "progress": 0
+      "awayScore": 1,
+      "status": "live",
+      "detail": "後半10分",
+      "commentary": "GOAL！浦和レッズが得点！ ミドルシュートを放つも、キーパーのファインセーブに阻まれる",
+      "progress": 6
     }
   ]
 }

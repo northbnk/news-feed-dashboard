@@ -3038,30 +3038,45 @@ document.addEventListener('DOMContentLoaded', () => {
   let rssScrollObserver = null;
 
   function initRssObserver() {
+    const timelineContainer = document.getElementById('rss-article-timeline');
+    if (!timelineContainer) {
+      console.log('timelineContainer not found in DOM yet. Observer initialization deferred.');
+      return false;
+    }
+
+    // 既にオブザーバーが存在する場合は、一旦切断して最新のコンテナで再生成
     if (rssScrollObserver) {
       rssScrollObserver.disconnect();
     }
 
-    rssScrollObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const card = entry.target;
-          const link = card.getAttribute('data-link');
-          if (link && !readNewsUrls.has(link)) {
-            markAsRead(link, card);
-            const dot = card.querySelector('.unread-dot');
-            if (dot) dot.remove();
-            card.classList.add('is-read');
-            renderRssSidebar();
+    try {
+      rssScrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const card = entry.target;
+            const link = card.getAttribute('data-link');
+            if (link && !readNewsUrls.has(link)) {
+              markAsRead(link, card);
+              const dot = card.querySelector('.unread-dot');
+              if (dot) dot.remove();
+              card.classList.add('is-read');
+              renderRssSidebar();
+            }
+            // 既読化に成功したカードは監視リストから解除
+            rssScrollObserver.unobserve(card);
           }
-          rssScrollObserver.unobserve(card);
-        }
+        });
+      }, {
+        root: timelineContainer, // スクロールしている親要素を確実にルートに指定
+        rootMargin: '0px',
+        threshold: 0.15 // 15% が可視化されたら既読にする
       });
-    }, {
-      root: null, // ブラウザの表示領域全体を監視範囲とする
-      rootMargin: '-5% 0px -5% 0px', // 上下の若干の内側に入った時点で検知
-      threshold: 0.1 // 10% 以上が見えたら既読にする
-    });
+      console.log('IntersectionObserver successfully initialized with container:', timelineContainer);
+      return true;
+    } catch (e) {
+      console.error('Failed to create IntersectionObserver:', e.message);
+      return false;
+    }
   }
 
   // キーボードショートカットで追跡する現在の選択インデックス
@@ -3071,6 +3086,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // 中央ペイン (生のRSS記事リスト) の描画
   function renderRssArticles(resetScroll = true) {
     if (!rssArticlesList) return;
+
+    // 描画の際、オブザーバーが未生成ならその場で遅延生成する
+    if (!rssScrollObserver) {
+      initRssObserver();
+    }
     
     // 現在のアクティブ表示に沿って記事をフィルタリング
     let filtered = [];
